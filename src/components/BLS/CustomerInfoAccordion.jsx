@@ -112,7 +112,7 @@ bgsave()
 
       useEffect(() => {
         const fetchData = async () => {
-          const response = await fetch('http://localhost:7000/api/accounts/names/' + key, {
+          const response = await fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/accounts/names/' + key, {
             method: 'GET',
             headers: new Headers({
               Authorization: 'bearer ' + userData.token,
@@ -375,7 +375,7 @@ if (activityTypeValue === "6" ||
            console.log(JSON.stringify(postData))
            // useEffect(async () =>{
            // try {
-           const res = await fetch('http://localhost:7000/api/activities', {
+           const res = await fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/activities', {
              method: 'post',
              headers: new Headers({
                Authorization: 'bearer ' + userData.token,
@@ -420,7 +420,7 @@ if (activityTypeValue === "6" ||
               // setSaveSuccessMsg("The Activity was Save Susssfully")
               // setTimeout(()=>setSaveSuccessMsg(""),3000)
             }else{
-              const res = await fetch('http://localhost:7000/api/call_products', {
+              const res = await fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/call_products', {
                 method: 'post',
                 headers: new Headers({
                   Authorization: 'bearer ' + userData.token,
@@ -444,7 +444,7 @@ if (activityTypeValue === "6" ||
                  }
 
                   const postCallContact = async () => {
-                   await fetch('http://localhost:7000/api/call_contacts', {
+                   await fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/call_contacts', {
                       method: 'post',
                       headers: new Headers({
                         Authorization: 'bearer ' + userData.token,

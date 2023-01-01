@@ -85,7 +85,7 @@ const userId = userData.id
 
    
        const fetchActivityData = async()=> {
-              const response = await fetch('http://localhost:7000/api/activities/superuser' , {
+              const response = await fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/activities/superuser' , {
                 method: 'GET',
                 headers: new Headers({
                   Authorization: 'bearer ' + userData.token,

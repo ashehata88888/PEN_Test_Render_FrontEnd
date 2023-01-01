@@ -347,7 +347,7 @@ let [IndexP,setIndexP] = useState(0)
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetch('http://localhost:7000/api/suppliers/names/' + key, {
+      await fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/suppliers/names/' + key, {
         method: 'GET',
         headers: new Headers({
           Authorization: 'bearer ' + userData.token,
@@ -373,7 +373,7 @@ let [IndexP,setIndexP] = useState(0)
     const supKey = event.target.value
     setSupplierId(supKey)
     const pFresponse = async () => {
-      fetch('http://localhost:7000/api/product_families/names/' + supKey, {
+      fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/product_families/names/' + supKey, {
         method: 'GET',
         headers: new Headers({
           Authorization: 'bearer ' + userData.token,
@@ -391,7 +391,7 @@ let [IndexP,setIndexP] = useState(0)
     const pFKey = event.target.value
     setproductFamilyId(pFKey)
     const iGresponse = async () => {
-      fetch('http://localhost:7000/api/item_groups/names/' + pFKey, {
+      fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/item_groups/names/' + pFKey, {
         method: 'GET',
         headers: new Headers({
           Authorization: 'bearer ' + userData.token,
@@ -551,7 +551,7 @@ loadingSave()
       //   console.log("postCall contact Data in contatact loop are :", finalPostCallContactData)
       // })
    
-      const res = await fetch('http://localhost:7000/api/call_products', {
+      const res = await fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/call_products', {
         method: 'post',
         headers: new Headers({
           Authorization: 'bearer ' + userData.token,
@@ -603,7 +603,7 @@ loadingSave()
        
 
           const postCallContact = async () => {
-           await fetch('http://localhost:7000/api/call_contacts', {
+           await fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/call_contacts', {
               method: 'post',
               headers: new Headers({
                 Authorization: 'bearer ' + userData.token,
