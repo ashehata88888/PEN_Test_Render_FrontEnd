@@ -1,0 +1,39 @@
+@import 'node_modules/react-datepicker/src/stylesheets/datepicker.scss';
+
+.react-datepicker__month-container {
+  background-color: #fff;
+  color: #969eac;
+  font-size: 1.0rem;
+  font-family: 'Mulish';
+
+  .react-datepicker__month {
+    padding: 1rem 0;
+  }
+
+  .react-datepicker__month-text {
+    display: inline-block;
+    width: 5rem;
+    margin: 0.5rem;
+    font-size: 1.1rem;
+    padding: 0.2rem;
+    &:hover {
+      background-color: #534cea;
+    }
+  }
+
+  .react-datepicker__current-month{
+    font-size: 1.1rem;
+  }
+
+  .react-datepicker__day{
+font-size: 12pt;
+  }
+
+  .react-datepicker__input-container{
+    height: 1.1rem;
+    display: none !important;
+  }
+
+
+  
+}

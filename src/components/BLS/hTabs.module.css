@@ -1,0 +1,503 @@
+
+
+.styleHTabs{
+    font-size: 100pt;
+    color:green;
+}
+
+/* .MuiTabPanel-root{
+width: 90%;
+height: 90%;
+margin-top:20px;
+} */
+
+/* .tabLabels{
+    font-size: 14pt;
+    color: black;
+} */
+
+.accordion{
+    position: absolute;
+    top: 55%;
+}
+
+.AccordionPosition{
+    position: absolute;
+    width: 80%;
+}
+
+.scrollY{
+    overflow-y: scroll;
+}
+
+.accordionSummary{
+    font-size: 18pt;
+}
+
+
+.labels{
+    font-size: 15pt;
+    display: inline-block;
+}
+
+
+.calendar{
+    font-size: 13pt !important ;
+    width: 30% !important ;
+    min-width: 20% !important;
+    border-radius: 5px !important;
+    height: 30px !important;
+    margin-bottom: 15px !important;
+  
+}
+
+.dropDownList{
+    font-size: 13pt;
+    width: 30% !important ;
+    min-width: 20% !important;
+    height: 35px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: block;
+    z-index: -20;
+}
+
+
+.checkBox{
+    width: 18px;
+    height: 18px;
+    display: inline !important;
+    margin-right: 15px;
+}
+
+
+.toDatePicker{
+    display: none !important;
+}
+
+.hideCalendar{
+    display: none;
+}
+
+
+.activity_information_textarea{
+    width: 100%;
+    height: 20%;
+    min-height: 150px;
+    margin: 0% 0% 0% 0%;
+    clear: both;
+    border: 2px solid #EFEFEF;
+    border-radius: 5px;
+    padding: 0.5% 0.5% 0.5% 0.5%;
+    resize: none;
+    margin-bottom: 14px;
+    font-size: 13pt;
+    position: relative;
+}
+
+.adress_text_Box{
+    display: flex;
+    font-size: 15pt;
+    width: 50% !important ;
+    min-width: 20% !important;
+    height: 5%;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: block;
+}
+    
+  
+.hideActivityData{
+    display:flex;
+visibility: hidden;
+  height: 0px;
+  overflow: hidden;
+
+-webkit-transition: height 0.3s linear;
+-moz-transition: height 0.3s linear;
+-ms-transitoin: height 0.3s linear;
+-o-transition: height 0.3s linear;
+transition: height 0.3s linear;
+
+}
+
+.displayActivityData{
+    
+    /* animation: fade-in 2000ms forwards; */
+    /* display: block; */
+    z-index: 400 !important;
+    height: 35px;
+    -webkit-transition: height 0.35s linear;
+    -moz-transition: height 0.35s linear;
+    -ms-transitoin: height 0.35s linear;
+    -o-transition: height 0.35s linear;
+    transition: height 0.35s linear;
+    overflow: hidden;
+   
+
+}
+
+.CallLable{
+    float: left;
+    clear: both;
+    display: block;
+    font-size: 15pt;
+    width: 98%;
+    margin-bottom: 3px;
+    margin-top: 1%;
+}
+
+.productBox {
+    width: 19.8%;
+    float: left;
+    margin: 0% 0% 0.5% 0%;
+}
+
+.minlable{
+    float: left;
+    clear: right;
+    margin: 0 0 4px 3px;
+    font-weight: bold;
+    font-size: 13pt;
+}
+
+.productBoxSelect{
+    width: 85%;
+    height: 30px;
+    float: left;
+    clear: both;
+    border: 2px solid #EFEFEF;
+    border-radius: 5px;
+    padding: 1% 1% 1% 1%;
+    margin-top:2%;
+    margin-bottom: 3% ;
+    font-size: 12pt;
+    cursor: pointer;
+}
+
+.dropDownPErr{
+  width: 85%;
+  height: 30px;
+  float: left;
+  clear: both;
+  border: 2px solid #EFEFEF;
+  border-radius: 5px;
+  padding: 1% 1% 1% 1%;
+  margin-top:2%;
+  margin-bottom: 3% ;
+  font-size: 12pt;
+  cursor: pointer;
+  background-color: #ff0000;
+}
+
+.callButtons{
+    width: 100%;
+    float: left;
+}
+
+.addBtn{
+    font-size: 1rem;
+    width: 124px;
+    margin: 2% 1% 2% 0%;
+    background-color:rgb(168, 180, 0);
+    color: #FFFFFF;
+    border: none;
+    height: 40px;
+    float: left;
+    clear: right;
+    border: 0px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+}
+
+.deleteBtn{
+    font-size: 1rem;
+    width: 124px;
+    margin: 2% 1% 2% 0%;
+    background-color:rgb(230, 0, 0);
+    color: #FFFFFF;
+    border: none;
+    height: 40px;
+    float: left;
+    clear: right;
+    border: 0px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+}
+
+.saveBtn{
+    font-size: 1rem;
+    width: 124px;
+    margin: 2% 1% 2% 0%;
+    background-color:rgb(0, 176, 240);
+    color: #FFFFFF;
+    border: none;
+    height: 40px;
+    float: left;
+    clear: right;
+    border: 0px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    align-items: center;
+}
+
+
+.activityMainBtns{
+    width: 10%;
+    right: 5px;
+    margin: 4% 0% 0% 1%;
+    padding: 1% 0.5% 1% 0.5%;
+    border-radius: 5px;
+    background-color: #eeeaea;
+    position: fixed;
+    top:130px;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    z-index: 200;
+    height: fit-content;
+}
+
+
+/* #customerInfoAccordHide{
+    display: none;
+  } */
+
+  .callInfoAccordionhiddenBtns{
+    display:flex !important;
+    visibility: hidden;
+      height: 0px;
+      overflow: hidden;
+    
+    -webkit-transition: height 0.3s linear;
+    -moz-transition: height 0.3s linear;
+    -ms-transitoin: height 0.3s linear;
+    -o-transition: height 0.3s linear;
+    transition: height 0.3s linear;
+    
+  }
+
+  .callInfoAccordionBlockBtns{
+    height: 40px;
+    -webkit-transition: height 0.35s linear;
+    -moz-transition: height 0.35s linear;
+    -ms-transitoin: height 0.35s linear;
+    -o-transition: height 0.35s linear;
+    transition: height 0.35s linear;
+    overflow: hidden;
+  }
+
+  .callInfoAccordionhidden{
+    display: none;
+  }
+
+  .callInfoAccordionBlock{
+    display:block
+  }
+
+
+
+
+
+  .deleteContactBtn{
+    display: relative;
+    background-color: #ff0000;
+    justify-content: center;
+    align-items: center;
+    width: 43px;
+    height: 43px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 4px 2px;
+    border-radius: 100%;
+    -webkit-align-items: center;
+    text-align: center;
+    bottom: 15px;
+  }
+  
+  .valErr{
+    background-color: #ff0000 !important;
+    font-size: 13pt !important ;
+    width: 30% !important ;
+    min-width: 20% !important;
+    border-radius: 5px !important;
+    height: 30px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .errSpan{
+    color: red;
+    background-color: aqua;
+    font-size: 30pt;
+    font-weight: bold;
+    z-index: 4000;
+    text-align: center;
+    top: 5px;
+    position: fixed;
+  }
+
+  .inputNameList{
+    font-size: 13pt;
+    width: 30% !important;
+    min-width: 20% !important;
+    height: 35px;
+    border-radius: 5px;
+    margin-bottom: 0px;
+    display: block;
+  }
+
+  .inputNameList:focus + .accountNamesdropDownList{
+    border: 0.1px  gray solid; 
+  }
+
+  .dropDownErr{
+    font-size: 14pt;
+    width: 30% !important ;
+    min-width: 20% !important;
+    height: 35px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: block;
+    background-color: #ff0000 !important;
+  }
+
+  .adressLabel{
+    font-size: 15pt;
+    display: inline-block;
+    margin-top: 30px;
+}
+
+  .accountNamesdropDownList{
+    margin-top: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    z-index: 500 !important;
+    width: 30% !important;
+    text-align: start;
+    justify-content: start;
+    /* border: 0.1px  gray solid; */
+    /* overflow: scroll; */
+}
+
+
+.accountNamesdropDownList:hover{
+    border: 0.5 gray solid !important;
+  }
+
+.dropdownDiv{
+    font-size: 14pt;
+    background-color: rgb(255, 255, 255);
+    position: flex;
+    justify-content: start;
+    align-items: flex-start;
+    overflow: hidden;
+    margin-left: 3px;
+  }
+
+
+.dropdownDiv:hover{
+ background-color: rgb(206, 206, 206);
+ cursor: pointer;
+  }
+
+
+  .saveLodaingContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: skyblue; */
+  }
+
+ 
+  .backgroundSave{
+    position:fixed;
+    width: 100vw;
+    height: 100vh ;
+    background: #393d3d;
+    opacity: .5;
+    z-index: 550;
+  }
+
+  .savingMessage{
+    font-size: 30pt;
+color: rgb(255, 255, 255);
+  }
+
+
+
+  .activeTab{
+  display:none;
+
+}
+
+  .inActiveTab{
+  display:block;
+}
+
+.activityTableContainer{
+  height: 400px;
+  width: 97% !important;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  /* width: 500px !important; */
+}
+
+.ActivityTable{
+  background-color: rgb(247, 241, 241);
+  overflow-y: scroll !important;
+  height:70vh;
+
+}
+
+.activityTableDeleteBtn{
+  background-color: #ffffff;
+  border-radius: 7%;
+  color: rgb(236, 23, 23);
+  font-size: 14pt;
+}
+
+.activityTableDeleteBtn:hover{
+  background-color: rgb(236, 23, 23);
+  color: #ffffff;
+
+}
+
+.activityTableDeleteBtn:focus{
+  background-color: #ffffff;
+  color: rgb(236, 23, 23);
+}
+
+/* .activityReportTable{
+  overflow: auto;
+} */
+
+.activitDataExportBtn{
+  font-size: 15pt;
+  background-color: #eeeaea;
+  height: 40px;
+}
+
+.activitDataExportBtn:focus{
+  font-size: 15pt;
+  background-color: aqua;
+  height: 40px;
+}
+
+
+.underDevImg{
+  margin: 10%;
+}

@@ -1,0 +1,190 @@
+<html lang="en-us" dir="ltr"><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension><head>
+    <!-- Meta Information -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Links and Stylesheets -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../css/theme.css">
+    <link rel="stylesheet" type="text/css" href="../css/activity.css">
+    <link rel="stylesheet" type="text/css" href="../css/jQuery.css">
+
+    <!-- Scripts -->
+    <script src="../js/jQuery.js"></script>
+    <script src="../js/landing.js"></script>
+    <script src="../js/Menu.js"></script>
+    <script src="../js/jQueryUI.js"></script>
+    <script src="../js/activity.js"></script>
+
+    <title>dataX</title>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1087.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1087.0">
+    <div class="container">
+        <div class="header">
+            <button id="menu-toggler">
+                <img src="../imgs/hamburger.png">
+            </button>
+            <h3 class="app-name">dataX</h3>
+        </div>
+
+        <div class="mobile-nav" id="mobile-nav"><div class="nav-bar">
+<div class="nav-links">
+    <ul>
+        <img src="../imgs/nav-bar/home.png">
+        <li onclick="window.location = 'landing.php';">Home</li>
+        <img src="../imgs/nav-bar/activity.png">
+        <li onclick="window.location = 'activity.php?mode=0';">
+            Activities</li>
+        <img src="../imgs/nav-bar/market.png">
+        <li onclick="window.location = 'market.php?mode=0';">
+            Market Data</li>
+    </ul>
+</div>
+
+<div class="nav-links">
+    <ul>
+        <img src="../imgs/nav-bar/logout.png">
+        <li onclick="logout();">Logout</li>
+    </ul>
+</div>
+</div>
+</div>
+        <div class="nav-panel" id="nav-panel"><div class="nav-bar">
+<div class="nav-links">
+    <ul>
+        <img src="../imgs/nav-bar/home.png">
+        <li onclick="window.location = 'landing.php';">Home</li>
+        <img src="../imgs/nav-bar/activity.png">
+        <li onclick="window.location = 'activity.php?mode=0';">
+            Activities</li>
+        <img src="../imgs/nav-bar/market.png">
+        <li onclick="window.location = 'market.php?mode=0';">
+            Market Data</li>
+    </ul>
+</div>
+
+<div class="nav-links">
+    <ul>
+        <img src="../imgs/nav-bar/logout.png">
+        <li onclick="logout();">Logout</li>
+    </ul>
+</div>
+</div>
+</div>
+
+        <div class="main-panel">
+                <div class="content-pane">
+    <h1>Activity Wizard</h1>
+    <p>Please fill in the below fields to record your activity.</p>
+    <form method="post" action="/" 
+    onsubmit="return saveActivity();
+        " id="activityWizard">
+        <div id="accordion" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
+            <h3 class="ui-accordion-header ui-corner-top ui-state-default ui-accordion-header-active ui-state-active ui-accordion-icons" role="tab" id="ui-id-1" aria-controls="ui-id-2" aria-selected="true" aria-expanded="true" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>Activity Information</h3>
+            <div class="activity-information ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active" id="ui-id-2" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false" style="height: 705.851px;">
+                <label>Activity Date</label>
+                <input type="text" id="activityDate" name="activityDate" class="hasDatepicker">
+                <label>Activity Type</label>
+                <select id="activityType" name="activityType">
+                    <option value="0">Select Type</option><option value="1">Field Visit</option><option value="2">Joint Visit</option><option value="3">Group Meeting</option><option value="4">Workshop</option><option value="5">Live Surgery</option><option value="6">Tender</option><option value="7">UPA</option><option value="8">Installation/Delivery/DSO</option><option value="9">Conference</option><option value="10">Office Work</option><option value="11">Office Meeting</option><option value="12">Office Training</option><option value="13">Sick Leave</option><option value="14">Annual Leave</option><option value="15">Healthy Day</option>                    </select>
+                <label id="typeLabel" style="display: none;">Account Type</label>
+                <select id="accountType" name="accountType" style="display: none;">
+                    <option value="0">Select Type</option><option value="1">Hospitals</option><option value="2">Medical Shops</option><option value="3">Pharmacy Chains</option><option value="4">Pharmacy Individual</option><option value="5">Private Customer</option><option value="6">Distributor</option>                    </select>
+                <label id="accountLabel" style="display: none;">Account Name</label>
+                <input type="text" id="accountName" name="accountName" class="ui-autocomplete-input" autocomplete="off" style="display: none;">
+                <label id="areaLabel" style="display: none;">Account Area</label>
+                <input type="text" id="accountArea" name="accountArea" class="ui-autocomplete-input" autocomplete="off" style="display: none;">
+                <label id="chainLabel" style="display: none;">Chain Name</label>
+                <input type="text" id="chainName" name="chainName" class="ui-autocomplete-input" autocomplete="off" style="display: none;">
+                <label id="branchLabel" style="display: none;">Branch Name</label>
+                <input type="text" id="branchName" name="branchName" class="ui-autocomplete-input" autocomplete="off" style="display: none;">
+                <label id="purchaseLabel" style="display: none;">Purchase Method</label>
+                <select id="purchaseMethod" name="purchaseMethod" style="display: none;">
+                    <option value="0">Select Method</option><option value="1">UPA</option><option value="2">Direct Purchase</option><option value="3">Donation</option><option value="4">Tender</option><option value="5">Medical Shops</option><option value="6">Distributors</option><option value="7">Pharmacies</option>                    </select>
+                <label>Comments</label>
+                <textarea name="comment" spellcheck="false"></textarea>
+            </div>
+
+            <h3 class="ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons" role="tab" id="ui-id-3" aria-controls="call0" aria-selected="false" aria-expanded="false" tabindex="-1" style="display: none;"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Call Information</h3>
+            <div class="product-information ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content" id="call0" aria-labelledby="ui-id-3" role="tabpanel" aria-hidden="true" style="display: none; height: 705.851px;">
+                <div id="productDetails0">
+                    <h3>Product Details</h3>
+                    <div id="productData0">
+                        <div class="product-box">
+                            <label>Supplier</label>
+                            <select id="supplier0" name="call0supplier0">
+                                <option value="0">Select Supplier</option><option value="24">Fresenius Kabi</option><option value="25">Phillips</option>                                </select>
+                        </div>
+                        <div class="product-box">
+                            <label>Product Family</label>
+                            <select id="family0" name="call0family0">
+                                <option value="0">Select Family</option>
+                            </select>
+                        </div>
+                        <div class="product-box">
+                            <label>Item Group</label>
+                            <select id="item0" name="call0item0">
+                                <option value="0">Select Item</option>
+                            </select>
+                        </div>                            <div class="product-box">
+                            <label>Call Objective</label>
+                            <select id="objective0" name="call0objective0">
+                                <option value="0">Select Objective</option><option value="1">Product Introduction</option><option value="2">Product Upgrade</option><option value="3">Product Retention</option><option value="4">Product Conversion</option><option value="5">Product Demonstration</option><option value="6">Repair/Exchange</option><option value="7">Tray Audit</option><option value="8">Tender Specs</option><option value="9">Submit Offer</option>                                </select>
+                        </div>
+                        <div class="product-box">
+                            <label>Call Status</label>
+                            <select id="status0" name="call0status0">
+                                <option value="0">Select Status</option><option value="1">New Opportunity</option><option value="2">Current Opportunity</option><option value="3">Pending Opportunity</option><option value="4">Won</option><option value="5">Lost</option>                                </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-information" id="contactDetails0">
+                    <h3>Customer Information</h3>
+                    <div id="contactData0">
+                        <div class="product-box">
+                            <label>Contact person</label>
+                            <input type="text" id="contact0" name="call0contact0">
+                        </div>
+                        <div class="product-box">
+                            <label>Mobile Number</label>
+                            <input type="text" id="mobile0" name="call0mobile0">
+                        </div>
+                        <div class="product-box">
+                            <label>Authority</label>
+                            <select id="authority0" name="call0authority0">
+                                <option value="0">Select Authority</option><option value="1">Decision Maker</option><option value="2">Influencer</option><option value="3">User</option>                                </select>
+                        </div>
+                        <div class="product-box">
+                            <label>Speciality</label>
+                            <select id="speciality0" name="call0speciality0">
+                                <option value="0">Select Speciality</option><option value="1">Andrology</option><option value="2">Anesthesia</option><option value="3">Bariatric Surgery</option><option value="4">Burn Centers</option><option value="5">Cardiology</option><option value="6">Cardiothoracic</option><option value="7">Chest</option><option value="8">Clinical Pathology</option><option value="9">Dental Surgery</option><option value="10">Endocrinology</option><option value="11">ENT</option><option value="12">ER</option><option value="13">General Surgery</option><option value="14">GIT</option><option value="15">Gynecology</option><option value="16">ICU</option><option value="17">Infection Control</option><option value="18">Insurance</option><option value="19">Internal Medicine</option><option value="20">Liver Surgery</option><option value="21">Maintenance</option><option value="22">Neonatal ICU</option><option value="23">Neurology</option><option value="24">Neurosurgery</option><option value="25">Nurse</option><option value="26">Oncology</option><option value="27">Ophthalmology</option><option value="28">Orthopedic</option><option value="29">Pharmacist</option><option value="30">Plastic Surgery</option><option value="31">Purchaser</option><option value="32">Spine Surgery</option><option value="33">Technician</option><option value="34">Transplant</option><option value="35">Urology</option><option value="36">Vascular</option><option value="37">Warehouse</option><option value="38">Category Manager</option><option value="39">Assistant</option>                                </select>
+                        </div>
+                        <div class="product-box">
+                            <label>Position</label>
+                            <select id="position0" name="call0position0">
+                                <option value="0">Select Position</option><option value="1">Head Nurse</option><option value="2">Head of Warehouse</option><option value="3">Head of Department</option><option value="4">Head of Operation Room</option><option value="5">Head of Procurement</option><option value="6">Hospital Director</option><option value="7">Head of Maintenance</option><option value="8">BB Manager</option><option value="9">Others</option>                                </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-buttons" id="contactButtons">
+                    <button class="bg-green" id="addContact0">
+                        Add Contact</button>
+                    <button class="bg-red" id="deleteContact0">
+                        Delete Contact</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>            </div>
+
+                        <div class="quick-links-panel">
+                <button class="bg-green" id="addCall" style="display: none;">Add Call</button>
+                <button class="bg-red" id="deleteCall" style="display: none;">Delete Call</button>
+                <button class="bg-lightblue" id="saveActivity">
+                    Save Activity</button>
+            </div>        </div>
+
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="position: absolute; top: 283.396px; left: 276.701px; z-index: 1; display: none;"><div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all"><a class="ui-datepicker-prev ui-corner-all" data-handler="prev" data-event="click" title="Prev"><span class="ui-icon ui-icon-circle-triangle-w">Prev</span></a><a class="ui-datepicker-next ui-corner-all" data-handler="next" data-event="click" title="Next"><span class="ui-icon ui-icon-circle-triangle-e">Next</span></a><div class="ui-datepicker-title"><span class="ui-datepicker-month">November</span>&nbsp;<span class="ui-datepicker-year">2022</span></div></div><table class="ui-datepicker-calendar"><thead><tr><th scope="col" class="ui-datepicker-week-end"><span title="Sunday">Su</span></th><th scope="col"><span title="Monday">Mo</span></th><th scope="col"><span title="Tuesday">Tu</span></th><th scope="col"><span title="Wednesday">We</span></th><th scope="col"><span title="Thursday">Th</span></th><th scope="col"><span title="Friday">Fr</span></th><th scope="col" class="ui-datepicker-week-end"><span title="Saturday">Sa</span></th></tr></thead><tbody><tr><td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="1">1</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="2">2</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="3">3</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="4">4</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="5">5</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="6">6</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="7">7</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="8">8</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="9">9</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="10">10</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="11">11</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="12">12</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="13">13</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="14">14</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="15">15</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="16">16</a></td><td class=" ui-datepicker-days-cell-over  ui-datepicker-current-day ui-datepicker-today" data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default ui-state-highlight ui-state-active ui-state-hover" href="#" aria-current="true" data-date="17">17</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="18">18</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="19">19</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="20">20</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="21">21</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="22">22</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="23">23</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="24">24</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="25">25</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="26">26</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="27">27</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="28">28</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="29">29</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="10" data-year="2022"><a class="ui-state-default" href="#" aria-current="false" data-date="30">30</a></td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td></tr></tbody></table></div><ul id="ui-id-4" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" unselectable="on" style="display: none;"></ul><div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><ul id="ui-id-5" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" unselectable="on" style="display: none;"></ul><div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><ul id="ui-id-6" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" unselectable="on" style="display: none;"></ul><div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><ul id="ui-id-7" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" unselectable="on" style="display: none;"></ul><div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration><grammarly-mirror data-grammarly-shadow-root="true" class="cGcvT"></grammarly-mirror></html>

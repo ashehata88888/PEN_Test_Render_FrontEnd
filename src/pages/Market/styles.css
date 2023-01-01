@@ -1,0 +1,140 @@
+
+html, body {
+    margin:0;
+    height:100%;
+    overflow: hidden
+  }
+
+/* body{
+  background-image: url("../imgs/bg1.jpg");
+  background-color: #cccccc;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -100;
+  position: relative;
+} */
+
+.header {
+background-color: orange;
+}
+
+
+.title{
+  color:aqua;
+  position: relative;
+  top:25px;
+  text-align: center;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* The image used */
+  background-image: url("../imgs/bg1.jpg");
+
+  /* Control the height of the image */
+
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  position: relative;
+}
+
+.loginCard{
+  display: flex;
+  justify-content: center;
+}
+
+.bg-img{
+  position: absolute;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+}
+
+/* Add styles to the form container */
+.container {
+  position: absolute;
+  width: 400px;
+  min-width: 30%;
+  max-width: 100%;
+  padding: 16px;
+  background-color: white;
+  border-radius: 7px;
+  flex-flow: wrap column;
+  justify-content: center;
+  top: 15%;
+  /* display: flex; */
+}
+
+/* Full-width input fields */
+  input[id=userName], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  font-size: 16pt;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none !important;
+  box-shadow: 0 0 10px #719ECE
+  }
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  font-size: 16pt;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.label{
+  font-size: 16pt;
+}
+
+.signUpLink{
+  z-index: 400;
+  color: white;
+  top: 70%;
+  position: absolute;
+  font-size: 15pt;
+  font-weight: bold;
+  background-color: aqua;
+  display: none;
+}
+
+
+
+footer{
+position: absolute;
+bottom: 10px;
+color: whitesmoke
+}
+
+.homeContainer{
+  height: 100%;
+  width: 100%;
+  background-color: skyblue;
+  background-image: url("../imgs/pencils.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: absolute;
+}
