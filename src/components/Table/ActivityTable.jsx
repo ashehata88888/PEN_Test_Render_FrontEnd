@@ -216,7 +216,7 @@ if(deleteCount > 0){
 
     // window.location.reload(),{}
 
-    navigate("/")
+    navigate("https://pen-test.onrender.com/")
 
     //  setRowsPerPage(14)
 }
@@ -300,5 +300,9 @@ if(deleteCount >= 0 && rows.length > 0){
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
+
+
+
+
   )}
 }

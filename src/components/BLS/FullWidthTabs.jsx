@@ -12,15 +12,12 @@ import underDev from '../../imgs/UnderDev.jpg'
 import { display } from '@mui/system'
 import ActivityTable from '../../components/Table/ActivityTable'
 import GYN from './GYN'
-import { useEffect } from 'react'
 
 export default function LabTabs({setCountFullWToVTabs , setCountFullWCToVTabs}) {
   const [value, setValue] = useState('1')
   const [displayMainBtns,setDisplayMainBtns]= useState(hTabs.callInfoAccordionhiddenBtns)
   const [countCustAccorToFullW , setCountCustAccorToFullW] = useState(0)
   const [countCustAccorToFullWC , setCountCustAccorToFullWC] = useState(0)
-  const [delCountTableFullW , setDelCountTableFullW] = useState(0)
-  const [tabinx , setTabinx] = useState(1)
   setCountFullWCToVTabs(countCustAccorToFullWC)
 
   setCountFullWToVTabs(countCustAccorToFullW)
@@ -61,20 +58,6 @@ export default function LabTabs({setCountFullWToVTabs , setCountFullWCToVTabs}) 
       setDisplayMainBtns(hTabs.callInfoAccordionhiddenBtns)
     }
   }
-
-  useEffect(()=>{
-
-    const finallDeleteCallRefresh =()=>{
-      setTabinx(2)
-      setTimeout(()=>setTabinx(1),500)
-    }
-
-    if(delCountTableFullW > 0){
-      finallDeleteCallRefresh()
-    }
-
-  },[delCountTableFullW])
-
 
           // const addContactBtn = (event) => {
           //   event.preventDefault()
@@ -165,7 +148,7 @@ export default function LabTabs({setCountFullWToVTabs , setCountFullWCToVTabs}) 
             </div>
           </TabPanel>
         </Box>
-        <TabPanel active value={`${tabinx}`} >
+        <TabPanel active value="1" >
           <div>
           {/* <img
             src={underDev}
@@ -173,9 +156,7 @@ export default function LabTabs({setCountFullWToVTabs , setCountFullWCToVTabs}) 
             style={{ width: '600px', padding: '100px' }}
           /> */}
            {/* <GYN /> */}
-          <ActivityTable  
-          setDelCountTableFullW={setDelCountTableFullW}
-          />
+          <ActivityTable />
           </div>
         </TabPanel>
       </TabContext>
