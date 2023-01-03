@@ -11,7 +11,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import hTabs from '../../components/BLS/hTabs.module.css';
 import { UserContext } from '../../components/BLS/Home';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 
@@ -59,6 +59,8 @@ export default function ActivityTable() {
   const [activityId,setActivityId]=React.useState(0)
 
   let [tableCount , setTableCount]=React.useState(0)
+
+  const navigate = useNavigate()
 
   const handleChangePage = (event, newPage) => {
     setBool(false)
@@ -212,9 +214,9 @@ if(deleteCount > 0){
 
 
 
-    window.location.reload(),{}
+    // window.location.reload(),{}
 
-
+    navigate("/")
 
     //  setRowsPerPage(14)
 }
