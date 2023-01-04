@@ -81,6 +81,12 @@ function App() {
     
         <Route path="unauthorized" element={<Unauthorized />} />
         <Route path="Home" element={<Home />} />
+        <Route path="http://localhost:3000/Home" element={<Home />} />
+        
+        <Route path="https://pen-test.onrender.com/Home" element={<Home />} />
+
+
+        
         {/* <Route path="labTabs" element={<LabTabs />} /> */}
 
         {/* we want to protect these routes */}

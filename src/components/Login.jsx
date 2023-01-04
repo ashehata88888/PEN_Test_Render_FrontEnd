@@ -161,30 +161,12 @@ export default function Login() {
         }
           localStorage.setItem('userData', JSON.stringify(userData))
 
+
          console.log('userData item was set in the browser storage ...',localStorage)
 
 
             navigate('/Home', {
-              state: {
-                id: res.data.id,
-                first_name: res.data.first_name,
-                last_name: res.data.last_name,
-                user_name: res.data.user_name,
-                user_mail: res.data.user_mail,
-                position: res.data.position,
-                privilege: res.data.privilege,
-                status: res.data.status,
-                token: res.data.token,
-                created_date: res.data.created_date,
-                bl1_id: res.data.bl1_id,
-                bl2_id: res.data.bl2_id,
-                bl3_id: res.data.bl3_id,
-                bl4_id: res.data.bl4_id,
-                bl5_id: res.data.bl5_id,
-                bl6_id: res.data.bl6_id,
-                bl7_id: res.data.bl7_id,
-                bu_id: res.data.bu_id
-              },
+              state: userData,
               replace: true
             })
             break
