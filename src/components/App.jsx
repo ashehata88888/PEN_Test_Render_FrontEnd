@@ -57,8 +57,8 @@ import { Routes, Route } from 'react-router-dom'
 // import Private_OR from './BLS/Private_OR';
 // import Private_Disposable from './BLS/Private_Disposable';
 // import ICU_NICU from './BLS/ICU_NICU';
-import Admin from './BLS/Admin';
-import Developer from './BLS/Developer';
+import Admin from './BLS/Admin'
+import Developer from './BLS/Developer'
 import Activity from './BLS/Activity'
 // import LabTabs from './BLS/FullWidthTabs'
 
@@ -73,11 +73,11 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-      {/* Layout */}
+         {/* Layout */}
         {/* public routes */}
         {/* <Route path="LinkPage" element={<LinkPage />} /> */}
         <Route path="/" element={<Login />} />
-   {/* <Route path="Activity" element={<Activity />} /> */}
+         {/* <Route path="Activity" element={<Activity />} /> */}
         {/* <Route path="register" element={<Register />} /> */}
     
         <Route path="unauthorized" element={<Unauthorized />} />
@@ -85,17 +85,17 @@ function App() {
         {/* <Route path="http://localhost:3000/Home" element={<Home />} />
         
         <Route path="https://pen-test.onrender.com/Home" element={<Home />} /> */}
-
+        {/* <Route path="Home" element={<Home />} /> */}
 
         
-        {/* <Route path="labTabs" element={<LabTabs />} /> */}
+              {/* <Route path="labTabs" element={<LabTabs />} /> */}
+      
+               {/* we want to protect these routes */}
+              {/* <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
+                  <Route path="/" element={<Home />} />
+                </Route> */}
 
-        {/* we want to protect these routes */}
-        {/* <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
-          <Route path="/" element={<Home />} />
-        </Route> */}
-
-        <Route element={<RequireAuth/>}>
+         <Route element={<RequireAuth/>}>
    
           {/* <Route path="BB" element={<BB />} />
           <Route path="BIOS" element={<BIOS />} />
@@ -128,7 +128,7 @@ function App() {
           <Route path="Admin" element={<Admin />} />
           <Route path="Developer" element={<Developer />} />
           <Route path="Activity" element={<Activity />} />
-          <Route path="Home" element={<Home />} />
+    
       
          </Route>
 
@@ -136,20 +136,21 @@ function App() {
 
 
 
-        {/* <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
-          <Route path="editor" element={<Editor />} />
-        </Route> */}
+             {/* <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
+               <Route path="editor" element={<Editor />} />
+             </Route> */}
 
 
-        {/* <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-          <Route path="admin" element={<Admin />} />
-        </Route> */}
+             {/* <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+               <Route path="admin" element={<Admin />} />
+              </Route> */}
 
-        {/* <Route element={<RequireAuth allowedRoles={[ROLES.Editor, ROLES.Admin]} />}>
-          <Route path="lounge" element={<Lounge />} />
-        </Route> */}
-{/* catch all */}
-        {/* catch all */}
+             {/* <Route element={<RequireAuth allowedRoles={[ROLES.Editor, ROLES.Admin]} />}>
+               <Route path="lounge" element={<Lounge />} />
+             </Route> */}
+                  {/* catch all */}
+              {/* catch all */}
+        {/* <Route path="Home" element={<Home />} /> */}
         <Route path="*" element={<Missing />} />
       </Route>
     </Routes>
