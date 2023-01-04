@@ -35,7 +35,7 @@ export default function Login() {
   const [user, setUser] = useState('')
   const [pwd, setPwd] = useState('')
   const [errMsg, setErrMsg] = useState('')
-  // const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     userRef.current.focus()
@@ -166,11 +166,11 @@ export default function Login() {
 
          console.log('userData item was set in the browser storage ...',localStorage)
 
-
-            navigate('/Home', {
-              state: userData,
-              replace: true
-            })
+         setSuccess(true)
+            // navigate('/Home', {
+            //   state: userData,
+            //   replace: true
+            // })
             break
           default:
             navigate('/Unauthorized', { replace: true })
@@ -319,10 +319,10 @@ export default function Login() {
     // status	"Active"
   }
   return (
-    //     <Fragment>
-    // {success ? (
-    // <Home/>
-    // ) : (
+        <Fragment>
+    {success ? (
+    <Home/>
+    ) : (
     <div className="mainDiv">
       <h1 className="title">PEN</h1>
       <div className="loginCard">
@@ -372,8 +372,8 @@ export default function Login() {
 
       <Footer />
     </div>
-    //        )}
+           )}
 
-    // </Fragment>
+    </Fragment>
   )
 }
