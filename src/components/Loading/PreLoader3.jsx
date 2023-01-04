@@ -3,11 +3,14 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "./PreLoader3.css";
 import hTabs from '../BLS/hTabs.module.css'
+import { useNavigate } from "react-router-dom";
 
 function PreLoader3() {
   const [data, setData] = useState([]);
   const [loading, setloading] = useState(undefined);
   const [completed, setcompleted] = useState(undefined);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     setTimeout(() => {
@@ -40,7 +43,9 @@ function PreLoader3() {
           )}
         </>
       ) : (
+       
         <>
+         {/* {navigate("/Home")} */}
        
           <h1 className={hTabs.savingMessage}>Activity Was Saved Successfully</h1>
 

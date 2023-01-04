@@ -60,6 +60,8 @@ export default function ActivityTable() {
 
   let [tableCount , setTableCount]=React.useState(0)
 
+  const [updateCount , setUpdateCount] = React.useState(0)
+  
   const navigate = useNavigate()
 
   const handleChangePage = (event, newPage) => {
@@ -129,8 +131,14 @@ console.log("my Date is ..........:", activityDateN);
   if(rows.length === 0 ){
   fetchData()
 }
+
 if(deleteCount > 0){
   fetchData() 
+}
+
+if(updateCount > 0){
+  console.log("update count is ", updateCount)
+  fetchData()
 }
   
   }, [])
@@ -187,6 +195,8 @@ if(deleteCount > 0){
               const newDataD = await responseD.json()
               console.log("response from Delete Request ...:",newDataD)
               
+            }).then(()=>{
+              updateActivityTable()
             })
        
 
@@ -215,8 +225,9 @@ if(deleteCount > 0){
 
 
     // window.location.reload(),{}
+    
 
-    navigate("https://pen-test.onrender.com/")
+    // navigate("https://pen-test.onrender.com/")
 
     //  setRowsPerPage(14)
 }
@@ -245,7 +256,12 @@ if(deleteCount > 0){
 
 
   }
+const updateActivityTable = ()=>{
 
+  
+  setUpdateCount(current=>current + 1)
+  
+}
   
 console.log("rows after reordering are :",rows)
 if(deleteCount >= 0 && rows.length > 0){
