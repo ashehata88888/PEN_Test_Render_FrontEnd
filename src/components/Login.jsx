@@ -15,8 +15,9 @@ import { Link, useNavigate } from 'react-router-dom'
 // socket.addEventListener('error', (event) => {
 //   console.log('WebSocket error: ', event);
 // });
-
+// http://localhost:7000
 const LOGIN_URL = 'https://pen-test-render-backend-ashehata8888.onrender.com/api/users/authenticate'
+// const LOGIN_URL = 'https://pen-test-render-backend-ashehata8888.onrender.com/api/users/authenticate'
 // const LOGIN_URL = new WebSocket('ws://localhost:7000/api/users/authenticate')
 // var LOGIN_URL = new WebSocket("ws:http//localhost:7000/api/users/authenticate","echo-protocol");
 export default function Login() {
@@ -75,11 +76,12 @@ export default function Login() {
       const res = await response.json()
       try {
         const accessToken = res.data.token
+        const userId = res.data.id
         console.log(accessToken)
 
         // const accessToken = wait res.data;
         // console.log(accessToken);
-        setAuth({ user, pwd, accessToken })
+        setAuth({ user, pwd, accessToken , userId })
         // setUser('')
         // setPwd('')
 

@@ -73,6 +73,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+      {/* Layout */}
         {/* public routes */}
         {/* <Route path="LinkPage" element={<LinkPage />} /> */}
         <Route path="/" element={<Login />} />
@@ -80,10 +81,10 @@ function App() {
         {/* <Route path="register" element={<Register />} /> */}
     
         <Route path="unauthorized" element={<Unauthorized />} />
-        <Route path="Home" element={<Home />} />
-        <Route path="http://localhost:3000/Home" element={<Home />} />
+        {/* <Route path="Home" element={<Home />} /> */}
+        {/* <Route path="http://localhost:3000/Home" element={<Home />} />
         
-        <Route path="https://pen-test.onrender.com/Home" element={<Home />} />
+        <Route path="https://pen-test.onrender.com/Home" element={<Home />} /> */}
 
 
         
@@ -127,7 +128,7 @@ function App() {
           <Route path="Admin" element={<Admin />} />
           <Route path="Developer" element={<Developer />} />
           <Route path="Activity" element={<Activity />} />
-          {/* <Route path="Home" element={<Home />} /> */}
+          <Route path="Home" element={<Home />} />
       
          </Route>
 
