@@ -72,7 +72,7 @@ function App() {
 
   return (
     <Routes>
-       <Route path="Home" element={<Home />} />
+
       <Route path="/" element={<Layout />}>
          {/* Layout */}
         {/* public routes */}
@@ -80,6 +80,7 @@ function App() {
         <Route path="/" element={<Login />} />
          {/* <Route path="Activity" element={<Activity />} /> */}
         {/* <Route path="register" element={<Register />} /> */}
+        <Route path="Home" element={<Home />} />
     
         <Route path="unauthorized" element={<Unauthorized />} />
         {/* <Route path="Home" element={<Home />} /> */}
