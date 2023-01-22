@@ -89,7 +89,7 @@ React.useEffect(() => {
    
     const fetchData = async () => {
     
-      const response = await fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/activities/history/' + userId, {
+      const response = await fetch('http://localhost:7000/api/activities/history/' + userId, {
         method: 'GET',
         headers: new Headers({
           Authorization: 'bearer ' + userData.token,
@@ -162,7 +162,7 @@ if(updateCount > 0){
       // activityType == "Live Surgery" 
       // ){
 
-      await fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/call_contacts/'+ activityId, {
+      await fetch('http://localhost:7000/api/call_contacts/'+ activityId, {
         method: 'DELETE',
         headers: new Headers({
           Authorization: 'bearer ' + userData.token,
@@ -172,7 +172,7 @@ if(updateCount > 0){
         const resC = await response.json()
         console.log("res of call_contacts are", resC)
 
-           await fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/call_products/'+ activityId, {
+           await fetch('http://localhost:7000/api/call_products/'+ activityId, {
                method: 'DELETE',
         headers: new Headers({
           Authorization: 'bearer ' + userData.token,
@@ -184,7 +184,7 @@ if(updateCount > 0){
              
               console.log("res of call_products are", resP)
 
-              const responseD = await fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/activities/' + activityId, {
+              const responseD = await fetch('http://localhost:7000/api/activities/' + activityId, {
                 method: 'DELETE',
                 headers: new Headers({
                   Authorization: 'bearer ' + userData.token,
@@ -206,7 +206,7 @@ if(updateCount > 0){
 
       // }else{
 
-      //   const responseD = await fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/activities/' + activityId, {
+      //   const responseD = await fetch('http://localhost:7000/api/activities/' + activityId, {
       //           method: 'DELETE',
       //           headers: new Headers({
       //             Authorization: 'bearer ' + userData.token,

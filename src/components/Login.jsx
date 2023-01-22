@@ -9,15 +9,15 @@ import { Link, useNavigate } from 'react-router-dom'
 
 
 // Create WebSocket connection
-// const socket = new WebSocket('https://pen-test-render-backend-ashehata8888.onrender.com');
+// const socket = new WebSocket('http://localhost:7000');
 
 // Listen for possible errors
 // socket.addEventListener('error', (event) => {
 //   console.log('WebSocket error: ', event);
 // });
 // http://localhost:7000
-const LOGIN_URL = 'https://pen-test-render-backend-ashehata8888.onrender.com/api/users/authenticate'
-// const LOGIN_URL = 'https://pen-test-render-backend-ashehata8888.onrender.com/api/users/authenticate'
+const LOGIN_URL = 'http://localhost:7000/api/users/authenticate'
+// const LOGIN_URL = 'http://localhost:7000/api/users/authenticate'
 // const LOGIN_URL = new WebSocket('ws://localhost:7000/api/users/authenticate')
 // var LOGIN_URL = new WebSocket("ws:http//localhost:7000/api/users/authenticate","echo-protocol");
 export default function Login() {
@@ -313,7 +313,7 @@ export default function Login() {
 
     // const response = await axios({
     //   method: 'post',
-    //   url: 'https://pen-test-render-backend-ashehata8888.onrender.com/api/users/authenticate',
+    //   url: 'http://localhost:7000/api/users/authenticate',
     //   data: {
     //     user_name: user,
     //     password: pwd

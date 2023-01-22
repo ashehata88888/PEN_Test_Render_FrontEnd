@@ -14,6 +14,7 @@ import { UserContext } from '../../components/BLS/Home';
 function Reports () {
 
 const [activityData , setActivityData]= useState([])
+// const [userData , setUserData] = useState({})
 
 const downloadFile = ({ data, fileName, fileType ,charset }) => {
     const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), // UTF-8 BOM
@@ -74,18 +75,28 @@ const downloadFile = ({ data, fileName, fileType ,charset }) => {
     })
   }
 
+ 
 
-const userData = React.useContext(UserContext)
-const userId = userData.id
+const userData = localStorage.getItem('userData');
+
+
+  // const userData = React.useContext(UserContext)
+
+  const userId = userData.id
+  const token = userData.token
+
+  console.log("token from Reports component غغغغغ :",userData.id)
 
 
     useEffect(() => {
 
+     
 
+     
 
    
        const fetchActivityData = async()=> {
-              const response = await fetch('https://pen-test-render-backend-ashehata8888.onrender.com/api/activities/superuser' , {
+              const response = await fetch('http://localhost:7000/api/activities/superuser' , {
                 method: 'GET',
                 headers: new Headers({
                   Authorization: 'bearer ' + userData.token,
