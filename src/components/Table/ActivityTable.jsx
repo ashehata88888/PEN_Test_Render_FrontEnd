@@ -78,8 +78,10 @@ export default function ActivityTable() {
 
   };
 
+  
+  const userData = JSON.parse(React.useContext(UserContext))
+  // const userData = React.useContext(UserContext)
 
-  const userData = React.useContext(UserContext)
   const userId = userData.id
 
   

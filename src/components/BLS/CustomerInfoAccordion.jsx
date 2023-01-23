@@ -88,7 +88,7 @@ bgsave()
 
 
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   // const [countSaveToVTabs,setCountSaveToVTabs] = useState(0)
   const accountNameRef = useRef(null)
 
@@ -106,7 +106,7 @@ bgsave()
       // const account_id = useRef(null)
       // const purchase_method_id = useRef(null)
 
-      const userData = useContext(UserContext)
+      const userData = JSON.parse(useContext(UserContext))
       const key = userData.id
       console.log(key)
 

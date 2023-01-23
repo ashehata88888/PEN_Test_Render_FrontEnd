@@ -6,13 +6,16 @@ import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
-import HomeIcon from '@material-ui/icons/Home'
-import FlashOnIcon from '@material-ui/icons/FlashOn'
-import Equalizer from '@material-ui/icons/Equalizer'
+
+// import HomeIcon from '@material-ui/icons/Home'
+// import FlashOnIcon from '@material-ui/icons/FlashOn'
+// import Equalizer from '@material-ui/icons/Equalizer'
+// import Summarize from '@material-ui/icons/Description'
+
 // import LogoutOutlined from '@mui/icons/logout'
 // import Logout from '@mui/icons-material/PowerSettingsNew'
 // import Logout from '@mui/icons-material/Logout'
-import Summarize from '@material-ui/icons/Description'
+
 import Icon from '@mui/material/Icon';
 
 import { Link, useNavigate } from 'react-router-dom'
@@ -151,10 +154,15 @@ if(countFullWToVTabs > 0){
       aria-label="Vertical tabs example"
       sx={{ borderRight: 1, borderColor: 'divider', margin: '0px', padding: '0px', height:'100%'}}
     >
-      <Tab icon={<HomeIcon fontSize ='medium' />} iconPosition="start" label="Home"  {...a11yProps(0)} style={{justifyContent:'start' , fontSize:'13pt' }} />
-      <Tab icon={<FlashOnIcon fontSize ='medium' />} iconPosition="start" label="Activities" {...a11yProps(1)} style={{justifyContent:'start' , fontSize:'13pt'}} />
-      <Tab icon={<Equalizer fontSize ='medium' />} iconPosition="start" label="Market Data" {...a11yProps(2)} style={{justifyContent:'start' , fontSize:'13pt'}} />
-      <Tab icon={<Summarize fontSize ='medium' />} iconPosition="start" label="Reports" {...a11yProps(3)} style={{justifyContent:'start' , fontSize:'13pt'}} />
+      {/* <HomeIcon fontSize ='medium' />
+      <FlashOnIcon fontSize ='medium' />
+      <Equalizer fontSize ='medium' />
+      <Summarize fontSize ='medium' /> */}
+
+      <Tab icon='' iconPosition="start" label="Home"  {...a11yProps(0)} style={{justifyContent:'start' , fontSize:'13pt' }} />
+      <Tab icon='' iconPosition="start" label="Activities" {...a11yProps(1)} style={{justifyContent:'start' , fontSize:'13pt'}} />
+      <Tab icon='' iconPosition="start" label="Market Data" {...a11yProps(2)} style={{justifyContent:'start' , fontSize:'13pt'}} />
+      <Tab icon='' iconPosition="start" label="Reports" {...a11yProps(3)} style={{justifyContent:'start' , fontSize:'13pt'}} />
       
     </Tabs>
     <TabPanel value={value} index={0}>
@@ -199,10 +207,17 @@ if(countFullWToVTabs > 0){
    aria-label="Vertical tabs example"
    sx={{ borderRight: 1, borderColor: 'divider', margin: '0px', padding: '0px', height:'100%'}}
  >
-   <Tab icon={<HomeIcon fontSize ='medium' />} iconPosition="start" label="Home"  {...a11yProps(1)} style={{justifyContent:'start' , fontSize:'13pt' }} />
-   <Tab icon={<FlashOnIcon fontSize ='medium' />} iconPosition="start" label="Activities" {...a11yProps(0)} style={{justifyContent:'start' , fontSize:'13pt'}} />
-   <Tab icon={<Equalizer fontSize ='medium' />} iconPosition="start" label="Market Data" {...a11yProps(2)} style={{justifyContent:'start' , fontSize:'13pt'}} />
-   <Tab icon={<Summarize fontSize ='medium' />} iconPosition="start" label="Reports" {...a11yProps(3)} style={{justifyContent:'start' , textAlign:'left', fontSize:'13pt'}} />
+
+ {/* {<HomeIcon fontSize ='medium' />}
+ {<FlashOnIcon fontSize ='medium' />}
+ {<Equalizer fontSize ='medium' />}
+ {<Summarize fontSize ='medium' />} */}
+
+
+   <Tab icon="" iconPosition="start" label="Home"  {...a11yProps(1)} style={{justifyContent:'start' , fontSize:'13pt' }} />
+   <Tab icon="" iconPosition="start" label="Activities" {...a11yProps(0)} style={{justifyContent:'start' , fontSize:'13pt'}} />
+   <Tab icon="" iconPosition="start" label="Market Data" {...a11yProps(2)} style={{justifyContent:'start' , fontSize:'13pt'}} />
+   <Tab icon="" iconPosition="start" label="Reports" {...a11yProps(3)} style={{justifyContent:'start' , textAlign:'left', fontSize:'13pt'}} />
    <Tab 
   //  icon={<LogoutOutlined fontSize ='medium' />} 
   iconPosition="start" 

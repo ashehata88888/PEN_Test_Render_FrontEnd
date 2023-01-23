@@ -77,15 +77,30 @@ const downloadFile = ({ data, fileName, fileType ,charset }) => {
 
  
 
-const userData = localStorage.getItem('userData');
+// const userData = localStorage.getItem('userData');
 
 
-  // const userData = React.useContext(UserContext)
+  const userData = React.useContext(UserContext)
+  const newUserData = JSON.parse(userData)
+
+
+  console.log("user data from Reports is ", newUserData.id)
+
+  // const ud = {"nemo" : 'Ahmed',newUserData}
+
+  // console.log("user data from Reports is ", ud.newUserData["id"])
+
+ 
+  // console.log("Real Object user Data ",JSON.stringify(userData)),
+  // console.log("Real Object user Data ",JSON.parse(JSON.stringify(userData)))
+
+
 
   const userId = userData.id
   const token = userData.token
 
-  console.log("token from Reports component غغغغغ :",userData.id)
+
+  // console.log("token from Reports component غغغغغ :", token)
 
 
     useEffect(() => {
@@ -99,7 +114,7 @@ const userData = localStorage.getItem('userData');
               const response = await fetch('http://localhost:7000/api/activities/superuser' , {
                 method: 'GET',
                 headers: new Headers({
-                  Authorization: 'bearer ' + userData.token,
+                  Authorization: 'bearer ' + newUserData.token,
                   'Content-Type': 'application/x-www-form-urlencoded'
                 })
               })
@@ -120,7 +135,7 @@ const userData = localStorage.getItem('userData');
 
   return (
     <div className={hTabs.activityReportTable}>
-      <h1>Download activity reporr</h1>
+      <h1>Download activity report</h1>
       <div className='actionBtns'>
         {/* <button type='button' onClick={exportToJson}>
           Export to JSON
