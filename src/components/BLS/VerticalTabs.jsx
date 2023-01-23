@@ -7,6 +7,10 @@ import Tab from '@mui/material/Tab'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { solid, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+
+
 // import HomeIcon from '@material-ui/icons/Home'
 // import FlashOnIcon from '@material-ui/icons/FlashOn'
 // import Equalizer from '@material-ui/icons/Equalizer'
@@ -159,6 +163,12 @@ if(countFullWToVTabs > 0){
       <Equalizer fontSize ='medium' />
       <Summarize fontSize ='medium' /> */}
 
+      
+{/* <FontAwesomeIcon icon={solid('user-secret')} />
+<FontAwesomeIcon icon={regular('coffee')} />
+<FontAwesomeIcon icon={icon({name: 'coffee', style: 'solid'})} />
+<FontAwesomeIcon icon={brands('twitter')} /> */}
+
       <Tab icon='' iconPosition="start" label="Home"  {...a11yProps(0)} style={{justifyContent:'start' , fontSize:'13pt' }} />
       <Tab icon='' iconPosition="start" label="Activities" {...a11yProps(1)} style={{justifyContent:'start' , fontSize:'13pt'}} />
       <Tab icon='' iconPosition="start" label="Market Data" {...a11yProps(2)} style={{justifyContent:'start' , fontSize:'13pt'}} />
@@ -170,6 +180,10 @@ if(countFullWToVTabs > 0){
         <h1 className='h1Home'>Welcome to Home Page</h1>
    
         <h1>You've logged in!</h1>
+
+        <i className="fas fa-trash m-2" 
+                    // onClick={this.deleteHand}
+                    ></i>
         <br />
        
       </div>
@@ -214,10 +228,10 @@ if(countFullWToVTabs > 0){
  {<Summarize fontSize ='medium' />} */}
 
 
-   <Tab icon="" iconPosition="start" label="Home"  {...a11yProps(1)} style={{justifyContent:'start' , fontSize:'13pt' }} />
-   <Tab icon="" iconPosition="start" label="Activities" {...a11yProps(0)} style={{justifyContent:'start' , fontSize:'13pt'}} />
-   <Tab icon="" iconPosition="start" label="Market Data" {...a11yProps(2)} style={{justifyContent:'start' , fontSize:'13pt'}} />
-   <Tab icon="" iconPosition="start" label="Reports" {...a11yProps(3)} style={{justifyContent:'start' , textAlign:'left', fontSize:'13pt'}} />
+   <Tab icon="" {...a11yProps(0)} iconPosition="start" label="🏠 Home"  {...a11yProps(1)} style={{justifyContent:'start' , fontSize:'13pt' }} />
+   <Tab icon="" iconPosition="start" label="⚡ Activities" {...a11yProps(1)} style={{justifyContent:'start' , fontSize:'13pt'}} />
+   <Tab icon="" iconPosition="start" label="📊 Market Data" {...a11yProps(2)} style={{justifyContent:'start' , fontSize:'13pt'}} />
+   <Tab icon="" iconPosition="start" label="📰 Reports" {...a11yProps(3)} style={{justifyContent:'start' , textAlign:'left', fontSize:'13pt'}} />
    <Tab 
   //  icon={<LogoutOutlined fontSize ='medium' />} 
   iconPosition="start" 
@@ -227,9 +241,21 @@ if(countFullWToVTabs > 0){
  </Tabs>
  <TabPanel value={value} index={0}>
    <div className={styles.title}>
+   {/* <FontAwesomeIcon icon="fa-solid fa-house" /> */}
+   {/* <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="ionicon"
+        viewBox="0 0 512 512"
+      ></svg> */}
      <h1 className='h1Home'>Welcome to Home Page</h1>
+     
+     {/* <FontAwesomeIcon icon="fa-sharp fa-solid fa-house" /> */}
+     {/* <i class="fa fa-bar-chart"></i>
+
+     <i class="fa-sharp fa-solid fa-house"></i> */}
 
      <h1>You've logged in!</h1>
+     {/* <i className="fa fa-home" style={{fontSize:"36px"}}></i> */}
      <br />
      </div>
  </TabPanel>

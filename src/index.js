@@ -5,6 +5,10 @@ import App from './components/App.jsx'
 import { createRoot } from 'react-dom/client';
 import { AuthProvider } from './context/AuthProvider.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
+
+
 const container = document.getElementById('root');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(
