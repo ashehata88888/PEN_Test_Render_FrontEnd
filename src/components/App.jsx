@@ -24,6 +24,7 @@ import Unauthorized from './Unauthorized'
 // import Lounge from './components/Lounge';
 import RequireAuth from './RequireAuth'
 import { Routes, Route } from 'react-router-dom'
+import NewTable from './Table/ActivityTableNew'
 
 
 
@@ -78,9 +79,11 @@ function App() {
         {/* public routes */}
         {/* <Route path="LinkPage" element={<LinkPage />} /> */}
         <Route path="/" element={<Login />} />
+        <Route path="table" element={<NewTable/>}/>
          {/* <Route path="Activity" element={<Activity />} /> */}
         {/* <Route path="register" element={<Register />} /> */}
         <Route path="Home" element={<Home />} />
+
     
         <Route path="unauthorized" element={<Unauthorized />} />
         {/* <Route path="Home" element={<Home />} /> */}

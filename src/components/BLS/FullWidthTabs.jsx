@@ -12,6 +12,9 @@ import underDev from '../../imgs/UnderDev.jpg'
 import { display } from '@mui/system'
 import ActivityTable from '../../components/Table/ActivityTable'
 import GYN from './GYN'
+import ActivityTableNew from '../../components/Table/ActivityTableNew'
+
+
 
 export default function LabTabs({setCountFullWToVTabs , setCountFullWCToVTabs}) {
   const [value, setValue] = useState('1')
@@ -156,7 +159,8 @@ export default function LabTabs({setCountFullWToVTabs , setCountFullWCToVTabs}) 
             style={{ width: '600px', padding: '100px' }}
           /> */}
            {/* <GYN /> */}
-          <ActivityTable />
+          {/* <ActivityTable /> */}
+          <ActivityTableNew/>
           </div>
         </TabPanel>
       </TabContext>

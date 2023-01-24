@@ -321,6 +321,8 @@ export default function Login() {
     // });
 
     // status	"Active"
+
+
   }
   return (
         <Fragment>
@@ -329,7 +331,7 @@ export default function Login() {
     ) : (
     <div className="mainDiv">
       <h1 className="title">PEN</h1>
-      <div className="loginCard">
+      <div className={"loginCard"} style={{width:'30%', position:'relative',display:'flex',left:'35%',top:'2rem'}}>
         <form className="container" onSubmit={handleSubmit}>
           <p>{errMsg}</p>
           <h1>Login</h1>
@@ -361,15 +363,15 @@ export default function Login() {
             value={pwd}
             required
           />
-          <button type="submit" className="btn">
+          <button type="submit" className="btn" style={{backgroundColor:'gray' , fontSize:'20pt',color:'white',fontFamily:'Bold'}}>
             Login
           </button>
         </form>
         <p className="signUpLink">
           Need an Account?
-          <span className="line">
+          <span className="line" >
             {/*put router link here*/}
-            <a href="#">Sign Up</a>
+            <a  href="#">Sign Up</a>
           </span>
         </p>
       </div>
