@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import * as React from 'react';
+import { Component , React , useContext} from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -47,24 +47,28 @@ const columns = [
 
 
 
-const uContext=React.useContext(UserContext)
+// useContext(UserContext)
   
-  const userData = JSON.parse()
+//   const userData = JSON.parse(uContext)
+
   // const userData = React.useContext(UserContext)
 
-  const userId = userData.id
+  // const userId = userData.id
 
   
 
 
 
 class ActivityTableNew extends Component {
+  static contextType = UserContext
+  userData = JSON.stringify(this.context)
+  
   constructor(props) {
     super(props);
     this.state={
       userId:userId,
       activityId: 0,
-      token : userData.token,
+      token : "userData.token",
       activityType:'',
       rowsPerPage:7,
       page : 0,
@@ -72,8 +76,12 @@ class ActivityTableNew extends Component {
     }
   }
 
-  componentDidMount(){
+  //  uContext=React.useContext(UserContext)
+  
+  //  userData = JSON.parse(uContext)
 
+  componentDidMount(){
+    console.log(this.userData)
     const fetchData = async () => {
     
       const response = await fetch('http://localhost:7000/api/activities/history/' + this.state.userId, {

@@ -11,7 +11,7 @@ import CustomerInfoAccordion from './CustomerInfoAccordion'
 import underDev from '../../imgs/UnderDev.jpg'
 import { display } from '@mui/system'
 import ActivityTable from '../../components/Table/ActivityTable'
-import GYN from './GYN'
+
 import ActivityTableNew from '../../components/Table/ActivityTableNew'
 
 
