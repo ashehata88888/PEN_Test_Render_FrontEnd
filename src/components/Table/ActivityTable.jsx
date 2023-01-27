@@ -10,7 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import hTabs from '../../components/BLS/hTabs.module.css';
-import { UserContext } from '../../components/BLS/Home';
+import { UserContext } from '../../components/BLS/Home.jsx';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 
