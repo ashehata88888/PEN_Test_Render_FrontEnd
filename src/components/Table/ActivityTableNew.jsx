@@ -112,14 +112,15 @@ let activityDateN = myDate.getFullYear( ) + '/' + (myDate.getMonth( ) + 1) + '/'
 console.log("my Date is ..........:", activityDateN);
 
     let templeteRow = {ActivityDate:`${activityDateN}` , AccountName:`${obj.account_name}`, ActivityType:`${obj.activity_type}` , PurchaseMethod:`${obj.purchase_method}`,Actions:obj.id}
-   if(this.state.rows.length < newData.length){
+    let templeteRowDel = {ActivityDate:`del` , AccountName:`del`, ActivityType:`del` , PurchaseMethod:`del`,Actions:obj.id}
+    if(this.state.rows.length < newData.length){
      
     //  newRows = [newRows , this.state.rows.unshift(templeteRow)]
 
     // update
     // this.setState({rows:newRows})
 
-    this.setState({rows:[templeteRow ,...this.state.rows,this.state.rows.unshift(templeteRow)]})
+    this.setState({rows:[...this.state.rows,this.state.rows.unshift(templeteRow)]})
 
     // console.log("prev state date ",prevState.rows[prevState.rows.length - 2].ActivityDate)
     
@@ -136,6 +137,8 @@ console.log("my Date is ..........:", activityDateN);
      
      
       })
+
+
 
       // if(this.state.rows.length + 1 < newData.length ){
       // this.setState({rows:this.state.rows.filter( p => p !== this.state.rows[this.state.rows.length -1] )})
@@ -222,7 +225,11 @@ console.log("my Date is ..........:", activityDateN);
     if (this.state.rows.length - prevState.rows.length == 1 ) {
       // fetch if the person has changed
       // this.setState({rows:this.state.rows.filter( p => p !== this.state.rows[this.state.rows.length -1] )})
-        this.setState({rows:this.state.rows.slice(0 , this.state.rows.length - 1)})
+       
+      // this.setState({rows:this.state.rows.slice(0 , this.state.rows.length - 1)})
+
+      // this.setState({rows: this.state.rows.filter((_,inx)=> inx !== this.state.rows.length - 1)})
+
       }
 
       
@@ -410,7 +417,7 @@ setTimeout(()=>console.log("delete button after 2 seconds is ",this.state.delBtn
                             <TableCell   
                             style={{ fontSize:'14pt', width: column.width}}
                             key={column.id} align={column.align}>
-                              {value} {column.id == 'Action' && <button className={hTabs.activityTableDeleteBtn} onClick={(event)=>this.deleteActivityBtn(event,row.Actions,row.ActivityType,row)}>Delete</button>}
+                              {value} {column.id == 'Action' &&  <button className={hTabs.activityTableDeleteBtn} onClick={(event)=>this.deleteActivityBtn(event,row.Actions,row.ActivityType,row)}>Delete</button>}
                             </TableCell>
                           );
                         })}
