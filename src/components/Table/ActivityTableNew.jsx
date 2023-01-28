@@ -119,10 +119,17 @@ console.log("my Date is ..........:", activityDateN);
     // update
     // this.setState({rows:newRows})
 
-    this.setState({rows:[templeteRow,...this.state.rows,this.state.rows.unshift(templeteRow)]})
+    this.setState({rows:[templeteRow ,...this.state.rows,this.state.rows.unshift(templeteRow)]})
 
-
+    // console.log("prev state date ",prevState.rows[prevState.rows.length - 2].ActivityDate)
+    
    }
+   
+  //  else if(this.state.rows.length === newData.length){
+
+  //    this.setState({rows:this.state.rows.push(this.state.rows.shift())})
+  //  }
+   
   //  else if(this.state.rows.length < newData.length ){
   //   // rows.unshift(templeteRow)
   //  } 
@@ -139,6 +146,7 @@ console.log("my Date is ..........:", activityDateN);
 
 
   componentDidMount(){
+    // this.fetchData()
 //     // this.fetchData()
 //     // console.log(this.userData)
 //     console.log("user data from this context prop .........: ",this.state.userData
@@ -184,8 +192,16 @@ console.log("my Date is ..........:", activityDateN);
 
   if(this.state.rows.length === 0 ){
   this.fetchData()
+
+ 
   
 }
+
+// if(this.state.rows)
+// if(this.state.delBtnPressed){
+//   this.fetchData()
+//   this.setState({delBtnPressed:false})
+// }
 
 
 
@@ -199,8 +215,8 @@ console.log("my Date is ..........:", activityDateN);
     console.log("this state is ",this.state.rows)
     // check whether person has changed
     if (prevState.rows !== this.state.rows) {
-    // fetch if the person has changed
-      this.fetchData();
+  
+    this.fetchData()
       
     }
     if (this.state.rows.length - prevState.rows.length == 1 ) {
@@ -208,6 +224,13 @@ console.log("my Date is ..........:", activityDateN);
       // this.setState({rows:this.state.rows.filter( p => p !== this.state.rows[this.state.rows.length -1] )})
         this.setState({rows:this.state.rows.slice(0 , this.state.rows.length - 1)})
       }
+
+      
+
+      // if(prevState.rows[prevState.rows.length - 1].ActivityDate === 
+      //   )
+
+    
 
       // if(this.state.delBtnPressed != prevState.delBtnPressed && this.state.activityId > 0){
       //   console.log("delBtnPressed condition and activity id is ,",this.state.activityId)
@@ -233,13 +256,23 @@ console.log("my Date is ..........:", activityDateN);
     
   }
 
-  componentWillUnmount(){
-    if (this.state.delBtnPressed){
-    const index = this.state.rows.indexOf(this.state.selectedRow)
-    const rowsAfterDel = this.state.rows.splice(index, 1)
-    this.setState({rows:rowsAfterDel})
-  }
-  }
+  // componentWillUnmount(){
+    
+
+  //   if(this.state.delBtnPressed){
+      
+  //     console.log("del button is ",this.state.delBtnPressed)
+
+  //     const index = this.state.rows.indexOf(this.state.selectedRow)
+  //     console.log("selected row is ",index)
+  //     const rowsAfterDel = this.state.rows.filter((_,inx)=> inx != index)
+  //     console.log("rowAfter Deleted is ",rowsAfterDel)
+  //     this.setState({rows:rowsAfterDel,
+  //     delBtnPressed:setTimeout(()=>false,1000)})
+      
+  //       }
+  
+  // }
 
    handleChangePage = (event, newPage) => {
 
@@ -259,19 +292,35 @@ console.log("my Date is ..........:", activityDateN);
   };
 
 
-    deleteActivityBtn =(event,ActId,ActType,row)=>{
+    deleteActivityBtn = async(event,ActId,ActType,row)=>{
     event.preventDefault()
-    console.log("Delete Activity button for Activity id No "+ ActId + "was clicked")
-    this.setState({activityId :ActId ,
-      activityType : ActType,
-      delBtnPressed:true,
-      selectedRow: row
-    })
+  
 
+      
+      console.log("del button is ",this.state.delBtnPressed)
+      
+      const index = this.state.rows.indexOf(row)
+      console.log("selected row is ",index)
+      const rowsAfterDel = this.state.rows.filter((_,inx)=> inx != index)
+      // rowsAfterDel.push(rowsAfterDel.shift());
+      // rowsAfterDel.unshift(rowsAfterDel.pop())
+      console.log("rowAfter Deleted is ",rowsAfterDel)
+      this.setState({rows:rowsAfterDel})
+      // this.fetchData()
+      
+        
 
-    // const deleteActivity = async () => {
-    //   console.log("delete UseEffect was called and actvity id is..",this.state.activityId)
-    const deleteActivity = async () => {
+  console.log("Delete Activity button for Activity id No "+ parseInt(ActId) + "was clicked")
+  this.setState({activityId :ActId ,
+    activityType : ActType,
+    delBtnPressed:true,
+    selectedRow: row
+  })
+
+  setTimeout(()=>this.setState({delBtnPressed:false})
+,1500)
+
+setTimeout(()=>console.log("delete button after 2 seconds is ",this.state.delBtnPressed),2000)
 
   await fetch('http://localhost:7000/api/call_contacts/'+ ActId, {
         method: 'DELETE',
@@ -317,8 +366,11 @@ console.log("my Date is ..........:", activityDateN);
        
               
             })
-          }
-          deleteActivity()
+          // }
+          // if(this.state.delBtnPressed){
+            
+          //   deleteActivity()
+          // } 
             
   }
 
