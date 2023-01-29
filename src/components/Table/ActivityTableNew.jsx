@@ -120,7 +120,7 @@ console.log("my Date is ..........:", activityDateN);
     // update
     // this.setState({rows:newRows})
 
-    this.setState({rows:[...this.state.rows,this.state.rows.unshift(templeteRow)]})
+    this.setState({rows:[templeteRow,...this.state.rows,this.state.rows.unshift(templeteRow)]})
 
     // console.log("prev state date ",prevState.rows[prevState.rows.length - 2].ActivityDate)
     
@@ -143,6 +143,12 @@ console.log("my Date is ..........:", activityDateN);
       // if(this.state.rows.length + 1 < newData.length ){
       // this.setState({rows:this.state.rows.filter( p => p !== this.state.rows[this.state.rows.length -1] )})
       // }
+}
+
+ deleteLast = () => {
+  console.log("delete last was called")
+  this.setState({rows:this.state.rows.filter((_,inx)=>inx != this.state.rows[this.state.rows.length - 1])})
+
 }
 
 
@@ -200,6 +206,8 @@ console.log("my Date is ..........:", activityDateN);
   
 }
 
+
+
 // if(this.state.rows)
 // if(this.state.delBtnPressed){
 //   this.fetchData()
@@ -217,21 +225,25 @@ console.log("my Date is ..........:", activityDateN);
     console.log("prev state is ",prevState.rows)
     console.log("this state is ",this.state.rows)
     // check whether person has changed
-    if (prevState.rows !== this.state.rows) {
+    // if (prevState.rows.length !== this.state.rows.length) {
   
-    this.fetchData()
+    // // this.fetchData()
       
-    }
-    if (this.state.rows.length - prevState.rows.length == 1 ) {
+    // }
+
+    if (this.state.rows.length - prevState.rows.length === 1 ) {
       // fetch if the person has changed
       // this.setState({rows:this.state.rows.filter( p => p !== this.state.rows[this.state.rows.length -1] )})
        
       // this.setState({rows:this.state.rows.slice(0 , this.state.rows.length - 1)})
 
       // this.setState({rows: this.state.rows.filter((_,inx)=> inx !== this.state.rows.length - 1)})
-
+     
+        this.deleteLast()
+    
+        
       }
-
+ 
       
 
       // if(prevState.rows[prevState.rows.length - 1].ActivityDate === 
