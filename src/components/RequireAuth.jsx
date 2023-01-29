@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { Component }  from 'react';
-import { useLocation, Navigate, Outlet, useRouteLoaderData } from "react-router-dom";
+import { useLocation, Navigate, Outlet, useRouteLoaderData ,useNavigate} from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 // const RequireAuth = ({ allowedRoles }) => {
@@ -20,6 +20,7 @@ const RequireAuth = () => {
         // const [pathHook , setpathHook] = React.useState("/")
     const { auth } = useAuth();
     const location = useLocation();
+    const navigate = useNavigate()
 
     const userDatafromStorage = localStorage.getItem('userData');
     console.log("userDatafromStorage",userDatafromStorage.length)
@@ -32,7 +33,8 @@ const RequireAuth = () => {
     if(userDatafromStorage.length > 0){
         return <Outlet/>
     }else{
-        return  <Navigate to="/" state={{ from: location }} replace='false' />
+        return  navigate('/' , {replace:false})
+        // <Navigate to="/" state={{ from: location }} replace='false' />
     }
 //     return (
        

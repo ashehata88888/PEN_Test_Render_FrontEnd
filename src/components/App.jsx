@@ -78,11 +78,13 @@ function App() {
          {/* Layout */}
         {/* public routes */}
         {/* <Route path="LinkPage" element={<LinkPage />} /> */}
-        <Route path="/" element={<Login />} />
+        <Route path="/"  exact element={<Login />} />
         <Route path="table" element={<NewTable/>}/>
          {/* <Route path="Activity" element={<Activity />} /> */}
         {/* <Route path="register" element={<Register />} /> */}
-        <Route path="Home" element={<Home />} />
+
+
+        {/* <Route path="Home" element={<Home />} /> */}
 
     
         <Route path="unauthorized" element={<Unauthorized />} />
@@ -101,7 +103,9 @@ function App() {
                 </Route> */}
 
          <Route element={<RequireAuth/>}>
-   
+
+         <Route path="Home" element={<Home />} />
+         
           {/* <Route path="BB" element={<BB />} />
           <Route path="BIOS" element={<BIOS />} />
           <Route path="CONS" element={<CONS />} />

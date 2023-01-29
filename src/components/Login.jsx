@@ -324,10 +324,10 @@ export default function Login() {
 
 
   }
+      // <Home/>
   return (
         <Fragment>
-    {success ? (
-    <Home/>
+    {success ? (navigate('/home',{replace:false})
     ) : (
     <div className="mainDiv">
       <h1 className="title">PEN</h1>
