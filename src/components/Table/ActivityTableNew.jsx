@@ -47,23 +47,8 @@ const columns = [
 
 
 
-
-// useContext(UserContext)
-  
-//   const userData = JSON.parse(uContext)
-
-  // const userData = React.useContext(UserContext)
-
-  // const userId = userData.id
-
-  // console.log()
-
-
-
 class ActivityTableNew extends Component {
-  // static contextType = UserContext
-  // userData = JSON.stringify(this.context)
-  // console.log(this.props.uContext())
+
   constructor(props) {
     super(props);
     this.state={
@@ -78,11 +63,6 @@ class ActivityTableNew extends Component {
       rows:[]
     }
   }
-    
-  //  uContext=React.useContext(UserContext)
-  
-  //  userData = JSON.parse(uContext)
-
 
 
   fetchData = async () => {
@@ -101,10 +81,7 @@ class ActivityTableNew extends Component {
 
      
       newData.map((obj,inx)=>{
-        // clone
-        // let newRows = [...this.state.rows]
-        
-        // edit
+
         let myDate = new Date(`${obj.activity_date_from}`);
 myDate.setDate(myDate.getDate() + parseInt(0));
 
@@ -114,35 +91,14 @@ console.log("my Date is ..........:", activityDateN);
     let templeteRow = {ActivityDate:`${activityDateN}` , AccountName:`${obj.account_name}`, ActivityType:`${obj.activity_type}` , PurchaseMethod:`${obj.purchase_method}`,Actions:obj.id}
     let templeteRowDel = {ActivityDate:`del` , AccountName:`del`, ActivityType:`del` , PurchaseMethod:`del`,Actions:obj.id}
     if(this.state.rows.length < newData.length){
-     
-    //  newRows = [newRows , this.state.rows.unshift(templeteRow)]
-
-    // update
-    // this.setState({rows:newRows})
 
     this.setState({rows:[templeteRow,...this.state.rows,this.state.rows.unshift(templeteRow)]})
 
-    // console.log("prev state date ",prevState.rows[prevState.rows.length - 2].ActivityDate)
-    
    }
    
-  //  else if(this.state.rows.length === newData.length){
 
-  //    this.setState({rows:this.state.rows.push(this.state.rows.shift())})
-  //  }
-   
-  //  else if(this.state.rows.length < newData.length ){
-  //   // rows.unshift(templeteRow)
-  //  } 
-     
-     
       })
 
-
-
-      // if(this.state.rows.length + 1 < newData.length ){
-      // this.setState({rows:this.state.rows.filter( p => p !== this.state.rows[this.state.rows.length -1] )})
-      // }
 }
 
  deleteLast = () => {
@@ -155,49 +111,7 @@ console.log("my Date is ..........:", activityDateN);
 
 
   componentDidMount(){
-    // this.fetchData()
-//     // this.fetchData()
-//     // console.log(this.userData)
-//     console.log("user data from this context prop .........: ",this.state.userData
-//     )
-//     const fetchData = async () => {
-    
-//       const response = await fetch('http://localhost:7000/api/activities/history/' + this.state.userData.id, {
-//         method: 'GET',
-//         headers: new Headers({
-//           Authorization: 'bearer ' + this.state.userData.token,
-//           'Content-Type': 'application/x-www-form-urlencoded'
-//         })
-//       })
-      
-//       const newData = await response.json()
-//       console.log("fetched Data are >.............:",newData)
-//       console.log("obj value is : ",newData.length)
-  
-       
-//         newData.map((obj,inx)=>{
-          
 
-//           let myDate = new Date(`${obj.activity_date_from}`);
-// myDate.setDate(myDate.getDate() + parseInt(0));
-
-// let activityDateN = myDate.getFullYear( ) + '/' + (myDate.getMonth( ) + 1) + '/' + myDate.getDate( ) ;
-// console.log("my Date is ..........:", activityDateN);
-
-//       let templeteRow = {ActivityDate:`${activityDateN}` , AccountName:`${obj.account_name}`, ActivityType:`${obj.activity_type}` , PurchaseMethod:`${obj.purchase_method}`,Actions:obj.id}
-//      if(this.state.rows.length < newData.length){
-//       this.setState({rows:[...this.state.rows,this.state.rows.unshift(templeteRow)]})
-
-//      }else if(this.state.rows.length < newData.length - 1){
-//       rows.unshift(templeteRow)
-//      } 
-       
-       
-//         })
-
-    
-
-//   }
 
   if(this.state.rows.length === 0 ){
   this.fetchData()
@@ -207,16 +121,7 @@ console.log("my Date is ..........:", activityDateN);
 }
 
 
-
-// if(this.state.rows)
-// if(this.state.delBtnPressed){
-//   this.fetchData()
-//   this.setState({delBtnPressed:false})
-// }
-
-
-
-  
+ 
 
   }
 
@@ -224,74 +129,16 @@ console.log("my Date is ..........:", activityDateN);
   componentDidUpdate(prevProps, prevState) {
     console.log("prev state is ",prevState.rows)
     console.log("this state is ",this.state.rows)
-    // check whether person has changed
-    // if (prevState.rows.length !== this.state.rows.length) {
-  
-    // // this.fetchData()
-      
-    // }
 
     if (this.state.rows.length - prevState.rows.length === 1 ) {
-      // fetch if the person has changed
-      // this.setState({rows:this.state.rows.filter( p => p !== this.state.rows[this.state.rows.length -1] )})
-       
-      // this.setState({rows:this.state.rows.slice(0 , this.state.rows.length - 1)})
 
-      // this.setState({rows: this.state.rows.filter((_,inx)=> inx !== this.state.rows.length - 1)})
-     
         this.deleteLast()
-    
         
       }
  
-      
-
-      // if(prevState.rows[prevState.rows.length - 1].ActivityDate === 
-      //   )
-
-    
-
-      // if(this.state.delBtnPressed != prevState.delBtnPressed && this.state.activityId > 0){
-      //   console.log("delBtnPressed condition and activity id is ,",this.state.activityId)
-      //   console.log("select row afte deleted button pressed",this.state.selectedRow)
-      
-        // const rowsAfterDel = this.state.rows.filter( p => p.id !== this.state.activityId )
-
-        // const index = this.state.rows.indexOf(this.state.selectedRow)
-        // const rowsAfterDel = this.state.rows.splice(index, 1)
-        // this.setState({rows:rowsAfterDel})
-
-
-        // this.setState({rows:this.state.rows.slice(0 , this.state.rows.length - 1)})
-        // this.deleteActivityBtn()
-        // this.setState({delBtnPressed:false})
-        // this.fetchData();
-        // .splice(2, 1);
-
-
-      // }
-
-
-    
   }
 
-  // componentWillUnmount(){
-    
 
-  //   if(this.state.delBtnPressed){
-      
-  //     console.log("del button is ",this.state.delBtnPressed)
-
-  //     const index = this.state.rows.indexOf(this.state.selectedRow)
-  //     console.log("selected row is ",index)
-  //     const rowsAfterDel = this.state.rows.filter((_,inx)=> inx != index)
-  //     console.log("rowAfter Deleted is ",rowsAfterDel)
-  //     this.setState({rows:rowsAfterDel,
-  //     delBtnPressed:setTimeout(()=>false,1000)})
-      
-  //       }
-  
-  // }
 
    handleChangePage = (event, newPage) => {
 
@@ -321,11 +168,9 @@ console.log("my Date is ..........:", activityDateN);
       const index = this.state.rows.indexOf(row)
       console.log("selected row is ",index)
       const rowsAfterDel = this.state.rows.filter((_,inx)=> inx != index)
-      // rowsAfterDel.push(rowsAfterDel.shift());
-      // rowsAfterDel.unshift(rowsAfterDel.pop())
       console.log("rowAfter Deleted is ",rowsAfterDel)
       this.setState({rows:rowsAfterDel})
-      // this.fetchData()
+
       
         
 
@@ -385,12 +230,7 @@ setTimeout(()=>console.log("delete button after 2 seconds is ",this.state.delBtn
        
               
             })
-          // }
-          // if(this.state.delBtnPressed){
-            
-          //   deleteActivity()
-          // } 
-            
+
   }
 
 
