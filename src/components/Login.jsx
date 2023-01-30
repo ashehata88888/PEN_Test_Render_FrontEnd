@@ -36,6 +36,7 @@ export default function Login() {
   const [pwd, setPwd] = useState('')
   const [errMsg, setErrMsg] = useState('')
   const [success, setSuccess] = useState(false);
+  const [dMSuccess,setDMSuccess] = useState(false)
 
   useEffect(() => {
     userRef.current.focus()
@@ -176,6 +177,48 @@ export default function Login() {
             //   replace: true
             // })
             break
+          }
+          // DM id is 4
+        }    else if (response.status === 200 && res.data.status === 'Active' && res.data.bl1_id === 4) {
+              // bool = true;
+              switch (res.data.status) {
+                case 'Active':
+           const userData={
+                id: res.data.id,
+                first_name: res.data.first_name,
+                last_name: res.data.last_name,
+                user_name: res.data.user_name,
+                user_mail: res.data.user_mail,
+                position: res.data.position,
+                privilege: res.data.privilege,
+                status: res.data.status,
+                token: res.data.token,
+                created_date: res.data.created_date,
+                bl1_id: res.data.bl1_id,
+                bl2_id: res.data.bl2_id,
+                bl3_id: res.data.bl3_id,
+                bl4_id: res.data.bl4_id,
+                bl5_id: res.data.bl5_id,
+                bl6_id: res.data.bl6_id,
+                bl7_id: res.data.bl7_id,
+                bu_id: res.data.bu_id
+      
+              }
+                localStorage.setItem('userData', JSON.stringify(userData))
+      
+      
+               console.log('userData item was set in the browser storage ...',localStorage)
+               const useridStorage = localStorage.getItem('userData')
+               setDMSuccess(true)
+               if(useridStorage.length > 0){
+                setDMSuccess(true)
+               }
+               
+                  // navigate('/Home', {
+                  //   state: userData,
+                  //   replace: true
+                  // })
+                  break
           default:
             navigate('/Unauthorized', { replace: true })
         }
@@ -328,7 +371,7 @@ export default function Login() {
   return (
         <Fragment>
     {success ? (navigate('/home',{replace:false})
-    ) : (
+    ) : dMSuccess ? (navigate('/homeDM')) : (
     <div className="mainDiv">
       <h1 className="title">PEN</h1>
       <div className={"loginCard"} style={{width:'30%', position:'relative',display:'flex',left:'35%',top:'2rem'}}>

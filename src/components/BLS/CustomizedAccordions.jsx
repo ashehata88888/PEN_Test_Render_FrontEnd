@@ -77,6 +77,8 @@ export default function CustomizedAccordions({displayPassMainBtns,count,delCount
   const eSupplierRef = useRef()
   const ePFRef = useRef()
   const eIGRef = useRef()
+  const eINRef = useRef()
+  const eISRef = useRef()
   const eCORef = useRef()
   const eCSRef = useRef()
  
@@ -103,6 +105,8 @@ export default function CustomizedAccordions({displayPassMainBtns,count,delCount
       supplier: '',
       productFamily: '',
       itemGroup: '',
+      itemName:'',
+      itemStock:'',
       callObjective: '',
       callStatus: '',
       contData: valContArr
@@ -150,6 +154,8 @@ export default function CustomizedAccordions({displayPassMainBtns,count,delCount
   let [xCount,setXcount] = useState(1)
   let [xDCount,setXDCount] = useState(0)
   let [IndexPD,setIndexPD] = useState(0)
+
+  let [DM , setDM] = useState(false)
 
 
   const [alret , setAlert]= useState("")
@@ -445,6 +451,24 @@ let [IndexP,setIndexP] = useState(0)
       let dataP = [...val]
       dataP[index]['itemGroup'] = event.target.value
       setVal(dataP)
+
+
+    } else if (event.target.name === 'itemName') {
+      let element =  document.getElementById(`${index}IN`)
+      element?.setAttribute("style", "background-color : none;")
+        let dataP = [...val]
+        dataP[index]['itemName'] = event.target.value
+        setVal(dataP)
+
+      } else if (event.target.name === 'itemStock') {
+        let element =  document.getElementById(`${index}IS`)
+        element?.setAttribute("style", "background-color : none;")
+          let dataP = [...val]
+          dataP[index]['itemStock'] = event.target.value
+          setVal(dataP)
+
+
+
    } else if (event.target.name === 'callObjective') {
     let element =  document.getElementById(`${index}CO`)
     element?.setAttribute("style", "background-color : none;")
@@ -526,11 +550,13 @@ let [IndexP,setIndexP] = useState(0)
     // e.preventDefault()
 loadingSave()
     val.flatMap(async (objP, index) => {
-      console.log('objP is : ',objP)
+      console.log('objP itemName is : ',objP.itemName , " and ObJP for itemStock is",objP.itemStock)
       const postCallProductData =  {
         supplier_id: objP.supplier,
         product_family_id: objP.productFamily,
         item_group_id: objP.itemGroup,
+        item_name: objP.itemName,
+        item_stock: objP.itemStock,
         objective_id: objP.callObjective,
         status_id: objP.callStatus,
         activity_id: activityId
@@ -1028,6 +1054,50 @@ loadingSave()
                 ))}
             </select>
           </div>
+         
+         { key === 4  ?  (
+         
+          <>
+          <div className={hTabs.productBox}>
+                          <label className={hTabs.minLable}>Item Name</label>
+                          <input
+                            name="itemName"
+                            value={data.itemName}
+                            onChange={(event) => handleFormChangeProductCall(event, index)}
+                            type="text"
+                            className={hTabs.productBoxSelect}
+                            id={`${index}IN`}
+                            ref={eINRef}
+                          ></input>
+                        </div><div className={hTabs.productBox}>
+                            <label className={hTabs.minLable}>Item Stock</label>
+                            <input
+                              name="itemStock"
+                              value={data.itemStock}
+                              onChange={(event) => handleFormChangeProductCall(event, index)}
+                              type="tel"
+                              className={hTabs.productBoxSelect}
+                              id={`${index}IS`}
+                              ref={eISRef}
+                              maxLength="11"
+                            ></input>
+                          </div>
+                          </> 
+
+           
+) : null
+         
+
+}
+
+
+
+
+
+
+
+
+
           <div className={hTabs.productBox}>
             <label className={hTabs.minLable}>Call Objective</label>
             <select

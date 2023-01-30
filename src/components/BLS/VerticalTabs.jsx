@@ -89,6 +89,8 @@ export default function VerticalTabs() {
     
       // localStorage.removeItem('userData');
 
+      window.localStorage.clear();
+
       console.log('User was loged out Bye Bye' ,localStorage.userData)
          navigate('/',{replace:false})
       // setIsLoggedin(false);
