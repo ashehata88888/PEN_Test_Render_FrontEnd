@@ -35,6 +35,8 @@ import Reports from './Reports'
 import { Navigate } from 'react-router-dom'
 import UnderDev from '../../imgs/UnderDev.jpg'
 
+import LabTabsMarket from './FullWidthTabsMarket'
+
 console.log("Icon is ",Icon)
 
 
@@ -268,7 +270,8 @@ if(countFullWToVTabs > 0){
    />
  </TabPanel>
  <TabPanel value={value} index={2}>
-  <img src={UnderDev} alt='UnderDev Img' className={hTabs.underDevImg}/> 
+  {/* <img src={UnderDev} alt='UnderDev Img' className={hTabs.underDevImg}/>  */}
+  <LabTabsMarket />
  </TabPanel>
  <TabPanel value={value} index={3}>
  <Reports/>

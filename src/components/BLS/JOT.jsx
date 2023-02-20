@@ -1,22 +1,28 @@
-import React from 'react'
 /* eslint-disable */
-import Footer from "../Footer"
+import { number } from 'prop-types';
+import React,{useState} from 'react'
+
+import CheckBoxInputNumber from './ReusableComponents/CheckBoxInputNumber';
 
 
 
-function JOT() {
+
+
+export default function JOT() {
+
+
 
   return <div className="homeContainer">
-      <h1>Welcome to JOT Page</h1>
-       <section>
-    <h1>You are logged in! with JOT Privileges</h1>
-  <br />
-  <p>
-     <a href="/Home">Go back to Home Page</a>
-  </p>
-  </section> 
-  <Footer/>
-  </div>;
+      <h3>Types of Operations</h3>
+
+      <CheckBoxInputNumber
+      checkBoxTitle="Knee replacement No./Month"
+      />
+
+      <CheckBoxInputNumber
+      checkBoxTitle="Hip replacement No./Month"
+      />
+
+    </div>;
 }
 
-export default JOT;
