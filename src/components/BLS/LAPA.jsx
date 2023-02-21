@@ -1,22 +1,24 @@
-import React from 'react'
 /* eslint-disable */
-import Footer from "../Footer"
+import { number } from "prop-types";
+import React, { useState } from "react";
 
+import CheckBoxInputNumber from "./ReusableComponents/CheckBoxInputNumber";
 
+export default function LAPA() {
+  return (
+    <div className="homeContainer">
+      <CheckBoxInputNumber checkBoxTitle="Number of operation rooms" />
+      <CheckBoxInputNumber checkBoxTitle="Total number of operations per month" />
+      <CheckBoxInputNumber checkBoxTitle="Number of renting cases/month" />
+      <CheckBoxInputNumber checkBoxTitle="Cost of renting/case" />
 
-function LAPA() {
+      <br />
+      <h3>Types of Operations</h3>
+      <br />
 
-  return <div className="homeContainer">
-      <h1>Welcome to LAPA Page</h1>
-       <section>
-    <h1>You are logged in! with LAPA Privileges</h1>
-  <br />
-  <p>
-     <a href="/Home">Go back to Home Page</a>
-  </p>
-  </section> 
-  <Footer/>
-  </div>;
+      <CheckBoxInputNumber checkBoxTitle="Open surgery" />
+      <CheckBoxInputNumber checkBoxTitle="Basic Laproscopy" />
+      <CheckBoxInputNumber checkBoxTitle="Advanced Laproscopy" />
+    </div>
+  );
 }
-
-export default LAPA;

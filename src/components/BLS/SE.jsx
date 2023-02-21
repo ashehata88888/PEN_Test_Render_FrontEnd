@@ -1,22 +1,24 @@
-import React from 'react'
 /* eslint-disable */
-import Footer from "../Footer"
+import { number } from "prop-types";
+import React, { useState } from "react";
 
+import CheckBoxInputNumber from "./ReusableComponents/CheckBoxInputNumber";
 
+export default function SE() {
+  return (
+    <div className="homeContainer">
+      <h3>Types of Operations</h3>
 
-function SE () {
-
-  return <div className="homeContainer">
-      <h1>Welcome to SE Page</h1>
-       <section>
-    <h1>You are logged in! with SE Privileges</h1>
-  <br />
-  <p>
-     <a href="/Home">Go back to Home Page</a>
-  </p>
-  </section> 
-  <Footer/>
-  </div>;
+      <CheckBoxInputNumber checkBoxTitle="General surgery No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Bariatric surgery No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Uro surgery No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Gyn surgery No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Pediatric surgery No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Cardiovascular surgery No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="ENT surgery No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Ophthalmolgy No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Neuro surgery No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Ortho surgery No./Month" />
+    </div>
+  );
 }
-
-export default SE;

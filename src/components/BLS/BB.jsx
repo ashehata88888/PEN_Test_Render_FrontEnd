@@ -1,41 +1,22 @@
-import React from 'react'
 /* eslint-disable */
-import Footer from '../Footer'
-import { useLocation, useNavigate } from 'react-router-dom'
-import './styles.css'
+import { number } from "prop-types";
+import React, { useState } from "react";
 
-// const position = login.res.data.position
-// console.log(position)
+import CheckBoxInputNumber from "./ReusableComponents/CheckBoxInputNumber";
 
-function BB() {
-  const location = useLocation()
-  console.log(location.state.token)
-  const navigate = useNavigate()
-  function navigateToActivity() {
-    navigate('/Activity', {
-      state: {
-        position: location.state.position,
-        bl1: location.state.bl1,
-        token: location.state.token
-      },
-      replace: true
-    })
-  }
-
+export default function BB() {
   return (
-    <div className="homeMain">
-      <h1>Welcome to BB Page From Backend API Response </h1>
-      <section>
-        <h1>You are logged in! with BB Privileges</h1>
-        <br />
-        <p>
-          <button onClick={navigateToActivity}>Go back to Activity Page</button>
-        </p>
-      </section>
-      <Footer />
+    <div className="homeContainer">
+      
+
+      <CheckBoxInputNumber checkBoxTitle="Number of plasma bags dispensed/month" />
+
+      <h3>Types of Operations</h3>
+
+      <CheckBoxInputNumber checkBoxTitle="Open heart No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Liver transplant No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Kidney transplant No./Month" />
+
     </div>
-  )
-
+  );
 }
-
-export default BB

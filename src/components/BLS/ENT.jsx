@@ -1,22 +1,19 @@
-import React from 'react'
 /* eslint-disable */
-import Footer from "../Footer"
+import { number } from "prop-types";
+import React, { useState } from "react";
 
+import CheckBoxInputNumber from "./ReusableComponents/CheckBoxInputNumber";
 
+export default function ENT() {
+  return (
+    <div className="homeContainer">
+      <h3>Types of Operations</h3>
+      <br />
 
-function ENT() {
-
-  return <div className="homeContainer">
-      <h1>Welcome to ENT Page</h1>
-       <section>
-    <h1>You are logged in! with ENT Privileges</h1>
-  <br />
-  <p>
-     <a href="/Home">Go back to Home Page</a>
-  </p>
-  </section> 
-  <Footer/>
-  </div>;
+      <CheckBoxInputNumber checkBoxTitle="Nose No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Ear No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Larynx No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Diagnostic No./Month" />
+    </div>
+  );
 }
-
-export default ENT;

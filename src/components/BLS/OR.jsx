@@ -1,22 +1,21 @@
-import React from 'react'
 /* eslint-disable */
-import Footer from "../Footer"
+import { number } from "prop-types";
+import React, { useState } from "react";
 
+import CheckBoxInputNumber from "./ReusableComponents/CheckBoxInputNumber";
 
+export default function OR() {
+  return (
+    <div className="homeContainer">
 
-function OR() {
+      <h3>Types of Neuro Operations</h3>
+      <br />
 
-  return <div className="homeContainer">
-      <h1>Welcome to OR Page</h1>
-       <section>
-    <h1>You are logged in! with OR Privileges</h1>
-  <br />
-  <p>
-     <a href="/Home">Go back to Home Page</a>
-  </p>
-  </section> 
-  <Footer/>
-  </div>;
+      <CheckBoxInputNumber checkBoxTitle="Open surgery No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Endoscopy No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Cranial Navigation GYN No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Neuro Biopsy Hysteroscopy No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Stereotactic Neurosurgery No./Month" />
+    </div>
+  );
 }
-
-export default OR;

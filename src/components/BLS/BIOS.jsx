@@ -1,22 +1,23 @@
-import React from 'react'
 /* eslint-disable */
-import Footer from "../Footer"
+import { number } from "prop-types";
+import React, { useState } from "react";
 
+import CheckBoxInputNumber from "./ReusableComponents/CheckBoxInputNumber";
 
+export default function BIOS() {
+  return (
+    <div className="homeContainer">
+      <h3>Types of Operations</h3>
 
-function BIOS() {
+      <CheckBoxInputNumber checkBoxTitle="Neuro surgery No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Cardiothoracic No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Oncology No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Urology No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Liver transplant No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Kidney transplant No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Gynecology No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="General surgery No./Month" />
 
-  return <div className="homeContainer">
-      <h1>Welcome to BIOS Page</h1>
-       <section>
-    <h1>You are logged in! with BIOS Privileges</h1>
-  <br />
-  <p>
-     <a href="/Home">Go back to Home Page</a>
-  </p>
-  </section> 
-  <Footer/>
-  </div>;
+    </div>
+  );
 }
-
-export default BIOS;

@@ -1,22 +1,15 @@
-import React from 'react'
 /* eslint-disable */
-import Footer from "../Footer"
+import { number } from "prop-types";
+import React, { useState } from "react";
 
+import CheckBoxInputNumber from "./ReusableComponents/CheckBoxInputNumber";
 
-
-function NICU() {
-
-  return <div className="homeContainer">
-      <h1>Welcome to NICU Page</h1>
-       <section>
-    <h1>You are logged in! with NICU Privileges</h1>
-  <br />
-  <p>
-     <a href="/Home">Go back to Home Page</a>
-  </p>
-  </section> 
-  <Footer/>
-  </div>;
+export default function NICU() {
+  return (
+    <div className="homeContainer">
+      <br />
+      <CheckBoxInputNumber checkBoxTitle="Number of ICU beds" />
+      <CheckBoxInputNumber checkBoxTitle="Number of Inpatient beds" />
+    </div>
+  );
 }
-
-export default NICU;

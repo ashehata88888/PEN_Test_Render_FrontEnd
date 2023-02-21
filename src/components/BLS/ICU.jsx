@@ -1,22 +1,14 @@
-import React from 'react'
 /* eslint-disable */
-import Footer from "../Footer"
+import { number } from "prop-types";
+import React, { useState } from "react";
 
+import CheckBoxInputNumber from "./ReusableComponents/CheckBoxInputNumber";
 
-
-function ICU() {
-
-  return <div className="homeContainer">
-      <h1>Welcome to ICU Page</h1>
-       <section>
-    <h1>You are logged in! with ICU Privileges</h1>
-  <br />
-  <p>
-     <a href="/Home">Go back to Home Page</a>
-  </p>
-  </section> 
-  <Footer/>
-  </div>;
+export default function ICU() {
+  return (
+    <div className="homeContainer">
+      <br />
+      <CheckBoxInputNumber checkBoxTitle="Number of ICU beds" />
+    </div>
+  );
 }
-
-export default ICU;

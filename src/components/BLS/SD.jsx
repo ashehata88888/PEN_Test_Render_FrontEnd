@@ -1,22 +1,31 @@
-import React from 'react'
 /* eslint-disable */
-import Footer from "../Footer"
+import { number } from "prop-types";
+import React, { useState } from "react";
 
+import CheckBoxInputNumber from "./ReusableComponents/CheckBoxInputNumber";
 
+export default function SD() {
+  return (
+    <div className="homeContainer">
+      
 
-function SD () {
+     
+      <CheckBoxInputNumber checkBoxTitle="Number of operation rooms" />
+      <CheckBoxInputNumber checkBoxTitle="Number of ICU beds" />
+      <CheckBoxInputNumber checkBoxTitle="Number of Plasma Autoclaves" />
+      <CheckBoxInputNumber checkBoxTitle="Load of Plasma autoclave/day" />
+      <CheckBoxInputNumber checkBoxTitle="Rate of pouches/load/day of Instruments" />
+      <CheckBoxInputNumber checkBoxTitle="Number of Steam Autoclaves" />
+      <CheckBoxInputNumber checkBoxTitle="Load of Steam autoclave/day" />
+      <CheckBoxInputNumber checkBoxTitle="Rate of pouches/load/day of Dressings" />
+<br/>
+      <h3>Types of Operations</h3>
 
-  return <div className="homeContainer">
-      <h1>Welcome to SD Page</h1>
-       <section>
-    <h1>You are logged in! with SD Privileges</h1>
-  <br />
-  <p>
-     <a href="/Home">Go back to Home Page</a>
-  </p>
-  </section> 
-  <Footer/>
-  </div>;
+      <CheckBoxInputNumber checkBoxTitle="Ortho No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Cardio No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Neuro No./Month" />
+      <CheckBoxInputNumber checkBoxTitle="Transplant No./month" />
+
+    </div>
+  );
 }
-
-export default SD;

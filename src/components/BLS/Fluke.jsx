@@ -1,22 +1,16 @@
-import React from 'react'
 /* eslint-disable */
-import Footer from "../Footer"
+import { number } from "prop-types";
+import React, { useState } from "react";
 
+import CheckBoxInputNumber from "./ReusableComponents/CheckBoxInputNumber";
 
+export default function Fluke() {
+  return (
+    <div className="homeContainer">
+      <h3>Types of Operations</h3>
+      <br />
 
-function Fluke() {
-
-  return <div className="homeContainer">
-      <h1>Welcome to Fluke Page</h1>
-       <section>
-    <h1>You are logged in! with Fluke Privileges</h1>
-  <br />
-  <p>
-     <a href="/Home">Go back to Home Page</a>
-  </p>
-  </section> 
-  <Footer/>
-  </div>;
+      <CheckBoxInputNumber checkBoxTitle="Number of devices tested/year" />
+    </div>
+  );
 }
-
-export default Fluke;

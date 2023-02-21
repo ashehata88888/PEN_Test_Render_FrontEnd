@@ -1,9 +1,9 @@
-
-html, body {
-    margin:0;
-    height:100%;
-    overflow: hidden
-  }
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
 
 /* body{
   background-image: url("../imgs/bg1.jpg");
@@ -16,17 +16,15 @@ html, body {
 } */
 
 .header {
-background-color: orange;
+  background-color: orange;
 }
 
-
-.title{
-  color:aqua;
+.title {
+  color: aqua;
   position: relative;
-  top:25px;
+  top: 25px;
   text-align: center;
 }
-
 
 * {
   box-sizing: border-box;
@@ -34,7 +32,8 @@ background-color: orange;
 /* 
 body {
   /* The image used */
-  /* background-image: url("../imgs/sky1.jpg"); */ */
+/* background-image: url("../imgs/sky1.jpg"); */
+*/
 
   /* Control the height of the image */
 
@@ -46,12 +45,12 @@ body {
   position: relative;
 } */
 
-.loginCard{
+.loginCard {
   display: flex;
   justify-content: center;
 }
 
-.bg-img{
+.bg-img {
   position: absolute;
   display: flex;
   align-self: center;
@@ -73,17 +72,17 @@ body {
   /* display: flex; */
 }
 
-
-
-input[type=text]:focus, #userName , input[type=password]:focus {
+input[type="text"]:focus,
+#userName,
+input[type="password"]:focus {
   background-color: #ddd;
   outline: none !important;
-  box-shadow: 0 0 10px #719ECE
-  }
+  box-shadow: 0 0 10px #719ece;
+}
 
 /* Set a style for the submit button */
 .btn {
-  background-color: #04AA6D;
+  background-color: #04aa6d;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -97,11 +96,11 @@ input[type=text]:focus, #userName , input[type=password]:focus {
   opacity: 1;
 }
 
-.label{
+.label {
   font-size: 13pt;
 }
 
-.signUpLink{
+.signUpLink {
   z-index: 400;
   color: white;
   top: 70%;
@@ -112,12 +111,10 @@ input[type=text]:focus, #userName , input[type=password]:focus {
   display: none;
 }
 
-
-
-footer{
-position: absolute;
-bottom: 10px;
-color: whitesmoke
+footer {
+  position: absolute;
+  bottom: 10px;
+  color: whitesmoke;
 }
 
 /* .homeContainer{
@@ -131,8 +128,6 @@ color: whitesmoke
       position: absolute; */
 /* } */
 
-
-
 .homeMain {
   height: 100%;
   width: 100%;
@@ -145,7 +140,6 @@ color: whitesmoke
   padding: 5px;
 }
 
-
 .tabPanal {
   padding: 10px;
 }
@@ -154,9 +148,8 @@ color: whitesmoke
 padding:5px;
 } */
 
-
-.css-xq50o9{
-  margin-top:5% !important; 
+.css-xq50o9 {
+  margin-top: 5% !important;
 }
 
 .css-h0q0iv-MuiButtonBase-root-MuiTab-root {
@@ -164,63 +157,55 @@ padding:5px;
   min-height: 59px !important;
 }
 
-.css-152fziq{
+.css-152fziq {
   height: 70% !important;
 }
 
-.css-19kzrtu{
+.css-19kzrtu {
   padding: 0px !important;
 }
 
-.MuiBox-root{
-  padding:0px !important;
+.MuiBox-root {
+  padding: 0px !important;
 }
 
-.css-uvvswg-MuiButtonBase-root-MuiAccordionSummary-root{
-padding:0px
+.css-uvvswg-MuiButtonBase-root-MuiAccordionSummary-root {
+  padding: 0px;
 }
 
-
-
-.css-9l5vo-MuiCollapse-wrapperInner{
+.css-9l5vo-MuiCollapse-wrapperInner {
   height: 100% !important;
-    border-bottom: 1px solid gainsboro !important;
+  border-bottom: 1px solid gainsboro !important;
 }
 
-
-
-.errSuplier{
+.errSuplier {
   width: 85%;
   height: 30px;
   float: left;
   clear: both;
-  border: 2px solid #EFEFEF;
+  border: 2px solid #efefef;
   border-radius: 5px;
   padding: 1% 1% 1% 1%;
-  margin-top:2%;
-  margin-bottom: 3% ;
+  margin-top: 2%;
+  margin-bottom: 3%;
   font-size: 12pt;
   cursor: pointer;
   background-color: #ff0000;
 }
 
-.normalSupplier{
+.normalSupplier {
   width: 85%;
   height: 30px;
   float: left;
   clear: both;
-  border: 2px solid #EFEFEF;
+  border: 2px solid #efefef;
   border-radius: 5px;
   padding: 1% 1% 1% 1%;
-  margin-top:2%;
-  margin-bottom: 3% ;
+  margin-top: 2%;
+  margin-bottom: 3%;
   font-size: 12pt;
   cursor: pointer;
-  
-
 }
-
-
 
 /* 
 .App {

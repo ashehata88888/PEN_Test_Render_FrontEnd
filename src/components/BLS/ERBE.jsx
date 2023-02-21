@@ -1,22 +1,15 @@
-import React from 'react'
 /* eslint-disable */
-import Footer from "../Footer"
+import { number } from "prop-types";
+import React, { useState } from "react";
 
+import CheckBoxInputNumber from "./ReusableComponents/CheckBoxInputNumber";
 
+export default function ERBE() {
+  return (
+    <div className="homeContainer">
+      <br />
 
-function ERBE() {
-
-  return <div className="homeContainer">
-      <h1>Welcome to ERBE Page</h1>
-       <section>
-    <h1>You are logged in! with ERBE Privileges</h1>
-  <br />
-  <p>
-     <a href="/Home">Go back to Home Page</a>
-  </p>
-  </section> 
-  <Footer/>
-  </div>;
+      <CheckBoxInputNumber checkBoxTitle="Number of operation rooms" />
+    </div>
+  );
 }
-
-export default ERBE;
