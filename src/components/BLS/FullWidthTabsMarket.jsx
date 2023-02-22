@@ -48,6 +48,7 @@ import AccountNameAdress from "./AccountNameAdress";
 import Private_OR from "./Private_OR";
 import Private_Medical_lower from "./Private_Medical_lower";
 import Private_Medical_upper from "./Private_Medical_upper";
+import MarketSizeRow from "./MarketSizeRow";
 
 export default function LabTabsMarket({
   setCountFullWToVTabs,
@@ -190,7 +191,7 @@ export default function LabTabsMarket({
           sx={{
             width: "100%",
             typography: "body1",
-            height: "73%",
+            height: "fit-content",
             overflowY: "scroll",
             marginTop: "5%",
           }}
@@ -277,7 +278,9 @@ export default function LabTabsMarket({
           </TabPanel>
         </Box>
         <TabPanel active value="2">
-          <div>
+          <div style={{zindex:"1000",height:"fitContent"}}>
+          {/* <label className={hTabs.CallLable}>Market Size Records</label> */}
+          <MarketSizeRow/>
             {/* <img
             src={underDev}
             alt="Under Development Img"
@@ -286,6 +289,7 @@ export default function LabTabsMarket({
             {/* <GYN /> */}
             {/* <ActivityTable /> */}
             {/* <ActivityTableNew/> */}
+           
           </div>
           <div className={hTabs.activityMainBtns}>
             {/* <button
@@ -304,11 +308,18 @@ export default function LabTabsMarket({
                 Delete Call
               </button> */}
             <button
-              className={hTabs.saveBtn}
-              id="SaveActivity"
-              onClick={(event) => ActivityMainSaveOnClick(event)}
+              className={hTabs.addBtn}
+              id="addMarketSizeFamily"
+              onClick={(event) => addMarketFamilyOnClick(event)}
             >
-              Save Activity
+              Add Family
+            </button>
+            <button
+              className={hTabs.saveBtn}
+              id="saveMarketData"
+              onClick={(event) => marketSaveonClick(event)}
+            >
+              Save
             </button>
           </div>
         </TabPanel>
