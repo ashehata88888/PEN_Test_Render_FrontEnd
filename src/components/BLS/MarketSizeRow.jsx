@@ -2,6 +2,54 @@ import React, { Component } from "react";
 import hTabs from "./hTabs.module.css";
 import { withRouter } from "../Table/withRouter";
 
+import MuiAccordion from "@mui/material/Accordion";
+import MuiAccordionSummary from "@mui/material/AccordionSummary";
+import MuiAccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
+
+// import { Hidden } from "@mui/material";
+// import PreLoader3 from "../Loading/PreLoader3";
+import CheckCompetitor from './ReusableComponents/CheckCompetitor';
+
+const Accordion = styled((props) => (
+  <MuiAccordion disableGutters elevation={0} square {...props} />
+))(({ theme }) => ({
+  border: `1px solid ${theme.palette.divider}`,
+  "&:not(:last-child)": {
+    borderBottom: "0.5",
+  },
+  "&:before": {
+    display: "none",
+  },
+}));
+
+// {<ArrowForwardIosSharpIcon  />}
+
+const AccordionSummary = styled((props) => (
+  <MuiAccordionSummary expandIcon="" {...props} />
+))(({ theme }) => ({
+  minHeight: "20px",
+  height: "40px",
+  marginTop: "0px",
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? "rgba(255, 255, 255, .05)"
+      : "rgba(0, 0, 0, .03)",
+  flexDirection: "row-reverse",
+  "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
+    transform: "rotate(90deg)",
+  },
+  "& .MuiAccordionSummary-content": {
+    marginLeft: theme.spacing(1),
+  },
+}));
+
+const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+  padding: theme.spacing(2),
+  borderTop: "1px solid rgba(0, 0, 0, .125)",
+}));
+
 class MarketSizeRow extends Component {
   constructor(props) {
     super(props);
@@ -195,7 +243,7 @@ class MarketSizeRow extends Component {
   render() {
     console.log("suppliers from MarketSizeRow", this.state.suppliers);
     return (
-      <div style={{ marginTop: "70px", zIndex: "500" }}>
+      <div style={{ marginTop: "70px", zIndex: "500"}}>
         <div className={hTabs.productBox}>
           <label className={hTabs.minLable}>Supplier</label>
           <select
@@ -247,36 +295,33 @@ class MarketSizeRow extends Component {
               ))}
           </select>
         </div>
-        <div className={hTabs.productBox}>
-          <label className={hTabs.minLable}>Item Group</label>
-          <select
-            className={hTabs.productBoxSelect}
-            name="itemGroup"
-            // value={data.itemGroup}
-            onChange={(event) => this.handleFormChangeProductCall(event, 0)}
-            // id={`${index}IG`}
-            // ref={eIGRef}
-          >
-            <option value="0" hidden>
-              Select Item
-            </option>
-            {console.log("itemGroup from console ,", this.state.itemGroups)}
-            {this.state.itemGroups.map((userObj, index) => (
-              <option value={userObj.id} key={userObj.id}>
-                {userObj.item_group}
-              </option>
-            ))}
-          </select>
-        </div>
-
+        
         <span>
           {/* <button className={hTabs.addFamilyBtn}>
             +
           </button> */}
-          <button class={hTabs.deleteFamilyBtn} >
-            -
-          </button>
+          <button class={hTabs.deleteFamilyBtn}>-</button>
         </span>
+        <div className={hTabs.accordionContainer}>
+          {this.state.itemGroups.map((userObj, index) => (
+            <Accordion
+            // expanded={expanded === `panel${index}`}
+            // onChange={handleChange(`panel${index}`)}
+            // className={displayAccordion}
+            // id={hTabs.CallInfoAccordion}
+            >
+              <AccordionSummary aria-controls="panel1d-content">
+                <Typography style={{ color: "black" }} variant="h5">
+                  {userObj.item_group}
+                  Call Information
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+              <CheckCompetitor />
+              </AccordionDetails>
+            </Accordion>
+          ))}
+        </div>
       </div>
     );
   }
