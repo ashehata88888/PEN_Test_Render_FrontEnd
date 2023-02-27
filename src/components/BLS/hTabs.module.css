@@ -511,7 +511,7 @@ margin-top:20px;
 
 
 .competitorUL {
-  color: white;
+  color: black;
   list-style-type: none;
   margin: 0;
   display: block;
@@ -524,4 +524,8 @@ margin-top:20px;
     display:inline;
     text-align:center;
    
+  }
+
+  .checkCompetitor{
+    height: fit-content;
   }

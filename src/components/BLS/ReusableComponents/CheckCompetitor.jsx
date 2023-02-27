@@ -27,12 +27,16 @@ const CheckCompetitor = ({checkBoxTitle})=>{
         onChange={() => {
           if(checked){
             setText("")
+            setText2("")
+            setSelected(!selected)
           }
           if(checked===false){
             setText("")
             setText2("")
+            setSelected(!selected)
           }
       setChecked(!checked)
+      setSelected(!selected)
         }
      }
       ></input >
@@ -70,9 +74,6 @@ disabled ={!checked}
           {selected && <option value="0" disabled selected={selected} >
             Select Status
           </option>}
-          <option value="0" disabled selected >
-            Select Status
-          </option>
           <option value="1">Active</option>
           <option value="2">Inactive Visit</option>
           <option value="3">Need Repair</option>
@@ -111,7 +112,7 @@ disabled ={!checked}
           }
        }
         >
-          <option value="0" disabled selected={selected}>
+          <option value="0"   selected={selected}>
             Select Status
           </option>
           <option value="1">Active</option>

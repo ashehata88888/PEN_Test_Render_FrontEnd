@@ -147,7 +147,7 @@ export default function LabTabsMarket({
   // };
 
   return (
-    <Box sx={{ width: "93.5%", height: "99vh" }}>
+    <Box sx={{ width: "93.5%", height: "99vh"  ,overflow:"auto"}}>
       <TabContext value={value}>
         <Box
           sx={{ borderBottom: 1, borderColor: "divider", position: "fixed" }}
@@ -191,8 +191,7 @@ export default function LabTabsMarket({
           sx={{
             width: "100%",
             typography: "body1",
-            height: "fit-content",
-            overflowY: "scroll",
+            minHeight:"70%",
             marginTop: "5%",
           }}
         >
@@ -277,22 +276,37 @@ export default function LabTabsMarket({
             {/* <Private_Medical_upper/> */}
           </TabPanel>
         </Box>
-        <TabPanel active value="2">
-          <div style={{zindex:"1000",height:"fitContent"}}>
-          {/* <label className={hTabs.CallLable}>Market Size Records</label> */}
-          <MarketSizeRow/>
-            {/* <img
+        <Box
+          sx={{
+            width: "100%",
+            typography: "body1",
+            height: "fit-content",
+            // minHeight:"20rem",
+            // overflowY: "scroll",
+            marginTop: "5%",
+          }}
+        >
+          <TabPanel active value="2" style={{overflowY:"scroll"}}>
+            <div
+              // style={{
+              //   zindex: "1000",
+              //   height: "fitContent",
+                // overflowY: "scroll",
+              // }}
+            >
+              {/* <label className={hTabs.CallLable}>Market Size Records</label> */}
+              <MarketSizeRow />
+              {/* <img
             src={underDev}
             alt="Under Development Img"
             style={{ width: '600px', padding: '100px' }}
           /> */}
-            {/* <GYN /> */}
-            {/* <ActivityTable /> */}
-            {/* <ActivityTableNew/> */}
-           
-          </div>
-          <div className={hTabs.activityMainBtns}>
-            {/* <button
+              {/* <GYN /> */}
+              {/* <ActivityTable /> */}
+              {/* <ActivityTableNew/> */}
+            </div>
+            <div className={hTabs.activityMainBtns}>
+              {/* <button
                 className={`${hTabs.addBtn} ${displayMainBtns}`}
                 id="addContact0"
                 onClick={AddCallhandleClick}
@@ -307,22 +321,23 @@ export default function LabTabsMarket({
               >
                 Delete Call
               </button> */}
-            <button
-              className={hTabs.addBtn}
-              id="addMarketSizeFamily"
-              onClick={(event) => addMarketFamilyOnClick(event)}
-            >
-              Add Family
-            </button>
-            <button
-              className={hTabs.saveBtn}
-              id="saveMarketData"
-              onClick={(event) => marketSaveonClick(event)}
-            >
-              Save
-            </button>
-          </div>
-        </TabPanel>
+              <button
+                className={hTabs.addBtn}
+                id="addMarketSizeFamily"
+                onClick={(event) => addMarketFamilyOnClick(event)}
+              >
+                Add Family
+              </button>
+              <button
+                className={hTabs.saveBtn}
+                id="saveMarketData"
+                onClick={(event) => marketSaveonClick(event)}
+              >
+                Save
+              </button>
+            </div>
+          </TabPanel>
+        </Box>
 
         <TabPanel active value="0">
           <div>

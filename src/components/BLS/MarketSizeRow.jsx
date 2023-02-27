@@ -10,7 +10,7 @@ import { styled } from "@mui/material/styles";
 
 // import { Hidden } from "@mui/material";
 // import PreLoader3 from "../Loading/PreLoader3";
-import CheckCompetitor from './ReusableComponents/CheckCompetitor';
+import CheckCompetitor from "./ReusableComponents/CheckCompetitor";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -61,6 +61,17 @@ class MarketSizeRow extends Component {
     itemGroups: [],
     supplierId: 0,
     productFamilyId: 0,
+    comp: [
+      { id: 1, name: "EGMED" },
+      { id: 2, name: "Okla"},
+      { id: 3, name: "Mokla" },
+      { id: 4, name: "EGMED" },
+      { id: 5, name: "Okla"},
+      { id: 6, name: "Mokla" },
+      { id: 7, name: "EGMED" },
+      { id: 8, name: "Okla"},
+      { id: 9, name: "Mokla" }
+    ],
   };
 
   componentDidMount() {
@@ -243,7 +254,7 @@ class MarketSizeRow extends Component {
   render() {
     console.log("suppliers from MarketSizeRow", this.state.suppliers);
     return (
-      <div style={{ marginTop: "70px", zIndex: "500"}}>
+      <div style={{ marginTop: "60px", zIndex: "500" ,overflowY:"scroll"}}>
         <div className={hTabs.productBox}>
           <label className={hTabs.minLable}>Supplier</label>
           <select
@@ -295,7 +306,7 @@ class MarketSizeRow extends Component {
               ))}
           </select>
         </div>
-        
+
         <span>
           {/* <button className={hTabs.addFamilyBtn}>
             +
@@ -316,8 +327,12 @@ class MarketSizeRow extends Component {
                   Call Information
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails>
-              <CheckCompetitor />
+              <AccordionDetails  style={{overflowY : "scroll"}}>
+                {this.state.comp.map((obj, inx) => (
+                  <div className={hTabs.checkCompetitor} key={obj.id}>
+                    <CheckCompetitor checkBoxTitle={obj.name} />
+                  </div>
+                ))}
               </AccordionDetails>
             </Accordion>
           ))}
