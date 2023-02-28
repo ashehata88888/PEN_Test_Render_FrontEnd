@@ -280,7 +280,7 @@ export default function LabTabsMarket({
           sx={{
             width: "100%",
             typography: "body1",
-            height: "fit-content",
+            height: "1fr",
             // minHeight:"20rem",
             // overflowY: "scroll",
             marginTop: "5%",
@@ -296,6 +296,7 @@ export default function LabTabsMarket({
             >
               {/* <label className={hTabs.CallLable}>Market Size Records</label> */}
               <MarketSizeRow />
+         
               {/* <img
             src={underDev}
             alt="Under Development Img"

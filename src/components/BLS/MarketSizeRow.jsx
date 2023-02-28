@@ -61,23 +61,24 @@ class MarketSizeRow extends Component {
     itemGroups: [],
     supplierId: 0,
     productFamilyId: 0,
-    comp: [
-      { id: 1, name: "EGMED" },
-      { id: 2, name: "Okla"},
-      { id: 3, name: "Mokla" },
-      { id: 4, name: "EGMED" },
-      { id: 5, name: "Okla"},
-      { id: 6, name: "Mokla" },
-      { id: 7, name: "EGMED" },
-      { id: 8, name: "Okla"},
-      { id: 9, name: "Mokla" }
+    competitors: [
+      // { id: 1, name: "EGMED" },
+      // { id: 2, name: "Okla" },
+      // { id: 3, name: "Mokla" },
+      // { id: 4, name: "EGMED" },
+      // { id: 5, name: "Okla" },
+      // { id: 6, name: "Mokla" },
+      // { id: 7, name: "EGMED" },
+      // { id: 8, name: "Okla" },
+      // { id: 9, name: "Mokla" },
     ],
   };
 
   componentDidMount() {
-    const key = this.state.userData.bl1_id;
+    const BL = this.state.userData.bl1_id;
+    const supllierID = this.state.supplierId
     const fetchData = async () => {
-      await fetch("http://localhost:7000/api/suppliers/names/" + key, {
+      await fetch("http://localhost:7000/api/suppliers/names/" + BL, {
         method: "GET",
         headers: new Headers({
           Authorization: "bearer " + this.state.userData.token,
@@ -91,11 +92,17 @@ class MarketSizeRow extends Component {
       });
     };
     fetchData();
+
+ 
+  
   }
+
+
 
   //    fetchData();
 
   supplieronCahngeHandler = (event, _index) => {
+    const BL = this.state.userData.bl1_id;
     const supKey = event.target.value;
     this.setState({ supplierId: supKey });
     const pFresponse = async () => {
@@ -112,6 +119,25 @@ class MarketSizeRow extends Component {
       });
     };
     pFresponse();
+
+    const fetchCompetitors = async () => {
+      // + BL +"/" + supKey
+      await fetch("http://localhost:7000/api/competitors/" + BL +"/" + supKey  , {
+        method: "GET",
+        headers: new Headers({
+          Authorization: "bearer " + this.state.userData.token,
+          "Content-Type": "application/x-www-form-urlencoded",
+        }),
+      }).then(async (response) => {
+        const newData = await response.json();
+        //    setSupplierName(newData);
+        console.log("Competitors data inside fetch method", [...newData]);
+        this.setState({ competitors: [...newData] });
+      });
+    };
+    fetchCompetitors();
+
+
   };
 
   ProductFamilyOnCahngeHandler = (event, index) => {
@@ -135,6 +161,12 @@ class MarketSizeRow extends Component {
     };
     iGresponse();
   };
+
+
+  
+
+
+
 
   handleFormChangeProductCall = (event, index, indexC) => {
     //  document.getElementById(`${index}`).setAttribute("style", "background-color : none;")
@@ -254,7 +286,14 @@ class MarketSizeRow extends Component {
   render() {
     console.log("suppliers from MarketSizeRow", this.state.suppliers);
     return (
-      <div style={{ marginTop: "60px", zIndex: "500" ,overflowY:"scroll"}}>
+      <div
+        style={{
+          marginTop: "60px",
+          zIndex: "500",
+          height: "1fr",
+          overflowY: "auto",
+        }}
+      >
         <div className={hTabs.productBox}>
           <label className={hTabs.minLable}>Supplier</label>
           <select
@@ -327,10 +366,10 @@ class MarketSizeRow extends Component {
                   Call Information
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails  style={{overflowY : "scroll"}}>
-                {this.state.comp.map((obj, inx) => (
+              <AccordionDetails style={{ overflowY: "scroll" }}>
+                {this.state.competitors.map((obj, inx) => (
                   <div className={hTabs.checkCompetitor} key={obj.id}>
-                    <CheckCompetitor checkBoxTitle={obj.name} />
+                    <CheckCompetitor checkBoxTitle={obj.competitor_name} />
                   </div>
                 ))}
               </AccordionDetails>
