@@ -51,6 +51,7 @@ import Private_Medical_upper from "./Private_Medical_upper";
 import MarketSizeRow from "./MarketSizeRow";
 
 export default function LabTabsMarket({
+  idProp,
   setCountFullWToVTabs,
   setCountFullWCToVTabs,
 }) {
@@ -60,9 +61,11 @@ export default function LabTabsMarket({
   );
   const [countCustAccorToFullW, setCountCustAccorToFullW] = useState(0);
   const [countCustAccorToFullWC, setCountCustAccorToFullWC] = useState(0);
+  const [indexCount, setIndexCount] = useState(0);
   // setCountFullWCToVTabs(countCustAccorToFullWC)
+  const firstId = 0;
   const [marketSizeRows, setMarketSizeRows] = useState([
-    <MarketSizeRow key="10000" />,
+    <MarketSizeRow idProp={firstId} key={firstId} />,
   ]);
 
   // setCountFullWToVTabs(countCustAccorToFullW)
@@ -151,20 +154,27 @@ export default function LabTabsMarket({
 
   const addMarketFamilyOnClick = (event) => {
     event.preventDefault();
+
+    setIndexCount(indexCount + 1);
+
     console.log("add new family button was pressed");
-    setMarketSizeRows([...marketSizeRows, <MarketSizeRow />]);
+    setMarketSizeRows([
+      ...marketSizeRows,
+      <MarketSizeRow idProp={indexCount} key={indexCount} />,
+    ]);
     console.log("add new family button was pressed");
   };
 
   const deleteMarketFamilyonClick = (event) => {
     event.preventDefault();
 
+    setIndexCount(indexCount - 1);
     // clone
     let marketSizeRowsColne = [...marketSizeRows];
 
     // index
     //  marketSizeRowsColne.findIndex(e => e === "tc_001")
-    let index = 1;
+    let index = marketSizeRowsColne.length - 1;
 
     // change
 

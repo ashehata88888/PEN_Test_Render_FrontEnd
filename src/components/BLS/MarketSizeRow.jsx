@@ -50,12 +50,13 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-class MarketSizeRow extends Component {
+class MarketSizeRow extends Component {idProp
   constructor(props) {
     super(props);
   }
   state = {
     userData: JSON.parse(this.props.uContext),
+    id:0,
     suppliers: [],
     productFamilies: [],
     itemGroups: [],
@@ -277,7 +278,7 @@ class MarketSizeRow extends Component {
   render() {
     console.log("suppliers from MarketSizeRow", this.state.suppliers);
     return (
-      <div
+      <div idProp={this.state.id}
         style={{
           marginTop: "60px",
           zIndex: "500",
