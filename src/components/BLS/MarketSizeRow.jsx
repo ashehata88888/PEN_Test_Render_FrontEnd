@@ -76,7 +76,7 @@ class MarketSizeRow extends Component {
 
   componentDidMount() {
     const BL = this.state.userData.bl1_id;
-    const supllierID = this.state.supplierId
+    const supllierID = this.state.supplierId;
     const fetchData = async () => {
       await fetch("http://localhost:7000/api/suppliers/names/" + BL, {
         method: "GET",
@@ -92,12 +92,7 @@ class MarketSizeRow extends Component {
       });
     };
     fetchData();
-
- 
-  
   }
-
-
 
   //    fetchData();
 
@@ -121,12 +116,12 @@ class MarketSizeRow extends Component {
     pFresponse();
 
     const fetchCompetitors = async () => {
+      console.log("BL is ......,", BL);
+      console.log("supkey is ......,", supKey);
 
-      console.log("BL is ......,",BL)
-      console.log("supkey is ......,",supKey)
       // + BL +"/" + supKey
-      // "http://localhost:7000/api/competitors/" + BL + "/" + supKey 
-      await fetch(`http://localhost:7000/api/competitors/${BL}/${supKey}` , {
+      // "http://localhost:7000/api/competitors/" + BL + "/" + supKey
+      await fetch(`http://localhost:7000/api/competitors/${BL}/${supKey}`, {
         method: "GET",
         headers: new Headers({
           Authorization: "bearer " + this.state.userData.token,
@@ -140,8 +135,6 @@ class MarketSizeRow extends Component {
       });
     };
     fetchCompetitors();
-
-
   };
 
   ProductFamilyOnCahngeHandler = (event, index) => {
@@ -165,12 +158,6 @@ class MarketSizeRow extends Component {
     };
     iGresponse();
   };
-
-
-  
-
-
-
 
   handleFormChangeProductCall = (event, index, indexC) => {
     //  document.getElementById(`${index}`).setAttribute("style", "background-color : none;")
@@ -296,6 +283,8 @@ class MarketSizeRow extends Component {
           zIndex: "500",
           height: "1fr",
           overflowY: "auto",
+          border: "1px solid gray",
+          width: "80%",
         }}
       >
         <div className={hTabs.productBox}>

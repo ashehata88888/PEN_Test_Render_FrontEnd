@@ -61,6 +61,9 @@ export default function LabTabsMarket({
   const [countCustAccorToFullW, setCountCustAccorToFullW] = useState(0);
   const [countCustAccorToFullWC, setCountCustAccorToFullWC] = useState(0);
   // setCountFullWCToVTabs(countCustAccorToFullWC)
+  const [marketSizeRows, setMarketSizeRows] = useState([
+    <MarketSizeRow key="10000" />,
+  ]);
 
   // setCountFullWToVTabs(countCustAccorToFullW)
   const childRef = useRef(null);
@@ -146,8 +149,34 @@ export default function LabTabsMarket({
   //   childRef.current.childFunction2();
   // };
 
+  const addMarketFamilyOnClick = (event) => {
+    event.preventDefault();
+    console.log("add new family button was pressed");
+    setMarketSizeRows([...marketSizeRows, <MarketSizeRow />]);
+    console.log("add new family button was pressed");
+  };
+
+  const deleteMarketFamilyonClick = (event) => {
+    event.preventDefault();
+
+    // clone
+    let marketSizeRowsColne = [...marketSizeRows];
+
+    // index
+    //  marketSizeRowsColne.findIndex(e => e === "tc_001")
+    let index = 1;
+
+    // change
+
+    marketSizeRowsColne.splice(index, 1);
+    console.log("marketSizeRowsColne,,,,,,,", { marketSizeRowsColne });
+    // setNewComponent
+
+    setMarketSizeRows([...marketSizeRowsColne]);
+  };
+
   return (
-    <Box sx={{ width: "93.5%", height: "99vh"  ,overflow:"auto"}}>
+    <Box sx={{ width: "93.5%", height: "99vh", overflow: "auto" }}>
       <TabContext value={value}>
         <Box
           sx={{ borderBottom: 1, borderColor: "divider", position: "fixed" }}
@@ -191,7 +220,7 @@ export default function LabTabsMarket({
           sx={{
             width: "100%",
             typography: "body1",
-            minHeight:"70%",
+            minHeight: "70%",
             marginTop: "5%",
           }}
         >
@@ -286,17 +315,20 @@ export default function LabTabsMarket({
             marginTop: "5%",
           }}
         >
-          <TabPanel active value="2" style={{overflowY:"scroll"}}>
+          <TabPanel active value="2" style={{ overflowY: "scroll" }}>
             <div
-              // style={{
-              //   zindex: "1000",
-              //   height: "fitContent",
-                // overflowY: "scroll",
-              // }}
+            // style={{
+            //   zindex: "1000",
+            //   height: "fitContent",
+            // overflowY: "scroll",
+            // }}
             >
               {/* <label className={hTabs.CallLable}>Market Size Records</label> */}
-              <MarketSizeRow />
-         
+
+              {/* <MarketSizeRow /> */}
+
+              {marketSizeRows.map((obj, inx) => obj)}
+
               {/* <img
             src={underDev}
             alt="Under Development Img"
@@ -332,7 +364,9 @@ export default function LabTabsMarket({
               <button
                 className={hTabs.saveBtn}
                 id="saveMarketData"
-                onClick={(event) => marketSaveonClick(event)}
+                onClick={(event) => deleteMarketFamilyonClick(event)}
+
+                // marketSaveonClick(event)}
               >
                 Save
               </button>
