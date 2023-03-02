@@ -275,6 +275,10 @@ class MarketSizeRow extends Component {idProp
     }
   };
 
+  deleteMarketRow=(e,idProp)=>{
+  console.log(" Deletbtn value" , idProp)
+  }
+
   render() {
     console.log("suppliers from MarketSizeRow", this.state.suppliers);
     return (
@@ -344,7 +348,7 @@ class MarketSizeRow extends Component {idProp
           {/* <button className={hTabs.addFamilyBtn}>
             +
           </button> */}
-          <button class={hTabs.deleteFamilyBtn}>-</button>
+          <button class={hTabs.deleteFamilyBtn} onClick={(e)=>this.deleteMarketRow(e,this.props.idProp)}>-</button>
         </span>
         <div className={hTabs.accordionContainer}>
           {this.state.itemGroups.map((userObj, index) => (

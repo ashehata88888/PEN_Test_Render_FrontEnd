@@ -65,7 +65,7 @@ export default function LabTabsMarket({
   // setCountFullWCToVTabs(countCustAccorToFullWC)
   const firstId = 0;
   const [marketSizeRows, setMarketSizeRows] = useState([
-    <MarketSizeRow idProp={firstId} key={firstId} />,
+    <MarketSizeRow />,
   ]);
 
   // setCountFullWToVTabs(countCustAccorToFullW)
@@ -152,6 +152,11 @@ export default function LabTabsMarket({
   //   childRef.current.childFunction2();
   // };
 
+  if(marketSizeRows.length === 0){
+    setTimeout(()=>setMarketSizeRows([<MarketSizeRow/>]),200)
+  }
+ 
+
   const addMarketFamilyOnClick = (event) => {
     event.preventDefault();
 
@@ -175,10 +180,14 @@ export default function LabTabsMarket({
     // index
     //  marketSizeRowsColne.findIndex(e => e === "tc_001")
     let index = marketSizeRowsColne.length - 1;
+    let lastInx =  marketSizeRowsColne.length - 1;
 
     // change
 
-    marketSizeRowsColne.splice(index, 1);
+    // marketSizeRowsColne.filter((_,inx) => inx !== 2)
+    marketSizeRowsColne.splice(lastInx,1);
+
+
     console.log("marketSizeRowsColne,,,,,,,", { marketSizeRowsColne });
     // setNewComponent
 
@@ -337,7 +346,13 @@ export default function LabTabsMarket({
 
               {/* <MarketSizeRow /> */}
 
-              {marketSizeRows.map((obj, inx) => obj)}
+              {marketSizeRows.map((obj, inx ) =>(
+                
+              <div key={inx}  idProp={inx}>             
+                 {obj}
+                </div>
+              
+              ))}
 
               {/* <img
             src={underDev}
@@ -356,7 +371,6 @@ export default function LabTabsMarket({
               >
                 Add Call
               </button>
-
               <button
                 className={`${hTabs.deleteBtn} ${displayMainBtns}`}
                 id="deleteContact0"
