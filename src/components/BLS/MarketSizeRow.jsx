@@ -50,7 +50,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-class MarketSizeRow extends Component {idProp
+class MarketSizeRow extends Component {
   constructor(props) {
     super(props);
   }
@@ -62,6 +62,7 @@ class MarketSizeRow extends Component {idProp
     itemGroups: [],
     supplierId: 0,
     productFamilyId: 0,
+    selectedMarketSizeRow:0,
     competitors: [
       // { id: 1, name: "EGMED" },
       // { id: 2, name: "Okla" },
@@ -276,7 +277,12 @@ class MarketSizeRow extends Component {idProp
   };
 
   deleteMarketRow=(e,idProp)=>{
+e.preventDefault()
+    this.setState({selectedMarketSizeRow : idProp})
   console.log(" Deletbtn value" , idProp)
+
+  localStorage.setItem('selectedMarketSizeRow', JSON.stringify(idProp));
+
   }
 
   render() {

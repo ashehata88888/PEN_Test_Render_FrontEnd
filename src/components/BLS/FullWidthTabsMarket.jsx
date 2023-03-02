@@ -51,7 +51,6 @@ import Private_Medical_upper from "./Private_Medical_upper";
 import MarketSizeRow from "./MarketSizeRow";
 
 export default function LabTabsMarket({
-  idProp,
   setCountFullWToVTabs,
   setCountFullWCToVTabs,
 }) {
@@ -65,7 +64,6 @@ export default function LabTabsMarket({
   // setCountFullWCToVTabs(countCustAccorToFullWC)
   const firstId = 0;
   const [marketSizeRows, setMarketSizeRows] = useState([
-    <MarketSizeRow />,
   ]);
 
   // setCountFullWToVTabs(countCustAccorToFullW)
@@ -152,13 +150,10 @@ export default function LabTabsMarket({
   //   childRef.current.childFunction2();
   // };
 
-  if(marketSizeRows.length === 0){
-    setTimeout(()=>setMarketSizeRows([<MarketSizeRow/>]),200)
-  }
  
 
   const addMarketFamilyOnClick = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
 
     setIndexCount(indexCount + 1);
 
@@ -170,29 +165,79 @@ export default function LabTabsMarket({
     console.log("add new family button was pressed");
   };
 
-  const deleteMarketFamilyonClick = (event) => {
-    event.preventDefault();
-
-    setIndexCount(indexCount - 1);
-    // clone
-    let marketSizeRowsColne = [...marketSizeRows];
-
-    // index
-    //  marketSizeRowsColne.findIndex(e => e === "tc_001")
-    let index = marketSizeRowsColne.length - 1;
-    let lastInx =  marketSizeRowsColne.length - 1;
-
-    // change
-
-    // marketSizeRowsColne.filter((_,inx) => inx !== 2)
-    marketSizeRowsColne.splice(lastInx,1);
+  if(marketSizeRows.length === 0){
+    addMarketFamilyOnClick()
+ }
 
 
-    console.log("marketSizeRowsColne,,,,,,,", { marketSizeRowsColne });
-    // setNewComponent
 
-    setMarketSizeRows([...marketSizeRowsColne]);
-  };
+ const deleteMarketFamilyonClick = (event) => {
+  event.preventDefault();
+
+  // setIndexCount(indexCount - 1);
+  // clone
+  let marketSizeRowsColne = [...marketSizeRows];
+
+  // index
+  //  marketSizeRowsColne.findIndex(e => e === "tc_001")
+  let index = marketSizeRowsColne.length - 1;
+  let lastInx =  marketSizeRowsColne.length - 1;
+
+  // change
+
+  // marketSizeRowsColne.filter((_,inx) => inx !== 2)
+  marketSizeRowsColne.splice(lastInx,1);
+
+
+  console.log("marketSizeRowsColne,,,,,,,",  [marketSizeRowsColne] );
+  // setNewComponent
+
+  setMarketSizeRows([...marketSizeRowsColne]);
+};
+
+
+
+//   const deleteMarketFamilyonClick = (e) => {
+//     e.preventDefault();
+//     e.stopPropagation();
+
+//     // setIndexCount(indexCount - 1);
+//     // clone
+   
+//     let marketSizeRowsColne = [...marketSizeRows];
+//     // index
+//     //  marketSizeRowsColne.findIndex(e => e === "tc_001")
+// // let idProp =  JSON.parse(localStorage.getItem('selectedMarketSizeRow'));
+
+// // console.log('props from fullwidth is ',idProp)
+   
+
+//     // let index = marketSizeRowsColne.findIndex((inx)=>{
+//     //   console.log("find index key is ",inx.key)
+//     //   return inx.key == idProp;
+//     // })
+//     // console.log("index in find index key is ",index)
+//     // let lastInx =  marketSizeRowsColne.length - 1;
+
+//   //  console.log("last index is",lastInx)
+//     // setTimeout(()=>localStorage.setItem('selectedMarketSizeRow', ''),0)
+//     // change
+
+//   //   marketSizeRowsColne.filter((k,inx) => 
+//   //  k.key != 2)
+//     // console.log("the key is ..",k.key))
+
+
+//     // marketSizeRowsColne.splice(lastInx,1);
+
+//     marketSizeRowsColne.pop()
+
+
+//     console.log("marketSizeRowsColne,,,,,,,", [marketSizeRowsColne]);
+//     // setNewComponent
+
+//     setMarketSizeRows([marketSizeRowsColne.pop()]);
+//   };
 
   return (
     <Box sx={{ width: "93.5%", height: "99vh", overflow: "auto" }}>
