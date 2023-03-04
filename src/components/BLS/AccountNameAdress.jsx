@@ -4,6 +4,15 @@ import { UserContext } from "./Home";
 
 import hTabs from "./hTabs.module.css";
 
+import {useSelector,useDispatch} from "react-redux";
+import 
+{updateUser_Id	,
+  updateBl_Id	,
+  updateBu_Id	, 
+  updateAccount_Type_Id	,
+  updateAccount_Id
+} from "../../store/index" 
+
 export default function AccountNameAdress() {
   const [accountName, setAccountName] = useState([]);
   const [accountArea, setAccountArea] = useState("");
@@ -25,7 +34,18 @@ export default function AccountNameAdress() {
 
   const userData = JSON.parse(useContext(UserContext));
   const key = userData.id;
-  console.log(key);
+  console.log(userData);
+
+  const globalState = useSelector((state)=> state)
+  const dispatch = useDispatch()
+
+  const testDispatch = ()=>dispatch(updateUser_Id(key))
+  testDispatch()
+
+  dispatch(updateBl_Id(userData.bl1_id))
+  dispatch(updateBu_Id(userData.bu_id))
+  updateBl_Id	,
+  updateBu_Id	, 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,6 +74,8 @@ export default function AccountNameAdress() {
 
     console.log("index of maping the :", index);
 
+    dispatch(updateAccount_Id(index))
+
     // console.log('index of Map is ', mapIndex)
     // console.log("index of account name itself : ",i)
     // console.log("main Index is ",mainIndex)
@@ -81,6 +103,7 @@ export default function AccountNameAdress() {
 
   const accountNameInputOnChange = (event) => {
     setAccountNameValue(event.target.value);
+
 
     // const index = accountName.findIndex((object) => {
     //   // console.log("account name from inside findIndex Method is :",accountNameValue)
@@ -115,6 +138,8 @@ export default function AccountNameAdress() {
 
     console.log("index is ", index);
 
+    dispatch(updateAccount_Id(index))
+
     setAccountArea(accountName[index].account_area);
   };
 
@@ -133,10 +158,18 @@ export default function AccountNameAdress() {
 
   const accountTypeOnChange = (event) => {
     setAccountType(event.target.value);
+    dispatch(updateAccount_Type_Id(event.target.value))
     setErrAccountType(false);
   };
   return (
     <>
+    <div>User ID is : {globalState.marketPotentials.user_id}</div>
+    <div>BL ID is : {globalState.marketPotentials.bl_id}</div>
+    <div>BU ID is : {globalState.marketPotentials.bu_id}</div>
+    <div>ِAccouin Type ID is : {globalState.marketPotentials.account_type_id}</div>
+    <div>ِAccouin Name ID is : {globalState.marketPotentials.account_id}</div>
+    <div>Neuro_Surgery Number is : {globalState.marketPotentials.neuro_surgery}</div>
+
       <br />
 
       <label className={`${hTabs.labels} `}>Account Type</label>

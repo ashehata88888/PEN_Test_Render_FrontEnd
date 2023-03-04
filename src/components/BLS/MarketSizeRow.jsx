@@ -294,7 +294,8 @@ e.preventDefault()
           zIndex: "500",
           height: "1fr",
           overflowY: "auto",
-          border: "1px solid gray",
+          border: "1px solid #ebe5e5 ",
+          borderRadius:"5px",
           width: "80%",
         }}
       >
@@ -350,12 +351,10 @@ e.preventDefault()
           </select>
         </div>
 
-        <span>
-          {/* <button className={hTabs.addFamilyBtn}>
-            +
-          </button> */}
-          <button class={hTabs.deleteFamilyBtn} onClick={(e)=>this.deleteMarketRow(e,this.props.idProp)}>-</button>
-        </span>
+        <span style={{visiblity: "hidden"}}>
+        {/* className={hTabs.deleteFamilyBtn} */}
+          <button className={hTabs.deleteFamilyBtn} onClick={(e)=>this.deleteMarketRow(e,this.props.idProp)}>-</button>
+        </span>  
         <div className={hTabs.accordionContainer}>
           {this.state.itemGroups.map((userObj, index) => (
             <Accordion

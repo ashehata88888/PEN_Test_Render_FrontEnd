@@ -430,10 +430,20 @@ export default function LabTabsMarket({
               >
                 Add Family
               </button>
+
+              <button
+                className={hTabs.deleteBtn}
+                id="addMarketSizeFamily"
+                onClick={(event) => deleteMarketFamilyonClick(event)}
+              >
+                Delete Family
+              </button>
+
+
               <button
                 className={hTabs.saveBtn}
                 id="saveMarketData"
-                onClick={(event) => deleteMarketFamilyonClick(event)}
+                // onClick={(event) => deleteMarketFamilyonClick(event)}
 
                 // marketSaveonClick(event)}
               >

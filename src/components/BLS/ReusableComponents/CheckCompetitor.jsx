@@ -75,7 +75,7 @@ disabled ={!checked}
             Select Status
           </option>}
           <option value="1">Active</option>
-          <option value="2">Inactive Visit</option>
+          <option value="2">Inactive</option>
           <option value="3">Need Repair</option>
           <option value="4">Need Exchange</option>
           <option value="5">Under Installation</option>
@@ -116,7 +116,7 @@ disabled ={!checked}
             Select Status
           </option>
           <option value="1">Active</option>
-          <option value="2">Inactive Visit</option>
+          <option value="2">Inactive</option>
           <option value="3">Need Repair</option>
           <option value="4">Need Exchange</option>
           <option value="5">Under Installation</option>
