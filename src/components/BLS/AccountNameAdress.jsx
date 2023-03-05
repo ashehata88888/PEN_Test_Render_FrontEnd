@@ -10,15 +10,24 @@ import
   updateBl_Id	,
   updateBu_Id	, 
   updateAccount_Type_Id	,
-  updateAccount_Id
+  updateAccount_Id,
+  
 } from "../../store/index" 
 
-export default function AccountNameAdress() {
-  const [accountName, setAccountName] = useState([]);
-  const [accountArea, setAccountArea] = useState("");
 
-  const [accountType, setAccountType] = useState(0);
-  const [accountId, setAccountId] = useState(0);
+export default function AccountNameAdress() {
+
+  const globalState = useSelector((state)=> state)
+  const dispatch = useDispatch()
+
+  const [accountName, setAccountName] = useState([]);
+ 
+
+  const [accountType, setAccountType] = useState(globalState.marketPotentials.account_type_id);
+  const [accountId, setAccountId] = useState(globalState.marketPotentials.account_id);
+
+
+
 
   const [alret, setAlert] = useState("");
   const [errActivitySelectType, setErrActivitySelectType] = useState(false);
@@ -30,14 +39,19 @@ export default function AccountNameAdress() {
   const [clickedAccountName, setclickedAccountName] = useState("");
   const [mainIndex, setMainIndex] = useState(0);
 
+
+  // let defaultAccountArea = accountName[accountId]["account_area"]
+
+  const [accountArea, setAccountArea] = useState("");
+
+  
   const accountNameRef = useRef(null);
 
   const userData = JSON.parse(useContext(UserContext));
   const key = userData.id;
   console.log(userData);
 
-  const globalState = useSelector((state)=> state)
-  const dispatch = useDispatch()
+
 
   const testDispatch = ()=>dispatch(updateUser_Id(key))
   testDispatch()
@@ -141,6 +155,7 @@ export default function AccountNameAdress() {
     dispatch(updateAccount_Id(index))
 
     setAccountArea(accountName[index].account_area);
+
   };
 
   console.log(accountArea);
@@ -169,7 +184,10 @@ export default function AccountNameAdress() {
     <div>ِAccouin Type ID is : {globalState.marketPotentials.account_type_id}</div>
     <div>ِAccouin Name ID is : {globalState.marketPotentials.account_id}</div>
     <div>Neuro_Surgery Number is : {globalState.marketPotentials.neuro_surgery}</div>
-
+    <div> Gynecology No./Month is : {globalState.marketPotentials.gynecology}</div>
+    <div> Urology  is : {globalState.marketPotentials.urology}</div>
+     
+     
       <br />
 
       <label className={`${hTabs.labels} `}>Account Type</label>
@@ -179,6 +197,7 @@ export default function AccountNameAdress() {
         className={`${
           errAccountType ? hTabs.dropDownErr : hTabs.dropDownList
         } `}
+        value={accountType}
         id="activityType"
         name="activityType"
         onChange={accountTypeOnChange}
