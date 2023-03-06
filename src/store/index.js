@@ -28,6 +28,8 @@ const marketDataSlice = createSlice({
       bu_id: 0,
       account_type_id: 0,
       account_id: 0,
+      account_name: "",
+      account_area: "",
       knee_replacement: 0,
       hip_replacement: 0,
       number_of_operation_rooms: 0,
@@ -130,6 +132,8 @@ const marketDataSlice = createSlice({
     updateBu_Id: (state, action) => { state.marketPotentials.bu_id = action.payload },
     updateAccount_Type_Id: (state, action) => { state.marketPotentials.account_type_id = action.payload },
     updateAccount_Id: (state, action) => { state.marketPotentials.account_id = action.payload },
+    updateAccount_Name: (state, action) => { state.marketPotentials.account_name = action.payload },
+    updateAccount_Area: (state, action) => { state.marketPotentials.account_area = action.payload },
     updateKnee_Replacement: (state, action) => { state.marketPotentials.knee_replacement = action.payload },
     updateHip_Replacement: (state, action) => { state.marketPotentials.hip_replacement = action.payload },
     updateNumber_Of_Operation_Rooms: (state, action) => { state.marketPotentials.number_of_operation_rooms = action.payload },
@@ -229,6 +233,8 @@ export const {
   updateBu_Id,
   updateAccount_Type_Id,
   updateAccount_Id,
+  updateAccount_Name,
+  updateAccount_Area,
   updateKnee_Replacement,
   updateHip_Replacement,
   updateNumber_Of_Operation_Rooms,
@@ -336,6 +342,8 @@ store.dispatch(updateBl_Id())
 store.dispatch(updateBu_Id())
 store.dispatch(updateAccount_Type_Id())
 store.dispatch(updateAccount_Id())
+store.dispatch(updateAccount_Name())
+store.dispatch(updateAccount_Area())
 store.dispatch(updateKnee_Replacement())
 store.dispatch(updateHip_Replacement())
 store.dispatch(updateNumber_Of_Operation_Rooms())

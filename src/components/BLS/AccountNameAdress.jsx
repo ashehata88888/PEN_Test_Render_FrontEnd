@@ -11,7 +11,8 @@ import
   updateBu_Id	, 
   updateAccount_Type_Id	,
   updateAccount_Id,
-  
+  updateAccount_Name,
+  updateAccount_Area
 } from "../../store/index" 
 
 
@@ -88,7 +89,7 @@ export default function AccountNameAdress() {
 
     console.log("index of maping the :", index);
 
-    dispatch(updateAccount_Id(index))
+   
 
     // console.log('index of Map is ', mapIndex)
     // console.log("index of account name itself : ",i)
@@ -97,13 +98,18 @@ export default function AccountNameAdress() {
     // console.log("account name index for area Test ", accountName[3].id)
 
     setAccountArea(accountName[index].account_area);
+    dispatch(updateAccount_Area(accountName[index].account_area))
 
     setAccountId(accountName[index].id);
+
+    dispatch(updateAccount_Id(accountName[index].id))
+
     setErrAccountName(false);
   };
 
   const onSearch = (searchTerm) => {
     setAccountNameValue(searchTerm);
+    dispatch(updateAccount_Name(searchTerm))
     // setclickedAccountName(searchTerm)
     // our api to fetch the search result
     console.log("search ", searchTerm);
@@ -132,9 +138,12 @@ export default function AccountNameAdress() {
   const accountNamehandleChange = (event) => {
     // (event.target.value)
     // setAccountArea = (event){
+      // setAccountNameValue(event.target.value);
     const selectedValue = event.target.value;
-    setAccountId(event.target.value);
+    // setAccountId(event.target.value);
     setErrAccountName(false);
+
+    console.log("account name value selected",selectedValue)
 
     //
     //
@@ -155,19 +164,14 @@ export default function AccountNameAdress() {
     dispatch(updateAccount_Id(index))
 
     setAccountArea(accountName[index].account_area);
-
+    const accountAreaVlue = accountName[globalState.account_id].account_area
+    accountArea(accountAreaVlue)
+    dispatch(updateAccount_Area(accountAreaVlue))
+    console.log("accountAreaVlue is ");
   };
 
-  console.log(accountArea);
+  
 
-  const activityTypehandleChange = (event) => {
-    const value = event.target.value;
-    setActivityTypeValue(value);
-    setErrActivitySelectType(false);
-
-    setActivityType(value);
-    console.log(value);
-  };
 
   const accountNameOnClick = (event) => {};
 
@@ -178,15 +182,17 @@ export default function AccountNameAdress() {
   };
   return (
     <>
-    <div>User ID is : {globalState.marketPotentials.user_id}</div>
+    {/* <div>User ID is : {globalState.marketPotentials.user_id}</div>
     <div>BL ID is : {globalState.marketPotentials.bl_id}</div>
     <div>BU ID is : {globalState.marketPotentials.bu_id}</div>
     <div>ِAccouin Type ID is : {globalState.marketPotentials.account_type_id}</div>
     <div>ِAccouin Name ID is : {globalState.marketPotentials.account_id}</div>
+    <div>ِAccouin Name Vlaue is : {globalState.marketPotentials.account_name}</div>
+    <div>ِAccouin Name Area is : {globalState.marketPotentials.account_area}</div>
     <div>Neuro_Surgery Number is : {globalState.marketPotentials.neuro_surgery}</div>
     <div> Gynecology No./Month is : {globalState.marketPotentials.gynecology}</div>
     <div> Urology  is : {globalState.marketPotentials.urology}</div>
-     
+      */}
      
       <br />
 
@@ -220,7 +226,8 @@ export default function AccountNameAdress() {
           errAccountName ? hTabs.dropDownErr : hTabs.inputNameList
         } `}
         type="text"
-        value={accountNameValue}
+        value={globalState.marketPotentials.account_name}
+        // accountNameInputOnChange
         onChange={accountNameInputOnChange}
         onClick={accountNameOnClick}
         ref={accountNameRef}
@@ -268,7 +275,8 @@ export default function AccountNameAdress() {
         disabled
         className={`${hTabs.adress_text_Box}`}
         type="text"
-        value={accountArea}
+        value={globalState.marketPotentials.account_area}
+    
       ></input>
       <br />
     </>
