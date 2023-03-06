@@ -11,6 +11,7 @@ import { styled } from "@mui/material/styles";
 // import { Hidden } from "@mui/material";
 // import PreLoader3 from "../Loading/PreLoader3";
 import CheckCompetitor from "./ReusableComponents/CheckCompetitor";
+import { updateSupplier_id } from "../../store/index";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -76,6 +77,7 @@ class MarketSizeRow extends Component {
     ],
   };
 
+    
   componentDidMount() {
     const BL = this.state.userData.bl1_id;
     const supllierID = this.state.supplierId;
@@ -90,6 +92,8 @@ class MarketSizeRow extends Component {
         const newData = await response.json();
         //    setSupplierName(newData);
         console.log("supplier data inside fetch method", [...newData]);
+
+        console.log("useSelector Testing ",this.props.globalState.marketPotentials.user_id)
         this.setState({ suppliers: [...newData] });
       });
     };
@@ -102,6 +106,7 @@ class MarketSizeRow extends Component {
     const BL = this.state.userData.bl1_id;
     const supKey = event.target.value;
     this.setState({ supplierId: supKey });
+    this.props.dispatch(updateSupplier_id(event.target.value))
     const pFresponse = async () => {
       fetch("http://localhost:7000/api/product_families/names/" + supKey, {
         method: "GET",
@@ -289,7 +294,9 @@ e.preventDefault()
     console.log("suppliers from MarketSizeRow", this.state.suppliers);
     return (
       <div idProp={this.state.id}
+ 
         style={{
+          store: JSON.parse(this.props.uContext),
           marginTop: "60px",
           zIndex: "500",
           height: "1fr",
@@ -299,12 +306,15 @@ e.preventDefault()
           width: "80%",
         }}
       >
+
+<div> Testing dispatch function Supplier Id is :{this.props.globalState.marketSize.supplier_id}</div>
+     
         <div className={hTabs.productBox}>
           <label className={hTabs.minLable}>Supplier</label>
           <select
             name="supplier"
             //   value={data.supplier}
-
+          
             className={
               // errSupplier
               //   ? hTabs.dropDownPErr

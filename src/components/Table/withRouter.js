@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../components/BLS/Home.jsx';
 import { React , useContext,useState} from 'react';
+import {useSelector,useDispatch} from "react-redux";
 
 
 export const withRouter = (Component) => {
@@ -8,6 +9,9 @@ export const withRouter = (Component) => {
     const navigate = useNavigate();
     const uContext = useContext(UserContext)
     const uState = useState()
+
+    const globalState = useSelector((state)=> state)
+    const dispatch = useDispatch()
   
 //   const userData = JSON.parse(uContext)
 
@@ -21,6 +25,8 @@ export const withRouter = (Component) => {
         navigate={navigate}
         uContext={uContext}
         uState = {uState}
+        globalState = {globalState}
+        dispatch = {dispatch}
         {...props}
         />
     );

@@ -186,7 +186,7 @@ export default function LabTabsMarket({
   // change
 
   // marketSizeRowsColne.filter((_,inx) => inx !== 2)
-  marketSizeRowsColne.splice(lastInx,1);
+  marketSizeRows.length > 1 && marketSizeRowsColne.splice(lastInx,1);
 
 
   console.log("marketSizeRowsColne,,,,,,,",  [marketSizeRowsColne] );
