@@ -109,8 +109,6 @@ const marketDataSlice = createSlice({
       product_family_id: 0,
       item_group_id: 0,
       market_potential_id: 0,
-
-
       marketSizeRecords: [{
         marketSizeRecordsID: 0,
         egmed_consumption: 0,

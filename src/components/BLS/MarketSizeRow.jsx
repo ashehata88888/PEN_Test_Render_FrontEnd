@@ -61,7 +61,7 @@ class MarketSizeRow extends Component {
     suppliers: [],
     productFamilies: [],
     itemGroups: [],
-    supplierId: 0,
+    supplierId: this.props.globalState.marketSize[0].supplier_id,
     productFamilyId: 0,
     selectedMarketSizeRow:0,
     competitors: [
@@ -101,14 +101,16 @@ class MarketSizeRow extends Component {
   }
 
   //    fetchData();
+  
 
   supplieronCahngeHandler = (event, _index) => {
     const BL = this.state.userData.bl1_id;
     const supKey = event.target.value;
     this.setState({ supplierId: supKey });
     this.props.dispatch(updateSupplier_id(event.target.value))
+    console.log("test this.state.supplierId ",this.state.supplierId )
     const pFresponse = async () => {
-      fetch("http://localhost:7000/api/product_families/names/" + supKey, {
+      fetch("http://localhost:7000/api/product_families/names/" + supKey , {
         method: "GET",
         headers: new Headers({
           Authorization: "bearer " + this.state.userData.token,
@@ -119,8 +121,26 @@ class MarketSizeRow extends Component {
         //    setProductFamily(newPFData);
         this.setState({ productFamilies: [...newPFData] });
       });
+      console.log("pFresponse() was called")
     };
-    pFresponse();
+    const pFresponseGS = async () => {
+      fetch("http://localhost:7000/api/product_families/names/" + this.state.supplierId , {
+        method: "GET",
+        headers: new Headers({
+          Authorization: "bearer " + this.state.userData.token,
+          "Content-Type": "application/x-www-form-urlencoded",
+        }),
+      }).then(async (pFresponse) => {
+        const newPFData = await pFresponse.json();
+        //    setProductFamily(newPFData);
+        this.setState({ productFamilies: [...newPFData] });
+      });
+      console.log("pFresponseGS() was called")
+    };
+
+    this.state.supplierId == undefined ? pFresponse()  :  pFresponseGS() ;
+
+    // (this.state.supplierId != undefined || this.state.supplierId != null) &&  pFresponseGS() ;
 
     const fetchCompetitors = async () => {
       console.log("BL is ......,", BL);
@@ -307,14 +327,14 @@ e.preventDefault()
         }}
       >
 
-<div> Testing dispatch function Supplier Id is :{this.props.globalState.marketSize.supplier_id}</div>
+<div> Testing dispatch function Supplier Id is :{this.props.globalState.marketSize[0].supplier_id}</div>
      
         <div className={hTabs.productBox}>
           <label className={hTabs.minLable}>Supplier</label>
           <select
             name="supplier"
             //   value={data.supplier}
-          
+          value={this.state.supplierId}
             className={
               // errSupplier
               //   ? hTabs.dropDownPErr
@@ -323,9 +343,10 @@ e.preventDefault()
             }
             //   id={index}
             onChange={(event) => this.handleFormChangeProductCall(event, 0)}
+            // onSelected ={(event) => this.handleFormChangeProductCall(event, 0)}
             //   ref={eSupplierRef}
           >
-            <option value="0" hidden>
+            <option value="0" >
               Select Supplier
             </option>
             {this.state.suppliers &&
@@ -345,6 +366,7 @@ e.preventDefault()
             name="productFamily"
             //   value={data.productFamily}
             onChange={(event) => this.handleFormChangeProductCall(event, 0)}
+            onClick ={this.state.suppliers.length === 1 ? (event)=> this.handleFormChangeProductCall(event, 0):""}
             // id={`${0}PF1`}
             //   ref={ePFRef}
           >
