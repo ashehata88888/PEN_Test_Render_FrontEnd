@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { cloneElement, Component } from "react";
 import hTabs from "./hTabs.module.css";
 import { withRouter } from "../Table/withRouter";
 
@@ -57,13 +57,12 @@ class MarketSizeRow extends Component {
   }
   state = {
     userData: JSON.parse(this.props.uContext),
-    id:0,
+    id: 0,
     suppliers: [],
     productFamilies: [],
     itemGroups: [],
     supplierId: this.props.globalState.marketSize[0].supplier_id,
-    productFamilyId: 0,
-    selectedMarketSizeRow:0,
+    selectedMarketSizeRow: 0,
     competitors: [
       // { id: 1, name: "EGMED" },
       // { id: 2, name: "Okla" },
@@ -75,9 +74,28 @@ class MarketSizeRow extends Component {
       // { id: 8, name: "Okla" },
       // { id: 9, name: "Mokla" },
     ],
+    marketSize: [{}],
   };
 
-    
+  // marketSizeRowID: 0,
+  // supplier_id: 0,
+  // product_family_id: 0,
+  // item_group_id: 0,
+  // market_potential_id: 0,
+  // marketSizeRecords: [
+  //   {
+  //     marketSizeRecordsID: 0,
+  //     egmed_consumption: 0,
+  //     total_consumption: 0,
+  //     competitor_id: 0,
+  //     item_qty1: 0,
+  //     item_status1: 0,
+  //     item_qty2: 0,
+  //     item_status2: 0,
+  //     market_size_id: 0,
+  //   },
+  // ],
+
   componentDidMount() {
     const BL = this.state.userData.bl1_id;
     const supllierID = this.state.supplierId;
@@ -93,7 +111,10 @@ class MarketSizeRow extends Component {
         //    setSupplierName(newData);
         console.log("supplier data inside fetch method", [...newData]);
 
-        console.log("useSelector Testing ",this.props.globalState.marketPotentials.user_id)
+        console.log(
+          "useSelector Testing ",
+          this.props.globalState.marketPotentials.user_id
+        );
         this.setState({ suppliers: [...newData] });
       });
     };
@@ -101,16 +122,75 @@ class MarketSizeRow extends Component {
   }
 
   //    fetchData();
-  
 
-  supplieronCahngeHandler = (event, _index) => {
+  supplieronChangeHandler = (event, index) => {
     const BL = this.state.userData.bl1_id;
     const supKey = event.target.value;
     this.setState({ supplierId: supKey });
-    this.props.dispatch(updateSupplier_id(event.target.value))
-    console.log("test this.state.supplierId ",this.state.supplierId )
+
+    // // clone
+    // let items = [...this.state.marketSize]
+    // let targetItem = [items,this.state.marketSize[index].supplier_id]
+
+    // // change
+    // targetItem = event.target.value
+
+    // set
+
+    // this.setState({marketSize : targetItem})
+
+    let newelement = [{
+      marketSizeRowID: 0,
+      supplier_id: parseInt(event.target.value),
+      product_family_id: 0,
+      item_group_id: 0,
+      market_potential_id: 0,
+      marketSizeRecords: [
+        {
+          marketSizeRecordsID: 0,
+          egmed_consumption: 0,
+          total_consumption: 0,
+          competitor_id: 0,
+          item_qty1: 0,
+          item_status1: 0,
+          item_qty2: 0,
+          item_status2: 0,
+          market_size_id: 0,
+        },
+      ],
+    }];
+
+    this.props.marketSizeData(newelement)
+    //  this.state.marketSize.map(
+
+    //   (obj,inx) => (inx === this.props.idprop ? Object.assign(obj, { supplier_id : parseInt(event.target.value) }) : obj)
+    // )
+
+    this.setState({
+      marketSize: [...this.state.marketSize, newelement],
+    });
+
+    //     this.setState(prevState => ({
+
+    //       marketSize: prevState.marketSize.map(
+
+    //     (obj,inx) => (inx === this.props.idprop ? Object.assign(obj, { supplier_id : parseInt(event.target.value) }) : obj)
+    //   )
+    // }));
+
+    // console.log("this.props.idprop ",this.props.idprop)
+    // this.setState((prevState) => {
+    //   return {
+    //     marketSize: [...prevState.marketSize,prevState.marketSize[index].supplier_id = parseInt(event.target.value)]
+    //   };
+    // });
+
+    console.log("test this.state.marketSize ", [...this.state.marketSize]);
+
+    this.props.dispatch(updateSupplier_id(event.target.value));
+
     const pFresponse = async () => {
-      fetch("http://localhost:7000/api/product_families/names/" + supKey , {
+      fetch("http://localhost:7000/api/product_families/names/" + supKey, {
         method: "GET",
         headers: new Headers({
           Authorization: "bearer " + this.state.userData.token,
@@ -121,24 +201,28 @@ class MarketSizeRow extends Component {
         //    setProductFamily(newPFData);
         this.setState({ productFamilies: [...newPFData] });
       });
-      console.log("pFresponse() was called")
+      console.log("pFresponse() was called");
     };
     const pFresponseGS = async () => {
-      fetch("http://localhost:7000/api/product_families/names/" + this.state.supplierId , {
-        method: "GET",
-        headers: new Headers({
-          Authorization: "bearer " + this.state.userData.token,
-          "Content-Type": "application/x-www-form-urlencoded",
-        }),
-      }).then(async (pFresponse) => {
+      fetch(
+        "http://localhost:7000/api/product_families/names/" +
+          this.state.supplierId,
+        {
+          method: "GET",
+          headers: new Headers({
+            Authorization: "bearer " + this.state.userData.token,
+            "Content-Type": "application/x-www-form-urlencoded",
+          }),
+        }
+      ).then(async (pFresponse) => {
         const newPFData = await pFresponse.json();
         //    setProductFamily(newPFData);
         this.setState({ productFamilies: [...newPFData] });
       });
-      console.log("pFresponseGS() was called")
+      console.log("pFresponseGS() was called");
     };
 
-    this.state.supplierId == undefined ? pFresponse()  :  pFresponseGS() ;
+    this.state.supplierId == undefined ? pFresponse() : pFresponseGS();
 
     // (this.state.supplierId != undefined || this.state.supplierId != null) &&  pFresponseGS() ;
 
@@ -201,12 +285,12 @@ class MarketSizeRow extends Component {
     // // let elementC = document.getElementById(``)
     // element.setAttribute("style", "background-color : none;")
     if (event.target.name === "supplier") {
-      this.supplieronCahngeHandler(event);
+      this.supplieronChangeHandler(event, index);
       let element = document.getElementById(`${index}`);
       element?.setAttribute("style", "background-color : none;");
 
-      let dataP = [...this.state.suppliers];
-      dataP[index]["supplier"] = event.target.value;
+      // let dataP = [...this.state.suppliers];
+      // dataP[index]["supplier"] = event.target.value;
     } else if (event.target.name === "productFamily") {
       this.ProductFamilyOnCahngeHandler(event);
       let element = document.getElementById(`${index}PF`);
@@ -301,20 +385,20 @@ class MarketSizeRow extends Component {
     }
   };
 
-  deleteMarketRow=(e,idProp)=>{
-e.preventDefault()
-    this.setState({selectedMarketSizeRow : idProp})
-  console.log(" Deletbtn value" , idProp)
+  deleteMarketRow = (e, idprop) => {
+    e.preventDefault();
+    this.setState({ selectedMarketSizeRow: idprop });
+    console.log(" Deletbtn value", idprop);
 
-  localStorage.setItem('selectedMarketSizeRow', JSON.stringify(idProp));
-
-  }
+    localStorage.setItem("selectedMarketSizeRow", JSON.stringify(idprop));
+  };
 
   render() {
     console.log("suppliers from MarketSizeRow", this.state.suppliers);
+
     return (
-      <div idProp={this.state.id}
- 
+      <div
+        idprop={this.state.id}
         style={{
           store: JSON.parse(this.props.uContext),
           marginTop: "60px",
@@ -322,19 +406,18 @@ e.preventDefault()
           height: "1fr",
           overflowY: "auto",
           border: "1px solid #ebe5e5 ",
-          borderRadius:"5px",
+          borderRadius: "5px",
           width: "80%",
         }}
       >
+        <div> Testing idprop Supplier Id is :{this.props.idprop}</div>
 
-<div> Testing dispatch function Supplier Id is :{this.props.globalState.marketSize[0].supplier_id}</div>
-     
         <div className={hTabs.productBox}>
           <label className={hTabs.minLable}>Supplier</label>
           <select
             name="supplier"
             //   value={data.supplier}
-          value={this.state.supplierId}
+            // value={}
             className={
               // errSupplier
               //   ? hTabs.dropDownPErr
@@ -342,13 +425,13 @@ e.preventDefault()
               hTabs.productBoxSelect
             }
             //   id={index}
-            onChange={(event) => this.handleFormChangeProductCall(event, 0)}
+            onChange={(event) =>
+              this.handleFormChangeProductCall(event, this.props.idprop)
+            }
             // onSelected ={(event) => this.handleFormChangeProductCall(event, 0)}
             //   ref={eSupplierRef}
           >
-            <option value="0" >
-              Select Supplier
-            </option>
+            <option value="0">Select Supplier</option>
             {this.state.suppliers &&
               this.state.suppliers.length > 0 &&
               this.state.suppliers.map((userObj, index) => (
@@ -366,7 +449,11 @@ e.preventDefault()
             name="productFamily"
             //   value={data.productFamily}
             onChange={(event) => this.handleFormChangeProductCall(event, 0)}
-            onClick ={this.state.suppliers.length === 1 ? (event)=> this.handleFormChangeProductCall(event, 0):""}
+            onClick={
+              this.state.suppliers.length === 1
+                ? (event) => this.handleFormChangeProductCall(event, 0)
+                : ""
+            }
             // id={`${0}PF1`}
             //   ref={ePFRef}
           >
@@ -383,10 +470,15 @@ e.preventDefault()
           </select>
         </div>
 
-        <span style={{visiblity: "hidden"}}>
-        {/* className={hTabs.deleteFamilyBtn} */}
-          <button className={hTabs.deleteFamilyBtn} onClick={(e)=>this.deleteMarketRow(e,this.props.idProp)}>-</button>
-        </span>  
+        <span style={{ visiblity: "hidden" }}>
+          {/* className={hTabs.deleteFamilyBtn} */}
+          <button
+            className={hTabs.deleteFamilyBtn}
+            onClick={(e) => this.deleteMarketRow(e, this.props.idprop)}
+          >
+            -
+          </button>
+        </span>
         <div className={hTabs.accordionContainer}>
           {this.state.itemGroups.map((userObj, index) => (
             <Accordion

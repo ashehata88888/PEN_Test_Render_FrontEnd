@@ -68,7 +68,7 @@
 
 //   }, [])
 
-//   const supplieronCahngeHandler = (event, _index) => {
+//   const supplieronChangeHandler = (event, _index) => {
 //     const supKey = event.target.value
 //     setSupplierId(supKey)
 //     //console.log(supKey)
@@ -117,57 +117,57 @@
 
 //     if (event.target.name === 'supplier' && indexFromParent === 0) {
 
-//             supplieronCahngeHandler(event)
+//             supplieronChangeHandler(event)
 //         let dataP = [...valP]
 //         dataP[0]['supplier'] = event.target.value
 //     }
 //     if (event.target.name === 'supplier' && indexFromParent === 1){
-//       supplieronCahngeHandler(event)
+//       supplieronChangeHandler(event)
 //       let dataP = [...valP]
 //       dataP[1]['supplier'] = event.target.value
 //     }
 //     if (event.target.name === 'supplier' && indexFromParent === 2){
-//         supplieronCahngeHandler(event)
+//         supplieronChangeHandler(event)
 //         let dataP = [...valP]
 //         dataP[2]['supplier'] = event.target.value
 //       }
 //       if (event.target.name === 'supplier' && indexFromParent === 3){
-//           supplieronCahngeHandler(event)
+//           supplieronChangeHandler(event)
 //           let dataP = [...valP]
 //           dataP[3]['supplier'] = event.target.value
 //         }
 //         if (event.target.name === 'supplier' && indexFromParent === 4){
-//             supplieronCahngeHandler(event)
+//             supplieronChangeHandler(event)
 //             let dataP = [...valP]
 //             dataP[4]['supplier'] = event.target.value
 //           }
 //           if (event.target.name === 'supplier' && indexFromParent === 5){
-//               supplieronCahngeHandler(event)
+//               supplieronChangeHandler(event)
 //               let dataP = [...valP]
 //               dataP[5]['supplier'] = event.target.value
 //             }
 //             if (event.target.name === 'supplier' && indexFromParent === 6){
-//                 supplieronCahngeHandler(event)
+//                 supplieronChangeHandler(event)
 //                 let dataP = [...valP]
 //                 dataP[6]['supplier'] = event.target.value
 //               }
 //               if (event.target.name === 'supplier' && indexFromParent === 7){
-//                   supplieronCahngeHandler(event)
+//                   supplieronChangeHandler(event)
 //                   let dataP = [...valP]
 //                   dataP[7]['supplier'] = event.target.value
 //                 }
 //                 if (event.target.name === 'supplier' && indexFromParent === 8){
-//                     supplieronCahngeHandler(event)
+//                     supplieronChangeHandler(event)
 //                     let dataP = [...valP]
 //                     dataP[8]['supplier'] = event.target.value
 //                   }
 //                   if (event.target.name === 'supplier' && indexFromParent === 9){
-//                       supplieronCahngeHandler(event)
+//                       supplieronChangeHandler(event)
 //                       let dataP = [...valP]
 //                       dataP[9]['supplier'] = event.target.value
 //                     }
 //                     if (event.target.name === 'supplier' && indexFromParent === 10){
-//                         supplieronCahngeHandler(event)
+//                         supplieronChangeHandler(event)
 //                         let dataP = [...valP]
 //                         dataP[10]['supplier'] = event.target.value
 

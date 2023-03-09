@@ -380,7 +380,7 @@ export default function CustomizedAccordions({
     fetchData();
   }, []);
 
-  const supplieronCahngeHandler = (event, _index) => {
+  const supplieronChangeHandler = (event, _index) => {
     const supKey = event.target.value;
     setSupplierId(supKey);
     const pFresponse = async () => {
@@ -431,7 +431,7 @@ export default function CustomizedAccordions({
     // // let elementC = document.getElementById(``)
     // element.setAttribute("style", "background-color : none;")
     if (event.target.name === "supplier") {
-      supplieronCahngeHandler(event);
+      supplieronChangeHandler(event);
       let element = document.getElementById(`${index}`);
       element?.setAttribute("style", "background-color : none;");
 

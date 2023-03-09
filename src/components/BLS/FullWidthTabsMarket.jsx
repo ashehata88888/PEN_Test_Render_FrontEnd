@@ -66,6 +66,8 @@ export default function LabTabsMarket({
   const [marketSizeRows, setMarketSizeRows] = useState([
   ]);
 
+  const [marketSizeData, setmarketSizeData] = useState([])
+
   // setCountFullWToVTabs(countCustAccorToFullW)
   const childRef = useRef(null);
 
@@ -75,6 +77,27 @@ export default function LabTabsMarket({
   const [count, setCount] = useState(0);
   const [delCount, setDelCount] = useState(0);
   const [saveCount, setSaveCount] = useState(0);
+
+  const [newelement,setNewelement] = useState([{
+    marketSizeRowID: 0,
+    supplier_id: 0,
+    product_family_id: 0,
+    item_group_id: 0,
+    market_potential_id: 0,
+    marketSizeRecords: [
+      {
+        marketSizeRecordsID: 0,
+        egmed_consumption: 0,
+        total_consumption: 0,
+        competitor_id: 0,
+        item_qty1: 0,
+        item_status1: 0,
+        item_qty2: 0,
+        item_status2: 0,
+        market_size_id: 0,
+      },
+    ],
+  }]);
 
   const userData = JSON.parse(useContext(UserContext));
   const key = userData.id;
@@ -149,18 +172,22 @@ export default function LabTabsMarket({
 
   //   childRef.current.childFunction2();
   // };
+ const testSave = (e) => {
+  // setNewelement([...marketSizeData,newelement ])
+  console.log("marketSizeData",marketSizeData)
+ }
 
  
 
   const addMarketFamilyOnClick = (event) => {
     // event.preventDefault();
 
-    setIndexCount(indexCount + 1);
+    let index = marketSizeRows.length
 
     console.log("add new family button was pressed");
     setMarketSizeRows([
       ...marketSizeRows,
-      <MarketSizeRow idProp={indexCount} key={indexCount} />,
+      <MarketSizeRow idprop={index} key={index} marketSizeData={setmarketSizeData}/>,
     ]);
     console.log("add new family button was pressed");
   };
@@ -207,14 +234,14 @@ export default function LabTabsMarket({
 //     let marketSizeRowsColne = [...marketSizeRows];
 //     // index
 //     //  marketSizeRowsColne.findIndex(e => e === "tc_001")
-// // let idProp =  JSON.parse(localStorage.getItem('selectedMarketSizeRow'));
+// // let idprop =  JSON.parse(localStorage.getItem('selectedMarketSizeRow'));
 
-// // console.log('props from fullwidth is ',idProp)
+// // console.log('props from fullwidth is ',idprop)
    
 
 //     // let index = marketSizeRowsColne.findIndex((inx)=>{
 //     //   console.log("find index key is ",inx.key)
-//     //   return inx.key == idProp;
+//     //   return inx.key == idprop;
 //     // })
 //     // console.log("index in find index key is ",index)
 //     // let lastInx =  marketSizeRowsColne.length - 1;
@@ -393,7 +420,7 @@ export default function LabTabsMarket({
 
               {marketSizeRows.map((obj, inx ) =>(
                 
-              <div key={inx}  idProp={inx}>             
+              <div key={inx}  idprop={inx}>             
                  {obj}
                 </div>
               
@@ -443,7 +470,7 @@ export default function LabTabsMarket({
               <button
                 className={hTabs.saveBtn}
                 id="saveMarketData"
-                // onClick={(event) => deleteMarketFamilyonClick(event)}
+                onClick={(event) => testSave(event)}
 
                 // marketSaveonClick(event)}
               >
