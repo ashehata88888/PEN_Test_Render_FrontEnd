@@ -56,6 +56,7 @@ class MarketSizeRow extends Component {
     super(props);
   }
   state = {
+    openId:0,
     userData: JSON.parse(this.props.uContext),
     id: 0,
     suppliers: [],
@@ -63,6 +64,7 @@ class MarketSizeRow extends Component {
     itemGroups: [],
     supplierId: this.props.globalState.marketSize[0].supplier_id,
     selectedMarketSizeRow: 0,
+    expanded: `panel0`,
     competitors: [
       // { id: 1, name: "EGMED" },
       // { id: 2, name: "Okla" },
@@ -74,7 +76,32 @@ class MarketSizeRow extends Component {
       // { id: 8, name: "Okla" },
       // { id: 9, name: "Mokla" },
     ],
-    marketSize: [{}],
+    marketSize: {
+      marketSizeRowID: this.props.idprop,
+      supplier_id: 0,
+      product_family_id: 0,
+      item_group_id: 0,
+      market_potential_id: 0,
+      marketSizeRecords: [
+        {
+          marketSizeRecordsID: 0,
+          egmed_consumption: 0,
+          total_consumption: 0,
+          competitor_id: 0,
+          item_qty1: 0,
+          item_status1: 0,
+          item_qty2: 0,
+          item_status2: 0,
+          market_size_id: 0,
+        },
+      ]
+    }
+  };
+
+
+
+  selectOpen = openId => {
+    this.setState({ openId });
   };
 
   // marketSizeRowID: 0,
@@ -121,12 +148,33 @@ class MarketSizeRow extends Component {
     fetchData();
   }
 
+  accorhandleChange = (panel) => (event, newExpanded) => {
+    this.setState({ expanded: (newExpanded ? panel : true) })
+  };
+
   //    fetchData();
 
   supplieronChangeHandler = (event, index) => {
     const BL = this.state.userData.bl1_id;
     const supKey = event.target.value;
-    this.setState({ supplierId: supKey });
+
+    this.setState(prevState => ({
+      marketSize: {
+        ...prevState.marketSize,           // copy all other key-value pairs of food object
+        supplier_id: event.target.value         // update value of specific key
+      }
+    }))
+
+
+    // this.setState({ marketSize : marketSize.supplier_id = supKey });
+
+
+
+    // console.log("supplier id test ",this.state.marketSize.supplier_id)
+
+
+    // this.props.marketSizeData(this.state.marketSize)
+
 
     // // clone
     // let items = [...this.state.marketSize]
@@ -139,36 +187,38 @@ class MarketSizeRow extends Component {
 
     // this.setState({marketSize : targetItem})
 
-    let newelement = [{
-      marketSizeRowID: 0,
-      supplier_id: parseInt(event.target.value),
-      product_family_id: 0,
-      item_group_id: 0,
-      market_potential_id: 0,
-      marketSizeRecords: [
-        {
-          marketSizeRecordsID: 0,
-          egmed_consumption: 0,
-          total_consumption: 0,
-          competitor_id: 0,
-          item_qty1: 0,
-          item_status1: 0,
-          item_qty2: 0,
-          item_status2: 0,
-          market_size_id: 0,
-        },
-      ],
-    }];
+    // let newelement = [{
+    //   marketSizeRowID: 0,
+    //   supplier_id: parseInt(event.target.value),
+    //   product_family_id: 0,
+    //   item_group_id: 0,
+    //   market_potential_id: 0,
+    //   marketSizeRecords: [
+    //     {
+    //       marketSizeRecordsID: 0,
+    //       egmed_consumption: 0,
+    //       total_consumption: 0,
+    //       competitor_id: 0,
+    //       item_qty1: 0,
+    //       item_status1: 0,
+    //       item_qty2: 0,
+    //       item_status2: 0,
+    //       market_size_id: 0,
+    //     },
+    //   ],
+    // }];
 
-    this.props.marketSizeData(newelement)
+
     //  this.state.marketSize.map(
 
     //   (obj,inx) => (inx === this.props.idprop ? Object.assign(obj, { supplier_id : parseInt(event.target.value) }) : obj)
     // )
 
-    this.setState({
-      marketSize: [...this.state.marketSize, newelement],
-    });
+
+    // this.setState({
+    //   marketSize: [...this.state.marketSize, newelement],
+    // });
+
 
     //     this.setState(prevState => ({
 
@@ -185,9 +235,9 @@ class MarketSizeRow extends Component {
     //   };
     // });
 
-    console.log("test this.state.marketSize ", [...this.state.marketSize]);
+    // console.log("test this.state.marketSize ", [...this.state.marketSize]);
 
-    this.props.dispatch(updateSupplier_id(event.target.value));
+    // this.props.dispatch(updateSupplier_id(event.target.value));
 
     const pFresponse = async () => {
       fetch("http://localhost:7000/api/product_families/names/" + supKey, {
@@ -206,7 +256,7 @@ class MarketSizeRow extends Component {
     const pFresponseGS = async () => {
       fetch(
         "http://localhost:7000/api/product_families/names/" +
-          this.state.supplierId,
+        this.state.supplierId,
         {
           method: "GET",
           headers: new Headers({
@@ -250,9 +300,26 @@ class MarketSizeRow extends Component {
 
   ProductFamilyOnCahngeHandler = (event, index) => {
     const pFKey = event.target.value;
+    // this.setState({product_family_id : pFKey })
     console.log("product Family id from marketsize Row", pFKey);
     // setproductFamilyId(pFKey);
     // this.setState({ productFamilies: [...pFKey] });
+
+    // if(this.state.marketSize.supplier_id != 0 &&
+    //   this.state.marketSize.product_family_id != 0){
+    this.setState(prevState => ({
+      marketSize: {
+        ...prevState.marketSize,           // copy all other key-value pairs of food object
+        product_family_id: event.target.value         // update value of specific key
+      }
+    }))
+    setTimeout(() => console.log("productFamily id test ", this.state.marketSize.product_family_id), 0)
+
+    setTimeout(() => this.props.marketSizeData(this.state.marketSize), 0)
+    // }
+
+
+
     const iGresponse = async () => {
       fetch("http://localhost:7000/api/item_groups/names/" + pFKey, {
         method: "GET",
@@ -264,6 +331,7 @@ class MarketSizeRow extends Component {
         const newiGData = await iGResponse.json();
         console.log("item Group after fetching", [...newiGData]);
         //    setItemGroup(newiGData);
+        newiGData.length > 1 ? this.setState({expanded : ""}) : this.setState({expanded : "panel0"})
         this.setState({ itemGroups: [...newiGData] });
       });
     };
@@ -281,6 +349,8 @@ class MarketSizeRow extends Component {
     //  document.getElementById(`${index}A`).setAttribute("style", "background-color : none;")
     //  document.getElementById(`${index}S`).setAttribute("style", "background-color : none;")
     //  document.getElementById(`${index}P`).setAttribute("style", "background-color : none;")
+
+
 
     // // let elementC = document.getElementById(``)
     // element.setAttribute("style", "background-color : none;")
@@ -428,8 +498,8 @@ class MarketSizeRow extends Component {
             onChange={(event) =>
               this.handleFormChangeProductCall(event, this.props.idprop)
             }
-            // onSelected ={(event) => this.handleFormChangeProductCall(event, 0)}
-            //   ref={eSupplierRef}
+          // onSelected ={(event) => this.handleFormChangeProductCall(event, 0)}
+          //   ref={eSupplierRef}
           >
             <option value="0">Select Supplier</option>
             {this.state.suppliers &&
@@ -454,8 +524,8 @@ class MarketSizeRow extends Component {
                 ? (event) => this.handleFormChangeProductCall(event, 0)
                 : ""
             }
-            // id={`${0}PF1`}
-            //   ref={ePFRef}
+          // id={`${0}PF1`}
+          //   ref={ePFRef}
           >
             <option value="0" hidden>
               Select Family
@@ -480,28 +550,34 @@ class MarketSizeRow extends Component {
           </button>
         </span>
         <div className={hTabs.accordionContainer}>
-          {this.state.itemGroups.map((userObj, index) => (
-            <Accordion
-            // expanded={expanded === `panel${index}`}
-            // onChange={handleChange(`panel${index}`)}
-            // className={displayAccordion}
-            // id={hTabs.CallInfoAccordion}
-            >
-              <AccordionSummary aria-controls="panel1d-content">
-                <Typography style={{ color: "black" }} variant="h5">
-                  {userObj.item_group}
-                  Call Information
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails style={{ overflowY: "scroll" }}>
-                {this.state.competitors.map((obj, inx) => (
-                  <div className={hTabs.checkCompetitor} key={obj.id}>
-                    <CheckCompetitor checkBoxTitle={obj.competitor_name} />
-                  </div>
-                ))}
-              </AccordionDetails>
-            </Accordion>
-          ))}
+          {this.state.itemGroups.map((userObj, index) => {
+            return (
+              <Accordion
+                expanded={this.props.expander ? this.state.expanded === `panel${index}` : 
+                  this.state.itemGroups.length == 1  ?   this.state.expanded === `panel${index}` 
+                  : this.state.expanded === `panel${index}`}
+                onChange={this.accorhandleChange(`panel${index}`)}
+            //     accordionId={index}
+            //  open={this.state.openId}
+            //   handleClick={this.selectOpen}
+
+              >
+                <AccordionSummary aria-controls="panel1d-content">
+                  <Typography style={{ color: "black" }} variant="h5">
+                    {userObj.item_group}
+                    Call Information
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails style={{ overflowY: "scroll" }}>
+                  {this.state.competitors.map((obj, inx) => (
+                    <div className={hTabs.checkCompetitor} key={obj.id}>
+                      <CheckCompetitor checkBoxTitle={obj.competitor_name} />
+                    </div>
+                  ))}
+                </AccordionDetails>
+              </Accordion>
+            );
+          })}
         </div>
       </div>
     );

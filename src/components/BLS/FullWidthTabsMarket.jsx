@@ -66,7 +66,7 @@ export default function LabTabsMarket({
   const [marketSizeRows, setMarketSizeRows] = useState([
   ]);
 
-  const [marketSizeData, setmarketSizeData] = useState([])
+  const [marketSizeData, setMarketSizeData] = useState([])
 
   // setCountFullWToVTabs(countCustAccorToFullW)
   const childRef = useRef(null);
@@ -77,6 +77,7 @@ export default function LabTabsMarket({
   const [count, setCount] = useState(0);
   const [delCount, setDelCount] = useState(0);
   const [saveCount, setSaveCount] = useState(0);
+  const [expander,setExpander] = useState(false)
 
   const [newelement,setNewelement] = useState([{
     marketSizeRowID: 0,
@@ -181,14 +182,19 @@ export default function LabTabsMarket({
 
   const addMarketFamilyOnClick = (event) => {
     // event.preventDefault();
-
+    
     let index = marketSizeRows.length
+
+setExpander(true)
 
     console.log("add new family button was pressed");
     setMarketSizeRows([
       ...marketSizeRows,
-      <MarketSizeRow idprop={index} key={index} marketSizeData={setmarketSizeData}/>,
+      <MarketSizeRow idprop={index} key={index} expander={expander} marketSizeData={setMarketSizeData}/>,
     ]);
+
+   setTimeout(()=> setExpander(false),200)
+
     console.log("add new family button was pressed");
   };
 
