@@ -56,7 +56,7 @@ class MarketSizeRow extends Component {
     super(props);
   }
   state = {
-    openId:0,
+    openId: 0,
     userData: JSON.parse(this.props.uContext),
     id: 0,
     suppliers: [],
@@ -150,6 +150,14 @@ class MarketSizeRow extends Component {
 
   accorhandleChange = (panel) => (event, newExpanded) => {
     this.setState({ expanded: (newExpanded ? panel : true) })
+    console.log("this.state.itemGroups",this.state.itemGroups)
+    console.log("accorhandleChange",event.currentTarget.textContent)
+    const index = this.state.itemGroups.findIndex((obj)=>{
+      console.log("obj.item_group",obj)
+      return obj.item_group == `${event.currentTarget.textContent}` ? obj.id : ""
+    })
+    console.log('IndexAccorHandelChange',index)
+    console.log("testIndex",this.state.itemGroups[index].id)
   };
 
   //    fetchData();
@@ -331,12 +339,22 @@ class MarketSizeRow extends Component {
         const newiGData = await iGResponse.json();
         console.log("item Group after fetching", [...newiGData]);
         //    setItemGroup(newiGData);
-        newiGData.length > 1 ? this.setState({expanded : ""}) : this.setState({expanded : "panel0"})
+        newiGData.length > 1 ? this.setState({ expanded: "" }) : this.setState({ expanded: "panel0" })
         this.setState({ itemGroups: [...newiGData] });
       });
     };
     iGresponse();
   };
+
+
+  itemGrouponChangeHandler = (event , index) => {
+    console.log("itemGrouponChangeHandler",event.target.value)
+  }
+
+
+  onClickAccordion = (event , index) => {
+    console.log("onClickAccordion",event.target)
+  }
 
   handleFormChangeProductCall = (event, index, indexC) => {
     //  document.getElementById(`${index}`).setAttribute("style", "background-color : none;")
@@ -369,6 +387,10 @@ class MarketSizeRow extends Component {
       dataP[index]["productFamily"] = event.target.value;
       //   setVal(dataP);
     } else if (event.target.name === "itemGroup") {
+      this.itemGrouponChangeHandler(event,index)
+      console.log("onChange Item Group",event.target.value)
+
+
       let element = document.getElementById(`${index}IG`);
       element?.setAttribute("style", "background-color : none;");
       let dataP = [...this.state.itemGroups];
@@ -553,19 +575,21 @@ class MarketSizeRow extends Component {
           {this.state.itemGroups.map((userObj, index) => {
             return (
               <Accordion
-                expanded={this.props.expander ? this.state.expanded === `panel${index}` : 
-                  this.state.itemGroups.length == 1  ?   this.state.expanded === `panel${index}` 
-                  : this.state.expanded === `panel${index}`}
+                key={index}
+                expanded={this.props.expander ? this.state.expanded === `panel${index}` :
+                  this.state.itemGroups.length == 1 ? this.state.expanded === `panel${index}`
+                    : this.state.expanded === `panel${index}`}
                 onChange={this.accorhandleChange(`panel${index}`)}
-            //     accordionId={index}
-            //  open={this.state.openId}
-            //   handleClick={this.selectOpen}
+                onClick={(event)=>this.onClickAccordion(event,index)}
+
+              //     accordionId={index}
+              //  open={this.state.openId}
+              //   handleClick={this.selectOpen}
 
               >
                 <AccordionSummary aria-controls="panel1d-content">
                   <Typography style={{ color: "black" }} variant="h5">
                     {userObj.item_group}
-                    Call Information
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails style={{ overflowY: "scroll" }}>
