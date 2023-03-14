@@ -5,12 +5,13 @@ import { display } from '@mui/system';
 import { styled } from '@mui/material/styles';
 
 
-const CheckCompetitor = ({checkBoxTitle})=>{
+const CheckCompetitor = ({checkBoxTitle, setTestObj})=>{
 
     const [checked, setChecked] = useState(false);
     const [text, setText] = useState("");
     const [text2, setText2] = useState("");
     const [selected, setSelected]= useState(true);
+    // const [testObj,setTestObj] = useState({test:"test"})
 
     return(
 
