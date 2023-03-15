@@ -1,17 +1,71 @@
 /* eslint-disable */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState ,useContext} from 'react'
 import hTabs from '../hTabs.module.css'
 import { display } from '@mui/system';
 import { styled } from '@mui/material/styles';
+import { UserContext } from "../Home";
 
 
-const CheckCompetitor = ({checkBoxTitle, setTestObj})=>{
+
+const CheckCompetitor = ({checkBoxTitle, setTestObj,supKey})=>{
 
     const [checked, setChecked] = useState(false);
     const [text, setText] = useState("");
     const [text2, setText2] = useState("");
     const [selected, setSelected]= useState(true);
     // const [testObj,setTestObj] = useState({test:"test"})
+    const [competitors,setCompetitors] = useState([])
+    const [competitor_id,setCompetitor_id] = useState(0)
+
+
+    // const userData = JSON.parse(useContext(UserContext));
+    // const BL = userData.bl1_id;
+
+    // const fetchCompetitors = async () => {
+    //   // console.log("BL is checkBox ......,", BL);
+    //   // console.log("supkey is checkBox ......,", supKey);
+
+    //   // + BL +"/" + supKey
+    //   // "http://localhost:7000/api/competitors/" + BL + "/" + supKey
+      
+    //   await fetch(`http://localhost:7000/api/competitors/${BL}/${supKey}`, {
+    //     method: "GET",
+    //     headers: new Headers({
+    //       Authorization: "bearer " + userData.token,
+    //       "Content-Type": "application/x-www-form-urlencoded",
+    //     }),
+    //   }).then(async (response) => {
+    //     const newData = await response.json();
+    //     //    setSupplierName(newData);
+    //     console.log("Competitors data inside fetch method", [...newData]);
+    //     setCompetitors([...newData]);
+    //   });
+    // };
+    // fetchCompetitors();
+  
+
+
+    let marketSizeRecordObj1 = {
+      marketSizeRecordsID: 1,
+      egmed_consumption: 1,
+      total_consumption: 1,
+      competitor_id: competitor_id,
+      item_qty1: 1,
+      item_status1: 1,
+      item_qty2: 1,
+      item_status2: 1,
+      market_size_id: 1,
+    }
+
+    const onChangeHandler = (e)=>{
+
+   if(!checked) {
+    console.log("event.target.name check box Ttitle =",checkBoxTitle)
+   console.log("competitors from checkbox are ...",[competitors])
+   }
+
+
+    }
 
     return(
 
@@ -20,12 +74,13 @@ const CheckCompetitor = ({checkBoxTitle, setTestObj})=>{
     <li className={hTabs.competitorli}>
     <input  
         type="checkbox"
-        
+        name='checkBox'
         className={hTabs.checkBox}
         value="Bike"
         // onClick={onClickCheckBoxHandler}
         checked={checked}
-        onChange={() => {
+        onChange={(e) => {
+          onChangeHandler(e)
           if(checked){
             setText("")
             setText2("")

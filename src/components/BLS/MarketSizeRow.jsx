@@ -173,13 +173,14 @@ class MarketSizeRow extends Component {
   supplieronChangeHandler = (event, index) => {
     const BL = this.state.userData.bl1_id;
     const supKey = event.target.value;
+    
 
-    this.setState((prevState) => ({
-      marketSize: {
-        ...prevState.marketSize, // copy all other key-value pairs of food object
-        supplier_id: parseInt(event.target.value), // update value of specific key
-      },
-    }));
+    // this.setState((prevState) => ({
+    //   marketSize: {
+    //     ...prevState.marketSize, // copy all other key-value pairs of food object
+    //     supplier_id: parseInt(event.target.value), // update value of specific key
+    //   },
+    // }));
 
     // this.setState({ myArray: [...this.state.myArray, ...[1,2,3] ] })
 
@@ -379,7 +380,7 @@ class MarketSizeRow extends Component {
         ...prevState.marketSize, // copy all other key-value pairs of food object
         item_group_id: selectedItemGroup, // update value of specific key
         marketSizeRowID: this.props.idprop,
-        marketSizeRecords: [this.state.marketSizeRecords, ...[this.marketSizeRecordObj1,this.marketSizeRecordObj2] ]
+        marketSizeRecords: [...[this.marketSizeRecordObj1,this.marketSizeRecordObj2] ]
       },
     }));
 
@@ -413,6 +414,15 @@ class MarketSizeRow extends Component {
     // // let elementC = document.getElementById(``)
     // element.setAttribute("style", "background-color : none;")
     if (event.target.name === "supplier") {
+      this.setState((prevState) => ({
+        marketSize: {
+          ...prevState.marketSize, // copy all other key-value pairs of food object
+          supplier_id: event.target.value // update value of specific key
+ 
+        },
+      }));
+
+
       this.supplieronChangeHandler(event, index);
       let element = document.getElementById(`${index}`);
       element?.setAttribute("style", "background-color : none;");
@@ -637,9 +647,10 @@ class MarketSizeRow extends Component {
                 <AccordionDetails style={{ overflowY: "scroll" }}>
                   {this.state.competitors.map((obj, inx) => (
                     <div className={hTabs.checkCompetitor} key={obj.id}>
-                      <CheckCompetitor setTestObj={this.setState(
-
-                      )} checkBoxTitle={obj.competitor_name} />
+                      <CheckCompetitor setTestObj={this.setState} 
+                      checkBoxTitle={obj.competitor_name} 
+                      supKey={this.state.marketSize.supplier_id}
+                      />
                     </div>
                   ))}
                 </AccordionDetails>
