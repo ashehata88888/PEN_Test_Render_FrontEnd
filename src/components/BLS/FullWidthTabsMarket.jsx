@@ -188,10 +188,12 @@ export default function LabTabsMarket({
 setExpander(true)
 
     console.log("add new family button was pressed");
+    if(marketSizeRows.length <10){
     setMarketSizeRows([
       ...marketSizeRows,
       <MarketSizeRow idprop={index} key={index} expander={expander} marketSizeData={setMarketSizeData}/>,
     ]);
+  }
 
    setTimeout(()=> setExpander(false),200)
 

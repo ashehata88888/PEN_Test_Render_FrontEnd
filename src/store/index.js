@@ -107,7 +107,7 @@ const marketDataSlice = createSlice({
       marketSizeRowID: 0,
       supplier_id: 0,
       product_family_id: 0,
-      item_group_id: 0,
+      item_group_id: [],
       market_potential_id: 0,
       marketSizeRecords: [{
         marketSizeRecordsID: 0,
@@ -302,7 +302,7 @@ const marketDataSlice = createSlice({
       marketSizeRowID: 0,
       supplier_id: 0,
       product_family_id: 0,
-      item_group_id: 0,
+      item_group_id: [],
       market_potential_id: 0,
       marketSizeRecords: [{
         marketSizeRecordsID: 0,
@@ -497,7 +497,7 @@ const marketDataSlice = createSlice({
       marketSizeRowID: 0,
       supplier_id: 0,
       product_family_id: 0,
-      item_group_id: 0,
+      item_group_id: [],
       market_potential_id: 0,
       marketSizeRecords: [{
         marketSizeRecordsID: 0,

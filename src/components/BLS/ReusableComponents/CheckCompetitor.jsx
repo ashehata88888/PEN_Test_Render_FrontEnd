@@ -7,7 +7,7 @@ import { UserContext } from "../Home";
 
 
 
-const CheckCompetitor = ({checkBoxTitle, setTestObj,competitors,compInx})=>{
+const CheckCompetitor = ({checkBoxTitle,competitors,compInx})=>{
 
     const [checked, setChecked] = useState(false);
     const [text, setText] = useState("");
@@ -68,7 +68,7 @@ const CheckCompetitor = ({checkBoxTitle, setTestObj,competitors,compInx})=>{
    setCompetitor_id(competitorId)
    }
 
-   setTestObj(marketSizeRecordObj1)
+
 
     }
 

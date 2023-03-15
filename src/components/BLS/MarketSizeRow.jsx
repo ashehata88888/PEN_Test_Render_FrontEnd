@@ -11,7 +11,19 @@ import { styled } from "@mui/material/styles";
 // import { Hidden } from "@mui/material";
 // import PreLoader3 from "../Loading/PreLoader3";
 import CheckCompetitor from "./ReusableComponents/CheckCompetitor";
-import { updateSupplier_id } from "../../store/index";
+import { u0pdateSupplier_id,
+  u1pdateSupplier_id,
+  u2pdateSupplier_id,
+  u3pdateSupplier_id,
+  u4pdateSupplier_id,
+  u5pdateSupplier_id,
+  u6pdateSupplier_id,
+  u7pdateSupplier_id,
+  u8pdateSupplier_id,
+  u9pdateSupplier_id,
+
+
+} from "../../store/index";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -372,6 +384,12 @@ class MarketSizeRow extends Component {
     //     ? obj.id
     //     : "";
     // });
+
+    console.log(
+      "useSelectorMarketSize Testing ",
+      this.props.globalState.marketSize );
+
+
     console.log("IndexAccorHandelChange", inx);
     console.log("testIndex", this.state.itemGroups[inx].id);
     const selectedItemGroup = this.state.itemGroups[inx].id;
@@ -424,6 +442,16 @@ class MarketSizeRow extends Component {
         },
       }));
 
+       this.props.idprop == 0 ? this.props.dispatch(u0pdateSupplier_id(parseInt(event.target.value))) :
+       this.props.idprop == 1 ? this.props.dispatch(u1pdateSupplier_id(parseInt(event.target.value))) : 
+       this.props.idprop == 2 ? this.props.dispatch(u2pdateSupplier_id(parseInt(event.target.value))) :
+       this.props.idprop == 3 ? this.props.dispatch(u3pdateSupplier_id(parseInt(event.target.value))) :
+       this.props.idprop == 4 ? this.props.dispatch(u4pdateSupplier_id(parseInt(event.target.value))) :
+       this.props.idprop == 5 ? this.props.dispatch(u5pdateSupplier_id(parseInt(event.target.value))) :
+       this.props.idprop == 6 ? this.props.dispatch(u6pdateSupplier_id(parseInt(event.target.value))) :
+       this.props.idprop == 7 ? this.props.dispatch(u7pdateSupplier_id(parseInt(event.target.value))) :
+       this.props.idprop == 8 ? this.props.dispatch(u8pdateSupplier_id(parseInt(event.target.value))) :
+       this.props.idprop == 9 ? this.props.dispatch(u9pdateSupplier_id(parseInt(event.target.value))) : ""
 
       this.supplieronChangeHandler(event, index);
       let element = document.getElementById(`${index}`);
@@ -435,8 +463,8 @@ class MarketSizeRow extends Component {
       this.ProductFamilyOnCahngeHandler(event);
       let element = document.getElementById(`${index}PF`);
       element?.setAttribute("style", "background-color : none;");
-      let dataP = [...this.state.productFamilies];
-      dataP[index]["productFamily"] = event.target.value;
+      // let dataP = [...this.state.productFamilies];
+      // dataP[index]["productFamily"] = event.target.value;
       //   setVal(dataP);
     } else if (event.target.name === "itemGroup") {
       this.itemGrouponChangeHandler(event, index);
@@ -649,7 +677,7 @@ class MarketSizeRow extends Component {
                 <AccordionDetails style={{ overflowY: "scroll" }}>
                   {this.state.competitors.map((obj, inx) => (
                     <div className={hTabs.checkCompetitor} key={obj.id}>
-                      <CheckCompetitor setTestObj={this.setState} 
+                      <CheckCompetitor 
                       checkBoxTitle={obj.competitor_name} 
                       competitors={this.state.competitors}
                       compInx ={inx}
