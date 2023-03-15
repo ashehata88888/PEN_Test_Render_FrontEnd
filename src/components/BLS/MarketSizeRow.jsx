@@ -56,6 +56,7 @@ class MarketSizeRow extends Component {
     super(props);
   }
   state = {
+    testObj:0,
     openId: 0,
     userData: JSON.parse(this.props.uContext),
     id: 0,
@@ -384,6 +385,7 @@ class MarketSizeRow extends Component {
       },
     }));
 
+    console.log("testObj ",this.state.testObj)
 
     // this.setState((prevState) => ({
     //   marketSize: {
@@ -649,7 +651,8 @@ class MarketSizeRow extends Component {
                     <div className={hTabs.checkCompetitor} key={obj.id}>
                       <CheckCompetitor setTestObj={this.setState} 
                       checkBoxTitle={obj.competitor_name} 
-                      supKey={this.state.marketSize.supplier_id}
+                      competitors={this.state.competitors}
+                      compInx ={inx}
                       />
                     </div>
                   ))}

@@ -7,14 +7,14 @@ import { UserContext } from "../Home";
 
 
 
-const CheckCompetitor = ({checkBoxTitle, setTestObj,supKey})=>{
+const CheckCompetitor = ({checkBoxTitle, setTestObj,competitors,compInx})=>{
 
     const [checked, setChecked] = useState(false);
     const [text, setText] = useState("");
     const [text2, setText2] = useState("");
     const [selected, setSelected]= useState(true);
     // const [testObj,setTestObj] = useState({test:"test"})
-    const [competitors,setCompetitors] = useState([])
+    // const [competitors,setCompetitors] = useState([])
     const [competitor_id,setCompetitor_id] = useState(0)
 
 
@@ -61,9 +61,14 @@ const CheckCompetitor = ({checkBoxTitle, setTestObj,supKey})=>{
 
    if(!checked) {
     console.log("event.target.name check box Ttitle =",checkBoxTitle)
-   console.log("competitors from checkbox are ...",[competitors])
+   console.log("competitors from checkbox are ...",competitors)
+   console.log("compInxb ",compInx )
+   console.log("competitor ID is ..." ,competitors[compInx].id )
+   const competitorId = competitors[compInx].id
+   setCompetitor_id(competitorId)
    }
 
+   setTestObj(marketSizeRecordObj1)
 
     }
 
