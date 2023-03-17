@@ -11,17 +11,7 @@ import { styled } from "@mui/material/styles";
 // import { Hidden } from "@mui/material";
 // import PreLoader3 from "../Loading/PreLoader3";
 import CheckCompetitor from "./ReusableComponents/CheckCompetitor";
-import { u0pdateSupplier_id,
-  u1pdateSupplier_id,
-  u2pdateSupplier_id,
-  u3pdateSupplier_id,
-  u4pdateSupplier_id,
-  u5pdateSupplier_id,
-  u6pdateSupplier_id,
-  u7pdateSupplier_id,
-  u8pdateSupplier_id,
-  u9pdateSupplier_id,
-
+import { updateMarketSize
 
 } from "../../store/index";
 
@@ -71,11 +61,11 @@ class MarketSizeRow extends Component {
     testObj:0,
     openId: 0,
     userData: JSON.parse(this.props.uContext),
-    id: 0,
+    id: this.props.idprop,
     suppliers: [],
     productFamilies: [],
     itemGroups: [],
-    supplierId: this.props.globalState.marketSize[0].supplier_id,
+    supplierId: 0,
     selectedMarketSizeRow: 0,
     expanded: `panel0`,
     competitors: [
@@ -100,6 +90,8 @@ class MarketSizeRow extends Component {
       ],
     },
   };
+
+  // this.props.globalState.marketSize[0].supplier_id 
 
   selectOpen = (openId) => {
     this.setState({ openId });
@@ -186,6 +178,7 @@ class MarketSizeRow extends Component {
   supplieronChangeHandler = (event, index) => {
     const BL = this.state.userData.bl1_id;
     const supKey = event.target.value;
+    this.setState({supplierId : supKey})
     
 
     // this.setState((prevState) => ({
@@ -276,29 +269,31 @@ class MarketSizeRow extends Component {
         const newPFData = await pFresponse.json();
         //    setProductFamily(newPFData);
         this.setState({ productFamilies: [...newPFData] });
-      });
-      console.log("pFresponse() was called");
-    };
-    const pFresponseGS = async () => {
-      fetch(
-        "http://localhost:7000/api/product_families/names/" +
-          this.state.supplierId,
-        {
-          method: "GET",
-          headers: new Headers({
-            Authorization: "bearer " + this.state.userData.token,
-            "Content-Type": "application/x-www-form-urlencoded",
-          }),
-        }
-      ).then(async (pFresponse) => {
-        const newPFData = await pFresponse.json();
-        //    setProductFamily(newPFData);
-        this.setState({ productFamilies: [...newPFData] });
-      });
-      console.log("pFresponseGS() was called");
+        console.log("pFresponse() was called",[...newPFData]);
+      });  
     };
 
-    this.state.supplierId == undefined ? pFresponse() : pFresponseGS();
+    pFresponse()
+
+    // const pFresponseGS = async () => {
+    //   fetch(
+    //     "http://localhost:7000/api/product_families/names/" + this.state.supplierId,
+    //     {
+    //       method: "GET",
+    //       headers: new Headers({
+    //         Authorization: "bearer " + this.state.userData.token,
+    //         "Content-Type": "application/x-www-form-urlencoded",
+    //       }),
+    //     }
+    //   ).then(async (pFresponse) => {
+    //     const newPFData = await pFresponse.json();
+    //     //    setProductFamily(newPFData);
+    //     this.setState({ productFamilies: [...newPFData] });
+    //     console.log("pFresponseGS() was called",[...newPFData]);
+    //   });
+    // };
+
+    // this.state.supplierId == undefined ? pFresponse() : pFresponseGS();
 
     // (this.state.supplierId != undefined || this.state.supplierId != null) &&  pFresponseGS() ;
 
@@ -442,17 +437,8 @@ class MarketSizeRow extends Component {
         },
       }));
 
-       this.props.idprop == 0 ? this.props.dispatch(u0pdateSupplier_id(parseInt(event.target.value))) :
-       this.props.idprop == 1 ? this.props.dispatch(u1pdateSupplier_id(parseInt(event.target.value))) : 
-       this.props.idprop == 2 ? this.props.dispatch(u2pdateSupplier_id(parseInt(event.target.value))) :
-       this.props.idprop == 3 ? this.props.dispatch(u3pdateSupplier_id(parseInt(event.target.value))) :
-       this.props.idprop == 4 ? this.props.dispatch(u4pdateSupplier_id(parseInt(event.target.value))) :
-       this.props.idprop == 5 ? this.props.dispatch(u5pdateSupplier_id(parseInt(event.target.value))) :
-       this.props.idprop == 6 ? this.props.dispatch(u6pdateSupplier_id(parseInt(event.target.value))) :
-       this.props.idprop == 7 ? this.props.dispatch(u7pdateSupplier_id(parseInt(event.target.value))) :
-       this.props.idprop == 8 ? this.props.dispatch(u8pdateSupplier_id(parseInt(event.target.value))) :
-       this.props.idprop == 9 ? this.props.dispatch(u9pdateSupplier_id(parseInt(event.target.value))) : ""
-
+      //  this.props.idprop == 0 ? this.props.dispatch(u0pdateSupplier_id(parseInt(event.target.value))) :
+       
       this.supplieronChangeHandler(event, index);
       let element = document.getElementById(`${index}`);
       element?.setAttribute("style", "background-color : none;");

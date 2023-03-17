@@ -50,6 +50,11 @@ import Private_Medical_lower from "./Private_Medical_lower";
 import Private_Medical_upper from "./Private_Medical_upper";
 import MarketSizeRow from "./MarketSizeRow";
 
+import {useSelector,useDispatch} from "react-redux";
+import { updateMarketSize , 
+  delFirstMarketSize} from "../../store";
+
+
 export default function LabTabsMarket({
   setCountFullWToVTabs,
   setCountFullWCToVTabs,
@@ -99,6 +104,32 @@ export default function LabTabsMarket({
       },
     ],
   }]);
+
+  const globalState = useSelector((state)=> state)
+  const dispatch = useDispatch()
+
+
+
+  const elemento = {
+  marketSizeRowID: 4,
+  supplier_id: 3,
+  product_family_id: 4,
+  market_potential_id: 0,
+  marketSizeRecords: [
+    {
+      item_group_id: 0,
+      marketSizeRecordsID: 0,
+      egmed_consumption: 0,
+      total_consumption: 0,
+      competitor_id: 0,
+      item_qty1: 0,
+      item_status1: 0,
+      item_qty2: 0,
+      item_status2: 0,
+      market_size_id: 0,
+    },
+  ]
+}
 
   const userData = JSON.parse(useContext(UserContext));
   const key = userData.id;
@@ -174,8 +205,19 @@ export default function LabTabsMarket({
   //   childRef.current.childFunction2();
   // };
  const testSave = (e) => {
+  e.preventDefault()
   // setNewelement([...marketSizeData,newelement ])
-  console.log("marketSizeData",marketSizeData)
+  // console.log("marketSizeData",marketSizeData)
+
+const globalS = [...globalState.marketSize]
+globalS.shift()
+
+//  console.log("marketSizeData-GlobalS",globalS)
+
+ setTimeout(()=> console.log("marketSizeData",globalState.marketSize),0)
+
+
+  
  }
 
  
@@ -184,6 +226,8 @@ export default function LabTabsMarket({
     // event.preventDefault();
     
     let index = marketSizeRows.length
+
+ 
 
 setExpander(true)
 
@@ -202,12 +246,15 @@ setExpander(true)
 
   if(marketSizeRows.length === 0){
     addMarketFamilyOnClick()
- }
+     }
 
 
 
  const deleteMarketFamilyonClick = (event) => {
   event.preventDefault();
+
+
+  dispatch(updateMarketSize(elemento))
 
   // setIndexCount(indexCount - 1);
   // clone
