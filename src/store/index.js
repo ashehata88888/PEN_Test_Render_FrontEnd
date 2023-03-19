@@ -22,6 +22,8 @@ const counterSlice = createSlice({
 const marketDataSlice = createSlice({
   name: 'marketData',
   initialState: {
+    saveBtn: 0 ,
+    selectedItemGroup: 0 ,
     marketPotentials: {
       user_id: 0,
       bl_id: 0,
@@ -185,13 +187,19 @@ const marketDataSlice = createSlice({
     updateOrtho_Surgery: (state, action) => { state.marketPotentials.ortho_surgery = action.payload },
     updateNumber_Of_Devices_Tested_Year: (state, action) => { state.marketPotentials.number_of_devices_tested_year = action.payload },
 
+    updateSaveBtn : (state, action) => { state.saveBtn = action.payload },
+
+    updateSelectedItemGroup : (state, action) => { state.saveBtn = action.payload },
+
     updateMarketSize(state , action) {
     state.marketSize.push(action.payload)
     },
 
     delFirstMarketSize(state , action){
       state.marketSize.filter((j,inx )=> state.marketSize[0] === undefined && inx != 0 )
-    }
+    },
+
+   
 
   }
 })
@@ -293,7 +301,9 @@ export const {
   updateItem_status2,
   updateMarket_size_id,
   updateMarketSize,
-  delFirstMarketSize
+  delFirstMarketSize,
+  updateSaveBtn,
+  updateSelectedItemGroup
 
 } = marketDataSlice.actions
 
@@ -390,6 +400,10 @@ store.dispatch(updateEnt_Surgery())
 store.dispatch(updateOphthalmolgy())
 store.dispatch(updateOrtho_Surgery())
 store.dispatch(updateNumber_Of_Devices_Tested_Year())
+
+store.dispatch(updateSaveBtn())
+
+store.dispatch(updateSelectedItemGroup())
 
 // store.dispatch(updateMarketSize())
 

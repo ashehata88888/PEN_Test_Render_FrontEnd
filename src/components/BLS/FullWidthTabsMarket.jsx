@@ -52,7 +52,9 @@ import MarketSizeRow from "./MarketSizeRow";
 
 import {useSelector,useDispatch} from "react-redux";
 import { updateMarketSize , 
-  delFirstMarketSize} from "../../store";
+  delFirstMarketSize,
+  updateSaveBtn} from "../../store";
+import { faTemperatureEmpty } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function LabTabsMarket({
@@ -72,6 +74,8 @@ export default function LabTabsMarket({
   ]);
 
   const [marketSizeData, setMarketSizeData] = useState([])
+
+  const [curantSaveBtn ,setcurantSaveBtn] = useState(0)
 
   // setCountFullWToVTabs(countCustAccorToFullW)
   const childRef = useRef(null);
@@ -108,7 +112,11 @@ export default function LabTabsMarket({
   const globalState = useSelector((state)=> state)
   const dispatch = useDispatch()
 
+  const [saveBtn, setSaveBtn] = useState(false)
 
+
+
+console.log()
 
   const elemento = {
   marketSizeRowID: 4,
@@ -206,6 +214,14 @@ export default function LabTabsMarket({
   // };
  const testSave = (e) => {
   e.preventDefault()
+
+  setSaveBtn(true)
+
+ setcurantSaveBtn(current => current + 1)
+
+ setTimeout(()=>console.log("curantSaveBtn ",curantSaveBtn),0)
+
+  dispatch(updateSaveBtn(1))
   // setNewelement([...marketSizeData,newelement ])
   // console.log("marketSizeData",marketSizeData)
 
@@ -213,6 +229,7 @@ const globalS = [...globalState.marketSize]
 globalS.shift()
 
 //  console.log("marketSizeData-GlobalS",globalS)
+
 
  setTimeout(()=> console.log("marketSizeData",globalState.marketSize),0)
 
@@ -235,7 +252,7 @@ setExpander(true)
     if(marketSizeRows.length <10){
     setMarketSizeRows([
       ...marketSizeRows,
-      <MarketSizeRow idprop={index} key={index} expander={expander} marketSizeData={setMarketSizeData}/>,
+      <MarketSizeRow saveBtn={curantSaveBtn} idprop={index} key={index} expander={expander} marketSizeData={setMarketSizeData}/>,
     ]);
   }
 

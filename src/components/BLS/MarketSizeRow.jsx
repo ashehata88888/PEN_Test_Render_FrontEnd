@@ -11,7 +11,8 @@ import { styled } from "@mui/material/styles";
 // import { Hidden } from "@mui/material";
 // import PreLoader3 from "../Loading/PreLoader3";
 import CheckCompetitor from "./ReusableComponents/CheckCompetitor";
-import { updateMarketSize
+import { updateMarketSize,
+  updateSelectedItemGroup
 
 } from "../../store/index";
 
@@ -58,8 +59,9 @@ class MarketSizeRow extends Component {
     super(props);
   }
   state = {
-    testObj:0,
+    testObj:parseInt(this.props.saveBtn),
     openId: 0,
+    selectedItemGroup:0,
     userData: JSON.parse(this.props.uContext),
     id: this.props.idprop,
     suppliers: [],
@@ -80,10 +82,10 @@ class MarketSizeRow extends Component {
       // { id: 9, name: "Mokla" },
     ],
     marketSize: {
-      marketSizeRowID: 0,
+      marketSizeRowID: this.props.idprop,
       supplier_id: 0,
       product_family_id: 0,
-      item_group_id: 0,
+      // item_group_id: 0,
       market_potential_id: 0,
       marketSizeRecords: [
 
@@ -92,6 +94,9 @@ class MarketSizeRow extends Component {
   };
 
   // this.props.globalState.marketSize[0].supplier_id 
+
+
+
 
   selectOpen = (openId) => {
     this.setState({ openId });
@@ -144,6 +149,9 @@ class MarketSizeRow extends Component {
   // ],
 
   componentDidMount() {
+
+  
+
     const BL = this.state.userData.bl1_id;
     const supllierID = this.state.supplierId;
     const fetchData = async () => {
@@ -167,6 +175,14 @@ class MarketSizeRow extends Component {
     };
     fetchData();
   }
+
+
+  // componentDidUpdate(prevProps){
+  //   if (this.props.saveBtn == prevProps.saveBtn) {
+  //     console.log("this.props.saveBtn" , prevProps)
+  //    }
+  
+  // }
 
   accorhandleChange = (panel) => (event, newExpanded) => {
     this.setState({ expanded: newExpanded ? panel : true });
@@ -373,6 +389,7 @@ class MarketSizeRow extends Component {
   onClickAccordion = (event, inx) => {
     console.log("this.state.itemGroups", this.state.itemGroups);
     console.log("onClickAccordion", event.currentTarget.textContent);
+    console.log('testThis State from accordion ',this.state.marketSize)
     // const index = this.state.itemGroups.findIndex((obj) => {
     //   console.log("obj.item_group", obj);
     //   return obj.item_group == `${event.currentTarget.textContent}`
@@ -387,16 +404,32 @@ class MarketSizeRow extends Component {
 
     console.log("IndexAccorHandelChange", inx);
     console.log("testIndex", this.state.itemGroups[inx].id);
-    const selectedItemGroup = this.state.itemGroups[inx].id;
+    const selectedItemGroupP = this.state.itemGroups[inx].id;
+    this.setState({selectedItemGroup : parseInt(selectedItemGroupP) })
+    // let IG =  parseInt(selectedItemGroupP)
 
-    this.setState((prevState) => ({
-      marketSize: {
-        ...prevState.marketSize, // copy all other key-value pairs of food object
-        item_group_id: selectedItemGroup, // update value of specific key
-        marketSizeRowID: this.props.idprop,
-        marketSizeRecords: [...[this.marketSizeRecordObj1,this.marketSizeRecordObj2] ]
-      },
-    }));
+    // console.log("ig",IG)
+
+
+    // this.setState((prevState) => ({
+    //   selectedItemGroup: {
+    //     ...prevState.selectedItemGroup, // copy all other key-value pairs of food object
+    
+    //     selectedItemGroup: IG,
+    //   },
+    // }));
+
+
+    // this.props.dispatch(updateSelectedItemGroup(IG))
+    
+    // this.setState((prevState) => ({
+    //   marketSize: {
+    //     ...prevState.marketSize, // copy all other key-value pairs of food object
+    //     item_group_id: selectedItemGroup, // update value of specific key
+    //     marketSizeRowID: this.props.idprop,
+    //     marketSizeRecords: [...[this.marketSizeRecordObj1,this.marketSizeRecordObj2] ]
+    //   },
+    // }));
 
     console.log("testObj ",this.state.testObj)
 
@@ -408,6 +441,9 @@ class MarketSizeRow extends Component {
     // }));
 
 
+
+
+console.log("testSaveBNT",this.props.saveBtn)
 
 
     setTimeout(() => this.props.marketSizeData(this.state.marketSize), 0);
@@ -432,10 +468,13 @@ class MarketSizeRow extends Component {
       this.setState((prevState) => ({
         marketSize: {
           ...prevState.marketSize, // copy all other key-value pairs of food object
-          supplier_id: event.target.value // update value of specific key
+          supplier_id: parseInt(event.target.value) // update value of specific key
  
         },
+
       }));
+      console.log("this.state.testObj" , this.state.testObj)
+      console.log("testSaveBTNFromMS",this.props.saveBtn)
 
       //  this.props.idprop == 0 ? this.props.dispatch(u0pdateSupplier_id(parseInt(event.target.value))) :
        
@@ -446,100 +485,32 @@ class MarketSizeRow extends Component {
       // let dataP = [...this.state.suppliers];
       // dataP[index]["supplier"] = event.target.value;
     } else if (event.target.name === "productFamily") {
+
+      this.setState((prevState) => ({
+        marketSize: {
+          ...prevState.marketSize, // copy all other key-value pairs of food object
+          product_family_id: event.target.value // update value of specific key
+ 
+        },
+      }));
+
       this.ProductFamilyOnCahngeHandler(event);
       let element = document.getElementById(`${index}PF`);
       element?.setAttribute("style", "background-color : none;");
       // let dataP = [...this.state.productFamilies];
       // dataP[index]["productFamily"] = event.target.value;
       //   setVal(dataP);
-    } else if (event.target.name === "itemGroup") {
-      this.itemGrouponChangeHandler(event, index);
-      console.log("onChange Item Group", event.target.value);
+    } 
+    // else if (event.target.name === "itemGroup") {
+    //   this.itemGrouponChangeHandler(event, index);
+    //   console.log("onChange Item Group", event.target.value);
 
-      let element = document.getElementById(`${index}IG`);
-      element?.setAttribute("style", "background-color : none;");
-      let dataP = [...this.state.itemGroups];
-      dataP[index]["itemGroup"] = event.target.value;
-      //   setVal(dataP);
-    } else if (event.target.name === "itemName") {
-      let element = document.getElementById(`${index}IN`);
-      element?.setAttribute("style", "background-color : none;");
-      let dataP = [...val];
-      dataP[index]["itemName"] = event.target.value;
-      setVal(dataP);
-    } else if (event.target.name === "itemStock") {
-      let element = document.getElementById(`${index}IS`);
-      element?.setAttribute("style", "background-color : none;");
-      let dataP = [...val];
-      dataP[index]["itemStock"] = event.target.value;
-      setVal(dataP);
-    } else if (event.target.name === "callObjective") {
-      let element = document.getElementById(`${index}CO`);
-      element?.setAttribute("style", "background-color : none;");
-      let dataP = [...val];
-      dataP[index]["callObjective"] = event.target.value;
-      setVal(dataP);
-    } else if (event.target.name === "callStatus") {
-      let element = document.getElementById(`${index}CS`);
-      element?.setAttribute("style", "background-color : none;");
-
-      let dataP = [...val];
-      dataP[index]["callStatus"] = event.target.value;
-      setVal(dataP);
-    } else if (event.target.name === "contactPerson") {
-      // let element =  document.getElementById(`${indexC}CP`)
-      const divElement = elementCPRef.current;
-      divElement?.setAttribute("style", "background-color : none;");
-      // element.setAttribute("style", "background-color : none;")
-
-      let dataC = [...val];
-      dataC[index]["contData"][indexC]["contactPerson"] = event.target.value;
-      setVal(dataC);
-    } else if (event.target.name === "mobileNumber") {
-      // let element =  document.getElementById(`${indexC}MN`)
-      // element.setAttribute("style", "background-color : none;")
-
-      const divElement = elementMNRef.current;
-      divElement?.setAttribute("style", "background-color : none;");
-
-      let dataC = [...val];
-      dataC[index]["contData"][indexC]["mobileNumber"] = event.target.value;
-      setVal(dataC);
-    } else if (event.target.name === "authority") {
-      // let element =  document.getElementById(`${indexC}A`)
-      // element.setAttribute("style", "background-color : none;")
-
-      const divElement = elementARef.current;
-      divElement?.setAttribute("style", "background-color : none;");
-
-      let dataC = [...val];
-      dataC[index]["contData"][indexC]["authority"] = event.target.value;
-      setVal(dataC);
-    } else if (event.target.name === "speciality") {
-      // let element =  document.getElementById(`${indexC}S`)
-      // element.setAttribute("style", "background-color : none;")
-
-      const divElement = elementSRef.current;
-      divElement?.setAttribute("style", "background-color : none;");
-
-      let dataC = [...val];
-      dataC[index]["contData"][indexC]["speciality"] = event.target.value;
-      setVal(dataC);
-    } else if (event.target.name === "position") {
-      // let element =  document.getElementById(`${indexC}P`)
-      // element.setAttribute("style", "background-color : none;")
-
-      const divElement = elementPRef.current;
-      divElement?.setAttribute("style", "background-color : none;");
-
-      let dataC = [...val];
-      dataC[index]["contData"][indexC]["position"] = event.target.value;
-      setVal(dataC);
-    }
-    if (event.target.value !== 0) {
-      //   setAlert("");
-      console.log("No Alert");
-    }
+    //   let element = document.getElementById(`${index}IG`);
+    //   element?.setAttribute("style", "background-color : none;");
+    //   let dataP = [...this.state.itemGroups];
+    //   dataP[index]["itemGroup"] = event.target.value;
+ 
+    // } 
   };
 
   deleteMarketRow = (e, idprop) => {
@@ -552,6 +523,8 @@ class MarketSizeRow extends Component {
 
   render() {
     console.log("suppliers from MarketSizeRow", this.state.suppliers);
+
+   
 
     return (
       <div
@@ -667,6 +640,9 @@ class MarketSizeRow extends Component {
                       checkBoxTitle={obj.competitor_name} 
                       competitors={this.state.competitors}
                       compInx ={inx}
+                      marketSizeObj = {this.state.marketSize}
+                      itemGroupP= {this.state.selectedItemGroup}
+                      saveBtn={this.props.saveBtn}
                       />
                     </div>
                   ))}
