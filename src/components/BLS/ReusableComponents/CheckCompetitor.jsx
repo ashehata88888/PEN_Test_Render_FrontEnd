@@ -39,9 +39,12 @@ const CheckCompetitor = ({ checkBoxTitle, competitors, compInx, marketSizeObj, i
   const [market_size_id, setmarket_size_id] = useState(0)
   const [competitorName, setCompetitorName] = useState(0)
   const [itemGroupC , setItemGroupC] = useState(0)
+  const [finalObj, setFinalObj] = useState()
 
   const globalState = useSelector((state) => state)
 
+
+  console.log("itemGroupP",itemGroupP)
 
   // egmed_consumption: 1,
   // total_consumption: 1,
@@ -113,17 +116,19 @@ const CheckCompetitor = ({ checkBoxTitle, competitors, compInx, marketSizeObj, i
 
   
 
-  useEffect(() => {
+  useEffect( () => {
 
-
+  console.log("itemGroupP from checkbox" , itemGroupP)
     
 
-    if (parseInt(globalState.saveBtn) > 0 && competitor_id > 0 && itemGroupP > 0) {
+    if (parseInt(globalState.saveBtn) > 0 && competitor_id > 0) {
       // setItemGroupC(itemGroupP)
 
+      console.log("itemGroupP from checkbox" , itemGroupP)
+      // async () =>{
         marketSizeobjfromP.marketSizeRecords.push({
           // itemGroup: parseInt(globalState.selectedItemGroup),
-          itemGroup : itemGroupP,
+          itemGroup : itemGroupC,
           competitor_id: competitor_id,
           cometitor_name: competitorName,
           // egmed_consumption: 1,
@@ -135,15 +140,36 @@ const CheckCompetitor = ({ checkBoxTitle, competitors, compInx, marketSizeObj, i
           market_size_id: 1
         })
 
+      setTimeout(()=>{callObj()},1000)
 
-        setTimeout(() => console.log("marketSizeobjfromP ", marketSizeobjfromP), 0)
+          
+      //       setFinalObj(newObj)
+         
+      //   // setFinalObj(marketSizeobjfromP)
+        
+      // // }
+
+     const callObj = ()=> { setFinalObj(marketSizeobjfromP)
+
+     setTimeout(() => console.log("FinalObj ", finalObj), 2000)
+
+     }
+        // setTimeout(() => console.log("marketSizeobjfromP ", marketSizeobjfromP), 0)
+
+         
 
       
-
+        // setTimeout(() => console.log("FinalObj ", finalObj), 500)
 
     }
 
+// const callset = ()=> {
+  
+//   setFinalObj(marketSizeobjfromP)
 
+//   setTimeout(() => console.log("FinalObj ", finalObj), 0)
+
+// }
 
   }, [parseInt(globalState.saveBtn)])
 
@@ -163,6 +189,7 @@ const CheckCompetitor = ({ checkBoxTitle, competitors, compInx, marketSizeObj, i
 
   const onChangeHandler = (e) => {
 
+
     if (!checked) {
       console.log("event.target.name check box Ttitle =", checkBoxTitle)
       console.log("competitors from checkbox are ...", competitors)
@@ -172,6 +199,7 @@ const CheckCompetitor = ({ checkBoxTitle, competitors, compInx, marketSizeObj, i
       const competitorName = competitors[compInx].competitor_name
       setCompetitor_id(competitorId)
       setCompetitorName(competitorName)
+      setItemGroupC(itemGroupP)
 
       //  marketSizeobjfromP.marketSizeRecords.push({itemGroup:itemGroupP ,
       //   competitor_id:competitorId,
@@ -185,6 +213,30 @@ const CheckCompetitor = ({ checkBoxTitle, competitors, compInx, marketSizeObj, i
       //   market_size_id: 1,
       // })
     }
+
+
+    if(checked){
+      const competitorId = competitors[compInx].id
+      const competitorName = competitors[compInx].competitor_name
+      console.log("the check Box compeitor unchecked compatitor Name is \n " + competitorName + " id is " +  parseInt(competitorId))
+       let newobj = {...marketSizeobjfromP}
+
+
+
+       newobj.marketSizeRecords.splice(compInx , 1)
+
+       setFinalObj(newobj)
+
+
+
+      setTimeout(() => console.log("marketSizeobjfromP ", marketSizeobjfromP), 0)
+
+      setTimeout(() => console.log("FinalObj when UnCheck ", finalObj), 0)
+
+    }
+
+
+
   }
 
   const onChangeSelectStatus1 = (e) => {
