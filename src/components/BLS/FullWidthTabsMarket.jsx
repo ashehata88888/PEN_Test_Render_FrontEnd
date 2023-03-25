@@ -76,6 +76,7 @@ export default function LabTabsMarket({
   const [marketSizeData, setMarketSizeData] = useState([])
 
   const [curantSaveBtn ,setcurantSaveBtn] = useState(0)
+  const [currAddRow , setCurrAddRow] = useState(0)
 
   // setCountFullWToVTabs(countCustAccorToFullW)
   const childRef = useRef(null);
@@ -243,7 +244,7 @@ globalS.shift()
     // event.preventDefault();
     
     let index = marketSizeRows.length
-
+    setCurrAddRow(curr => curr + 1)
  
 
 setExpander(true)
@@ -252,7 +253,7 @@ setExpander(true)
     if(marketSizeRows.length <10){
     setMarketSizeRows([
       ...marketSizeRows,
-      <MarketSizeRow saveBtn={curantSaveBtn} idprop={index} key={index} expander={expander} marketSizeData={setMarketSizeData}/>,
+      <MarketSizeRow currAddRow={currAddRow} saveBtn={curantSaveBtn} idprop={index} key={index} expander={expander} marketSizeData={setMarketSizeData}/>,
     ]);
   }
 

@@ -9,7 +9,7 @@ import { UserContext } from "../Home";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectionRange } from '@testing-library/user-event/dist/utils';
-import { updateSelectedItemGroup } from '../../../store';
+import { updateSelectedItemGroup, updateMarketSize } from '../../../store/index';
 
 // import { updateSaveBtn} from "../../store";
 
@@ -17,7 +17,7 @@ import { updateSelectedItemGroup } from '../../../store';
 
 
 
-const CheckCompetitor = ({ checkBoxTitle, competitors, compInx, marketSizeObj, itemGroupP, saveBtn }) => {
+const CheckCompetitor = ({currAddRow, checkBoxTitle, competitors, compInx, marketSizeObj, itemGroupP, saveBtn,rowInx }) => {
 
   const [checked, setChecked] = useState(false);
 
@@ -41,7 +41,11 @@ const CheckCompetitor = ({ checkBoxTitle, competitors, compInx, marketSizeObj, i
   const [itemGroupC , setItemGroupC] = useState(0)
   const [finalObj, setFinalObj] = useState()
 
+  const [uncheckedComp , setUncheckedComp] = useState(0)
+
   const globalState = useSelector((state) => state)
+
+  const dispatch = useDispatch() 
 
 
   console.log("itemGroupP",itemGroupP)
@@ -121,12 +125,14 @@ const CheckCompetitor = ({ checkBoxTitle, competitors, compInx, marketSizeObj, i
   console.log("itemGroupP from checkbox" , itemGroupP)
     
 
-    if (parseInt(globalState.saveBtn) > 0 && competitor_id > 0) {
+    if ( competitor_id > 0) {
       // setItemGroupC(itemGroupP)
 
       console.log("itemGroupP from checkbox" , itemGroupP)
       // async () =>{
-        marketSizeobjfromP.marketSizeRecords.push({
+
+      // const RetrieverDataProcess = async () => {
+          marketSizeobjfromP.marketSizeRecords.push({
           // itemGroup: parseInt(globalState.selectedItemGroup),
           itemGroup : itemGroupC,
           competitor_id: competitor_id,
@@ -140,7 +146,42 @@ const CheckCompetitor = ({ checkBoxTitle, competitors, compInx, marketSizeObj, i
           market_size_id: 1
         })
 
-      setTimeout(()=>{callObj()},1000)
+    
+        // setFinalObj(marketSizeobjfromP)
+    
+      }
+
+
+      // RetrieverDataProcess().then(()=>{
+      //   setFinalObj(marketSizeobjfromP)
+        
+
+      // });
+
+
+if (uncheckedComp > 0){
+
+  console.log("uncheckedComp",uncheckedComp)
+
+  let UnChInx = marketSizeobjfromP.marketSizeRecords.findIndex((i)=> i.competitor_id == uncheckedComp)
+
+  console.log("UnChInx",UnChInx)
+
+
+
+  marketSizeobjfromP.marketSizeRecords.splice(UnChInx , 1)
+
+
+ setTimeout(() => console.log("marketSizeobjfromP afterUnchecked", marketSizeobjfromP), 0)
+
+}
+
+if (currAddRow > 0){
+  const data = JSON.parse(JSON.stringify(marketSizeobjfromP));
+  dispatch(updateMarketSize(data))
+  console.log("global Stat after Adding Row",globalState.marketSize)
+
+}
 
           
       //       setFinalObj(newObj)
@@ -149,19 +190,17 @@ const CheckCompetitor = ({ checkBoxTitle, competitors, compInx, marketSizeObj, i
         
       // // }
 
-     const callObj = ()=> { setFinalObj(marketSizeobjfromP)
-
-     setTimeout(() => console.log("FinalObj ", finalObj), 2000)
-
-     }
+  
         // setTimeout(() => console.log("marketSizeobjfromP ", marketSizeobjfromP), 0)
+       
 
          
 
       
         // setTimeout(() => console.log("FinalObj ", finalObj), 500)
 
-    }
+
+
 
 // const callset = ()=> {
   
@@ -170,8 +209,11 @@ const CheckCompetitor = ({ checkBoxTitle, competitors, compInx, marketSizeObj, i
 //   setTimeout(() => console.log("FinalObj ", finalObj), 0)
 
 // }
+setTimeout(()=>console.log("FinalObj ",finalObj),1000) 
 
-  }, [parseInt(globalState.saveBtn)])
+  }, [parseInt(globalState.saveBtn) , uncheckedComp , currAddRow ])
+
+  // parseInt(globalState.saveBtn)
 
   console.log('TestSaveBtn', saveBtn)
 
@@ -220,6 +262,8 @@ const CheckCompetitor = ({ checkBoxTitle, competitors, compInx, marketSizeObj, i
       const competitorName = competitors[compInx].competitor_name
       console.log("the check Box compeitor unchecked compatitor Name is \n " + competitorName + " id is " +  parseInt(competitorId))
        let newobj = {...marketSizeobjfromP}
+
+       setUncheckedComp(competitorId)
 
 
 

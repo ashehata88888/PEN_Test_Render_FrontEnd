@@ -637,12 +637,14 @@ console.log("testSaveBNT",this.props.saveBtn)
                   {this.state.competitors.map((obj, inx) => (
                     <div className={hTabs.checkCompetitor} key={obj.id}>
                       <CheckCompetitor 
+                      rowInx={this.props.idprop}
                       checkBoxTitle={obj.competitor_name} 
                       competitors={this.state.competitors}
                       compInx ={inx}
                       marketSizeObj = {this.state.marketSize}
                       itemGroupP= {this.state.selectedItemGroup}
                       saveBtn={this.props.saveBtn}
+                      currAddRow = {this.props.currAddRow}
                       />
                     </div>
                   ))}
