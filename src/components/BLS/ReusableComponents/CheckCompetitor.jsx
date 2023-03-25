@@ -40,6 +40,7 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
   const [competitorName, setCompetitorName] = useState(0)
   const [itemGroupC, setItemGroupC] = useState(0)
   const [finalObj, setFinalObj] = useState()
+  const [finalArray, setFinalArray] = ([])
 
   const [currAddRow1, setCurrAddRow] = useState(0)
 
@@ -164,10 +165,22 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
       //   default:
       //  }
 
+      // setSearches(searches => [...searches, query]) 
 
-      setTimeout(() => console.log("marketSizeobjfromP after CheckComp", marketSizeobjfromP), 100)
+      setFinalArray(finalArray => [...finalArray, marketSizeobjfromP])
 
 
+
+      parseInt(globalState.saveBtn) > 0 && dispatch(updateMarketSize(marketSizeobjfromP))
+
+
+      setTimeout(() =>{ console.log("marketSizeobjfromP after CheckComp", finalArray)
+      
+    }, 100)
+
+ setTimeout(()=>console.log("marketSize after Save Btn pressed ", globalState.marketSize),2000)
+
+       
       // setFinalObj(marketSizeobjfromP)
 
     }
