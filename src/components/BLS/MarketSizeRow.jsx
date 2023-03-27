@@ -19,6 +19,7 @@ import { updateMarketSize,
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
+  minWidth: "20rem",
   border: `1px solid ${theme.palette.divider}`,
   "&:not(:last-child)": {
     borderBottom: "0.5",
@@ -33,6 +34,7 @@ const Accordion = styled((props) => (
 const AccordionSummary = styled((props) => (
   <MuiAccordionSummary expandIcon="" {...props} />
 ))(({ theme }) => ({
+  minWidth: "20rem",
   minHeight: "20px",
   height: "40px",
   marginTop: "0px",
@@ -633,7 +635,7 @@ console.log("testSaveBNT",this.props.saveBtn)
                     {userObj.item_group}
                   </Typography>
                 </AccordionSummary>
-                <AccordionDetails style={{ overflowY: "scroll" }}>
+                <AccordionDetails >
                   {this.state.competitors.map((obj, inx) => (
                     <div className={hTabs.checkCompetitor} key={obj.id}>
                       <CheckCompetitor 

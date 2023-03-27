@@ -21,11 +21,15 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
   const [checked, setChecked] = useState(false);
 
+  const [checked2, setChecked2] = useState(false);
+
   const [text2, setText2] = useState("");
 
   const [text, setText] = useState("");
 
   const [selected, setSelected] = useState(true);
+
+  const [selected2, setSelected2] = useState(true);
 
   const [changeStatus2, setChangeStatus2] = useState(false)
 
@@ -167,7 +171,8 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
       // setSearches(searches => [...searches, query]) 
 
-      setFinalArray(finalArray => [...finalArray, marketSizeobjfromP])
+
+      // setFinalArray(finalArray => [...finalArray, marketSizeobjfromP])
 
 
 
@@ -322,6 +327,61 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
     }
 
 
+    if (!checked2) {
+      console.log("event.target.name check box Ttitle =", checkBoxTitle)
+      console.log("competitors from checkbox are ...", competitors)
+      console.log("compInxb ", compInx)
+      console.log("competitor ID is ...", competitors[compInx].id)
+      const competitorId = competitors[compInx].id
+      const competitorName = competitors[compInx].competitor_name
+      setCompetitor_id(competitorId)
+      setCompetitorName(competitorName)
+      setItemGroupC(itemGroupP)
+
+      setCurrAddRow(currAddRow)
+
+      //  marketSizeobjfromP.marketSizeRecords.push({itemGroup:itemGroupP ,
+      //   competitor_id:competitorId,
+      //   cometitor_name:competitorName,
+      //   // egmed_consumption: 1,
+      //   // total_consumption: 1,
+      //   item_qty1: text2,
+      //   item_status1: item_status1,
+      //   item_qty2: text,
+      //   item_status2: item_status2,
+      //   market_size_id: 1,
+      // })
+    }
+
+
+    if (checked2) {
+      const competitorId = competitors[compInx].id
+      const competitorName = competitors[compInx].competitor_name
+      console.log("the check Box compeitor unchecked compatitor Name is \n " + competitorName + " id is " + parseInt(competitorId))
+      let newobj = { ...marketSizeobjfromP }
+
+      setUncheckedComp(competitorId)
+      setUnCheckItemGroup(itemGroupP)
+
+
+
+      newobj.marketSizeRecords.splice(compInx, 1)
+
+      setFinalObj(newobj)
+
+
+
+      setTimeout(() => console.log("marketSizeobjfromP ", marketSizeobjfromP), 0)
+
+      setTimeout(() => console.log("FinalObj when UnCheck ", finalObj), 0)
+
+    }
+
+
+
+
+
+
 
   }
 
@@ -370,7 +430,9 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
     <div style={{ marginLeft: '10px' }} >
       <ul className={hTabs.competitorUL}>
-        <li className={hTabs.competitorli}>
+        <li 
+        style={{marginRight:'auto'}}
+        className={hTabs.competitorli}>
           <input
             type="checkbox"
             name='checkBox'
@@ -382,12 +444,12 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
               onChangeHandler(e)
               if (checked) {
                 setText("")
-                setText2("")
+                // setText2("")
                 setSelected(!selected)
               }
               if (checked === false) {
                 setText("")
-                setText2("")
+                // setText2("")
                 setSelected(!selected)
               }
               setChecked(!checked)
@@ -395,19 +457,26 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
             }
             }
           ></input >
-        </li>
 
-        <li className={hTabs.competitorli}>
-          <label className={hTabs.labels}>{checkBoxTitle}</label>
-          <input className={hTabs.boxNum} type="number"
-            style={{ display: "inline" }}
+<label 
+         style={{marginRight:'auto'}} className={hTabs.labels}>{checkBoxTitle}</label>
+
+
+        </li>
+      
+        <li>
+          <input
+          className={hTabs.boxNum} 
+           style={{marginRight:"15px"}}
+          type="number"
+            // style={{ display: "inline" }}
             disabled={!checked}
-            value={text2}
-            onChange={e => setText2(e.target.value)}
+            value={text}
+            onChange={e => setText(e.target.value)}
           />
         </li>
 
-        <li className={hTabs.competitorli}>
+        <li  style={{marginLeft:"0px" }} className={hTabs.competitorli}>
           <select
             disabled={!checked}
             required
@@ -447,18 +516,48 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
         </li>
         {/* second product status */}
 
-        <li className={hTabs.competitorli}>
+         <li  style={{marginLeft:"0px" }} className={hTabs.competitorli}>
+          <input
+           style={{marginLeft: "20px"}}
+            type="checkbox"
+            name='checkBox'
+            className={hTabs.checkBox}
+            value="Bike"
+            // onClick={onClickCheckBoxHandler}
+            checked={checked2}
+            onChange={(e) => {
+              onChangeHandler(e)
+              if (checked2) {
+                // setText("")
+                setText2("")
+                setSelected2(!selected2)
+              }
+              if (checked2 === false) {
+                // setText("")
+                setText2("")
+                setSelected2(!selected2)
+              }
+              setChecked2(!checked2)
+              setSelected2(!selected2)
+            }
+            }
+          ></input >
+        </li>
+
+        <li style={{marginRight:"15px"}} className={hTabs.competitorli}>
           <input className={hTabs.boxNum} type="number"
             style={{ display: "inline" }}
-            disabled={!checked}
-            value={text}
-            onChange={e => setText(e.target.value)}
+            disabled={!checked2}
+            value={text2}
+            // placeholder="V2"
+            onChange={e => setText2(e.target.value)}
           />
         </li>
 
-        <li className={hTabs.competitorli}>
+        <li style={{marginLeft:"0px" }} className={hTabs.competitorli}>
           <select
-            disabled={!checked}
+
+            disabled={!checked2}
             required
             // ref={activity_type_id}
             // className={
@@ -473,8 +572,8 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
             }
             }
           >
-            <option value="0" selected={selected}>
-              Select Status
+            <option value="0" selected={selected2}>
+              Select Another Status
             </option>
             <option value="1">Active</option>
             <option value="2">Inactive</option>

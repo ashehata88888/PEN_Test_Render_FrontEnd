@@ -514,11 +514,15 @@ margin-top:20px;
   color: black;
   list-style-type: none;
   margin: 0;
-  display: block;
+  display: flex;
   padding: 0;
-  text-align: baseline;
-  justify-content: baseline;
+  justify-content: flex-end;
+  flex-direction: row;
+  flex-wrap: nowrap ;
+  /* align-self: flex-start; */
+  align-items: baseline ;
 }
+
 
   .competitorli{
     display:inline;
