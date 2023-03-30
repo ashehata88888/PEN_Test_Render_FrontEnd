@@ -1,4 +1,5 @@
 /* eslint-disable */
+
 import React, { useEffect, useState, useContext } from 'react'
 import hTabs from '../hTabs.module.css'
 import { display } from '@mui/system';
@@ -43,7 +44,7 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
   const [market_size_id, setmarket_size_id] = useState(0)
   const [competitorName, setCompetitorName] = useState(0)
   const [itemGroupC, setItemGroupC] = useState(0)
-  const [finalObj, setFinalObj] = useState()
+  const [finalObj, setFinalObj] = useState({})
   const [finalArray, setFinalArray] = ([])
 
   const [currAddRow1, setCurrAddRow] = useState(0)
@@ -145,19 +146,26 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
       // async () =>{
 
       // const RetrieverDataProcess = async () => {
-      marketSizeobjfromP.marketSizeRecords.push({
-        // itemGroup: parseInt(globalState.selectedItemGroup),
-        itemGroup: itemGroupC,
-        competitor_id: competitor_id,
-        cometitor_name: competitorName,
-        // egmed_consumption: 1,
-        // total_consumption: 1,
-        item_qty1: parseInt(text2),
-        item_status1: parseInt(item_status1),
-        item_qty2: parseInt(text),
-        item_status2: parseInt(item_status2),
-        // market_size_id: 1
-      })
+
+
+
+
+      // marketSizeobjfromP.marketSizeRecords.push({
+      //   itemGroup: itemGroupC,
+      //   competitor_id: competitor_id,
+      //   cometitor_name: competitorName,
+      //   // egmed_consumption: 1,
+      //   // total_consumption: 1,
+      //   item_qty1: parseInt(text2),
+      //   item_status1: parseInt(item_status1),
+      //   item_qty2: parseInt(text),
+      //   item_status2: parseInt(item_status2),
+      //   // market_size_id: 1
+      // })
+
+
+
+
 
       //  switch(competitor_id ){
       //   case x:
@@ -381,20 +389,96 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
 
 
+// if(
+//       e.target.name == "item_status1" 
+//       &&
+//       checked === true
+//       &&
+//        text > 0 
+//        &&
+//        e.target.value > 0
+//         ) {
+//           // setitem_status1(e.target.value)
+
+//       console.log("test for first item_status on Change")
+
+//       marketSizeobjfromP.marketSizeRecords.push({
+//         itemGroup: itemGroupC,
+//         competitor_id: competitor_id,
+//         cometitor_name: competitorName,
+//         // egmed_consumption: 1,
+//         // total_consumption: 1,
+//         item_qty1: parseInt(text),
+//         item_status1: parseInt(e.target.value),
+//         // item_qty2: parseInt(text2),
+//         // item_status2: parseInt(item_status2),
+//         // market_size_id: 1
+//       })
+
+//       // setFinalObj(marketSizeobjfromP)
+
+//       setTimeout(()=>console.log("marketSizeobjfromP after onChange item_Status1",marketSizeobjfromP),0)
+
+
+//       // setTimeout(()=>console.log("marketSizeobjfromP after onChange item_Status1",marketSizeobjfromP),1000)
+//     }
+
+//     if(e.target.name == "item_status1"){
+//       setitem_status1(e.target.value)
+//     }
+
+
 
 
   }
+
+
 
   const onChangeSelectStatus1 = (e) => {
     setitem_status1(e.target.value)
 
 
+    if(
+      checked === true
+      &&
+       text > 0 
+       &&
+       e.target.value > 0
+        ) {
+          setitem_status1(e.target.value)
 
+      console.log("test for first item_status on Change")
+
+      marketSizeobjfromP.marketSizeRecords.push({
+        itemGroup: itemGroupC,
+        competitor_id: competitor_id,
+        cometitor_name: competitorName,
+        // egmed_consumption: 1,
+        // total_consumption: 1,
+        item_qty1: parseInt(text),
+        item_status1: parseInt(e.target.value),
+        // item_qty2: parseInt(text2),
+        // item_status2: parseInt(item_status2),
+        // market_size_id: 1
+      })
+
+      setTimeout(()=>console.log("marketSizeobjfromP after onChange item_Status1",marketSizeobjfromP),0)
+
+      setFinalObj(marketSizeobjfromP)
+
+     
+
+    
+    }
+
+    // console.log("test for first item_status on Change")
 
 
 
 
   }
+
+
 
   const onChangeSelectStatu2 = (e) => {
     setitem_status2(e.target.value)
@@ -402,8 +486,7 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
     // console.log("saveBtn test",globalState.saveBtn)
 
     // setChangeStatus2(true)
-
-
+    
 
 
 
@@ -480,13 +563,13 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
           <select
             disabled={!checked}
             required
+            name = "item_status1"
             // ref={activity_type_id}
             // className={
             //   // errActivitySelectType ? hTabs.dropDownErr : 
             //   // hTabs.dropDownList
             // }
             // id="activityType"
-            name="productList1"
             onChange={(e) => {
               onChangeSelectStatus1(e)
 
