@@ -483,6 +483,36 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
   const onChangeSelectStatu2 = (e) => {
     setitem_status2(e.target.value)
 
+    let index = marketSizeobjfromP.marketSizeRecords.indexOf({
+      itemGroup: itemGroupC,
+      competitor_id: competitor_id,
+      cometitor_name: competitorName,
+      // egmed_consumption: 1,
+      // total_consumption: 1,
+      item_qty1: parseInt(text),
+      item_status1: parseInt(item_status1),
+      // item_qty2: parseInt(text2),
+      // item_status2: parseInt(item_status2),
+      // market_size_id: 1
+    })
+
+    console.log("index from onchangeselectStatus2 is ",index)
+
+    // marketSizeobjfromP.marketSizeRecords.push({
+    //   itemGroup: itemGroupC,
+    //   competitor_id: competitor_id,
+    //   cometitor_name: competitorName,
+    //   // egmed_consumption: 1,
+    //   // total_consumption: 1,
+    //   item_qty1: parseInt(text),
+    //   item_status1:  parseInt(item_status1),
+    //   item_qty2: parseInt(text2),
+    //   item_status2: parseInt(e.target.value),
+    //   // market_size_id: 1
+    // })
+
+
+
     // console.log("saveBtn test",globalState.saveBtn)
 
     // setChangeStatus2(true)
