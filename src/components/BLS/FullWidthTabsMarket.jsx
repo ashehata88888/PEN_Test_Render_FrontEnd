@@ -272,7 +272,9 @@ setExpander(true)
   event.preventDefault();
 
 
-  dispatch(updateMarketSize(elemento))
+  // dispatch(updateMarketSize(elemento))
+
+
 
   // setIndexCount(indexCount - 1);
   // clone

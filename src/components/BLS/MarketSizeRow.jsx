@@ -375,7 +375,7 @@ class MarketSizeRow extends Component {
         const newiGData = await iGResponse.json();
         console.log("item Group after fetching", [...newiGData]);
         //    setItemGroup(newiGData);
-        newiGData.length > 1
+        newiGData.length < 1000
           ? this.setState({ expanded: "" })
           : this.setState({ expanded: "panel0" });
         this.setState({ itemGroups: [...newiGData] });
@@ -448,7 +448,7 @@ class MarketSizeRow extends Component {
 console.log("testSaveBNT",this.props.saveBtn)
 
 
-    setTimeout(() => this.props.marketSizeData(this.state.marketSize), 0);
+    // setTimeout(() => this.props.marketSizeData(this.state.marketSize), 0);
 
   };
 

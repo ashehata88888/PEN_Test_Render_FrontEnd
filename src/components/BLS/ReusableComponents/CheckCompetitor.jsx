@@ -74,7 +74,7 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
   // const [competitors,setCompetitors] = useState([])
   const [competitor_id, setCompetitor_id] = useState(0)
 
-  const marketSizeobjfromP = { ...marketSizeObj }
+  let marketSizeobjfromP = { ...marketSizeObj }
 
 
 
@@ -457,8 +457,8 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
         // total_consumption: 1,
         item_qty1: parseInt(text),
         item_status1: parseInt(e.target.value),
-        // item_qty2: parseInt(text2),
-        // item_status2: parseInt(item_status2),
+        item_qty2: 0,
+        item_status2: 0,
         // market_size_id: 1
       })
 
@@ -480,23 +480,54 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
 
 
-  const onChangeSelectStatu2 = (e) => {
+  const onChangeSelectStatus2 = (e) => {
     setitem_status2(e.target.value)
 
-    let index = marketSizeobjfromP.marketSizeRecords.indexOf({
+    marketSizeobjfromP.marketSizeRecords.splice(compInx, 1)
+
+    marketSizeobjfromP.marketSizeRecords.push({
       itemGroup: itemGroupC,
       competitor_id: competitor_id,
       cometitor_name: competitorName,
       // egmed_consumption: 1,
       // total_consumption: 1,
       item_qty1: parseInt(text),
-      item_status1: parseInt(item_status1),
-      // item_qty2: parseInt(text2),
-      // item_status2: parseInt(item_status2),
+      item_status1: parseInt(item_status1), 
+      item_qty2: parseInt(text2),
+      item_status2: parseInt(e.target.value),
       // market_size_id: 1
     })
 
-    console.log("index from onchangeselectStatus2 is ",index)
+    // let index = marketSizeobjfromP.marketSizeRecords.indexOf({
+    //   itemGroup: itemGroupC,
+    //   competitor_id: competitor_id,
+    //   cometitor_name: competitorName,
+    //   // egmed_consumption: 1,
+    //   // total_consumption: 1,
+    //   // item_qty1: parseInt(text),
+    //   // item_status1: parseInt(item_status1),
+    //   item_qty2: parseInt(text2),
+    //   item_status2: parseInt(item_status2),
+    //   // market_size_id: 1
+    // })
+    // const states2Obj = {item_qty2: parseInt(text2),
+    //   item_status2: parseInt(item_status2)}
+
+    // marketSizeobjfromP = {...marketSizeobjfromP.marketSizeRecords[compInx],...{item_qty2: parseInt(text2),
+    //   item_status2: parseInt(item_status2)}}
+
+      // Object.assign(states2Obj, marketSizeobjfromP.marketSizeRecords[compInx]);
+
+    // marketSizeobjfromP.marketSizeRecords[compInx].item_qty2 = parseInt(text2)
+    // marketSizeobjfromP.marketSizeRecords[compInx].item_status2 = parseInt(item_status2)
+
+
+
+    setTimeout(()=>console.log("marketSizeobjfromP after onChange item_Status2",marketSizeobjfromP),0)
+
+
+
+    console.log("index from onchangeselectStatus2 is ",compInx)
 
     // marketSizeobjfromP.marketSizeRecords.push({
     //   itemGroup: itemGroupC,
@@ -680,10 +711,11 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
             // id="activityType"
             name="productList1"
             onChange={(e) => {
-              onChangeSelectStatu2(e)
+              onChangeSelectStatus2(e)
 
             }
             }
+
           >
             <option value="0" selected={selected2}>
               Select Another Status
