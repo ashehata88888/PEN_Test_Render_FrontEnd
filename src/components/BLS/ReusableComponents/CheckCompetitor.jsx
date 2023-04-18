@@ -76,7 +76,9 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
   let marketSizeobjfromP = { ...marketSizeObj }
 
+  const [marketSizeRecords,setMarketSizeRecords] = useState([{}])
 
+  
 
 
   // const userData = JSON.parse(useContext(UserContext));
@@ -120,11 +122,28 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
   //   console.log("marketSizeobjfromP ",marketSizeobjfromP)+
 
-  console.log("testsaveBtnFrom Checkbox", globalState.saveBtn)
+  // parseInt(globalState.saveBtn) > 0 && console.log("testsaveBtnFrom Checkbox", parseInt(globalState.saveBtn))
+useEffect(()=>{
 
+  if ( ( competitor_id > 0 && parseInt(text) > 0 && parseInt(item_status1) > 0 ) || (competitor_id > 0 && parseInt(text2) > 0 && parseInt(item_status2) > 0 ) ) {
+    setMarketSizeRecords([...marketSizeRecords,...[{
+      itemGroup: itemGroupC,
+      competitor_id: competitor_id,
+      cometitor_name: competitorName,
+      // egmed_consumption: 1,
+      // total_consumption: 1,
+      item_qty1: parseInt(text),
+      item_status1: parseInt(item_status1), 
+      item_qty2: parseInt(text2),
+      item_status2: parseInt(item_status2),
+      // market_size_id: 1
+    }]])
+    console.log("test for setMarketSizeRecords inside useEffect")
+    setTimeout(()=>console.log("Market Size Records inside useEffect",marketSizeRecords),0)
+    }
 
-
-
+},[competitor_id,itemGroupC,parseInt(text),parseInt(item_status1),parseInt(text2),parseInt(item_status2)])
+  
 
   console.log('TestSaveBtn', globalState.saveBtn)
 
@@ -134,6 +153,8 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
     console.log("itemGroupP from checkbox", itemGroupP)
 
+
+    console.log("marketSizeRecords inside useEffect",marketSizeRecords)
 
     if (competitor_id > 0) {
       // setItemGroupC(itemGroupP)
@@ -147,9 +168,15 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
       // const RetrieverDataProcess = async () => {
 
+      parseInt(globalState.saveBtn) > 0 && console.log("testsaveBtnFrom Checkbox", parseInt(globalState.saveBtn))
+      
+
+      marketSizeobjfromP.marketSizeRecords = marketSizeRecords
 
 
+    
 
+ console.log("marketSizeobjfromP inside useEffect",marketSizeobjfromP)
       // marketSizeobjfromP.marketSizeRecords.push({
       //   itemGroup: itemGroupC,
       //   competitor_id: competitor_id,
@@ -183,8 +210,11 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
       // setFinalArray(finalArray => [...finalArray, marketSizeobjfromP])
 
 
-
-      parseInt(globalState.saveBtn) > 0 && dispatch(updateMarketSize(marketSizeobjfromP))
+      parseInt(globalState.saveBtn) > 0 && console.log("marketSizeobjfromP after onChange item_Status2",marketSizeobjfromP)
+      
+      
+//  parseInt(globalState.saveBtn)
+      // dispatch(updateMarketSize(marketSizeobjfromP))
 
 
       setTimeout(() =>{ console.log("marketSizeobjfromP after CheckComp", finalArray)
@@ -263,7 +293,9 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
     // }
     setTimeout(() => console.log("FinalObj ", finalObj), 1000)
 
-  }, [parseInt(globalState.saveBtn), uncheckedComp, currAddRow1])
+    // , uncheckedComp, currAddRow1
+
+  }, [parseInt(globalState.saveBtn)])
 
   // parseInt(globalState.saveBtn)
 
@@ -449,18 +481,18 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
       console.log("test for first item_status on Change")
 
-      marketSizeobjfromP.marketSizeRecords.push({
-        itemGroup: itemGroupC,
-        competitor_id: competitor_id,
-        cometitor_name: competitorName,
-        // egmed_consumption: 1,
-        // total_consumption: 1,
-        item_qty1: parseInt(text),
-        item_status1: parseInt(e.target.value),
-        item_qty2: 0,
-        item_status2: 0,
-        // market_size_id: 1
-      })
+      // marketSizeobjfromP.marketSizeRecords.push({
+      //   itemGroup: itemGroupC,
+      //   competitor_id: competitor_id,
+      //   cometitor_name: competitorName,
+      //   // egmed_consumption: 1,
+      //   // total_consumption: 1,
+      //   item_qty1: parseInt(text),
+      //   item_status1: parseInt(e.target.value),
+      //   item_qty2: 0,
+      //   item_status2: 0,
+      //   // market_size_id: 1
+      // })
 
       setTimeout(()=>console.log("marketSizeobjfromP after onChange item_Status1",marketSizeobjfromP),0)
 
@@ -483,20 +515,20 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
   const onChangeSelectStatus2 = (e) => {
     setitem_status2(e.target.value)
 
-    marketSizeobjfromP.marketSizeRecords.splice(compInx, 1)
+    // marketSizeobjfromP.marketSizeRecords.splice(compInx, 1)
 
-    marketSizeobjfromP.marketSizeRecords.push({
-      itemGroup: itemGroupC,
-      competitor_id: competitor_id,
-      cometitor_name: competitorName,
-      // egmed_consumption: 1,
-      // total_consumption: 1,
-      item_qty1: parseInt(text),
-      item_status1: parseInt(item_status1), 
-      item_qty2: parseInt(text2),
-      item_status2: parseInt(e.target.value),
-      // market_size_id: 1
-    })
+    // marketSizeobjfromP.marketSizeRecords.push({
+    //   itemGroup: itemGroupC,
+    //   competitor_id: competitor_id,
+    //   cometitor_name: competitorName,
+    //   // egmed_consumption: 1,
+    //   // total_consumption: 1,
+    //   item_qty1: parseInt(text),
+    //   item_status1: parseInt(item_status1), 
+    //   item_qty2: parseInt(text2),
+    //   item_status2: parseInt(e.target.value),
+    //   // market_size_id: 1
+    // })
 
     // let index = marketSizeobjfromP.marketSizeRecords.indexOf({
     //   itemGroup: itemGroupC,
