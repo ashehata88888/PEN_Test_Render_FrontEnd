@@ -139,11 +139,11 @@ useEffect(()=>{
       // market_size_id: 1
     }]])
     console.log("test for setMarketSizeRecords inside useEffect")
-    setTimeout(()=>console.log("Market Size Records inside useEffect",marketSizeRecords),0)
+    setTimeout(()=>console.log("Market Size Records inside useEffect",marketSizeRecords),3000)
     }
 
-},[competitor_id,itemGroupC,parseInt(text),parseInt(item_status1),parseInt(text2),parseInt(item_status2)])
-  
+},[parseInt(globalState.saveBtn)])
+  // competitor_id,itemGroupC,parseInt(text),parseInt(item_status1),parseInt(text2),parseInt(item_status2)
 
   console.log('TestSaveBtn', globalState.saveBtn)
 
@@ -174,7 +174,7 @@ useEffect(()=>{
       marketSizeobjfromP.marketSizeRecords = marketSizeRecords
 
 
-    
+      console.log("Market Size Records outSide useEffect",marketSizeRecords)
 
  console.log("marketSizeobjfromP inside useEffect",marketSizeobjfromP)
       // marketSizeobjfromP.marketSizeRecords.push({
@@ -761,7 +761,9 @@ useEffect(()=>{
 
         </li>
 
-
+<button onClick={
+ ()=> console.log("Market Size Records outSide useEffect",marketSizeRecords)
+}>Records</button>
       </ul>
 
 
