@@ -9,7 +9,7 @@ import {
   updateMarketSize,
   updateSelectedItemGroup
 } from "../../store/index";
-import { UserContext } from "../Home";
+import { UserContext } from "./Home";
 import { useState } from "react";
 
 const Accordion = styled((props) => (
@@ -24,6 +24,8 @@ const Accordion = styled((props) => (
     display: "none",
   },
 }));
+
+console.log("Hello")
 const AccordionSummary = styled((props) => (
   <MuiAccordionSummary expandIcon="" {...props} />
 ))(({ theme }) => ({
