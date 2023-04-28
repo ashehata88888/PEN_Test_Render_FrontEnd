@@ -18,7 +18,7 @@ import { updateSelectedItemGroup, updateMarketSize } from '../../../store/index'
 
 
 
-const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, marketSizeObj, itemGroupP, saveBtn, rowInx }) => {
+const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, marketSizeObj, itemGroupP, saveBtn, rowInx , handelCallBackRow }) => {
 
   const [checked, setChecked] = useState(false);
 
@@ -46,6 +46,29 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
   const [itemGroupC, setItemGroupC] = useState(0)
   const [finalObj, setFinalObj] = useState({})
   const [finalArray, setFinalArray] = ([])
+
+  const [ marketSize, setMarketSize] = useState(
+    [{
+        marketSizeRowID: 0,
+        supplier_id: parseInt(event.target.value),
+        product_family_id: 0,
+        item_group_id: 0,
+        market_potential_id: 0,
+        marketSizeRecords: [
+          {
+            marketSizeRecordsID: 0,
+            egmed_consumption: 0,
+            total_consumption: 0,
+            competitor_id: 0,
+            item_qty1: 0,
+            item_status1: 0,
+            item_qty2: 0,
+            item_status2: 0,
+            market_size_id: 0,
+          },
+        ],
+      }]
+  )
 
   const [currAddRow1, setCurrAddRow] = useState(0)
 
@@ -76,9 +99,16 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
   let marketSizeobjfromP = { ...marketSizeObj }
 
-  const [marketSizeRecords,setMarketSizeRecords] = useState([{}])
+  const [marketSizeRecords,setMarketSizeRecords] = useState([])
 
-  
+
+
+  // {this.props.handelCallBack(this.state.marketSize)}
+  let message = [{a : 1 , b : 2},{a : 2 , b : 33},{a : 4 , b : 5}]
+
+  // handelCallBackRow(message)
+
+  // handelCallBackRow(marketSizeRecords)
 
 
   // const userData = JSON.parse(useContext(UserContext));
@@ -123,10 +153,14 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
   //   console.log("marketSizeobjfromP ",marketSizeobjfromP)+
 
   // parseInt(globalState.saveBtn) > 0 && console.log("testsaveBtnFrom Checkbox", parseInt(globalState.saveBtn))
-useEffect(()=>{
 
-  if ( ( competitor_id > 0 && parseInt(text) > 0 && parseInt(item_status1) > 0 ) || (competitor_id > 0 && parseInt(text2) > 0 && parseInt(item_status2) > 0 ) ) {
-    setMarketSizeRecords([...marketSizeRecords,...[{
+
+  useEffect(()=>{
+
+  if ((competitor_id > 0 && parseInt(text2) > 0 && parseInt(item_status2) > 0 )  || ( competitor_id > 0 && parseInt(text) > 0 && parseInt(item_status1) > 0 )) {
+    
+    let newRecords = [...marketSizeRecords]
+    let recordObj = {
       itemGroup: itemGroupC,
       competitor_id: competitor_id,
       cometitor_name: competitorName,
@@ -137,167 +171,99 @@ useEffect(()=>{
       item_qty2: parseInt(text2),
       item_status2: parseInt(item_status2),
       // market_size_id: 1
-    }]])
+    }
+    newRecords = [...newRecords , recordObj]
+
+    handelCallBackRow(recordObj)
+
+    
+    // setMarketSizeRecords([...marketSizeRecords,{
+    //   itemGroup: itemGroupC,
+    //   competitor_id: competitor_id,
+    //   cometitor_name: competitorName,
+    //   // egmed_consumption: 1,
+    //   // total_consumption: 1,
+    //   item_qty1: parseInt(text),
+    //   item_status1: parseInt(item_status1), 
+    //   item_qty2: parseInt(text2),
+    //   item_status2: parseInt(item_status2),
+    //   // market_size_id: 1
+    // }])
     console.log("test for setMarketSizeRecords inside useEffect")
-    setTimeout(()=>console.log("Market Size Records inside useEffect",marketSizeRecords),3000)
+    // setTimeout(()=>console.log("Market Size Records inside useEffect",marketSizeRecords),3000)
     }
 
-},[parseInt(globalState.saveBtn)])
-  // competitor_id,itemGroupC,parseInt(text),parseInt(item_status1),parseInt(text2),parseInt(item_status2)
+}),[parseInt(globalState.saveBtn)]
 
   console.log('TestSaveBtn', globalState.saveBtn)
 
 
 
-  useEffect(() => {
+//   useEffect(() => {
 
-    console.log("itemGroupP from checkbox", itemGroupP)
-
-
-    console.log("marketSizeRecords inside useEffect",marketSizeRecords)
-
-    if (competitor_id > 0) {
-      // setItemGroupC(itemGroupP)
-
-      console.log("itemGroupP from checkbox", itemGroupP)
-
-      // console.log("currAddRow from checkbox ",currAddRow)
+//     console.log("itemGroupP from checkbox", itemGroupP)
 
 
-      // async () =>{
+//     console.log("marketSizeRecords inside useEffect",marketSizeRecords)
 
-      // const RetrieverDataProcess = async () => {
+//     if (competitor_id > 0) {
 
-      parseInt(globalState.saveBtn) > 0 && console.log("testsaveBtnFrom Checkbox", parseInt(globalState.saveBtn))
+
+//       console.log("itemGroupP from checkbox", itemGroupP)
+
+
+//       parseInt(globalState.saveBtn) > 0 && console.log("testsaveBtnFrom Checkbox", parseInt(globalState.saveBtn))
       
 
-      marketSizeobjfromP.marketSizeRecords = marketSizeRecords
+//       marketSizeobjfromP.marketSizeRecords = marketSizeRecords
 
 
-      console.log("Market Size Records outSide useEffect",marketSizeRecords)
+//       console.log("Market Size Records outSide useEffect",marketSizeRecords)
 
- console.log("marketSizeobjfromP inside useEffect",marketSizeobjfromP)
-      // marketSizeobjfromP.marketSizeRecords.push({
-      //   itemGroup: itemGroupC,
-      //   competitor_id: competitor_id,
-      //   cometitor_name: competitorName,
-      //   // egmed_consumption: 1,
-      //   // total_consumption: 1,
-      //   item_qty1: parseInt(text2),
-      //   item_status1: parseInt(item_status1),
-      //   item_qty2: parseInt(text),
-      //   item_status2: parseInt(item_status2),
-      //   // market_size_id: 1
-      // })
+//  console.log("marketSizeobjfromP inside useEffect",marketSizeobjfromP)
 
 
-
-
-
-      //  switch(competitor_id ){
-      //   case x:
-      //     // code block
-      //     break;
-      //   case y:
-      //     // code block
-      //     break;
-      //   default:
-      //  }
-
-      // setSearches(searches => [...searches, query]) 
-
-
-      // setFinalArray(finalArray => [...finalArray, marketSizeobjfromP])
-
-
-      parseInt(globalState.saveBtn) > 0 && console.log("marketSizeobjfromP after onChange item_Status2",marketSizeobjfromP)
+//       parseInt(globalState.saveBtn) > 0 && console.log("marketSizeobjfromP after onChange item_Status2",marketSizeobjfromP)
       
       
-//  parseInt(globalState.saveBtn)
-      // dispatch(updateMarketSize(marketSizeobjfromP))
 
-
-      setTimeout(() =>{ console.log("marketSizeobjfromP after CheckComp", finalArray)
+//       setTimeout(() =>{ console.log("marketSizeobjfromP after CheckComp", finalArray)
       
-    }, 100)
+//     }, 100)
 
- setTimeout(()=>console.log("marketSize after Save Btn pressed ", globalState.marketSize),2000)
-
-       
-      // setFinalObj(marketSizeobjfromP)
-
-    }
+//  setTimeout(()=>console.log("marketSize after Save Btn pressed ", globalState.marketSize),2000)
 
 
-    // RetrieverDataProcess().then(()=>{
-    //   setFinalObj(marketSizeobjfromP)
-
-
-    // });
-
-
-    if (uncheckedComp > 0) {
-
-      console.log("uncheckedComp", uncheckedComp)
-
-      let UnChInx = marketSizeobjfromP.marketSizeRecords.findIndex((i) => i.competitor_id == uncheckedComp && i.itemGroup == unCheckItemGroup )
-
-      console.log("UnChInx", UnChInx)
-
-      // console.log("currAddRow from checkbox ",currAddRow)
-
-      marketSizeobjfromP.marketSizeRecords.splice(UnChInx, 1)
-
-
-      setTimeout(() => console.log("marketSizeobjfromP afterUnchecked", marketSizeobjfromP), 0)
-
-    }
-
-
-
-    // if ( currAddRow1 > 0 || competitor_id > 0 && (parseInt(item_status2) > 0 && parseInt(item_status1) > 0)) {
-
-    //   console.log("currAddRow from checkbox ", currAddRow1)
-    //   const data = JSON.parse(JSON.stringify(marketSizeobjfromP));
-    //   dispatch(updateMarketSize(data))
-    //   setTimeout(() => console.log("global Stat after Adding Row or Save BTN", globalState.marketSize), 100)
-
-    // } 
-
-
-
-    //       setFinalObj(newObj)
-
-    //   // setFinalObj(marketSizeobjfromP)
-
-    // // }
-
-
-    // setTimeout(() => console.log("marketSizeobjfromP ", marketSizeobjfromP), 0)
+//     }
 
 
 
 
+//     if (uncheckedComp > 0) {
 
-    // setTimeout(() => console.log("FinalObj ", finalObj), 500)
+//       console.log("uncheckedComp", uncheckedComp)
+
+//       let UnChInx = marketSizeobjfromP.marketSizeRecords.findIndex((i) => i.competitor_id == uncheckedComp && i.itemGroup == unCheckItemGroup )
+
+//       console.log("UnChInx", UnChInx)
+
+
+//       marketSizeobjfromP.marketSizeRecords.splice(UnChInx, 1)
+
+
+//       setTimeout(() => console.log("marketSizeobjfromP afterUnchecked", marketSizeobjfromP), 0)
+
+//     }
+
+
+ 
+//     setTimeout(() => console.log("FinalObj ", finalObj), 1000)
 
 
 
+//   }, [parseInt(globalState.saveBtn)])
 
-    // const callset = ()=> {
 
-    //   setFinalObj(marketSizeobjfromP)
-
-    //   setTimeout(() => console.log("FinalObj ", finalObj), 0)
-
-    // }
-    setTimeout(() => console.log("FinalObj ", finalObj), 1000)
-
-    // , uncheckedComp, currAddRow1
-
-  }, [parseInt(globalState.saveBtn)])
-
-  // parseInt(globalState.saveBtn)
 
   console.log('TestSaveBtn', saveBtn)
 

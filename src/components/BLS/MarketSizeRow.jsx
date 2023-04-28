@@ -61,6 +61,7 @@ class MarketSizeRow extends Component {
     super(props);
   }
   state = {
+    records:[],
     testObj:parseInt(this.props.saveBtn),
     openId: 0,
     selectedItemGroup:0,
@@ -91,13 +92,13 @@ class MarketSizeRow extends Component {
       market_potential_id: 0,
       marketSizeRecords: [
 
-      ],
-    },
+      ]
+    }
   };
 
   // this.props.globalState.marketSize[0].supplier_id 
 
-
+ message = "Hello from Child"
 
 
   selectOpen = (openId) => {
@@ -105,29 +106,83 @@ class MarketSizeRow extends Component {
   };
 
 
-  marketSizeRecordObj1 = {
-    marketSizeRecordsID: 1,
-    egmed_consumption: 1,
-    total_consumption: 1,
-    competitor_id: 1,
-    item_qty1: 1,
-    item_status1: 1,
-    item_qty2: 1,
-    item_status2: 1,
-    market_size_id: 1,
+
+   CallBackRow = (childDataCheckBox) => {
+    // const data = childData + ' this is adding test'
+
+    // this.setState({records : [...this.state.records,childDataCheckBox]})
+  let newMarketSize = this.state.marketSize
+     newMarketSize.marketSizeRecords.push(childDataCheckBox)
+     
+     
+     
+     
+    //  .filter((item,
+    //   index) => newMarketSize.marketSizeRecords.indexOf(item) === index);
+
+
+
+    //  let arr = newMarketSize.marketSizeRecords
+
+
+    //   return arr.filter((item,
+    //       index) => arr.indexOf(item) === index);
+  
+
+
+
+
+    // let recordsArr = []
+    // recordsArr.push(childDataCheckBox)
+
+    // this.props.callBackRecords(recordsArr)
+
+    // this.props.callBackRecords(childDataCheckBox)
+
+
+    // console.log("childDataCheckBox",JSON.stringify(childDataCheckBox))
+
+    // let records = [JSON.stringify(childDataCheckBox)].map((j)=>j)
+    // let records2 = [childDataCheckBox].map((j)=>j)
+    // console.log("j is.... " , records2)
+    // let recordsClone = [...records2]
+    // // this.setState({marketSizeRecords : recordsClone })
+    // console.log("RecordsClone...",recordsClone)
+
+
+
+
+
+    // this.setState((prevState) => ({
+    //   marketSize: {
+    //     ...prevState.marketSize, // copy all other key-value pairs of food object
+    //     marketSizeRecords : records.map((j)=>j)// update value of specific key
+
+    //   },
+    // }));
+
+    // this.setState({marketSizeRecords: [JSON.stringify(childDataCheckBox)]})
+  
+
+  
+  //  return recordsClone
+
+ 
+
+
+
+    // return <div>
+    //   <p>Message from chiled CheckBox - {JSON.stringify(childDataCheckBox)}</p>
+    // </div>
   }
 
-  marketSizeRecordObj2 = {
-    marketSizeRecordsID: 2,
-    egmed_consumption: 2,
-    total_consumption: 2,
-    competitor_id: 2,
-    item_qty1: 2,
-    item_status1: 2,
-    item_qty2: 2,
-    item_status2: 2,
-    market_size_id: 2,
+  componentDidUpdate(prevProps , prevState){
+    if(prevState.marketSize !== this.state.marketSize ){
+      this.CallBackRow()
+    }
   }
+ 
+
 
 // this.setState({ myArray: [...this.state.myArray, ...[1,2,3] ] }) //another array
 
@@ -529,6 +584,7 @@ console.log("testSaveBNT",this.props.saveBtn)
    
 
     return (
+  
       <div
         idprop={this.state.id}
         style={{
@@ -542,6 +598,18 @@ console.log("testSaveBNT",this.props.saveBtn)
           width: "80%",
         }}
       >
+
+            <div>
+            {this.props.handelCallBack(this.state.marketSize)}
+           
+            </div>
+
+            <div>
+            Sobhan Allah al Azim 
+            </div>
+
+
+
         <div> Testing idprop Supplier Id is :{this.props.idprop}</div>
 
         <div className={hTabs.productBox}>
@@ -638,6 +706,7 @@ console.log("testSaveBNT",this.props.saveBtn)
                 <AccordionDetails >
                   {this.state.competitors.map((obj, inx) => (
                     <div className={hTabs.checkCompetitor} key={obj.id}>
+                      
                       <CheckCompetitor 
                       rowInx={this.props.idprop}
                       checkBoxTitle={obj.competitor_name} 
@@ -647,6 +716,7 @@ console.log("testSaveBNT",this.props.saveBtn)
                       itemGroupP= {this.state.selectedItemGroup}
                       saveBtn={this.props.saveBtn}
                       currAddRow = {this.props.currAddRow}
+                      handelCallBackRow = {this.CallBackRow}
                       />
                     </div>
                   ))}

@@ -48,7 +48,7 @@ import AccountNameAdress from "./AccountNameAdress";
 import Private_OR from "./Private_OR";
 import Private_Medical_lower from "./Private_Medical_lower";
 import Private_Medical_upper from "./Private_Medical_upper";
-import MarketSizeRow from "./MarketSizeRow";
+import MarketSizeRow from "./MarketSizeRowN";
 
 import {useSelector,useDispatch} from "react-redux";
 import { updateMarketSize , 
@@ -88,6 +88,10 @@ export default function LabTabsMarket({
   const [delCount, setDelCount] = useState(0);
   const [saveCount, setSaveCount] = useState(0);
   const [expander,setExpander] = useState(false)
+  const [finalRecords,setFinalRecords]=useState([])
+  const [finalMarketSize,setFinalMarketSize] = useState([])
+
+
 
   const [newelement,setNewelement] = useState([{
     marketSizeRowID: 0,
@@ -109,6 +113,55 @@ export default function LabTabsMarket({
       },
     ],
   }]);
+
+  const [ marketSize, setMarketSize] = useState(
+    [{
+        marketSizeRowID: 0,
+        supplier_id: parseInt(event.target.value),
+        product_family_id: 0,
+        item_group_id: 0,
+        market_potential_id: 0,
+        marketSizeRecords: [
+          {
+            marketSizeRecordsID: 0,
+            egmed_consumption: 0,
+            total_consumption: 0,
+            competitor_id: 0,
+            item_qty1: 0,
+            item_status1: 0,
+            item_qty2: 0,
+            item_status2: 0,
+            market_size_id: 0,
+          },
+        ],
+      }]
+  )
+
+
+  function CallBack(childData){
+    // const data = childData + ' this is adding test'
+
+    
+ 
+    setFinalMarketSize(childData)
+
+    return <div>
+      <p>Message from chiled - {JSON.stringify(childData)}</p>
+    </div>
+  }
+
+  function CallBackRecords(childData){
+
+
+    setFinalRecords([...finalRecords,...[childData]])
+
+
+    return <div>
+    <p>Message from chiledcheckBox - {JSON.stringify(childData)}</p>
+  </div>
+  }
+
+  
 
   const globalState = useSelector((state)=> state)
   const dispatch = useDispatch()
@@ -212,10 +265,40 @@ console.log()
   //   childRef.current.childFunction1();
 
   //   childRef.current.childFunction2();
+
+  function removeDuplicates(arr) {
+    let unique = [];
+    arr.forEach(element => {
+        if (!unique.includes(element)) {
+            unique.push(element);
+        }
+    });
+    return unique;
+}
   // };
  const testSave = (e) => {
   e.preventDefault()
 
+  // finalMarketSize.filter((item,
+  //   index) => finalMarketSize.marketSizeRecords.indexOf(item) === index);
+
+  console.log("finalMarketSize..",finalMarketSize)
+
+  let markSizeCopy = [...finalMarketSize.marketSizeRecords]
+
+
+
+
+
+  removeDuplicates(markSizeCopy)
+
+
+
+  // markSizeCopy.filter((item,
+  //   index) => markSizeCopy.indexOf(item) === index);
+
+
+    setTimeout(()=>  console.log("finalMarketSize...",markSizeCopy),1000)
   setSaveBtn(true)
 
  setcurantSaveBtn(current => current + 1)
@@ -253,10 +336,11 @@ setExpander(true)
     if(marketSizeRows.length <10){
     setMarketSizeRows([
       ...marketSizeRows,
-      <MarketSizeRow currAddRow={currAddRow} saveBtn={curantSaveBtn} idprop={index} key={index} expander={expander} marketSizeData={setMarketSizeData}/>,
+      <MarketSizeRow currAddRow={currAddRow} saveBtn={curantSaveBtn} idprop={index} key={index} expander={expander} marketSizeData={marketSize} handelCallBack={CallBack} callBackRecords={CallBackRecords} />,
     ]);
   }
 
+  // setMarketSizeData
    setTimeout(()=> setExpander(false),200)
 
     console.log("add new family button was pressed");
@@ -270,6 +354,8 @@ setExpander(true)
 
  const deleteMarketFamilyonClick = (event) => {
   event.preventDefault();
+
+  console.log("CallBackRecords...",finalRecords)
 
 
   // dispatch(updateMarketSize(elemento))
