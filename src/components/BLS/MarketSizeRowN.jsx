@@ -10,7 +10,7 @@ import {
   updateSelectedItemGroup
 } from "../../store/index";
 import { UserContext } from "./Home";
-import { useState } from "react";
+import { useState,useContext, useEffect } from "react";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -51,10 +51,10 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 
-export default function MarketSizeRow() {
+export default function MarketSizeRow({idprop,saveBtn}) {
 
   const [suppliers,setSuppliers] = useState([])
-  const [expanded,newExpanded] = useState()
+  const [expanded,setExpanded] = useState()
   const [supplierId,setSupplierId] = useState(0)
   const [productFamilies, setProductFamilies] = useState([])
   const [competitors,setCompetitors] = useState([])
@@ -66,29 +66,29 @@ export default function MarketSizeRow() {
   const key = userData.id;
   const BL = userData.bl1_id;
 
-  let state = {
-    records: [],
-    testObj: parseInt(this.props.saveBtn),
-    selectedItemGroup: 0,
-    userData: JSON.parse(this.props.uContext),
-    id: this.props.idprop,
-    productFamilies: [],
-    itemGroups: [],
-    supplierId: 0,
-    selectedMarketSizeRow: 0,
-    expanded: `panel0`,
-    competitors: [
-    ],
-    marketSize: {
-      marketSizeRowID: this.props.idprop,
-      supplier_id: 0,
-      product_family_id: 0,
-      market_potential_id: 0,
-      marketSizeRecords: [
-      ]
-    }
-  };
-  message = "Hello from Child"
+  // let state = {
+  //   records: [],
+  //   testObj: parseInt(this.props.saveBtn),
+  //   selectedItemGroup: 0,
+  //   userData: JSON.parse(this.props.uContext),
+  //   id: this.props.idprop,
+  //   productFamilies: [],
+  //   itemGroups: [],
+  //   supplierId: 0,
+  //   selectedMarketSizeRow: 0,
+  //   expanded: `panel0`,
+  //   competitors: [
+  //   ],
+  //   marketSize: {
+  //     marketSizeRowID: this.props.idprop,
+  //     supplier_id: 0,
+  //     product_family_id: 0,
+  //     market_potential_id: 0,
+  //     marketSizeRecords: [
+  //     ]
+  //   }
+  // };
+  let message = "Hello from Child"
 
 
   // CallBackRow = (childDataCheckBox) => {
@@ -99,8 +99,7 @@ export default function MarketSizeRow() {
   // if (prevState.marketSize !== this.state.marketSize) {
   //   this.CallBackRow()
   // }
-
-
+useEffect(()=>{
   const supllierID = userData.supplierId;
   const fetchData = async () => {
     await fetch("http://localhost:7000/api/suppliers/names/" + BL, {
@@ -117,12 +116,15 @@ export default function MarketSizeRow() {
     });
   };
   fetchData();
+},[])
+
+  
 
  const accorhandleChange = (panel) => (event, newExpanded) => {
   newExpanded ? setExpanded(panel) : setExpanded(true)  
   };
 
-  supplieronChangeHandler = (event, index) => {
+  const supplieronChangeHandler = (event, index) => {
     const BL = userData.bl1_id;
     const supKey = event.target.value;
     setSupplierId(supKey)
@@ -158,7 +160,7 @@ export default function MarketSizeRow() {
     fetchCompetitors();
   };
 
-  ProductFamilyOnChangeHandler = (event, index) => {
+  const ProductFamilyOnChangeHandler = (event, index) => {
     const pFKey = event.target.value;
     console.log("product Family id from marketsize Row", pFKey);
    setProductFamilyId(parseInt(event.target.value))
@@ -193,11 +195,11 @@ export default function MarketSizeRow() {
 
   const onClickAccordion = (event, inx) => {
     console.log("this.state.itemGroups", itemGroups);
-    console.log("onClickAccordion", event.currentTarget.textContent);
+    // console.log("onClickAccordion", event.currentTarget.textContent);
     // console.log('testThis State from accordion ', marketSize)
-    console.log(
-      "useSelectorMarketSize Testing ",
-      this.props.globalState.marketSize);
+    // console.log(
+    //   "useSelectorMarketSize Testing ",
+    //   globalState.marketSize);
     console.log("IndexAccorHandelChange", inx);
     console.log("testIndex", itemGroups[inx].id);
     const selectedItemGroupP = itemGroups[inx].id;
@@ -239,19 +241,19 @@ export default function MarketSizeRow() {
 
 
 
-  const deleteMarketRow = (e, idprop) => {
-    e.preventDefault();
-    setState({ selectedMarketSizeRow: idprop });
-    console.log(" Deletbtn value", idprop);
-    localStorage.setItem("selectedMarketSizeRow", JSON.stringify(idprop));
-  };
+  // const deleteMarketRow = (e, idprop) => {
+  //   e.preventDefault();
+  //   setState({ selectedMarketSizeRow: idprop });
+  //   console.log(" Deletbtn value", idprop);
+  //   localStorage.setItem("selectedMarketSizeRow", JSON.stringify(idprop));
+  // };
 
 
   return (
     <div
-      idprop={this.state.id}
+      // idprop={this.state.id}
       style={{
-        store: JSON.parse(this.props.uContext),
+        // store: JSON.parse(this.props.uContext),
         marginTop: "60px",
         zIndex: "500",
         height: "1fr",
@@ -261,13 +263,13 @@ export default function MarketSizeRow() {
         width: "80%",
       }}
     >
-      <div>
+      {/* <div>
         {this.props.handelCallBack(this.state.marketSize)}
-      </div>
+      </div> */}
       <div>
         Sobhan Allah al Azim
       </div>
-      <div> Testing idprop Supplier Id is :{this.props.idprop}</div>
+      <div> Testing idprop Supplier Id is :{idprop}</div>
       <div className={hTabs.productBox}>
         <label className={hTabs.minLable}>Supplier</label>
         <select
@@ -276,13 +278,13 @@ export default function MarketSizeRow() {
             hTabs.productBoxSelect
           }
           onChange={(event) =>
-            supplieronChangeHandler(event, this.props.idprop)
+            supplieronChangeHandler(event, idprop)
           }
         >
           <option value="0">Select Supplier</option>
-          {this.state.suppliers &&
-            this.state.suppliers.length > 0 &&
-            this.state.suppliers.map((userObj, index) => (
+          {suppliers &&
+            suppliers.length > 0 &&
+            suppliers.map((userObj, index) => (
               <option value={userObj.id} key={userObj.id}>
                 {userObj.supplier_name}
               </option>
@@ -294,15 +296,15 @@ export default function MarketSizeRow() {
         <select
           className={hTabs.productBoxSelect}
           name="productFamily"
-          onChange={(event) => ProductFamilyOnChangeHandler(event, this.props.idprop)}
+          onChange={(event) => ProductFamilyOnChangeHandler(event, idprop)}
 
         >
           <option value="0" hidden>
             Select Family
           </option>
-          {this.state.productFamilies &&
-            this.state.productFamilies.length > 0 &&
-            this.state.productFamilies.map((userObj, index) => (
+          {productFamilies &&
+            productFamilies.length > 0 &&
+            productFamilies.map((userObj, index) => (
               <option value={userObj.id} key={userObj.id}>
                 {userObj.product_family}
               </option>
@@ -313,22 +315,22 @@ export default function MarketSizeRow() {
      
         <button
           className={hTabs.deleteFamilyBtn}
-          onClick={(e) => this.deleteMarketRow(e, this.props.idprop)}
+          onClick={(e) => this.deleteMarketRow(e,idprop)}
         >
           -
         </button>
       </span>
       <div className={hTabs.accordionContainer}>
-        {this.state.itemGroups.map((userObj, index) => {
+        {itemGroups.map((userObj, index) => {
           return (
             <Accordion
               key={index}
               expanded={
-                this.props.expander
-                  ? this.state.expanded === `panel${index}`
-                  : this.state.itemGroups.length == 1
-                    ? this.state.expanded === `panel${index}`
-                    : this.state.expanded === `panel${index}`
+                expanded
+                  ? expanded === `panel${index}`
+                  : itemGroups.length == 1
+                    ? expanded === `panel${index}`
+                    : expanded === `panel${index}`
               }
               onChange={accorhandleChange(`panel${index}`)}
               onClick={(event) => onClickAccordion(event, index)}
@@ -339,18 +341,18 @@ export default function MarketSizeRow() {
                 </Typography>
               </AccordionSummary>
               <AccordionDetails >
-                {this.state.competitors.map((obj, inx) => (
+                {competitors.map((obj, inx) => (
                   <div className={hTabs.checkCompetitor} key={obj.id}>
                     <CheckCompetitor
-                      rowInx={this.props.idprop}
+                      rowInx={idprop}
                       checkBoxTitle={obj.competitor_name}
-                      competitors={this.state.competitors}
+                      competitors={competitors}
                       compInx={inx}
-                      marketSizeObj={this.state.marketSize}
-                      itemGroupP={this.state.selectedItemGroup}
-                      saveBtn={this.props.saveBtn}
-                      currAddRow={this.props.currAddRow}
-                      handelCallBackRow={this.CallBackRow}
+                      // marketSizeObj={marketSize}
+                      itemGroupP={selectedItemGroup}
+                      saveBtn={saveBtn}
+                      // currAddRow={currAddRow}
+                      // handelCallBackRow={CallBackRow}
                     />
                   </div>
                 ))}

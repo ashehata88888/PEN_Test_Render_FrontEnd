@@ -174,7 +174,7 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
     }
     newRecords = [...newRecords , recordObj]
 
-    handelCallBackRow(recordObj)
+    // handelCallBackRow(recordObj)
 
     
     // setMarketSizeRecords([...marketSizeRecords,{
@@ -320,7 +320,7 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
 
 
-      newobj.marketSizeRecords.splice(compInx, 1)
+      // newobj.marketSizeRecords.splice(compInx, 1)
 
       setFinalObj(newobj)
 
@@ -371,7 +371,7 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
 
 
-      newobj.marketSizeRecords.splice(compInx, 1)
+      // newobj.marketSizeRecords.splice(compInx, 1)
 
       setFinalObj(newobj)
 
