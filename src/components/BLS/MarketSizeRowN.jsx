@@ -51,14 +51,14 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 
-export default function MarketSizeRow({idprop,saveBtn}) {
+export default function MarketSizeRow({setInxSizeRow,setEve,idprop,saveBtn,setSupplierId,setProductFamilyId}) {
 
   const [suppliers,setSuppliers] = useState([])
   const [expanded,setExpanded] = useState()
-  const [supplierId,setSupplierId] = useState(0)
+  // const [supplierId,setSupplierId] = useState(0)
   const [productFamilies, setProductFamilies] = useState([])
   const [competitors,setCompetitors] = useState([])
-  const [productFamilyId,setProductFamilyId] = useState(0)
+  // const [productFamilyId,setProductFamilyId] = useState(0)
   const [itemGroups,setItemGroups] = useState([])
   const [selectedItemGroup,setSelectedItemGroup] = useState(0)
 
@@ -125,9 +125,12 @@ useEffect(()=>{
   };
 
   const supplieronChangeHandler = (event, index) => {
+    setEve(event.target.name)
+    setInxSizeRow(index)
     const BL = userData.bl1_id;
     const supKey = event.target.value;
-    setSupplierId(supKey)
+  
+    setSupplierId(parseInt(event.target.value))
     const pFresponse = async () => {
       fetch("http://localhost:7000/api/product_families/names/" + supKey, {
         method: "GET",
@@ -161,17 +164,12 @@ useEffect(()=>{
   };
 
   const ProductFamilyOnChangeHandler = (event, index) => {
+    setEve(event.target.name)
+    setInxSizeRow(index)
     const pFKey = event.target.value;
     console.log("product Family id from marketsize Row", pFKey);
    setProductFamilyId(parseInt(event.target.value))
-    setTimeout(
-      () =>
-        console.log(
-          "productFamily id test ",
-         productFamilyId
-        ),
-      0
-    );
+
     const iGresponse = async () => {
       fetch("http://localhost:7000/api/item_groups/names/" + pFKey, {
         method: "GET",
@@ -273,12 +271,11 @@ useEffect(()=>{
       <div className={hTabs.productBox}>
         <label className={hTabs.minLable}>Supplier</label>
         <select
-          name="supplier"
+          name="supplier_id"
           className={
             hTabs.productBoxSelect
           }
-          onChange={(event) =>
-            supplieronChangeHandler(event, idprop)
+          onChange={(event) => supplieronChangeHandler(event, idprop)
           }
         >
           <option value="0">Select Supplier</option>
@@ -295,7 +292,7 @@ useEffect(()=>{
         <label className={hTabs.minLable}>Product Family</label>
         <select
           className={hTabs.productBoxSelect}
-          name="productFamily"
+          name="product_family_id"
           onChange={(event) => ProductFamilyOnChangeHandler(event, idprop)}
 
         >

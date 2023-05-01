@@ -50,7 +50,7 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
   const [ marketSize, setMarketSize] = useState(
     [{
         marketSizeRowID: 0,
-        supplier_id: parseInt(event.target.value),
+        supplier_id: 0,
         product_family_id: 0,
         item_group_id: 0,
         market_potential_id: 0,

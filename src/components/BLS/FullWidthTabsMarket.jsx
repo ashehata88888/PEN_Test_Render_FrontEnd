@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, {
   useState,
+  useEffect,
   useRef,
   useContext,
   forwardRef,
@@ -93,14 +94,15 @@ export default function LabTabsMarket({
 
 
 
+
   const [newelement,setNewelement] = useState([{
     marketSizeRowID: 0,
     supplier_id: 0,
     product_family_id: 0,
-    item_group_id: 0,
     market_potential_id: 0,
     marketSizeRecords: [
       {
+        item_group_id: 0,
         marketSizeRecordsID: 0,
         egmed_consumption: 0,
         total_consumption: 0,
@@ -114,10 +116,19 @@ export default function LabTabsMarket({
     ],
   }]);
 
+
+  const [supplierId,setSupplierId] = useState(0)
+  const [productFamilyId,setProductFamilyId] = useState(0)
+
+  const [eve, setEve] =useState()
+  const [inxSizeRow,setInxSizeRow] = useState(0)
+
+  console.log("supplierId from market size Row ...",supplierId)
+
   const [ marketSize, setMarketSize] = useState(
     [{
         marketSizeRowID: 0,
-        supplier_id: parseInt(event.target.value),
+        supplier_id: 0,
         product_family_id: 0,
         item_group_id: 0,
         market_potential_id: 0,
@@ -137,6 +148,54 @@ export default function LabTabsMarket({
       }]
   )
 
+
+  useEffect(()=>{
+
+
+
+    // const changeHandlerTest = ()=>{
+      const data = [...marketSize]
+      if(eve == "supplier_id" ){
+        data[inxSizeRow][eve]=eve.supplierId
+        setMarketSize(data)
+      } else if(eve == "product_family_id"){
+        data[inxSizeRow][eve]=eve.productFamilyId
+        setMarketSize(data)
+      }
+      
+    // }
+		
+    console.log("eveTest",inxSizeRow)
+    
+    setMarketSize([{
+      marketSizeRowID: 0,
+      supplier_id: supplierId,
+      product_family_id: productFamilyId,
+      item_group_id: 0,
+      market_potential_id: 0,
+      marketSizeRecords: [
+        {
+          marketSizeRecordsID: 0,
+          egmed_consumption: 0,
+          total_consumption: 0,
+          competitor_id: 0,
+          item_qty1: 0,
+          item_status1: 0,
+          item_qty2: 0,
+          item_status2: 0,
+          market_size_id: 0,
+        },
+      ],
+    }]
+  )
+
+
+	}, [inxSizeRow,supplierId , productFamilyId])
+  
+  
+
+
+console.log("marketSizeTest",marketSize)
 
   function CallBack(childData){
     // const data = childData + ' this is adding test'
@@ -336,7 +395,7 @@ setExpander(true)
     if(marketSizeRows.length <10){
     setMarketSizeRows([
       ...marketSizeRows,
-      <MarketSizeRow currAddRow={currAddRow} saveBtn={curantSaveBtn} idprop={index} key={index} expander={expander} marketSizeData={marketSize} handelCallBack={CallBack} callBackRecords={CallBackRecords} />,
+      <MarketSizeRow setInxSizeRow={setInxSizeRow} setEve={setEve} setSupplierId={setSupplierId} setProductFamilyId={setProductFamilyId} currAddRow={currAddRow} saveBtn={curantSaveBtn} idprop={index} key={index} expander={expander} marketSizeData={marketSize} handelCallBack={CallBack} callBackRecords={CallBackRecords} />,
     ]);
   }
 
