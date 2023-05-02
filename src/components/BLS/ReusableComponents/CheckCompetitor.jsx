@@ -18,7 +18,19 @@ import { updateSelectedItemGroup, updateMarketSize } from '../../../store/index'
 
 
 
-const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, marketSizeObj, itemGroupP, saveBtn, rowInx , handelCallBackRow }) => {
+const CheckCompetitor = ({ 
+  setmarketSizeRecordsID ,
+setegmed_consumption ,
+settotal_consumption ,
+setcompetitor_id ,
+setitem_qty1 ,
+setitem_status1 ,
+setitem_qty2 ,
+setitem_status2 ,
+setmarket_size_id ,
+setItemGroupId,
+  
+  currAddRow, checkBoxTitle, competitors, compInx, marketSizeObj, itemGroupP, saveBtn, rowInx , handelCallBackRow }) => {
 
   const [checked, setChecked] = useState(false);
 
@@ -35,13 +47,13 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
   const [changeStatus2, setChangeStatus2] = useState(false)
 
 
-  const [egmed_consumption, setegmed_consumption] = useState(0)
-  const [total_consumption, settotal_consumption] = useState(0)
+  // const [egmed_consumption, setegmed_consumption] = useState(0)
+  // const [total_consumption, settotal_consumption] = useState(0)
   // const [item_qty1 , setitem_qty1] = useState(0)
-  const [item_status1, setitem_status1] = useState(0)
+  const [item_status1, setitem_statusC1] = useState(0)
   // const [item_qty2 , setitem_qty2] = useState(0)
-  const [item_status2, setitem_status2] = useState(0)
-  const [market_size_id, setmarket_size_id] = useState(0)
+  const [item_status2, setitem_statusC2] = useState(0)
+  // const [market_size_id, setmarket_size_id] = useState(0)
   const [competitorName, setCompetitorName] = useState(0)
   const [itemGroupC, setItemGroupC] = useState(0)
   const [finalObj, setFinalObj] = useState({})
@@ -316,8 +328,10 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
       let newobj = { ...marketSizeobjfromP }
 
       setUncheckedComp(competitorId)
+
       setUnCheckItemGroup(itemGroupP)
 
+      setcompetitor_id(competitorId)
 
 
       // newobj.marketSizeRecords.splice(compInx, 1)
@@ -396,7 +410,7 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 //        &&
 //        e.target.value > 0
 //         ) {
-//           // setitem_status1(e.target.value)
+//           // setitem_statusC1(e.target.value)
 
 //       console.log("test for first item_status on Change")
 
@@ -422,7 +436,7 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 //     }
 
 //     if(e.target.name == "item_status1"){
-//       setitem_status1(e.target.value)
+//       setitem_statusC1(e.target.value)
 //     }
 
 
@@ -433,6 +447,8 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
 
   const onChangeSelectStatus1 = (e) => {
+    setitem_statusC1(e.target.value)
+
     setitem_status1(e.target.value)
 
 
@@ -443,7 +459,7 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
        &&
        e.target.value > 0
         ) {
-          setitem_status1(e.target.value)
+          setitem_statusC1(e.target.value)
 
       console.log("test for first item_status on Change")
 
@@ -479,7 +495,9 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
 
   const onChangeSelectStatus2 = (e) => {
+    setitem_statusC2(e.target.value)
     setitem_status2(e.target.value)
+
 
     // marketSizeobjfromP.marketSizeRecords.splice(compInx, 1)
 
@@ -614,7 +632,8 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
             // style={{ display: "inline" }}
             disabled={!checked}
             value={text}
-            onChange={e => setText(e.target.value)}
+            onChange={e =>{ setText(e.target.value)
+              setitem_qty1(e.target.value) }  }
           />
         </li>
 
@@ -692,7 +711,8 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
             disabled={!checked2}
             value={text2}
             // placeholder="V2"
-            onChange={e => setText2(e.target.value)}
+            onChange={e => {setText2(e.target.value)
+              setitem_qty2(e.target.value)}}
           />
         </li>
 
@@ -710,8 +730,7 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
             name="productList1"
             onChange={(e) => {
               onChangeSelectStatus2(e)
-
-            }
+ }
             }
 
           >
@@ -727,9 +746,11 @@ const CheckCompetitor = ({ currAddRow, checkBoxTitle, competitors, compInx, mark
 
         </li>
 
-<button onClick={
+{/* <button onClick={
  ()=> console.log("Market Size Records outSide useEffect",marketSizeRecords)
-}>Records</button>
+}>Records</button> */}
+
+
       </ul>
 
 

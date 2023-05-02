@@ -51,7 +51,17 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 
-export default function MarketSizeRow({setInxSizeRow,setEve,idprop,saveBtn,setSupplierId,setProductFamilyId}) {
+export default function MarketSizeRow({setmarketSizeRecordsID ,
+  setegmed_consumption ,
+  settotal_consumption ,
+  setcompetitor_id ,
+  setitem_qty1 ,
+  setitem_status1 ,
+  setitem_qty2 ,
+  setitem_status2 ,
+  setmarket_size_id ,
+  setItemGroupId,
+  setInxSizeRow,setEve,idprop,saveBtn,setSupplierId,setProductFamilyId}) {
 
   const [suppliers,setSuppliers] = useState([])
   const [expanded,setExpanded] = useState()
@@ -202,6 +212,8 @@ useEffect(()=>{
     console.log("testIndex", itemGroups[inx].id);
     const selectedItemGroupP = itemGroups[inx].id;
     setSelectedItemGroup(parseInt(selectedItemGroupP))
+    setItemGroupId(parseInt(selectedItemGroupP))
+
   };
 
 
@@ -341,6 +353,18 @@ useEffect(()=>{
                 {competitors.map((obj, inx) => (
                   <div className={hTabs.checkCompetitor} key={obj.id}>
                     <CheckCompetitor
+                      setmarketSizeRecordsID = {setmarketSizeRecordsID}
+                      setegmed_consumption = {setegmed_consumption}
+                      settotal_consumption = {settotal_consumption}
+                      setcompetitor_id = {setcompetitor_id}
+                      setitem_qty1 = {setitem_qty1}
+                      setitem_status1 = {setitem_status1}
+                      setitem_qty2 = {setitem_qty2}
+                      setitem_status2 = {setitem_status2}
+                      setmarket_size_id = {setmarket_size_id}
+                      setItemGroupId = {setItemGroupId}
+
+
                       rowInx={idprop}
                       checkBoxTitle={obj.competitor_name}
                       competitors={competitors}

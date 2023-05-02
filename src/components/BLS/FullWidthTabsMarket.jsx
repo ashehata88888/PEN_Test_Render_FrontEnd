@@ -92,6 +92,8 @@ export default function LabTabsMarket({
   const [finalRecords,setFinalRecords]=useState([])
   const [finalMarketSize,setFinalMarketSize] = useState([])
 
+  const [indexRow, setIndexRow] = useState(0)
+
 
 
 
@@ -126,71 +128,195 @@ export default function LabTabsMarket({
   console.log("supplierId from market size Row ...",supplierId)
 
   const [ marketSize, setMarketSize] = useState(
-    [{
-        marketSizeRowID: 0,
-        supplier_id: 0,
-        product_family_id: 0,
-        item_group_id: 0,
-        market_potential_id: 0,
-        marketSizeRecords: [
-          {
-            marketSizeRecordsID: 0,
-            egmed_consumption: 0,
-            total_consumption: 0,
-            competitor_id: 0,
-            item_qty1: 0,
-            item_status1: 0,
-            item_qty2: 0,
-            item_status2: 0,
-            market_size_id: 0,
-          },
-        ],
-      }]
+    [
+      // {
+      //   marketSizeRowID: 0,
+      //   supplier_id: 0,
+      //   product_family_id: 0,
+      //   item_group_id: 0,
+      //   market_potential_id: 0,
+      //   marketSizeRecords: [
+      //     {
+      //       marketSizeRecordsID: 0,
+      //       egmed_consumption: 0,
+      //       total_consumption: 0,
+      //       competitor_id: 0,
+      //       item_qty1: 0,
+      //       item_status1: 0,
+      //       item_qty2: 0,
+      //       item_status2: 0,
+      //       market_size_id: 0,
+      //     },
+      //   ],
+      // },
+      // {
+      //   marketSizeRowID: 0,
+      //   supplier_id: 0,
+      //   product_family_id: 0,
+      //   item_group_id: 0,
+      //   market_potential_id: 0,
+      //   marketSizeRecords: [
+      //     {
+      //       marketSizeRecordsID: 0,
+      //       egmed_consumption: 0,
+      //       total_consumption: 0,
+      //       competitor_id: 0,
+      //       item_qty1: 0,
+      //       item_status1: 0,
+      //       item_qty2: 0,
+      //       item_status2: 0,
+      //       market_size_id: 0,
+      //     },
+      //   ],
+      // },
+      // {
+      //   marketSizeRowID: 0,
+      //   supplier_id: 0,
+      //   product_family_id: 0,
+      //   item_group_id: 0,
+      //   market_potential_id: 0,
+      //   marketSizeRecords: [
+      //     {
+      //       marketSizeRecordsID: 0,
+      //       egmed_consumption: 0,
+      //       total_consumption: 0,
+      //       competitor_id: 0,
+      //       item_qty1: 0,
+      //       item_status1: 0,
+      //       item_qty2: 0,
+      //       item_status2: 0,
+      //       market_size_id: 0,
+      //     },
+      //   ],
+      // },
+      // {
+      //   marketSizeRowID: 0,
+      //   supplier_id: 0,
+      //   product_family_id: 0,
+      //   item_group_id: 0,
+      //   market_potential_id: 0,
+      //   marketSizeRecords: [
+      //     {
+      //       marketSizeRecordsID: 0,
+      //       egmed_consumption: 0,
+      //       total_consumption: 0,
+      //       competitor_id: 0,
+      //       item_qty1: 0,
+      //       item_status1: 0,
+      //       item_qty2: 0,
+      //       item_status2: 0,
+      //       market_size_id: 0,
+      //     },
+      //   ],
+      // }
+    ]
   )
 
+
+
+  const [marketSizeRecordsID,setmarketSizeRecordsID] = useState(0)
+  const [egmed_consumption,setegmed_consumption] = useState(0)
+  const [total_consumption,settotal_consumption] = useState(0)
+  const [competitor_id,setcompetitor_id] = useState(0)
+  const [item_qty1,setitem_qty1] = useState(0)
+  const [item_status1,setitem_status1] = useState(0)
+  const [item_qty2,setitem_qty2] = useState(0)
+  const [item_status2,setitem_status2] = useState(0)
+  const [market_size_id,setmarket_size_id] = useState(0)
+  const [iteGroupId , setItemGroupId] = useState(0)
+
+
+setmarketSizeRecordsID ,
+setegmed_consumption ,
+settotal_consumption ,
+setcompetitor_id ,
+setitem_qty1 ,
+setitem_status1 ,
+setitem_qty2 ,
+setitem_status2 ,
+setmarket_size_id ,
 
   useEffect(()=>{
 
 
-
     // const changeHandlerTest = ()=>{
+
+
       const data = [...marketSize]
-      if(eve == "supplier_id" ){
-        data[inxSizeRow][eve]=eve.supplierId
+      if(eve == "supplier_id" && inxSizeRow == 0 ){
+        data[0]["supplier_id"]=supplierId
         setMarketSize(data)
-      } else if(eve == "product_family_id"){
-        data[inxSizeRow][eve]=eve.productFamilyId
+      } else if (eve == "product_family_id" && inxSizeRow == 0 ){
+        data[0]["product_family_id"]=productFamilyId
+        setMarketSize(data)
+      } else if(eve == "supplier_id" && inxSizeRow == 1 ){
+        data[1]["supplier_id"]=supplierId
+        setMarketSize(data)
+      } else if (eve == "product_family_id" && inxSizeRow == 1 ){
+        data[1]["product_family_id"]=productFamilyId
+        setMarketSize(data)
+      } else if(eve == "supplier_id" && inxSizeRow == 2 ){
+        data[2]["supplier_id"]=supplierId
+        setMarketSize(data)
+      } else if (eve == "product_family_id" && inxSizeRow == 2 ){
+        data[2]["product_family_id"]=productFamilyId
+        setMarketSize(data)
+      } else if(eve == "supplier_id" && inxSizeRow == 3 ){
+        data[3]["supplier_id"]=supplierId
+        setMarketSize(data)
+      } else if (eve == "product_family_id" && inxSizeRow == 3 ){
+        data[3]["product_family_id"]=productFamilyId
         setMarketSize(data)
       }
+
+      
       
     // }
+
+        
+
+console.log("test MSRows",
+[competitor_id ,
+  item_qty1 ,
+  item_status1 ,
+  item_qty2 ,
+  item_status2  ])
+
+
+
+    console.log("Indextesting",indexRow)
 		
     console.log("eveTest",inxSizeRow)
     
-    setMarketSize([{
-      marketSizeRowID: 0,
-      supplier_id: supplierId,
-      product_family_id: productFamilyId,
-      item_group_id: 0,
-      market_potential_id: 0,
-      marketSizeRecords: [
-        {
-          marketSizeRecordsID: 0,
-          egmed_consumption: 0,
-          total_consumption: 0,
-          competitor_id: 0,
-          item_qty1: 0,
-          item_status1: 0,
-          item_qty2: 0,
-          item_status2: 0,
-          market_size_id: 0,
-        },
-      ],
-    }]
-  )
+  //   setMarketSize([{
+  //     marketSizeRowID: 0,
+  //     supplier_id: supplierId,
+  //     product_family_id: productFamilyId,
+  //     item_group_id: 0,
+  //     market_potential_id: 0,
+  //     marketSizeRecords: [
+  //       {
+  //         marketSizeRecordsID: 0,
+  //         egmed_consumption: 0,
+  //         total_consumption: 0,
+  //         competitor_id: 0,
+  //         item_qty1: 0,
+  //         item_status1: 0,
+  //         item_qty2: 0,
+  //         item_status2: 0,
+  //         market_size_id: 0,
+  //       },
+  //     ],
+  //   }]
+  // )
 
 
-	}, [inxSizeRow,supplierId , productFamilyId])
+	}, [inxSizeRow , supplierId , productFamilyId,
+    competitor_id ,
+    item_qty1 ,
+    item_status1 ,
+    item_qty2 ,
+    item_status2 ])
   
   
 
@@ -386,18 +512,56 @@ globalS.shift()
     // event.preventDefault();
     
     let index = marketSizeRows.length
+
+    setIndexRow(index)
     setCurrAddRow(curr => curr + 1)
  
 
 setExpander(true)
 
     console.log("add new family button was pressed");
-    if(marketSizeRows.length <10){
+    if(marketSizeRows.length < 4){
     setMarketSizeRows([
       ...marketSizeRows,
-      <MarketSizeRow setInxSizeRow={setInxSizeRow} setEve={setEve} setSupplierId={setSupplierId} setProductFamilyId={setProductFamilyId} currAddRow={currAddRow} saveBtn={curantSaveBtn} idprop={index} key={index} expander={expander} marketSizeData={marketSize} handelCallBack={CallBack} callBackRecords={CallBackRecords} />,
+      <MarketSizeRow
+      setmarketSizeRecordsID = {setmarketSizeRecordsID}
+      setegmed_consumption = {setegmed_consumption}
+      settotal_consumption = {settotal_consumption}
+      setcompetitor_id = {setcompetitor_id}
+      setitem_qty1 = {setitem_qty1}
+      setitem_status1 = {setitem_status1}
+      setitem_qty2 = {setitem_qty2}
+      setitem_status2 = {setitem_status2}
+      setmarket_size_id = {setmarket_size_id}
+      setItemGroupId= {setItemGroupId}
+      
+      setInxSizeRow={setInxSizeRow} setEve={setEve} setSupplierId={setSupplierId} setProductFamilyId={setProductFamilyId} currAddRow={currAddRow} saveBtn={curantSaveBtn} idprop={index} key={index} expander={expander} marketSizeData={marketSize} handelCallBack={CallBack} callBackRecords={CallBackRecords} />,
     ]);
   }
+
+  setMarketSize([
+    ...marketSize,
+    {
+      marketSizeRowID: 0,
+      supplier_id: 0,
+      product_family_id: 0,
+      item_group_id: 0,
+      market_potential_id: 0,
+      marketSizeRecords: [
+        {
+          marketSizeRecordsID: 0,
+          egmed_consumption: 0,
+          total_consumption: 0,
+          competitor_id: 0,
+          item_qty1: 0,
+          item_status1: 0,
+          item_qty2: 0,
+          item_status2: 0,
+          market_size_id: 0,
+        },
+      ],
+    }
+  ])
 
   // setMarketSizeData
    setTimeout(()=> setExpander(false),200)
@@ -440,6 +604,12 @@ setExpander(true)
   // setNewComponent
 
   setMarketSizeRows([...marketSizeRowsColne]);
+
+  let mrketSizeClone = [...marketSize]
+  mrketSizeClone.length > 1 && mrketSizeClone.splice(lastInx,1)
+  setMarketSize(mrketSizeClone)
+
+
 };
 
 
