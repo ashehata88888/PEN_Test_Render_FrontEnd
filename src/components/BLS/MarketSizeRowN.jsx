@@ -367,17 +367,19 @@ useEffect(()=>{
                   <div className={hTabs.checkCompetitor} key={obj.id}>
                     <CheckCompetitor
                     setRemoveUnCheck = {setRemoveUnCheck}
-                     setAddCheck={setAddCheck}
+                      setAddCheck={setAddCheck}
                       setmarketSizeRecordsID = {setmarketSizeRecordsID}
                       setegmed_consumption = {setegmed_consumption}
                       settotal_consumption = {settotal_consumption}
-                      setcompetitor_id = {setCompinxfromMSRow}
+                      setcompetitor_id = {setcompetitor_id}
                       setitem_qty1 = {setitem_qty1}
                       setitem_status1 = {setitem_status1}
                       setitem_qty2 = {setitem_qty2}
                       setitem_status2 = {setitem_status2}
                       setmarket_size_id = {setmarket_size_id}
                       setItemGroupId = {setItemGroupId}
+                      
+                      // setCompinxfromMSRow
 
 
                       rowInx={idprop}

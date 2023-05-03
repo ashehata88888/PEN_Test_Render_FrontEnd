@@ -243,6 +243,7 @@ export default function LabTabsMarket({
 // setmarket_size_id ,
 
 console.log("competitor_id...",competitor_id)
+
   useEffect(()=>{
 
 
@@ -250,6 +251,8 @@ console.log("competitor_id...",competitor_id)
 
 
       const data = [...marketSize]
+
+      
       if(eve == "supplier_id" && inxSizeRow == 0 ){
         data[0]["supplier_id"]=supplierId
         setMarketSize(data)
@@ -543,13 +546,13 @@ console.log("competitor_id...",competitor_id)
 
         
 
-console.log("test MSRows",
-[competitor_id ,
-  item_qty1 ,
-  item_status1 ,
-  item_qty2 ,
-  item_status2 ,
-  itemGroupId ])
+// console.log("test MSRows"||
+// [competitor_id ,
+//   item_qty1 ,
+//   item_status1 ,
+//   item_qty2 ,
+//   item_status2 ,
+//   itemGroupId ])
 
 
 
@@ -580,12 +583,12 @@ console.log("test MSRows",
   // )
 
 
-	}, [inxSizeRow , supplierId , productFamilyId,
+	}, [inxSizeRow , supplierId , productFamilyId, itemGroupId,
     competitor_id ,
     item_qty1 ,
     item_status1 ,
     item_qty2 ,
-    item_status2 ])
+    item_status2])
   
   
 
@@ -847,14 +850,13 @@ setExpander(true)
   useEffect(()=>{
 
 
+    let newRecords = [...marketSize]
 
+if (addCheck > 0 )
 
+console.log("addCheckMarketSizeTest...",newRecords)
 
-   console.log("testAddRecord",inxSizeRow )
-
-      let newRecords = [...marketSize]
-
-      if(competitor_id > 0 && inxSizeRow == 0){
+      if(competitor_id > 0 && inxSizeRow == 0 ){
         newRecords[0]["marketSizeRecords"] = [
           ...newRecords[0]["marketSizeRecords"],
           {
@@ -870,11 +872,13 @@ setExpander(true)
             market_size_id: 0,
           }
         ]
-
-        console.log("addCheckMarketSizeTest...",newRecords)
+        console.log("testAddRecord",addCheck )
+     
+        
 
         setMarketSize(newRecords) 
-      } else if(competitor_id > 0 && inxSizeRow == 1){
+      } 
+      else if(competitor_id > 0 && inxSizeRow == 1){
         newRecords[1]["marketSizeRecords"] = [
           ...newRecords[1]["marketSizeRecords"],
           {
@@ -891,7 +895,8 @@ setExpander(true)
           }
         ]
         setMarketSize(newRecords) 
-      }else if(competitor_id > 0 && inxSizeRow == 2){
+      }
+      else if(competitor_id > 0 && inxSizeRow == 2){
         newRecords[2]["marketSizeRecords"] = [
           ...newRecords[2]["marketSizeRecords"],
           {
