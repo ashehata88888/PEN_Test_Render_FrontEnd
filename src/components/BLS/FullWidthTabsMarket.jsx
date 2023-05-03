@@ -228,6 +228,8 @@ export default function LabTabsMarket({
   const [itemGroupId , setItemGroupId] = useState(0)
 
   const [addCheck,setAddCheck] = useState(0)
+  const [removeUnCheck,setRemoveUnCheck] = useState(0)
+  
 
 
 // setmarketSizeRecordsID ,
@@ -298,152 +300,239 @@ console.log("competitor_id...",competitor_id)
         data[0]["marketSizeRecords"][2]["item_qty2"] = item_qty2
         data[0]["marketSizeRecords"][2]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 3 ){
+        data[0]["marketSizeRecords"][3]["item_group_id"] = itemGroupId
+        data[0]["marketSizeRecords"][3]["competitor_id"] = competitor_id
+        data[0]["marketSizeRecords"][3]["item_qty1"] = item_qty1
+        data[0]["marketSizeRecords"][3]["item_status1"] = item_status1
+        data[0]["marketSizeRecords"][3]["item_qty2"] = item_qty2
+        data[0]["marketSizeRecords"][3]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 4 ){
+        data[0]["marketSizeRecords"][4]["item_group_id"] = itemGroupId
+        data[0]["marketSizeRecords"][4]["competitor_id"] = competitor_id
+        data[0]["marketSizeRecords"][4]["item_qty1"] = item_qty1
+        data[0]["marketSizeRecords"][4]["item_status1"] = item_status1
+        data[0]["marketSizeRecords"][4]["item_qty2"] = item_qty2
+        data[0]["marketSizeRecords"][4]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 6 ){
+        data[0]["marketSizeRecords"][6]["item_group_id"] = itemGroupId
+        data[0]["marketSizeRecords"][6]["competitor_id"] = competitor_id
+        data[0]["marketSizeRecords"][6]["item_qty1"] = item_qty1
+        data[0]["marketSizeRecords"][6]["item_status1"] = item_status1
+        data[0]["marketSizeRecords"][6]["item_qty2"] = item_qty2
+        data[0]["marketSizeRecords"][6]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 7 ){
+        data[0]["marketSizeRecords"][7]["item_group_id"] = itemGroupId
+        data[0]["marketSizeRecords"][7]["competitor_id"] = competitor_id
+        data[0]["marketSizeRecords"][7]["item_qty1"] = item_qty1
+        data[0]["marketSizeRecords"][7]["item_status1"] = item_status1
+        data[0]["marketSizeRecords"][7]["item_qty2"] = item_qty2
+        data[0]["marketSizeRecords"][7]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 8 ){
+        data[0]["marketSizeRecords"][8]["item_group_id"] = itemGroupId
+        data[0]["marketSizeRecords"][8]["competitor_id"] = competitor_id
+        data[0]["marketSizeRecords"][8]["item_qty1"] = item_qty1
+        data[0]["marketSizeRecords"][8]["item_status1"] = item_status1
+        data[0]["marketSizeRecords"][8]["item_qty2"] = item_qty2
+        data[0]["marketSizeRecords"][8]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      }else if(competitor_id > 0 && inxSizeRow == 1  && data[1]["marketSizeRecords"].length - 1 == 0 ){
+        data[1]["marketSizeRecords"][0]["item_group_id"] = itemGroupId
+        data[1]["marketSizeRecords"][0]["competitor_id"] = competitor_id
+        data[1]["marketSizeRecords"][0]["item_qty1"] = item_qty1
+        data[1]["marketSizeRecords"][0]["item_status1"] = item_status1
+        data[1]["marketSizeRecords"][0]["item_qty2"] = item_qty2
+        data[1]["marketSizeRecords"][0]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      } else if (competitor_id > 0 && inxSizeRow == 1  && data[1]["marketSizeRecords"].length - 1 == 1 ){
+        data[1]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
+        data[1]["marketSizeRecords"][1]["competitor_id"] = competitor_id
+        data[1]["marketSizeRecords"][1]["item_qty1"] = item_qty1
+        data[1]["marketSizeRecords"][1]["item_status1"] = item_status1
+        data[1]["marketSizeRecords"][1]["item_qty2"] = item_qty2
+        data[1]["marketSizeRecords"][1]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      } else if (competitor_id > 0 && inxSizeRow == 1  && data[1]["marketSizeRecords"].length - 1 == 2 ){
+        data[1]["marketSizeRecords"][2]["item_group_id"] = itemGroupId
+        data[1]["marketSizeRecords"][2]["competitor_id"] = competitor_id
+        data[1]["marketSizeRecords"][2]["item_qty1"] = item_qty1
+        data[1]["marketSizeRecords"][2]["item_status1"] = item_status1
+        data[1]["marketSizeRecords"][2]["item_qty2"] = item_qty2
+        data[1]["marketSizeRecords"][2]["item_status2"] = item_status2
         setMarketSize(data)
-      } else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      }else if (competitor_id > 0 && inxSizeRow == 1  && data[1]["marketSizeRecords"].length - 1 == 3 ){
+        data[1]["marketSizeRecords"][3]["item_group_id"] = itemGroupId
+        data[1]["marketSizeRecords"][3]["competitor_id"] = competitor_id
+        data[1]["marketSizeRecords"][3]["item_qty1"] = item_qty1
+        data[1]["marketSizeRecords"][3]["item_status1"] = item_status1
+        data[1]["marketSizeRecords"][3]["item_qty2"] = item_qty2
+        data[1]["marketSizeRecords"][3]["item_status2"] = item_status2
         setMarketSize(data)
-      } else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      }else if (competitor_id > 0 && inxSizeRow == 1  && data[1]["marketSizeRecords"].length - 1 == 4 ){
+        data[1]["marketSizeRecords"][4]["item_group_id"] = itemGroupId
+        data[1]["marketSizeRecords"][4]["competitor_id"] = competitor_id
+        data[1]["marketSizeRecords"][4]["item_qty1"] = item_qty1
+        data[1]["marketSizeRecords"][4]["item_status1"] = item_status1
+        data[1]["marketSizeRecords"][4]["item_qty2"] = item_qty2
+        data[1]["marketSizeRecords"][4]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      }else if (competitor_id > 0 && inxSizeRow == 1  && data[1]["marketSizeRecords"].length - 1 == 6 ){
+        data[1]["marketSizeRecords"][6]["item_group_id"] = itemGroupId
+        data[1]["marketSizeRecords"][6]["competitor_id"] = competitor_id
+        data[1]["marketSizeRecords"][6]["item_qty1"] = item_qty1
+        data[1]["marketSizeRecords"][6]["item_status1"] = item_status1
+        data[1]["marketSizeRecords"][6]["item_qty2"] = item_qty2
+        data[1]["marketSizeRecords"][6]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      }else if (competitor_id > 0 && inxSizeRow == 1  && data[1]["marketSizeRecords"].length - 1 == 7 ){
+        data[1]["marketSizeRecords"][7]["item_group_id"] = itemGroupId
+        data[1]["marketSizeRecords"][7]["competitor_id"] = competitor_id
+        data[1]["marketSizeRecords"][7]["item_qty1"] = item_qty1
+        data[1]["marketSizeRecords"][7]["item_status1"] = item_status1
+        data[1]["marketSizeRecords"][7]["item_qty2"] = item_qty2
+        data[1]["marketSizeRecords"][7]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      }else if (competitor_id > 0 && inxSizeRow == 1  && data[1]["marketSizeRecords"].length - 1 == 8 ){
+        data[1]["marketSizeRecords"][8]["item_group_id"] = itemGroupId
+        data[1]["marketSizeRecords"][8]["competitor_id"] = competitor_id
+        data[1]["marketSizeRecords"][8]["item_qty1"] = item_qty1
+        data[1]["marketSizeRecords"][8]["item_status1"] = item_status1
+        data[1]["marketSizeRecords"][8]["item_qty2"] = item_qty2
+        data[1]["marketSizeRecords"][8]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      }if(competitor_id > 0 && inxSizeRow == 2  && data[2]["marketSizeRecords"].length - 1 == 0 ){
+        data[2]["marketSizeRecords"][0]["item_group_id"] = itemGroupId
+        data[2]["marketSizeRecords"][0]["competitor_id"] = competitor_id
+        data[2]["marketSizeRecords"][0]["item_qty1"] = item_qty1
+        data[2]["marketSizeRecords"][0]["item_status1"] = item_status1
+        data[2]["marketSizeRecords"][0]["item_qty2"] = item_qty2
+        data[2]["marketSizeRecords"][0]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      } else if (competitor_id > 0 && inxSizeRow == 2  && data[2]["marketSizeRecords"].length - 1 == 1 ){
+        data[2]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
+        data[2]["marketSizeRecords"][1]["competitor_id"] = competitor_id
+        data[2]["marketSizeRecords"][1]["item_qty1"] = item_qty1
+        data[2]["marketSizeRecords"][1]["item_status1"] = item_status1
+        data[2]["marketSizeRecords"][1]["item_qty2"] = item_qty2
+        data[2]["marketSizeRecords"][1]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      } else if (competitor_id > 0 && inxSizeRow == 2  && data[2]["marketSizeRecords"].length - 1 == 2 ){
+        data[2]["marketSizeRecords"][2]["item_group_id"] = itemGroupId
+        data[2]["marketSizeRecords"][2]["competitor_id"] = competitor_id
+        data[2]["marketSizeRecords"][2]["item_qty1"] = item_qty1
+        data[2]["marketSizeRecords"][2]["item_status1"] = item_status1
+        data[2]["marketSizeRecords"][2]["item_qty2"] = item_qty2
+        data[2]["marketSizeRecords"][2]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      }else if (competitor_id > 0 && inxSizeRow == 2  && data[2]["marketSizeRecords"].length - 1 == 3 ){
+        data[2]["marketSizeRecords"][3]["item_group_id"] = itemGroupId
+        data[2]["marketSizeRecords"][3]["competitor_id"] = competitor_id
+        data[2]["marketSizeRecords"][3]["item_qty1"] = item_qty1
+        data[2]["marketSizeRecords"][3]["item_status1"] = item_status1
+        data[2]["marketSizeRecords"][3]["item_qty2"] = item_qty2
+        data[2]["marketSizeRecords"][3]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+      }else if (competitor_id > 0 && inxSizeRow == 2  && data[2]["marketSizeRecords"].length - 1 == 4 ){
+        data[2]["marketSizeRecords"][4]["item_group_id"] = itemGroupId
+        data[2]["marketSizeRecords"][4]["competitor_id"] = competitor_id
+        data[2]["marketSizeRecords"][4]["item_qty1"] = item_qty1
+        data[2]["marketSizeRecords"][4]["item_status1"] = item_status1
+        data[2]["marketSizeRecords"][4]["item_qty2"] = item_qty2
+        data[2]["marketSizeRecords"][4]["item_status2"] = item_status2
+        setMarketSize(data)
+      }else if (competitor_id > 0 && inxSizeRow == 2  && data[2]["marketSizeRecords"].length - 1 == 6 ){
+        data[2]["marketSizeRecords"][6]["item_group_id"] = itemGroupId
+        data[2]["marketSizeRecords"][6]["competitor_id"] = competitor_id
+        data[2]["marketSizeRecords"][6]["item_qty1"] = item_qty1
+        data[2]["marketSizeRecords"][6]["item_status1"] = item_status1
+        data[2]["marketSizeRecords"][6]["item_qty2"] = item_qty2
+        data[2]["marketSizeRecords"][6]["item_status2"] = item_status2
+        setMarketSize(data)
+      }else if (competitor_id > 0 && inxSizeRow == 2  && data[2]["marketSizeRecords"].length - 1 == 7 ){
+        data[2]["marketSizeRecords"][7]["item_group_id"] = itemGroupId
+        data[2]["marketSizeRecords"][7]["competitor_id"] = competitor_id
+        data[2]["marketSizeRecords"][7]["item_qty1"] = item_qty1
+        data[2]["marketSizeRecords"][7]["item_status1"] = item_status1
+        data[2]["marketSizeRecords"][7]["item_qty2"] = item_qty2
+        data[2]["marketSizeRecords"][7]["item_status2"] = item_status2
+        setMarketSize(data)
+      }else if (competitor_id > 0 && inxSizeRow == 2  && data[2]["marketSizeRecords"].length - 1 == 8 ){
+        data[2]["marketSizeRecords"][8]["item_group_id"] = itemGroupId
+        data[2]["marketSizeRecords"][8]["competitor_id"] = competitor_id
+        data[2]["marketSizeRecords"][8]["item_qty1"] = item_qty1
+        data[2]["marketSizeRecords"][8]["item_status1"] = item_status1
+        data[2]["marketSizeRecords"][8]["item_qty2"] = item_qty2
+        data[2]["marketSizeRecords"][8]["item_status2"] = item_status2
+        setMarketSize(data)
+      }if(competitor_id > 0 && inxSizeRow == 3  && data[3]["marketSizeRecords"].length - 1 == 0 ){
+        data[3]["marketSizeRecords"][0]["item_group_id"] = itemGroupId
+        data[3]["marketSizeRecords"][0]["competitor_id"] = competitor_id
+        data[3]["marketSizeRecords"][0]["item_qty1"] = item_qty1
+        data[3]["marketSizeRecords"][0]["item_status1"] = item_status1
+        data[3]["marketSizeRecords"][0]["item_qty2"] = item_qty2
+        data[3]["marketSizeRecords"][0]["item_status2"] = item_status2
+        setMarketSize(data)
+      } else if (competitor_id > 0 && inxSizeRow == 3  && data[3]["marketSizeRecords"].length - 1 == 1 ){
+        data[3]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
+        data[3]["marketSizeRecords"][1]["competitor_id"] = competitor_id
+        data[3]["marketSizeRecords"][1]["item_qty1"] = item_qty1
+        data[3]["marketSizeRecords"][1]["item_status1"] = item_status1
+        data[3]["marketSizeRecords"][1]["item_qty2"] = item_qty2
+        data[3]["marketSizeRecords"][1]["item_status2"] = item_status2
+        setMarketSize(data)
+      } else if (competitor_id > 0 && inxSizeRow == 3  && data[3]["marketSizeRecords"].length - 1 == 2 ){
+        data[3]["marketSizeRecords"][2]["item_group_id"] = itemGroupId
+        data[3]["marketSizeRecords"][2]["competitor_id"] = competitor_id
+        data[3]["marketSizeRecords"][2]["item_qty1"] = item_qty1
+        data[3]["marketSizeRecords"][2]["item_status1"] = item_status1
+        data[3]["marketSizeRecords"][2]["item_qty2"] = item_qty2
+        data[3]["marketSizeRecords"][2]["item_status2"] = item_status2
+        setMarketSize(data)
+      }else if (competitor_id > 0 && inxSizeRow == 3  && data[3]["marketSizeRecords"].length - 1 == 3 ){
+        data[3]["marketSizeRecords"][3]["item_group_id"] = itemGroupId
+        data[3]["marketSizeRecords"][3]["competitor_id"] = competitor_id
+        data[3]["marketSizeRecords"][3]["item_qty1"] = item_qty1
+        data[3]["marketSizeRecords"][3]["item_status1"] = item_status1
+        data[3]["marketSizeRecords"][3]["item_qty2"] = item_qty2
+        data[3]["marketSizeRecords"][3]["item_status2"] = item_status2
+        setMarketSize(data)
+      }else if (competitor_id > 0 && inxSizeRow == 3  && data[3]["marketSizeRecords"].length - 1 == 4 ){
+        data[3]["marketSizeRecords"][4]["item_group_id"] = itemGroupId
+        data[3]["marketSizeRecords"][4]["competitor_id"] = competitor_id
+        data[3]["marketSizeRecords"][4]["item_qty1"] = item_qty1
+        data[3]["marketSizeRecords"][4]["item_status1"] = item_status1
+        data[3]["marketSizeRecords"][4]["item_qty2"] = item_qty2
+        data[3]["marketSizeRecords"][4]["item_status2"] = item_status2
+        setMarketSize(data)
+      }else if (competitor_id > 0 && inxSizeRow == 3  && data[3]["marketSizeRecords"].length - 1 == 6 ){
+        data[3]["marketSizeRecords"][6]["item_group_id"] = itemGroupId
+        data[3]["marketSizeRecords"][6]["competitor_id"] = competitor_id
+        data[3]["marketSizeRecords"][6]["item_qty1"] = item_qty1
+        data[3]["marketSizeRecords"][6]["item_status1"] = item_status1
+        data[3]["marketSizeRecords"][6]["item_qty2"] = item_qty2
+        data[3]["marketSizeRecords"][6]["item_status2"] = item_status2
+        setMarketSize(data)
+      }else if (competitor_id > 0 && inxSizeRow == 3  && data[3]["marketSizeRecords"].length - 1 == 7 ){
+        data[3]["marketSizeRecords"][7]["item_group_id"] = itemGroupId
+        data[3]["marketSizeRecords"][7]["competitor_id"] = competitor_id
+        data[3]["marketSizeRecords"][7]["item_qty1"] = item_qty1
+        data[3]["marketSizeRecords"][7]["item_status1"] = item_status1
+        data[3]["marketSizeRecords"][7]["item_qty2"] = item_qty2
+        data[3]["marketSizeRecords"][7]["item_status2"] = item_status2
+        setMarketSize(data)
+      }else if (competitor_id > 0 && inxSizeRow == 3  && data[3]["marketSizeRecords"].length - 1 == 8 ){
+        data[3]["marketSizeRecords"][8]["item_group_id"] = itemGroupId
+        data[3]["marketSizeRecords"][8]["competitor_id"] = competitor_id
+        data[3]["marketSizeRecords"][8]["item_qty1"] = item_qty1
+        data[3]["marketSizeRecords"][8]["item_status1"] = item_status1
+        data[3]["marketSizeRecords"][8]["item_qty2"] = item_qty2
+        data[3]["marketSizeRecords"][8]["item_status2"] = item_status2
         setMarketSize(data)
       }
-      
       
     // }
 
@@ -704,6 +793,7 @@ setExpander(true)
     setMarketSizeRows([
       ...marketSizeRows,
       <MarketSizeRow
+      setRemoveUnCheck = {setRemoveUnCheck}
       setAddCheck = {setAddCheck}
       setInxRecoRow = {setInxRecoRow}
       setmarketSizeRecordsID = {setmarketSizeRecordsID}
@@ -727,7 +817,6 @@ setExpander(true)
       marketSizeRowID: 0,
       supplier_id: 0,
       product_family_id: 0,
-      item_group_id: 0,
       market_potential_id: 0,
       marketSizeRecords: [
         // {
@@ -761,33 +850,182 @@ setExpander(true)
 
 
 
-    if(addCheck > 0){
+   console.log("testAddRecord",inxSizeRow )
 
       let newRecords = [...marketSize]
-      newRecords[0]["marketSizeRecords"] = [
-        ...newRecords[0]["marketSizeRecords"],
-        
-        {
-          marketSizeRecordsID: 0,
-          egmed_consumption: 0,
-          total_consumption: 0,
-          competitor_id: 0,
-          item_qty1: 0,
-          item_status1: 0,
-          item_qty2: 0,
-          item_status2: 0,
-          market_size_id: 0,
-        }
-      ]
 
-console.log("addCheckMarketSizeTest...",newRecords)
+      if(competitor_id > 0 && inxSizeRow == 0){
+        newRecords[0]["marketSizeRecords"] = [
+          ...newRecords[0]["marketSizeRecords"],
+          {
+            item_group_id : 0,
+            marketSizeRecordsID: 0,
+            egmed_consumption: 0,
+            total_consumption: 0,
+            competitor_id: 0,
+            item_qty1: 0,
+            item_status1: 0,
+            item_qty2: 0,
+            item_status2: 0,
+            market_size_id: 0,
+          }
+        ]
 
-  }
+        console.log("addCheckMarketSizeTest...",newRecords)
+
+        setMarketSize(newRecords) 
+      } else if(competitor_id > 0 && inxSizeRow == 1){
+        newRecords[1]["marketSizeRecords"] = [
+          ...newRecords[1]["marketSizeRecords"],
+          {
+            item_group_id : 0,
+            marketSizeRecordsID: 0,
+            egmed_consumption: 0,
+            total_consumption: 0,
+            competitor_id: 0,
+            item_qty1: 0,
+            item_status1: 0,
+            item_qty2: 0,
+            item_status2: 0,
+            market_size_id: 0,
+          }
+        ]
+        setMarketSize(newRecords) 
+      }else if(competitor_id > 0 && inxSizeRow == 2){
+        newRecords[2]["marketSizeRecords"] = [
+          ...newRecords[2]["marketSizeRecords"],
+          {
+            item_group_id : 0,
+            marketSizeRecordsID: 0,
+            egmed_consumption: 0,
+            total_consumption: 0,
+            competitor_id: 0,
+            item_qty1: 0,
+            item_status1: 0,
+            item_qty2: 0,
+            item_status2: 0,
+            market_size_id: 0,
+          }
+        ]
+        setMarketSize(newRecords) 
+      }else if(competitor_id > 0 && inxSizeRow == 3){
+        newRecords[3]["marketSizeRecords"] = [
+          ...newRecords[3]["marketSizeRecords"],
+          {
+            item_group_id : 0,
+            marketSizeRecordsID: 0,
+            egmed_consumption: 0,
+            total_consumption: 0,
+            competitor_id: 0,
+            item_qty1: 0,
+            item_status1: 0,
+            item_qty2: 0,
+            item_status2: 0,
+            market_size_id: 0,
+          }
+        ]
+        setMarketSize(newRecords) 
+      }
+      
+
+
+
+    
 
   },[addCheck])
 
 
 
+  // Remove Market size record obj
+
+  useEffect(()=>{
+
+
+
+
+
+    if(removeUnCheck > 0){
+
+
+      let newRecords = [...marketSize]
+
+      if(competitor_id > 0 && inxSizeRow == 0){
+        // newRecords[0]["marketSizeRecords"] = [
+        //   ...newRecords[0]["marketSizeRecords"],
+          let obj={
+            item_group_id: 0,
+            marketSizeRecordsID: 0,
+            egmed_consumption: 0,
+            total_consumption: 0,
+            competitor_id: 0,
+            item_qty1: 0,
+            item_status1: 0,
+            item_qty2: 0,
+            item_status2: 0,
+            market_size_id: 0,
+          }
+        // ]
+      let index = indexOf()
+      newRecords[0]["marketSizeRecords"].splice(index, 1);
+
+
+        setMarketSize(newRecords) 
+      } else if(competitor_id > 0 && inxSizeRow == 1){
+        newRecords[1]["marketSizeRecords"] = [
+          ...newRecords[1]["marketSizeRecords"],
+          {
+            marketSizeRecordsID: 0,
+            egmed_consumption: 0,
+            total_consumption: 0,
+            competitor_id: 0,
+            item_qty1: 0,
+            item_status1: 0,
+            item_qty2: 0,
+            item_status2: 0,
+            market_size_id: 0,
+          }
+        ]
+        setMarketSize(newRecords) 
+      }else if(competitor_id > 0 && inxSizeRow == 2){
+        newRecords[2]["marketSizeRecords"] = [
+          ...newRecords[2]["marketSizeRecords"],
+          {
+            marketSizeRecordsID: 0,
+            egmed_consumption: 0,
+            total_consumption: 0,
+            competitor_id: 0,
+            item_qty1: 0,
+            item_status1: 0,
+            item_qty2: 0,
+            item_status2: 0,
+            market_size_id: 0,
+          }
+        ]
+        setMarketSize(newRecords) 
+      }else if(competitor_id > 0 && inxSizeRow == 3){
+        newRecords[3]["marketSizeRecords"] = [
+          ...newRecords[3]["marketSizeRecords"],
+          {
+            marketSizeRecordsID: 0,
+            egmed_consumption: 0,
+            total_consumption: 0,
+            competitor_id: 0,
+            item_qty1: 0,
+            item_status1: 0,
+            item_qty2: 0,
+            item_status2: 0,
+            market_size_id: 0,
+          }
+        ]
+        setMarketSize(newRecords) 
+      }
+      
+
+console.log("addCheckMarketSizeTest...",newRecords)
+
+  }
+
+  },[removeUnCheck])
 
 
 

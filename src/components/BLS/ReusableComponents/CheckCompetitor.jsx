@@ -19,6 +19,7 @@ import { updateSelectedItemGroup, updateMarketSize } from '../../../store/index'
 
 
 const CheckCompetitor = ({ 
+  setRemoveUnCheck,
   setAddCheck,
   setInxRecoRow,
   setmarketSizeRecordsID ,
@@ -329,11 +330,15 @@ let curr = 0
       console.log("the check Box compeitor unchecked compatitor Name is \n " + competitorName + " id is " + parseInt(competitorId))
       let newobj = { ...marketSizeobjfromP }
 
+
       setUncheckedComp(competitorId)
 
       setUnCheckItemGroup(itemGroupP)
 
       setcompetitor_id(competitorId)
+
+      
+      setRemoveUnCheck((current) =>current + 1)
 
 
       // newobj.marketSizeRecords.splice(compInx, 1)

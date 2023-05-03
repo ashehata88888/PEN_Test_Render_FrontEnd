@@ -52,6 +52,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 
 export default function MarketSizeRow({
+  setRemoveUnCheck,
   setAddCheck,
   setInxRecoRow,
   setmarketSizeRecordsID ,
@@ -365,6 +366,7 @@ useEffect(()=>{
                 {competitors.map((obj, inx) => (
                   <div className={hTabs.checkCompetitor} key={obj.id}>
                     <CheckCompetitor
+                    setRemoveUnCheck = {setRemoveUnCheck}
                      setAddCheck={setAddCheck}
                       setmarketSizeRecordsID = {setmarketSizeRecordsID}
                       setegmed_consumption = {setegmed_consumption}
