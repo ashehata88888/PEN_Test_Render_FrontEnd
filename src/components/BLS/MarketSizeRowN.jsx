@@ -51,7 +51,10 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 
-export default function MarketSizeRow({setmarketSizeRecordsID ,
+export default function MarketSizeRow({
+  setAddCheck,
+  setInxRecoRow,
+  setmarketSizeRecordsID ,
   setegmed_consumption ,
   settotal_consumption ,
   setcompetitor_id ,
@@ -63,6 +66,8 @@ export default function MarketSizeRow({setmarketSizeRecordsID ,
   setItemGroupId,
   setInxSizeRow,setEve,idprop,saveBtn,setSupplierId,setProductFamilyId}) {
 
+    const [addCheckMSR,setAddCheckMSR] = useState(0)
+
   const [suppliers,setSuppliers] = useState([])
   const [expanded,setExpanded] = useState()
   // const [supplierId,setSupplierId] = useState(0)
@@ -72,9 +77,16 @@ export default function MarketSizeRow({setmarketSizeRecordsID ,
   const [itemGroups,setItemGroups] = useState([])
   const [selectedItemGroup,setSelectedItemGroup] = useState(0)
 
+  const [compinxfromMSRow ,setCompinxfromMSRow] = useState(0)
+  
   const userData = JSON.parse(useContext(UserContext));
   const key = userData.id;
   const BL = userData.bl1_id;
+
+  // setAddCheck(addCheckMSR)
+
+  console.log("compinxfromMSRow...",compinxfromMSRow)
+  setcompetitor_id(compinxfromMSRow)
 
   // let state = {
   //   records: [],
@@ -353,10 +365,11 @@ useEffect(()=>{
                 {competitors.map((obj, inx) => (
                   <div className={hTabs.checkCompetitor} key={obj.id}>
                     <CheckCompetitor
+                     setAddCheck={setAddCheck}
                       setmarketSizeRecordsID = {setmarketSizeRecordsID}
                       setegmed_consumption = {setegmed_consumption}
                       settotal_consumption = {settotal_consumption}
-                      setcompetitor_id = {setcompetitor_id}
+                      setcompetitor_id = {setCompinxfromMSRow}
                       setitem_qty1 = {setitem_qty1}
                       setitem_status1 = {setitem_status1}
                       setitem_qty2 = {setitem_qty2}

@@ -19,6 +19,8 @@ import { updateSelectedItemGroup, updateMarketSize } from '../../../store/index'
 
 
 const CheckCompetitor = ({ 
+  setAddCheck,
+  setInxRecoRow,
   setmarketSizeRecordsID ,
 setegmed_consumption ,
 settotal_consumption ,
@@ -290,8 +292,8 @@ setItemGroupId,
     item_status2: 1,
     market_size_id: 1,
   }
-
-  const onChangeHandler = (e) => {
+let curr = 0
+  const onChangeHandlerChecked1 = (_e) => {
 
 
     if (!checked) {
@@ -301,11 +303,14 @@ setItemGroupId,
       console.log("competitor ID is ...", competitors[compInx].id)
       const competitorId = competitors[compInx].id
       const competitorName = competitors[compInx].competitor_name
-      setCompetitor_id(competitorId)
       setCompetitorName(competitorName)
       setItemGroupC(itemGroupP)
-
+      setcompetitor_id(competitorId)
       setCurrAddRow(currAddRow)
+      
+      // let current = (current) =>current + 1
+
+      setAddCheck((current) =>current + 1)
 
       //  marketSizeobjfromP.marketSizeRecords.push({itemGroup:itemGroupP ,
       //   competitor_id:competitorId,
@@ -318,10 +323,7 @@ setItemGroupId,
       //   item_status2: item_status2,
       //   market_size_id: 1,
       // })
-    }
-
-
-    if (checked) {
+    } else if (checked) {
       const competitorId = competitors[compInx].id
       const competitorName = competitors[compInx].competitor_name
       console.log("the check Box compeitor unchecked compatitor Name is \n " + competitorName + " id is " + parseInt(competitorId))
@@ -347,56 +349,7 @@ setItemGroupId,
     }
 
 
-    if (!checked2) {
-      console.log("event.target.name check box Ttitle =", checkBoxTitle)
-      console.log("competitors from checkbox are ...", competitors)
-      console.log("compInxb ", compInx)
-      console.log("competitor ID is ...", competitors[compInx].id)
-      const competitorId = competitors[compInx].id
-      const competitorName = competitors[compInx].competitor_name
-      setCompetitor_id(competitorId)
-      setCompetitorName(competitorName)
-      setItemGroupC(itemGroupP)
-
-      setCurrAddRow(currAddRow)
-
-      //  marketSizeobjfromP.marketSizeRecords.push({itemGroup:itemGroupP ,
-      //   competitor_id:competitorId,
-      //   cometitor_name:competitorName,
-      //   // egmed_consumption: 1,
-      //   // total_consumption: 1,
-      //   item_qty1: text2,
-      //   item_status1: item_status1,
-      //   item_qty2: text,
-      //   item_status2: item_status2,
-      //   market_size_id: 1,
-      // })
-    }
-
-
-    if (checked2) {
-      const competitorId = competitors[compInx].id
-      const competitorName = competitors[compInx].competitor_name
-      console.log("the check Box compeitor unchecked compatitor Name is \n " + competitorName + " id is " + parseInt(competitorId))
-      let newobj = { ...marketSizeobjfromP }
-
-      setUncheckedComp(competitorId)
-      setUnCheckItemGroup(itemGroupP)
-
-
-
-      // newobj.marketSizeRecords.splice(compInx, 1)
-
-      setFinalObj(newobj)
-
-
-
-      setTimeout(() => console.log("marketSizeobjfromP ", marketSizeobjfromP), 0)
-
-      setTimeout(() => console.log("FinalObj when UnCheck ", finalObj), 0)
-
-    }
-
+    
 
 
 
@@ -444,12 +397,64 @@ setItemGroupId,
 
   }
 
+  const onChangeHandlerChecked2 = (_e) =>{
+
+    if (!checked2) {
+      console.log("event.target.name check box Ttitle =", checkBoxTitle)
+      console.log("competitors from checkbox are ...", competitors)
+      console.log("compInxb ", compInx)
+      console.log("competitor ID is ...", competitors[compInx].id)
+      const competitorId = competitors[compInx].id
+      const competitorName = competitors[compInx].competitor_name
+      // setCompetitor_id(competitorId)
+      setCompetitorName(competitorName)
+      setItemGroupC(itemGroupP)
+
+      setCurrAddRow(currAddRow)
+
+      //  marketSizeobjfromP.marketSizeRecords.push({itemGroup:itemGroupP ,
+      //   competitor_id:competitorId,
+      //   cometitor_name:competitorName,
+      //   // egmed_consumption: 1,
+      //   // total_consumption: 1,
+      //   item_qty1: text2,
+      //   item_status1: item_status1,
+      //   item_qty2: text,
+      //   item_status2: item_status2,
+      //   market_size_id: 1,
+      // })
+    }else if (checked2) {
+      const competitorId = competitors[compInx].id
+      const competitorName = competitors[compInx].competitor_name
+      console.log("the check Box compeitor unchecked compatitor Name is \n " + competitorName + " id is " + parseInt(competitorId))
+      let newobj = { ...marketSizeobjfromP }
+
+      setUncheckedComp(competitorId)
+      setUnCheckItemGroup(itemGroupP)
+
+
+
+      // newobj.marketSizeRecords.splice(compInx, 1)
+
+      setFinalObj(newobj)
+
+
+
+      setTimeout(() => console.log("marketSizeobjfromP ", marketSizeobjfromP), 0)
+
+      setTimeout(() => console.log("FinalObj when UnCheck ", finalObj), 0)
+
+    }
+
+
+  }
+
 
 
   const onChangeSelectStatus1 = (e) => {
     setitem_statusC1(e.target.value)
 
-    setitem_status1(e.target.value)
+    setitem_status1(parseInt(e.target.value))
 
 
     if(
@@ -496,7 +501,7 @@ setItemGroupId,
 
   const onChangeSelectStatus2 = (e) => {
     setitem_statusC2(e.target.value)
-    setitem_status2(e.target.value)
+    setitem_status2(parseInt(e.target.value))
 
 
     // marketSizeobjfromP.marketSizeRecords.splice(compInx, 1)
@@ -601,7 +606,7 @@ setItemGroupId,
             // onClick={onClickCheckBoxHandler}
             checked={checked}
             onChange={(e) => {
-              onChangeHandler(e)
+              onChangeHandlerChecked1(e)
               if (checked) {
                 setText("")
                 // setText2("")
@@ -633,7 +638,7 @@ setItemGroupId,
             disabled={!checked}
             value={text}
             onChange={e =>{ setText(e.target.value)
-              setitem_qty1(e.target.value) }  }
+              setitem_qty1(parseInt(e.target.value)) }  }
           />
         </li>
 
@@ -687,7 +692,7 @@ setItemGroupId,
             // onClick={onClickCheckBoxHandler}
             checked={checked2}
             onChange={(e) => {
-              onChangeHandler(e)
+              onChangeHandlerChecked2(e)
               if (checked2) {
                 // setText("")
                 setText2("")
@@ -712,7 +717,7 @@ setItemGroupId,
             value={text2}
             // placeholder="V2"
             onChange={e => {setText2(e.target.value)
-              setitem_qty2(e.target.value)}}
+              setitem_qty2(parseInt(e.target.value))}}
           />
         </li>
 
