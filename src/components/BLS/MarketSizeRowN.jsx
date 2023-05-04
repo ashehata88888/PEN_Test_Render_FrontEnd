@@ -86,8 +86,8 @@ export default function MarketSizeRow({
 
   // setAddCheck(addCheckMSR)
 
-  console.log("compinxfromMSRow...",compinxfromMSRow)
-  setcompetitor_id(compinxfromMSRow)
+  // console.log("compinxfromMSRow...",compinxfromMSRow)
+  // setcompetitor_id(compinxfromMSRow)
 
   // let state = {
   //   records: [],
@@ -378,6 +378,7 @@ useEffect(()=>{
                       setitem_status2 = {setitem_status2}
                       setmarket_size_id = {setmarket_size_id}
                       setItemGroupId = {setItemGroupId}
+                      selectedItemGroup = {selectedItemGroup}
                       
                       // setCompinxfromMSRow
 

@@ -19,13 +19,14 @@ import { updateSelectedItemGroup, updateMarketSize } from '../../../store/index'
 
 
 const CheckCompetitor = ({ 
+  selectedItemGroup,
+  setcompetitor_id,
   setRemoveUnCheck,
   setAddCheck,
   setInxRecoRow,
   setmarketSizeRecordsID ,
 setegmed_consumption ,
 settotal_consumption ,
-setcompetitor_id ,
 setitem_qty1 ,
 setitem_status1 ,
 setitem_qty2 ,
@@ -110,7 +111,8 @@ setItemGroupId,
 
   // const [testObj,setTestObj] = useState({test:"test"})
   // const [competitors,setCompetitors] = useState([])
-  const [competitor_id, setCompetitor_id] = useState(0)
+
+  // const [competitor_id, setCompetitor_id] = useState(0)
 
   let marketSizeobjfromP = { ...marketSizeObj }
 
@@ -170,45 +172,45 @@ setItemGroupId,
   // parseInt(globalState.saveBtn) > 0 && console.log("testsaveBtnFrom Checkbox", parseInt(globalState.saveBtn))
 
 
-  useEffect(()=>{
+//   useEffect(()=>{
 
-  if ((competitor_id > 0 && parseInt(text2) > 0 && parseInt(item_status2) > 0 )  || ( competitor_id > 0 && parseInt(text) > 0 && parseInt(item_status1) > 0 )) {
+//   if ((competitor_id > 0 && parseInt(text2) > 0 && parseInt(item_status2) > 0 )  || ( competitor_id > 0 && parseInt(text) > 0 && parseInt(item_status1) > 0 )) {
     
-    let newRecords = [...marketSizeRecords]
-    let recordObj = {
-      itemGroup: itemGroupC,
-      competitor_id: competitor_id,
-      cometitor_name: competitorName,
-      // egmed_consumption: 1,
-      // total_consumption: 1,
-      item_qty1: parseInt(text),
-      item_status1: parseInt(item_status1), 
-      item_qty2: parseInt(text2),
-      item_status2: parseInt(item_status2),
-      // market_size_id: 1
-    }
-    newRecords = [...newRecords , recordObj]
+//     let newRecords = [...marketSizeRecords]
+//     let recordObj = {
+//       itemGroup: itemGroupC,
+//       competitor_id: competitor_id,
+//       cometitor_name: competitorName,
+//       // egmed_consumption: 1,
+//       // total_consumption: 1,
+//       item_qty1: parseInt(text),
+//       item_status1: parseInt(item_status1), 
+//       item_qty2: parseInt(text2),
+//       item_status2: parseInt(item_status2),
+//       // market_size_id: 1
+//     }
+//     newRecords = [...newRecords , recordObj]
 
-    // handelCallBackRow(recordObj)
+//     // handelCallBackRow(recordObj)
 
     
-    // setMarketSizeRecords([...marketSizeRecords,{
-    //   itemGroup: itemGroupC,
-    //   competitor_id: competitor_id,
-    //   cometitor_name: competitorName,
-    //   // egmed_consumption: 1,
-    //   // total_consumption: 1,
-    //   item_qty1: parseInt(text),
-    //   item_status1: parseInt(item_status1), 
-    //   item_qty2: parseInt(text2),
-    //   item_status2: parseInt(item_status2),
-    //   // market_size_id: 1
-    // }])
-    console.log("test for setMarketSizeRecords inside useEffect")
-    // setTimeout(()=>console.log("Market Size Records inside useEffect",marketSizeRecords),3000)
-    }
+//     // setMarketSizeRecords([...marketSizeRecords,{
+//     //   itemGroup: itemGroupC,
+//     //   competitor_id: competitor_id,
+//     //   cometitor_name: competitorName,
+//     //   // egmed_consumption: 1,
+//     //   // total_consumption: 1,
+//     //   item_qty1: parseInt(text),
+//     //   item_status1: parseInt(item_status1), 
+//     //   item_qty2: parseInt(text2),
+//     //   item_status2: parseInt(item_status2),
+//     //   // market_size_id: 1
+//     // }])
+//     console.log("test for setMarketSizeRecords inside useEffect")
+//     // setTimeout(()=>console.log("Market Size Records inside useEffect",marketSizeRecords),3000)
+//     }
 
-}),[parseInt(globalState.saveBtn)]
+// }),[parseInt(globalState.saveBtn)]
 
   console.log('TestSaveBtn', globalState.saveBtn)
 
@@ -282,17 +284,17 @@ setItemGroupId,
 
   console.log('TestSaveBtn', saveBtn)
 
-  let marketSizeRecordObj1 = {
-    // marketSizeRecordsID: 1,
-    egmed_consumption: 1,
-    total_consumption: 1,
-    competitor_id: competitor_id,
-    item_qty1: 1,
-    item_status1: 1,
-    item_qty2: 1,
-    item_status2: 1,
-    market_size_id: 1,
-  }
+  // let marketSizeRecordObj1 = {
+  //   // marketSizeRecordsID: 1,
+  //   egmed_consumption: 1,
+  //   total_consumption: 1,
+  //   competitor_id: competitor_id,
+  //   item_qty1: 1,
+  //   item_status1: 1,
+  //   item_qty2: 1,
+  //   item_status2: 1,
+  //   market_size_id: 1,
+  // }
 let curr = 0
   const onChangeHandlerChecked1 = (_e) => {
 
@@ -308,10 +310,24 @@ let curr = 0
       setItemGroupC(itemGroupP)
       setcompetitor_id(competitorId)
       setCurrAddRow(currAddRow)
+
+      setItemGroupId(selectedItemGroup)
       
       // let current = (current) =>current + 1
 
-      setAddCheck((current) =>current + 1)
+     setAddCheck((current) =>current + 1)
+
+
+      //  setTimeout(()=>{ setegmed_consumption(0)
+      //   settotal_consumption(0)
+      //   setcompetitor_id(0)
+      //   setitem_qty1(0)
+      //   setitem_status1(0)
+      //   setitem_qty2(0)
+      //   setitem_status2(0)
+      //   setmarket_size_id(0)},0)
+
+
 
       //  marketSizeobjfromP.marketSizeRecords.push({itemGroup:itemGroupP ,
       //   competitor_id:competitorId,
@@ -417,6 +433,8 @@ let curr = 0
 
       setCurrAddRow(currAddRow)
 
+      setItemGroupId()
+
       //  marketSizeobjfromP.marketSizeRecords.push({itemGroup:itemGroupP ,
       //   competitor_id:competitorId,
       //   cometitor_name:competitorName,
@@ -461,6 +479,10 @@ let curr = 0
 
     setitem_status1(parseInt(e.target.value))
 
+    if(text2 == 0){
+    setitem_qty2(0)
+    setitem_status2(0)
+  }
 
     if(
       checked === true

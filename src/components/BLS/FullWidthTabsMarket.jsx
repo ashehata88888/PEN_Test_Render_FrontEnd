@@ -79,6 +79,8 @@ export default function LabTabsMarket({
   const [curantSaveBtn ,setcurantSaveBtn] = useState(0)
   const [currAddRow , setCurrAddRow] = useState(0)
 
+  const [currSav,setCurrSav] = useState(0)
+
   // setCountFullWToVTabs(countCustAccorToFullW)
   const childRef = useRef(null);
 
@@ -242,10 +244,27 @@ export default function LabTabsMarket({
 // setitem_status2 ,
 // setmarket_size_id ,
 
+
+
+
 console.log("competitor_id...",competitor_id)
+
+
+
 
   useEffect(()=>{
 
+
+// if( addCheck > 0  ){
+//   setegmed_consumption(0)
+// settotal_consumption(0)
+// setcompetitor_id(0)
+// setitem_qty1(0)
+// setitem_status1(0)
+// setitem_qty2(0)
+// setitem_status2(0)
+// setmarket_size_id(0)
+// }
 
     // const changeHandlerTest = ()=>{
 
@@ -279,22 +298,42 @@ console.log("competitor_id...",competitor_id)
         setMarketSize(data)
       }
 
+      // if(competitor_id > 0){
+      //   data[inxSizeRow]["marketSizeRecords"][data[inxSizeRow]["marketSizeRecords"].length - 1]["item_group_id"] = itemGroupId
+      //   setMarketSize(data)
+      //   setTimeout(()=>console.log(marketSize),1000)
+      // }
+
       if(competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 0 ){
-        data[0]["marketSizeRecords"][0]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][0]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][0]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][0]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][0]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][0]["item_status2"] = item_status2
+        data[0]["marketSizeRecords"][0]["item_group_id"] = itemGroupId   
+        data[0]["marketSizeRecords"][0]["competitor_id"] = competitor_id  
+        data[0]["marketSizeRecords"][0]["item_qty1"] = item_qty1  
+        data[0]["marketSizeRecords"][0]["item_status1"] = item_status1   
+        data[0]["marketSizeRecords"][0]["item_qty2"] = item_qty2   
+        data[0]["marketSizeRecords"][0]["item_status2"] = item_status2   
+        
+
+
         setMarketSize(data)
-      } else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
-        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId
-        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id
-        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1
-        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1
-        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2
-        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2
+ 
+      } else 
+      
+      if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
+       
+       
+       
+        data[0]["marketSizeRecords"][1]["item_group_id"] = itemGroupId  
+        data[0]["marketSizeRecords"][1]["competitor_id"] = competitor_id 
+        data[0]["marketSizeRecords"][1]["item_qty1"] = item_qty1 
+        data[0]["marketSizeRecords"][1]["item_status1"] = item_status1 
+        data[0]["marketSizeRecords"][1]["item_qty2"] = item_qty2 
+        data[0]["marketSizeRecords"][1]["item_status2"] = item_status2 
+
+
+
         setMarketSize(data)
+   
+
       } else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 2 ){
         data[0]["marketSizeRecords"][2]["item_group_id"] = itemGroupId
         data[0]["marketSizeRecords"][2]["competitor_id"] = competitor_id
@@ -588,7 +627,7 @@ console.log("competitor_id...",competitor_id)
     item_qty1 ,
     item_status1 ,
     item_qty2 ,
-    item_status2])
+    item_status2, addCheck, currSav])
   
   
 
@@ -739,15 +778,15 @@ console.log()
   // finalMarketSize.filter((item,
   //   index) => finalMarketSize.marketSizeRecords.indexOf(item) === index);
 
-  console.log("finalMarketSize..",finalMarketSize)
+  // console.log("finalMarketSize..",finalMarketSize)
 
-  let markSizeCopy = [...finalMarketSize.marketSizeRecords]
-
-
+  // let markSizeCopy = [...finalMarketSize.marketSizeRecords]
 
 
+  // setcurantSaveBtn()
 
-  removeDuplicates(markSizeCopy)
+
+  // removeDuplicates(markSizeCopy)
 
 
 
@@ -755,7 +794,7 @@ console.log()
   //   index) => markSizeCopy.indexOf(item) === index);
 
 
-    setTimeout(()=>  console.log("finalMarketSize...",markSizeCopy),1000)
+    // setTimeout(()=>  console.log("finalMarketSize...",markSizeCopy),1000)
   setSaveBtn(true)
 
  setcurantSaveBtn(current => current + 1)
@@ -850,13 +889,21 @@ setExpander(true)
   useEffect(()=>{
 
 
+
+
+
+
     let newRecords = [...marketSize]
 
 if (addCheck > 0 )
 
+
 console.log("addCheckMarketSizeTest...",newRecords)
 
       if(competitor_id > 0 && inxSizeRow == 0 ){
+
+
+
         newRecords[0]["marketSizeRecords"] = [
           ...newRecords[0]["marketSizeRecords"],
           {
@@ -879,6 +926,9 @@ console.log("addCheckMarketSizeTest...",newRecords)
         setMarketSize(newRecords) 
       } 
       else if(competitor_id > 0 && inxSizeRow == 1){
+                
+
+ 
         newRecords[1]["marketSizeRecords"] = [
           ...newRecords[1]["marketSizeRecords"],
           {
@@ -897,6 +947,8 @@ console.log("addCheckMarketSizeTest...",newRecords)
         setMarketSize(newRecords) 
       }
       else if(competitor_id > 0 && inxSizeRow == 2){
+
+ 
         newRecords[2]["marketSizeRecords"] = [
           ...newRecords[2]["marketSizeRecords"],
           {
@@ -914,6 +966,10 @@ console.log("addCheckMarketSizeTest...",newRecords)
         ]
         setMarketSize(newRecords) 
       }else if(competitor_id > 0 && inxSizeRow == 3){
+                
+
+
+ 
         newRecords[3]["marketSizeRecords"] = [
           ...newRecords[3]["marketSizeRecords"],
           {
@@ -1325,7 +1381,9 @@ console.log("addCheckMarketSizeTest...",newRecords)
               <button
                 className={hTabs.saveBtn}
                 id="saveMarketData"
-                onClick={(event) => testSave(event)}
+                onClick={(event) => {testSave(event)
+                  setCurrSav((curr)=> curr + 1)
+                }}
 
                 // marketSaveonClick(event)}
               >
