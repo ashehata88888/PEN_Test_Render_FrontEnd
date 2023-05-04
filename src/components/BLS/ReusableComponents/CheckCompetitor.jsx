@@ -299,6 +299,11 @@ let curr = 0
   const onChangeHandlerChecked1 = (_e) => {
 
 
+    let competitorId = competitors[compInx].id
+
+    setTimeout(()=>setcompetitor_id(competitorId),0)
+
+
     if (!checked) {
 
       
@@ -307,7 +312,7 @@ let curr = 0
       console.log("competitors from checkbox are ...", competitors)
       console.log("compInxb ", compInx)
       console.log("competitor ID is ...", competitors[compInx].id)
-      const competitorId = competitors[compInx].id
+      // const competitorId = competitors[compInx].id
       const competitorName = competitors[compInx].competitor_name
 
       setCompetitorName(competitorName)
@@ -325,13 +330,10 @@ let curr = 0
       setTimeout(()=>setItemGroupId(selectedItemGroup),0)
       // setcompetitor_id(competitorId)
 
-      setTimeout(()=>setcompetitor_id(competitorId),0)
       
-      // if(competitorId == 0){
-      //   const competitorId = competitors[compInx].id
-      //   // setTimeout(()=>setcompetitor_id(competitorId),0)
-      //   setcompetitor_id(competitorId)
-      // }
+      // setTimeout(()=>setcompetitor_id(competitorId),0)
+
+   
 
   
 

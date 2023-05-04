@@ -889,7 +889,33 @@ setExpander(true)
     console.log("add new family button was pressed");
   };
 
+const checkComp =(comp)=>{
+  let newRecords = [...marketSize]
 
+  console.log("checkComp",comp)
+  newRecords[0]["marketSizeRecords"] = [
+    ...newRecords[0]["marketSizeRecords"],
+    {
+      item_group_id : 0,
+      marketSizeRecordsID: 0,
+      egmed_consumption: 0,
+      total_consumption: 0,
+      competitor_id: 0,
+      item_qty1: 0,
+      item_status1: 0,
+      item_qty2: 0,
+      item_status2: 0,
+      market_size_id: 0,
+    }
+  ]
+
+
+  
+
+  setMarketSize(newRecords) 
+
+
+}
 
   // add marketSizeRecords Obj 
 
@@ -906,6 +932,9 @@ console.log("testCompId...",competitor_id)
 
 
 console.log("addCheckMarketSizeTest...",newRecords)
+if(competitor_id == 0){
+  checkComp(competitor_id)
+}
 
                 if( competitor_id > 0 && inxSizeRow == 0 ){
 
@@ -926,7 +955,7 @@ console.log("addCheckMarketSizeTest...",newRecords)
             market_size_id: 0,
           }
         ]
-        console.log("testAddRecord",addCheck )
+
      
         
 
@@ -951,6 +980,10 @@ console.log("addCheckMarketSizeTest...",newRecords)
             market_size_id: 0,
           }
         ]
+
+      
+        
+
         setMarketSize(newRecords) 
       } else if(competitor_id > 0 && inxSizeRow == 2){
 
