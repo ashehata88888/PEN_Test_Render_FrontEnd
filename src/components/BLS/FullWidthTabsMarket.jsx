@@ -809,7 +809,13 @@ console.log()
 
   dispatch(updateSaveBtn(1))
   // setNewelement([...marketSizeData,newelement ])
-  // console.log("marketSizeData",marketSizeData)
+  // console.log("marketSizeData",marketSizeData).
+
+  if(marketSize[0]["marketSizeRecords"][0].competitor_id == 0){
+    let newMRS = [...marketSize]
+    newMRS[0]["marketSizeRecords"].splice(0,2)
+    setMarketSize(newMRS)
+  }
 
 const globalS = [...globalState.marketSize]
 globalS.shift()
