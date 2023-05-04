@@ -316,9 +316,7 @@ console.log("competitor_id...",competitor_id)
 
         setMarketSize(data)
  
-      } else 
-      
-      if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
+      } else if(competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 1 ){
        
        
        
@@ -334,7 +332,7 @@ console.log("competitor_id...",competitor_id)
         setMarketSize(data)
    
 
-      } else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 2 ){
+      } else if(competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 2 ){
         data[0]["marketSizeRecords"][2]["item_group_id"] = itemGroupId
         data[0]["marketSizeRecords"][2]["competitor_id"] = competitor_id
         data[0]["marketSizeRecords"][2]["item_qty1"] = item_qty1
@@ -342,7 +340,7 @@ console.log("competitor_id...",competitor_id)
         data[0]["marketSizeRecords"][2]["item_qty2"] = item_qty2
         data[0]["marketSizeRecords"][2]["item_status2"] = item_status2
         setMarketSize(data)
-      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 3 ){
+      }else if(competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 3 ){
         data[0]["marketSizeRecords"][3]["item_group_id"] = itemGroupId
         data[0]["marketSizeRecords"][3]["competitor_id"] = competitor_id
         data[0]["marketSizeRecords"][3]["item_qty1"] = item_qty1
@@ -357,6 +355,14 @@ console.log("competitor_id...",competitor_id)
         data[0]["marketSizeRecords"][4]["item_status1"] = item_status1
         data[0]["marketSizeRecords"][4]["item_qty2"] = item_qty2
         data[0]["marketSizeRecords"][4]["item_status2"] = item_status2
+        setMarketSize(data)
+      }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 5 ){
+        data[0]["marketSizeRecords"][5]["item_group_id"] = itemGroupId
+        data[0]["marketSizeRecords"][5]["competitor_id"] = competitor_id
+        data[0]["marketSizeRecords"][5]["item_qty1"] = item_qty1
+        data[0]["marketSizeRecords"][5]["item_status1"] = item_status1
+        data[0]["marketSizeRecords"][5]["item_qty2"] = item_qty2
+        data[0]["marketSizeRecords"][5]["item_status2"] = item_status2
         setMarketSize(data)
       }else if (competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length - 1 == 6 ){
         data[0]["marketSizeRecords"][6]["item_group_id"] = itemGroupId
@@ -622,7 +628,7 @@ console.log("competitor_id...",competitor_id)
   // )
 
 
-	}, [inxSizeRow , supplierId , productFamilyId, itemGroupId,
+	}, [inxSizeRow , supplierId , productFamilyId,
     competitor_id ,
     item_qty1 ,
     item_status1 ,
@@ -862,6 +868,7 @@ setExpander(true)
       market_potential_id: 0,
       marketSizeRecords: [
         // {
+        //   item_group_id : 0,
         //   marketSizeRecordsID: 0,
         //   egmed_consumption: 0,
         //   total_consumption: 0,
@@ -890,17 +897,17 @@ setExpander(true)
 
 
 
-
+console.log("testCompId...",competitor_id)
 
 
     let newRecords = [...marketSize]
 
-if (addCheck > 0 )
+// if (addCheck > 0 ) 
 
 
 console.log("addCheckMarketSizeTest...",newRecords)
 
-      if(competitor_id > 0 && inxSizeRow == 0 ){
+                if( competitor_id > 0 && inxSizeRow == 0 ){
 
 
 
@@ -924,8 +931,8 @@ console.log("addCheckMarketSizeTest...",newRecords)
         
 
         setMarketSize(newRecords) 
-      } 
-      else if(competitor_id > 0 && inxSizeRow == 1){
+
+      } else if(competitor_id > 0 && inxSizeRow == 1){
                 
 
  
@@ -945,8 +952,7 @@ console.log("addCheckMarketSizeTest...",newRecords)
           }
         ]
         setMarketSize(newRecords) 
-      }
-      else if(competitor_id > 0 && inxSizeRow == 2){
+      } else if(competitor_id > 0 && inxSizeRow == 2){
 
  
         newRecords[2]["marketSizeRecords"] = [
@@ -993,7 +999,7 @@ console.log("addCheckMarketSizeTest...",newRecords)
 
     
 
-  },[addCheck])
+  },[parseInt(addCheck)])
 
 
 

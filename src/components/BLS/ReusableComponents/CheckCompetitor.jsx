@@ -19,7 +19,6 @@ import { updateSelectedItemGroup, updateMarketSize } from '../../../store/index'
 
 
 const CheckCompetitor = ({ 
-  selectedItemGroup,
   setcompetitor_id,
   setRemoveUnCheck,
   setAddCheck,
@@ -33,6 +32,7 @@ setitem_qty2 ,
 setitem_status2 ,
 setmarket_size_id ,
 setItemGroupId,
+selectedItemGroup,
   
   currAddRow, checkBoxTitle, competitors, compInx, marketSizeObj, itemGroupP, saveBtn, rowInx , handelCallBackRow }) => {
 
@@ -300,22 +300,49 @@ let curr = 0
 
 
     if (!checked) {
+
+      
+
       console.log("event.target.name check box Ttitle =", checkBoxTitle)
       console.log("competitors from checkbox are ...", competitors)
       console.log("compInxb ", compInx)
       console.log("competitor ID is ...", competitors[compInx].id)
       const competitorId = competitors[compInx].id
       const competitorName = competitors[compInx].competitor_name
+
       setCompetitorName(competitorName)
-      setItemGroupC(itemGroupP)
-      setcompetitor_id(competitorId)
+
+      // setItemGroupC(itemGroupP)
+
+      
+
+
+      setAddCheck((current) =>current + 1)
+
+      // setItemGroupId(selectedItemGroup)
+
+      
+      setTimeout(()=>setItemGroupId(selectedItemGroup),0)
+      // setcompetitor_id(competitorId)
+
+      setTimeout(()=>setcompetitor_id(competitorId),0)
+      
+      // if(competitorId == 0){
+      //   const competitorId = competitors[compInx].id
+      //   // setTimeout(()=>setcompetitor_id(competitorId),0)
+      //   setcompetitor_id(competitorId)
+      // }
+
+  
+
       setCurrAddRow(currAddRow)
 
-      setItemGroupId(selectedItemGroup)
+      
+
       
       // let current = (current) =>current + 1
 
-     setAddCheck((current) =>current + 1)
+     
 
 
       //  setTimeout(()=>{ setegmed_consumption(0)
@@ -433,7 +460,7 @@ let curr = 0
 
       setCurrAddRow(currAddRow)
 
-      setItemGroupId()
+  
 
       //  marketSizeobjfromP.marketSizeRecords.push({itemGroup:itemGroupP ,
       //   competitor_id:competitorId,

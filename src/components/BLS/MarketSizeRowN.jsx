@@ -225,7 +225,8 @@ useEffect(()=>{
     console.log("testIndex", itemGroups[inx].id);
     const selectedItemGroupP = itemGroups[inx].id;
     setSelectedItemGroup(parseInt(selectedItemGroupP))
-    setItemGroupId(parseInt(selectedItemGroupP))
+    // setItemGroupId(parseInt(selectedItemGroupP))
+
 
   };
 
