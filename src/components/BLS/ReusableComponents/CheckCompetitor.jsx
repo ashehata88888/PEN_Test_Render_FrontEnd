@@ -11,6 +11,7 @@ import { UserContext } from "../Home";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectionRange } from '@testing-library/user-event/dist/utils';
 import { updateSelectedItemGroup, updateMarketSize } from '../../../store/index';
+import { alertClasses } from '@mui/material';
 
 // import { updateSaveBtn} from "../../store";
 
@@ -19,6 +20,7 @@ import { updateSelectedItemGroup, updateMarketSize } from '../../../store/index'
 
 
 const CheckCompetitor = ({ 
+  setUncheckedComp,
   setcompetitor_id,
   setRemoveUnCheck,
   setAddCheck,
@@ -390,6 +392,11 @@ let curr = 0
 
       setFinalObj(newobj)
 
+      // !checked2 ? alert("please unchecked the second status first") : setitem_qty1(0)   
+      // !checked2 ? alert("please unchecked the second status first") : setitem_status1(0)  
+   
+    
+
 
 
       setTimeout(() => console.log("marketSizeobjfromP ", marketSizeobjfromP), 0)
@@ -485,6 +492,8 @@ let curr = 0
       setUnCheckItemGroup(itemGroupP)
 
 
+      setitem_qty2(0)
+      setitem_status2(0)
 
       // newobj.marketSizeRecords.splice(compInx, 1)
 
@@ -655,6 +664,7 @@ let curr = 0
         style={{marginRight:'auto'}}
         className={hTabs.competitorli}>
           <input
+           disabled={checked2}
             type="checkbox"
             name='checkBox'
             className={hTabs.checkBox}

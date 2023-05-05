@@ -97,6 +97,11 @@ export default function LabTabsMarket({
   const [indexRow, setIndexRow] = useState(0)
 
 
+  const [uncheckedComp, setUncheckedComp] = useState(0)
+
+  const [ unCheckItemGroup , setUnCheckItemGroup] = useState(0)
+
+
 
 
   const [newelement,setNewelement] = useState([{
@@ -1071,8 +1076,9 @@ if(competitor_id == 0){
             market_size_id: 0,
           }
         // ]
-      let index = indexOf()
-      newRecords[0]["marketSizeRecords"].splice(index, 1);
+
+      // let index = indexOf()
+      // newRecords[0]["marketSizeRecords"].splice(index, 1);
 
 
         setMarketSize(newRecords) 
