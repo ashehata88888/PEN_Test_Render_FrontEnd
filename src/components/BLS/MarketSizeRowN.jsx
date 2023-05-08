@@ -5,6 +5,7 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import CheckCompetitor from "./ReusableComponents/CheckCompetitor";
+import { v4 as uuid } from 'uuid';
 import {
   updateMarketSize,
   updateSelectedItemGroup
@@ -82,6 +83,8 @@ export default function MarketSizeRow({
   const [selectedItemGroup,setSelectedItemGroup] = useState(0)
 
   const [compinxfromMSRow ,setCompinxfromMSRow] = useState(0)
+  const [inxSizeRowR,setInxSizeRowR] = useState(0)
+  const [inxRowIdR,setInxRowIdR] = useState(0)
   
   const userData = JSON.parse(useContext(UserContext));
   const key = userData.id;
@@ -192,6 +195,10 @@ useEffect(()=>{
   const ProductFamilyOnChangeHandler = (event, index) => {
     setEve(event.target.name)
     setInxSizeRow(index)
+    setInxSizeRowR(index)
+    setInxRowIdR(inxRowId)
+    console.log()
+
     const pFKey = event.target.value;
     console.log("product Family id from marketsize Row", pFKey);
    setProductFamilyId(parseInt(event.target.value))
@@ -275,6 +282,8 @@ useEffect(()=>{
   //   console.log(" Deletbtn value", idprop);
   //   localStorage.setItem("selectedMarketSizeRow", JSON.stringify(idprop));
   // };
+
+  
 
 
   return (
@@ -360,7 +369,9 @@ useEffect(()=>{
                     : expanded === `panel${index}`
               }
               onChange={accorhandleChange(`panel${index}`)}
-              onClick={(event) => onClickAccordion(event, index)}
+              onClick={(event) => {onClickAccordion(event, index)
+             
+              }}
             >
               <AccordionSummary aria-controls="panel1d-content">
                 <Typography style={{ color: "black" }} variant="h5">
@@ -369,10 +380,15 @@ useEffect(()=>{
               </AccordionSummary>
               <AccordionDetails >
                 {competitors.map((obj, inx) => (
+                  
                   <div className={hTabs.checkCompetitor} key={obj.id}>
+              
                     <CheckCompetitor
+                    inx={uuid().slice(0,8)}
                     // setUnCheckItemGroup = {setUnCheckItemGroup}
                     // setUncheckedComp={setUncheckedComp}
+                    inxSizeRow = {inxSizeRowR}
+                    setInxSizeRow = {setInxSizeRow}
                     inxRowId = {inxRowId}
                     setInxRecoRow = {setInxRecoRow}
                     setRemoveUnCheck = {setRemoveUnCheck}

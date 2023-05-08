@@ -23,6 +23,8 @@ import underDev from "../../imgs/UnderDev.jpg";
 import { display } from "@mui/system";
 import ActivityTable from "../Table/ActivityTable";
 
+import {updateMarketSizeRecordsId} from "../../store/index"
+
 import ActivityTableNew from "../Table/ActivityTableNew";
 // import Counter from '../../store/counter'
 import { Counter } from "./../../store/counter";
@@ -104,6 +106,8 @@ export default function LabTabsMarket({
   const [uncheckedComp, setUncheckedComp] = useState(0)
 
   const [ unCheckItemGroup , setUnCheckItemGroup] = useState(0)
+
+  const [current,setCurrent] = useState(0)
 
 
 
@@ -256,11 +260,15 @@ export default function LabTabsMarket({
 // setmarket_size_id ,
 
 
-
+const dispatch = useDispatch()
 
 console.log("competitor_id...",competitor_id)
 
 
+
+
+
+console.log("testForSizeIndex...",inxSizeRow)
 
 
   useEffect(()=>{
@@ -664,13 +672,33 @@ console.log("competitor_id...",competitor_id)
 
 
 
+let RecoRowInx = data[inxSizeRow]["marketSizeRecords"].findIndex(item => item.marketSizeRecordsID == inxRecoRow)
 
 
 
 
+// if(RecoRowInx != -1){
+// console.log("testRowIndexID...",RecoRowInx)
+
+// if(competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length  == 3 ){
+       
+//   data[inxSizeRow]["marketSizeRecords"][RecoRowInx]["marketSizeRecordsID"] = 0
+//   data[inxSizeRow]["marketSizeRecords"][RecoRowInx]["item_group_id"] = itemGroupId   
+//     data[inxSizeRow]["marketSizeRecords"][RecoRowInx]["competitor_id"] = competitor_id  
+//     data[inxSizeRow]["marketSizeRecords"][RecoRowInx]["item_qty1"] = item_qty1  
+//     data[inxSizeRow]["marketSizeRecords"][RecoRowInx]["item_status1"] = item_status1   
+//     data[inxSizeRow]["marketSizeRecords"][RecoRowInx]["item_qty2"] = item_qty2   
+//     data[inxSizeRow]["marketSizeRecords"][RecoRowInx]["item_status2"] = item_status2   
+    
 
 
-console.log("testRowIndexID...",inxRowId)
+//     setMarketSize(data)
+
+//   }
+// }
+
+
+
 
 
 
@@ -681,7 +709,7 @@ console.log("testRowIndexID...",inxRowId)
 
       if(competitor_id > 0 && inxSizeRow == 0  && data[0]["marketSizeRecords"].length  == 3 ){
        
-        data[0]["marketSizeRecords"][2]["marketSizeRecordsID"] = rowId
+        data[0]["marketSizeRecords"][2]["marketSizeRecordsID"] = 0
         data[0]["marketSizeRecords"][2]["item_group_id"] = itemGroupId   
           data[0]["marketSizeRecords"][2]["competitor_id"] = competitor_id  
           data[0]["marketSizeRecords"][2]["item_qty1"] = item_qty1  
@@ -1010,7 +1038,7 @@ console.log("testRowIndexID...",inxRowId)
   //   }]
   // )
 
-
+  
 	}, [inxSizeRow , supplierId , productFamilyId,
     competitor_id ,
     item_qty1 ,
@@ -1049,7 +1077,8 @@ console.log("marketSizeTest",marketSize)
   
 
   const globalState = useSelector((state)=> state)
-  const dispatch = useDispatch()
+
+  // const dispatch = useDispatch()
 
   const [saveBtn, setSaveBtn] = useState(false)
 
@@ -1230,7 +1259,6 @@ setExpander(true)
     setMarketSizeRows([
       ...marketSizeRows,
       <MarketSizeRow
-    
       inxRowId = {inxRowId}
       setRemoveUnCheck = {setRemoveUnCheck}
       setAddCheck = {setAddCheck}
@@ -1284,11 +1312,11 @@ const checkComp =(comp)=>{
   let newRecords = [...marketSize]
 
   console.log("checkComp",comp)
-  newRecords[0]["marketSizeRecords"] = [
+  newRecords[inxSizeRow]["marketSizeRecords"] = [
     ...newRecords[0]["marketSizeRecords"],
     {
       item_group_id : 0,
-      marketSizeRecordsID: 0,
+      marketSizeRecordsID:newRecords[0]["marketSizeRecords"].length,
       egmed_consumption: 0,
       total_consumption: 0,
       competitor_id: 0,
@@ -1315,9 +1343,11 @@ const checkComp =(comp)=>{
     let unique_id = uuid();
     let rowId = unique_id.slice(0,8)
 
-
+ let i = 0
   
+ const addI = (i) => i + 1
 
+ setCurrent((curr) => curr + 1)
 
 
 console.log("testCompId...",competitor_id)
@@ -1327,106 +1357,136 @@ console.log("testUniID....",rowId)
 
 
     let newRecords = [...marketSize]
+    setInxRowId(current)
+    dispatch(updateMarketSizeRecordsId(rowId))
+
+    newRecords[inxSizeRow]["marketSizeRecords"] = [
+      ...newRecords[inxSizeRow]["marketSizeRecords"],
+      {
+        item_group_id : 0,
+        marketSizeRecordsID : inxRecoRow,
+        egmed_consumption: 0,
+        total_consumption: 0,
+        competitor_id: 0,
+        item_qty1: 0,
+        item_status1: 0,
+        item_qty2: 0,
+        item_status2: 0,
+        market_size_id: 0,
+      }
+    ]
+  
+  
+    
+  
+   setTimeout(()=> setMarketSize(newRecords)  , 0) 
+
 
 // if (addCheck > 0 ) 
 
 
 console.log("addCheckMarketSizeTest...",newRecords)
-if(competitor_id == 0){
-  checkComp(competitor_id)
-}
+// if(competitor_id == 0 ){
+//   checkComp(competitor_id)
+// }
 
-                if( competitor_id > 0 && inxSizeRow == 0 ){
+// checkComp(competitor_id)
 
+// if( competitor_id > 0 && inxSizeRow == 0 ){
 
-                  setInxRowId(rowId)
+//       setInxRowId(rowId)
 
-        newRecords[0]["marketSizeRecords"] = [
-          ...newRecords[0]["marketSizeRecords"],
-          {
-            item_group_id : 0,
-            marketSizeRecordsID: rowId,
-            egmed_consumption: 0,
-            total_consumption: 0,
-            competitor_id: 0,
-            item_qty1: 0,
-            item_status1: 0,
-            item_qty2: 0,
-            item_status2: 0,
-            market_size_id: 0,
-          }
-        ]
+//       newRecords[inxSizeRow]["marketSizeRecords"].length
+
+//         newRecords[0]["marketSizeRecords"] = [
+//           ...newRecords[0]["marketSizeRecords"],
+//           {
+//             item_group_id : 0,
+//             marketSizeRecordsID: newRecords[0]["marketSizeRecords"].length,
+//             egmed_consumption: 0,
+//             total_consumption: 0,
+//             competitor_id: 0,
+//             item_qty1: 0,
+//             item_status1: 0,
+//             item_qty2: 0,
+//             item_status2: 0,
+//             market_size_id: 0,
+//           }
+//         ]
 
      
         
 
-        setMarketSize(newRecords) 
+//         setMarketSize(newRecords) 
 
-      } else if(competitor_id > 0 && inxSizeRow == 1){
+//       } else 
+
+
+// if(competitor_id > 0 && inxSizeRow == 1){
                 
 
-   setInxRowId(rowId)
-        newRecords[1]["marketSizeRecords"] = [
-          ...newRecords[1]["marketSizeRecords"],
-          {
-            item_group_id : 0,
-            marketSizeRecordsID: rowId,
-            egmed_consumption: 0,
-            total_consumption: 0,
-            competitor_id: 0,
-            item_qty1: 0,
-            item_status1: 0,
-            item_qty2: 0,
-            item_status2: 0,
-            market_size_id: 0,
-          }
-        ]
+//    setInxRowId(rowId)
+//         newRecords[1]["marketSizeRecords"] = [
+//           ...newRecords[1]["marketSizeRecords"],
+//           {
+//             item_group_id : 0,
+//             marketSizeRecordsID: newRecords[1]["marketSizeRecords"].length,
+//             egmed_consumption: 0,
+//             total_consumption: 0,
+//             competitor_id: 0,
+//             item_qty1: 0,
+//             item_status1: 0,
+//             item_qty2: 0,
+//             item_status2: 0,
+//             market_size_id: 0,
+//           }
+//         ]
 
       
         
 
-        setMarketSize(newRecords) 
-      } else if(competitor_id > 0 && inxSizeRow == 2){
+//         setMarketSize(newRecords) 
+//       } else if(competitor_id > 0 && inxSizeRow == 2){
 
-        setInxRowId(rowId)
-        newRecords[2]["marketSizeRecords"] = [
-          ...newRecords[2]["marketSizeRecords"],
-          {
-            item_group_id : 0,
-            marketSizeRecordsID: rowId,
-            egmed_consumption: 0,
-            total_consumption: 0,
-            competitor_id: 0,
-            item_qty1: 0,
-            item_status1: 0,
-            item_qty2: 0,
-            item_status2: 0,
-            market_size_id: 0,
-          }
-        ]
-        setMarketSize(newRecords) 
-      }else if(competitor_id > 0 && inxSizeRow == 3){
+//         setInxRowId(rowId)
+//         newRecords[2]["marketSizeRecords"] = [
+//           ...newRecords[2]["marketSizeRecords"],
+//           {
+//             item_group_id : 0,
+//             marketSizeRecordsID: newRecords[2]["marketSizeRecords"].length,
+//             egmed_consumption: 0,
+//             total_consumption: 0,
+//             competitor_id: 0,
+//             item_qty1: 0,
+//             item_status1: 0,
+//             item_qty2: 0,
+//             item_status2: 0,
+//             market_size_id: 0,
+//           }
+//         ]
+//         setMarketSize(newRecords) 
+//       }else if(competitor_id > 0 && inxSizeRow == 3){
                 
 
-        setInxRowId(rowId)
+//         setInxRowId(rowId)
  
-        newRecords[3]["marketSizeRecords"] = [
-          ...newRecords[3]["marketSizeRecords"],
-          {
-            item_group_id : 0,
-            marketSizeRecordsID: rowId,
-            egmed_consumption: 0,
-            total_consumption: 0,
-            competitor_id: 0,
-            item_qty1: 0,
-            item_status1: 0,
-            item_qty2: 0,
-            item_status2: 0,
-            market_size_id: 0,
-          }
-        ]
-        setMarketSize(newRecords) 
-      }
+//         newRecords[3]["marketSizeRecords"] = [
+//           ...newRecords[3]["marketSizeRecords"],
+//           {
+//             item_group_id : 0,
+//             marketSizeRecordsID: newRecords[3]["marketSizeRecords"].length,
+//             egmed_consumption: 0,
+//             total_consumption: 0,
+//             competitor_id: 0,
+//             item_qty1: 0,
+//             item_status1: 0,
+//             item_qty2: 0,
+//             item_status2: 0,
+//             market_size_id: 0,
+//           }
+//         ]
+//         setMarketSize(newRecords) 
+//       }
       
 
 
@@ -1585,6 +1645,8 @@ if(competitor_id == 0){
 
 //     setMarketSizeRows([marketSizeRowsColne.pop()]);
 //   };
+
+console.log("testRecordIndex",inxRecoRow)
 
   return (
     <Box sx={{ width: "93.5%", height: "99vh", overflow: "auto" }}>

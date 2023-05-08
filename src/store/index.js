@@ -24,6 +24,7 @@ const marketDataSlice = createSlice({
   initialState: {
     saveBtn: 0 ,
     selectedItemGroup: 0 ,
+    marketSizeRecordsId: 0 ,
     marketPotentials: {
       user_id: 0,
       bl_id: 0,
@@ -190,6 +191,10 @@ const marketDataSlice = createSlice({
     updateSaveBtn : (state, action) => { state.saveBtn = action.payload },
 
     updateSelectedItemGroup : (state, action) => { state.saveBtn = action.payload },
+    updateMarketSizeRecordsId : (state, action) => { state.marketSizeRecordsId = action.payload },
+
+
+
 
     updateMarketSize(state , action) {
     state.marketSize.push(action.payload)
@@ -208,6 +213,7 @@ const marketDataSlice = createSlice({
 
 export const { incremented, decremented } = counterSlice.actions
 export const {
+  updateMarketSizeRecordsId,
   updateUser_Id,
   updateBl_Id,
   updateBu_Id,
@@ -320,6 +326,8 @@ store.dispatch(incremented())
 store.dispatch(incremented())
 // {value: 2}
 store.dispatch(decremented())
+
+store.dispatch(updateMarketSizeRecordsId())
 // {value: 1}
 
 store.dispatch(updateUser_Id())

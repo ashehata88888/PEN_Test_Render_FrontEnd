@@ -22,6 +22,9 @@ import { alertClasses } from '@mui/material';
 const CheckCompetitor = ({ 
 
   // setUncheckedComp,
+  inx,
+  inxSizeRow,
+  setInxSizeRow,
   inxRowId,
   setcompetitor_id,
   setRemoveUnCheck,
@@ -100,7 +103,7 @@ selectedItemGroup,
 
   const globalState = useSelector((state) => state)
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
 
   console.log("itemGroupP", itemGroupP)
@@ -302,12 +305,15 @@ selectedItemGroup,
   //   market_size_id: 1,
   // }
 let curr = 0
-  const onChangeHandlerChecked1 = (_e) => {
+  const onChangeHandlerChecked1 = (_e,index) => {
 
 
     let competitorId = competitors[compInx].id
 
     setTimeout(()=>setcompetitor_id(competitorId),0)
+    setTimeout(()=>parseInt(inx),0)
+
+    console.log("testStoreforRecordIndex",parseInt(globalState.marketSizeRecordsId))
 
 
     if (!checked) {
@@ -318,6 +324,7 @@ let curr = 0
       console.log("competitors from checkbox are ...", competitors)
       console.log("compInxb ", compInx)
       console.log("competitor ID is ...", competitors[compInx].id)
+      console.log("testinxRowId",inxRowId)
       const competitorId = competitors[compInx].id
       // const competitorName = competitors[compInx].competitor_name
 
@@ -325,7 +332,7 @@ let curr = 0
 
       // setItemGroupC(itemGroupP)
 
-
+      
 
 
       setAddCheck((current) =>current + 1)
@@ -386,7 +393,7 @@ let curr = 0
       console.log("the check Box compeitor unchecked compatitor Name is \n " + competitorName + " id is " + parseInt(competitorId))
       let newobj = { ...marketSizeobjfromP }
 
-      
+      console.log("testStoreforRecordIndex",parseInt(globalState.marketSizeRecordsId))
       setUncheckedComp(competitorId)
 
       setUnCheckItemGroup(itemGroupP)
@@ -480,7 +487,8 @@ let curr = 0
 
       setCurrAddRow(currAddRow)
 
-      setInxRecoRow(inxRowId)
+      setInxRecoRow(inx)
+      console.log("test for inxRowId from ComCheck",inxRowId)
 
  
       setcompetitor_id(competitorId)
@@ -508,7 +516,7 @@ let curr = 0
       // const competitorId = competitors[compInx].id
       setcompetitor_id(competitorId)
 
-      setInxRecoRow(inxRowId)
+      setInxRecoRow(inx)
 
       // setitem_qty2(0)
       // setitem_status2(0)
@@ -542,7 +550,7 @@ let curr = 0
     const competitorId = competitors[compInx].id
     setcompetitor_id(competitorId)
 
-    setInxRecoRow(inxRowId)
+    setInxRecoRow(inx)
 
     if(text2 == 0){
     setitem_qty2(0)
@@ -599,7 +607,7 @@ let curr = 0
     const competitorId = competitors[compInx].id
     setcompetitor_id(competitorId)
 
-    setInxRecoRow(inxRowId)
+    setInxRecoRow(inx)
 
     // marketSizeobjfromP.marketSizeRecords.splice(compInx, 1)
 
@@ -704,7 +712,8 @@ let curr = 0
             // onClick={onClickCheckBoxHandler}
             checked={checked}
             onChange={(e) => {
-              onChangeHandlerChecked1(e)
+              onChangeHandlerChecked1(e , parseInt(globalState.marketSizeRecordsId))
+              setInxSizeRow(inxSizeRow)
               if (checked) {
                 setText("")
                 // setText2("")
@@ -739,7 +748,8 @@ let curr = 0
               setitem_qty1(parseInt(e.target.value))
               const competitorId = competitors[compInx].id
               setcompetitor_id(competitorId)
-              setInxRecoRow(inxRowId)
+              setInxRecoRow(inx)
+              setInxSizeRow(inxSizeRow)
              }  }
           />
         </li>
@@ -757,6 +767,7 @@ let curr = 0
             // id="activityType"
             onChange={(e) => {
               onChangeSelectStatus1(e)
+              setInxSizeRow(inxSizeRow)
 
 
               // if(checked){
@@ -796,6 +807,7 @@ let curr = 0
             checked={checked2}
             onChange={(e) => {
               onChangeHandlerChecked2(e)
+              setInxSizeRow(inxSizeRow)
               if (checked2) {
                 // setText("")
                 setText2("")
@@ -823,9 +835,11 @@ let curr = 0
               setitem_qty2(parseInt(e.target.value))
               const competitorId = competitors[compInx].id
               setcompetitor_id(competitorId)
-              setInxRecoRow(inxRowId)
+              setInxRecoRow(inx)
+              setInxSizeRow(inxSizeRow)
             }}
           />
+          
         </li>
 
         <li style={{marginLeft:"0px" }} className={hTabs.competitorli}>
@@ -841,7 +855,8 @@ let curr = 0
             // id="activityType"
             name="productList1"
             onChange={(e) => {
-              onChangeSelectStatus2(e)
+              onChangeSelectStatus2(e,inx)
+              setInxSizeRow(inxSizeRow)
  }
             }
 
