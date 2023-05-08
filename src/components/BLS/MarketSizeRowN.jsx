@@ -52,6 +52,9 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 
 export default function MarketSizeRow({
+  // setUnCheckItemGroup,
+  // setUncheckedComp,
+  inxRowId,
   setRemoveUnCheck,
   setAddCheck,
   setInxRecoRow,
@@ -225,6 +228,7 @@ useEffect(()=>{
     console.log("testIndex", itemGroups[inx].id);
     const selectedItemGroupP = itemGroups[inx].id;
     setSelectedItemGroup(parseInt(selectedItemGroupP))
+    setItemGroupId(parseInt(selectedItemGroupP))
     // setItemGroupId(parseInt(selectedItemGroupP))
 
 
@@ -367,6 +371,10 @@ useEffect(()=>{
                 {competitors.map((obj, inx) => (
                   <div className={hTabs.checkCompetitor} key={obj.id}>
                     <CheckCompetitor
+                    // setUnCheckItemGroup = {setUnCheckItemGroup}
+                    // setUncheckedComp={setUncheckedComp}
+                    inxRowId = {inxRowId}
+                    setInxRecoRow = {setInxRecoRow}
                     setRemoveUnCheck = {setRemoveUnCheck}
                       setAddCheck={setAddCheck}
                       setmarketSizeRecordsID = {setmarketSizeRecordsID}
@@ -378,7 +386,7 @@ useEffect(()=>{
                       setitem_qty2 = {setitem_qty2}
                       setitem_status2 = {setitem_status2}
                       setmarket_size_id = {setmarket_size_id}
-                      setItemGroupId = {setItemGroupId}
+                      // setItemGroupId = {setItemGroupId}
                       selectedItemGroup = {selectedItemGroup}
                       
                       // setCompinxfromMSRow

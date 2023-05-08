@@ -20,7 +20,9 @@ import { alertClasses } from '@mui/material';
 
 
 const CheckCompetitor = ({ 
-  setUncheckedComp,
+
+  // setUncheckedComp,
+  inxRowId,
   setcompetitor_id,
   setRemoveUnCheck,
   setAddCheck,
@@ -33,7 +35,7 @@ setitem_status1 ,
 setitem_qty2 ,
 setitem_status2 ,
 setmarket_size_id ,
-setItemGroupId,
+// setItemGroupId,
 selectedItemGroup,
   
   currAddRow, checkBoxTitle, competitors, compInx, marketSizeObj, itemGroupP, saveBtn, rowInx , handelCallBackRow }) => {
@@ -90,9 +92,11 @@ selectedItemGroup,
 
   const [currAddRow1, setCurrAddRow] = useState(0)
 
+
   const [uncheckedComp, setUncheckedComp] = useState(0)
 
   const [ unCheckItemGroup , setUnCheckItemGroup] = useState(0)
+ 
 
   const globalState = useSelector((state) => state)
 
@@ -314,22 +318,27 @@ let curr = 0
       console.log("competitors from checkbox are ...", competitors)
       console.log("compInxb ", compInx)
       console.log("competitor ID is ...", competitors[compInx].id)
-      // const competitorId = competitors[compInx].id
-      const competitorName = competitors[compInx].competitor_name
+      const competitorId = competitors[compInx].id
+      // const competitorName = competitors[compInx].competitor_name
 
-      setCompetitorName(competitorName)
+      // setCompetitorName(competitorName)
 
       // setItemGroupC(itemGroupP)
 
-      
+
 
 
       setAddCheck((current) =>current + 1)
 
+
+      // setcompetitor_id(competitorId)
+
+      // setTimeout(()=>setcompetitor_id(competitorId),0)
+
       // setItemGroupId(selectedItemGroup)
 
       
-      setTimeout(()=>setItemGroupId(selectedItemGroup),0)
+      // setTimeout(()=>setItemGroupId(selectedItemGroup),0)
       // setcompetitor_id(competitorId)
 
       
@@ -377,10 +386,12 @@ let curr = 0
       console.log("the check Box compeitor unchecked compatitor Name is \n " + competitorName + " id is " + parseInt(competitorId))
       let newobj = { ...marketSizeobjfromP }
 
-
+      
       setUncheckedComp(competitorId)
 
       setUnCheckItemGroup(itemGroupP)
+      // setUnCheckItemGroup(selectedItemGroup)
+      // setUncheckedComp(competitorId)
 
       setcompetitor_id(competitorId)
 
@@ -469,7 +480,10 @@ let curr = 0
 
       setCurrAddRow(currAddRow)
 
-  
+      setInxRecoRow(inxRowId)
+
+ 
+      setcompetitor_id(competitorId)
 
       //  marketSizeobjfromP.marketSizeRecords.push({itemGroup:itemGroupP ,
       //   competitor_id:competitorId,
@@ -491,9 +505,13 @@ let curr = 0
       setUncheckedComp(competitorId)
       setUnCheckItemGroup(itemGroupP)
 
+      // const competitorId = competitors[compInx].id
+      setcompetitor_id(competitorId)
 
-      setitem_qty2(0)
-      setitem_status2(0)
+      setInxRecoRow(inxRowId)
+
+      // setitem_qty2(0)
+      // setitem_status2(0)
 
       // newobj.marketSizeRecords.splice(compInx, 1)
 
@@ -513,9 +531,18 @@ let curr = 0
 
 
   const onChangeSelectStatus1 = (e) => {
+
+
     setitem_statusC1(e.target.value)
 
+
+
     setitem_status1(parseInt(e.target.value))
+
+    const competitorId = competitors[compInx].id
+    setcompetitor_id(competitorId)
+
+    setInxRecoRow(inxRowId)
 
     if(text2 == 0){
     setitem_qty2(0)
@@ -568,6 +595,11 @@ let curr = 0
     setitem_statusC2(e.target.value)
     setitem_status2(parseInt(e.target.value))
 
+
+    const competitorId = competitors[compInx].id
+    setcompetitor_id(competitorId)
+
+    setInxRecoRow(inxRowId)
 
     // marketSizeobjfromP.marketSizeRecords.splice(compInx, 1)
 
@@ -704,7 +736,11 @@ let curr = 0
             disabled={!checked}
             value={text}
             onChange={e =>{ setText(e.target.value)
-              setitem_qty1(parseInt(e.target.value)) }  }
+              setitem_qty1(parseInt(e.target.value))
+              const competitorId = competitors[compInx].id
+              setcompetitor_id(competitorId)
+              setInxRecoRow(inxRowId)
+             }  }
           />
         </li>
 
@@ -750,6 +786,7 @@ let curr = 0
 
          <li  style={{marginLeft:"0px" }} className={hTabs.competitorli}>
           <input
+          disabled={!checked}
            style={{marginLeft: "20px"}}
             type="checkbox"
             name='checkBox'
@@ -783,7 +820,11 @@ let curr = 0
             value={text2}
             // placeholder="V2"
             onChange={e => {setText2(e.target.value)
-              setitem_qty2(parseInt(e.target.value))}}
+              setitem_qty2(parseInt(e.target.value))
+              const competitorId = competitors[compInx].id
+              setcompetitor_id(competitorId)
+              setInxRecoRow(inxRowId)
+            }}
           />
         </li>
 
