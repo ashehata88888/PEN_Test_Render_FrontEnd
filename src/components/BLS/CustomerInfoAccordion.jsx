@@ -871,6 +871,7 @@ export default function customerInfoAccordion({
         <label className={`${hTabs.labels} ${displayAccountsData}`}>
           Account Name    (please search for the account c,w,s,...)
         </label>
+        {/* </label> */}
 
         <input
           className={`${
