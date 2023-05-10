@@ -32,7 +32,7 @@ export default function Login() {
   // const errRef = useRef<HTMLInputElement>(null); //made a change here
   // var errRef = useRef(null);
 
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState('mohamed.alaaeldin')
   const [pwd, setPwd] = useState('1234')
   const [errMsg, setErrMsg] = useState('')
   const [success, setSuccess] = useState(false);
@@ -390,9 +390,9 @@ export default function Login() {
             ref={userRef}
             autoComplete="off"
             onChange={(e) => setUser(e.target.value)}
-              value="just press Sign In please"
+//               value="just press Sign In please"
               // mohamed.alaaeldin
-            // value={user}
+            value={user}
             name="email"
             required
           />
