@@ -32,8 +32,8 @@ export default function Login() {
   // const errRef = useRef<HTMLInputElement>(null); //made a change here
   // var errRef = useRef(null);
 
-  const [user, setUser] = useState('mohamed.alaaeldin')
-  const [pwd, setPwd] = useState('1234')
+  const [user, setUser] = useState('')
+  const [pwd, setPwd] = useState('')
   const [errMsg, setErrMsg] = useState('')
   const [success, setSuccess] = useState(false);
   const [dMSuccess,setDMSuccess] = useState(false)
@@ -70,7 +70,7 @@ export default function Login() {
 
     return fetch(LOGIN_URL, {
       method: 'POST',
-      body: JSON.stringify({ user_name: 'mohamed.alaaeldin', password: '1234' }),
+      body: JSON.stringify({ user_name: user, password: pwd }),
       // body: JSON.stringify({ user_name: user, password: pwd }),
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true
@@ -375,6 +375,9 @@ export default function Login() {
     ) : dMSuccess ? (navigate('/homeDM')) : (
     <div className="mainDiv">
       <h1 className="title">PEN</h1>
+        <h3>user name : 'mohamed.alaaeldin'</h3>
+        <h3>password : '1234'</h3>
+
       <div className={"loginCard"} style={{width:'30%', position:'relative',display:'flex',left:'35%',top:'2rem'}}>
         <form className="container" onSubmit={handleSubmit}>
           <p>{errMsg}</p>
@@ -385,7 +388,7 @@ export default function Login() {
           </label>
           <input
             type="text"
-            placeholder="just press Sign in please"
+            placeholder="please Enter the User Name"
             id="userName"
             ref={userRef}
             autoComplete="off"
