@@ -9,15 +9,15 @@ import { Link, useNavigate } from 'react-router-dom'
 
 
 // Create WebSocket connection
-// const socket = new WebSocket('http://https://backend-ahmed-shehata-crm.onrender.com');
+// const socket = new WebSocket('https://backend-ahmed-shehata-crm.onrender.com');
 
 // Listen for possible errors
 // socket.addEventListener('error', (event) => {
 //   console.log('WebSocket error: ', event);
 // });
-// http://https://backend-ahmed-shehata-crm.onrender.com
-const LOGIN_URL = 'http://https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate'
-// const LOGIN_URL = 'http://https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate'
+// https://backend-ahmed-shehata-crm.onrender.com
+const LOGIN_URL = 'https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate'
+// const LOGIN_URL = 'https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate'
 // const LOGIN_URL = new WebSocket('ws://https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate')
 // var LOGIN_URL = new WebSocket("ws:http//https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate","echo-protocol");
 export default function Login() {
@@ -357,7 +357,7 @@ export default function Login() {
 
     // const response = await axios({
     //   method: 'post',
-    //   url: 'http://https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate',
+    //   url: 'https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate',
     //   data: {
     //     user_name: user,
     //     password: pwd
