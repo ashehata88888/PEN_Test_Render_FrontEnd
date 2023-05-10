@@ -77,6 +77,7 @@ export default function Login() {
     }).then(async (response) => {
       const res = await response.json()
       try {
+        res ? console.log("there is response") : console.log("there is no response")
         const accessToken = res.data.token
         const userId = res.data.id
         console.log(accessToken)
