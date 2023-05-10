@@ -406,7 +406,7 @@ export default function Login() {
             name="psw"
             id="password"
             onChange={(e) => setPwd(e.target.value)}
-            value="1234"
+            value={pwd}
             // value={pwd}
             required
           />
