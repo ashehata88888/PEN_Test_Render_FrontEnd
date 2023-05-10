@@ -145,9 +145,9 @@ selectedItemGroup,
   //   // console.log("supkey is checkBox ......,", supKey);
 
   //   // + BL +"/" + supKey
-  //   // "http://localhost:7000/api/competitors/" + BL + "/" + supKey
+  //   // "http://https://backend-ahmed-shehata-crm.onrender.com/api/competitors/" + BL + "/" + supKey
 
-  //   await fetch(`http://localhost:7000/api/competitors/${BL}/${supKey}`, {
+  //   await fetch(`http://https://backend-ahmed-shehata-crm.onrender.com/api/competitors/${BL}/${supKey}`, {
   //     method: "GET",
   //     headers: new Headers({
   //       Authorization: "bearer " + userData.token,

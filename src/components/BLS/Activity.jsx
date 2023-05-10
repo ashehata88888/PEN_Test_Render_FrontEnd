@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 
 // const position = login.res.data.position
 // console.log(position)
-// "http://localhost:7000/api/bus"
+// "http://https://backend-ahmed-shehata-crm.onrender.com/api/bus"
       /* <li key={userObj.id}>{userObj}</li> */
 
 import React, { useEffect, useState } from 'react'
@@ -22,7 +22,7 @@ function Activity () {
   const key = location.state.bu_id - 1;
   const fetchData = () => {
     return (
-      fetch('http://localhost:7000/api/bus', {
+      fetch('http://https://backend-ahmed-shehata-crm.onrender.com/api/bus', {
         method: 'GET',
         headers: new Headers({
         'Authorization': 'bearer '+ (toto), 

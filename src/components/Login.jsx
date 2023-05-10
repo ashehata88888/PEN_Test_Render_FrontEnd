@@ -9,17 +9,17 @@ import { Link, useNavigate } from 'react-router-dom'
 
 
 // Create WebSocket connection
-// const socket = new WebSocket('http://localhost:7000');
+// const socket = new WebSocket('http://https://backend-ahmed-shehata-crm.onrender.com');
 
 // Listen for possible errors
 // socket.addEventListener('error', (event) => {
 //   console.log('WebSocket error: ', event);
 // });
-// http://localhost:7000
-const LOGIN_URL = 'http://localhost:7000/api/users/authenticate'
-// const LOGIN_URL = 'http://localhost:7000/api/users/authenticate'
-// const LOGIN_URL = new WebSocket('ws://localhost:7000/api/users/authenticate')
-// var LOGIN_URL = new WebSocket("ws:http//localhost:7000/api/users/authenticate","echo-protocol");
+// http://https://backend-ahmed-shehata-crm.onrender.com
+const LOGIN_URL = 'http://https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate'
+// const LOGIN_URL = 'http://https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate'
+// const LOGIN_URL = new WebSocket('ws://https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate')
+// var LOGIN_URL = new WebSocket("ws:http//https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate","echo-protocol");
 export default function Login() {
   const { setAuth } = useAuth()
   const navigate = useNavigate()
@@ -357,7 +357,7 @@ export default function Login() {
 
     // const response = await axios({
     //   method: 'post',
-    //   url: 'http://localhost:7000/api/users/authenticate',
+    //   url: 'http://https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate',
     //   data: {
     //     user_name: user,
     //     password: pwd
