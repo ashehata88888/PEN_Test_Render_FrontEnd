@@ -33,7 +33,7 @@ export default function Login() {
   // var errRef = useRef(null);
 
   const [user, setUser] = useState('')
-  const [pwd, setPwd] = useState('')
+  const [pwd, setPwd] = useState('1234')
   const [errMsg, setErrMsg] = useState('')
   const [success, setSuccess] = useState(false);
   const [dMSuccess,setDMSuccess] = useState(false)
@@ -70,7 +70,8 @@ export default function Login() {
 
     return fetch(LOGIN_URL, {
       method: 'POST',
-      body: JSON.stringify({ user_name: user, password: pwd }),
+      body: JSON.stringify({ user_name: 'mohamed.alaaeldin', password: '1234' }),
+      // body: JSON.stringify({ user_name: user, password: pwd }),
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true
     }).then(async (response) => {
@@ -384,12 +385,14 @@ export default function Login() {
           </label>
           <input
             type="text"
-            placeholder="Enter User Name"
+            placeholder="just press Sign in please"
             id="userName"
             ref={userRef}
             autoComplete="off"
             onChange={(e) => setUser(e.target.value)}
-            value={user}
+              value="just press Sign In please"
+              // mohamed.alaaeldin
+            // value={user}
             name="email"
             required
           />
@@ -403,11 +406,12 @@ export default function Login() {
             name="psw"
             id="password"
             onChange={(e) => setPwd(e.target.value)}
-            value={pwd}
+            value="1234"
+            // value={pwd}
             required
           />
           <button type="submit" className="btn" style={{backgroundColor:'gray' , fontSize:'20pt',color:'white',fontFamily:'Bold'}}>
-            Login
+          Sign in
           </button>
         </form>
         <p className="signUpLink">

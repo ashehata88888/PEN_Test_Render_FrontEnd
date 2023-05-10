@@ -303,10 +303,10 @@ useEffect(()=>{
       {/* <div>
         {this.props.handelCallBack(this.state.marketSize)}
       </div> */}
-      <div>
+      {/* <div>
         Sobhan Allah al Azim
-      </div>
-      <div> Testing idprop Supplier Id is :{idprop}</div>
+      </div> */}
+      {/* <div> Testing idprop Supplier Id is :{idprop}</div> */}
       <div className={hTabs.productBox}>
         <label className={hTabs.minLable}>Supplier</label>
         <select

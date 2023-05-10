@@ -869,7 +869,7 @@ export default function customerInfoAccordion({
         </select>
 
         <label className={`${hTabs.labels} ${displayAccountsData}`}>
-          Account Name
+          Account Name    (please search for the account c,w,s,...)
         </label>
 
         <input

@@ -1676,7 +1676,7 @@ console.log("testRecordIndex",inxRecoRow)
                 width: "50%",
               }}
             />
-            <Tab
+            {/* <Tab
               label="Market Data History"
               value="0"
               style={{
@@ -1686,7 +1686,7 @@ console.log("testRecordIndex",inxRecoRow)
                 textAlign: "center",
                 width: "50%",
               }}
-            />
+            /> */}
           </TabList>
         </Box>
         <Box
@@ -1864,17 +1864,18 @@ console.log("testRecordIndex",inxRecoRow)
           </TabPanel>
         </Box>
 
-        <TabPanel active value="0">
+        {/* <TabPanel active value="0">
           <div>
-            {/* <img
+            <img
             src={underDev}
             alt="Under Development Img"
             style={{ width: '600px', padding: '100px' }}
-          /> */}
+          />
 
             {/* <ActivityTableNew/> */}
-          </div>
-        </TabPanel>
+          {/* </div>
+        </TabPanel> */} 
+        
       </TabContext>
     </Box>
   );
