@@ -9,15 +9,15 @@ import { Link, useNavigate } from 'react-router-dom'
 
 
 // Create WebSocket connection
-// const socket = new WebSocket('http://https://backend-ahmed-shehata-crm.onrender.com');
+// const socket = new WebSocket('https://backend-ahmed-shehata-crm.onrender.com');
 
 // Listen for possible errors
 // socket.addEventListener('error', (event) => {
 //   console.log('WebSocket error: ', event);
 // });
-// http://https://backend-ahmed-shehata-crm.onrender.com
-const LOGIN_URL = 'http://https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate'
-// const LOGIN_URL = 'http://https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate'
+// https://backend-ahmed-shehata-crm.onrender.com
+const LOGIN_URL = 'https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate'
+// const LOGIN_URL = 'https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate'
 // const LOGIN_URL = new WebSocket('ws://https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate')
 // var LOGIN_URL = new WebSocket("ws:http//https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate","echo-protocol");
 export default function Login() {
@@ -33,7 +33,7 @@ export default function Login() {
   // var errRef = useRef(null);
 
   const [user, setUser] = useState('')
-  const [pwd, setPwd] = useState('1234')
+  const [pwd, setPwd] = useState('')
   const [errMsg, setErrMsg] = useState('')
   const [success, setSuccess] = useState(false);
   const [dMSuccess,setDMSuccess] = useState(false)
@@ -70,13 +70,14 @@ export default function Login() {
 
     return fetch(LOGIN_URL, {
       method: 'POST',
-      body: JSON.stringify({ user_name: 'mohamed.alaaeldin', password: '1234' }),
+      body: JSON.stringify({ user_name: user, password: pwd }),
       // body: JSON.stringify({ user_name: user, password: pwd }),
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true
     }).then(async (response) => {
       const res = await response.json()
       try {
+        res ? console.log("there is response") : console.log("there is no response")
         const accessToken = res.data.token
         const userId = res.data.id
         console.log(accessToken)
@@ -357,7 +358,7 @@ export default function Login() {
 
     // const response = await axios({
     //   method: 'post',
-    //   url: 'http://https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate',
+    //   url: 'https://backend-ahmed-shehata-crm.onrender.com/api/users/authenticate',
     //   data: {
     //     user_name: user,
     //     password: pwd
@@ -375,6 +376,9 @@ export default function Login() {
     ) : dMSuccess ? (navigate('/homeDM')) : (
     <div className="mainDiv">
       <h1 className="title">PEN</h1>
+        <h3>user name : 'mohamed.alaaeldin'</h3>
+        <h3>password : '1234'</h3>
+
       <div className={"loginCard"} style={{width:'30%', position:'relative',display:'flex',left:'35%',top:'2rem'}}>
         <form className="container" onSubmit={handleSubmit}>
           <p>{errMsg}</p>
@@ -385,14 +389,14 @@ export default function Login() {
           </label>
           <input
             type="text"
-            placeholder="just press Sign in please"
+            placeholder="please Enter the User Name"
             id="userName"
             ref={userRef}
             autoComplete="off"
             onChange={(e) => setUser(e.target.value)}
-              value="just press Sign In please"
+//               value="just press Sign In please"
               // mohamed.alaaeldin
-            // value={user}
+            value={user}
             name="email"
             required
           />
@@ -406,7 +410,7 @@ export default function Login() {
             name="psw"
             id="password"
             onChange={(e) => setPwd(e.target.value)}
-            value="1234"
+            value={pwd}
             // value={pwd}
             required
           />

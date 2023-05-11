@@ -10,6 +10,8 @@ import React, { Component }  from 'react';
 // </div>
 // }
 
+// test
+
 //just comment to solve git issue
 
 // import Register from './components/Register';
