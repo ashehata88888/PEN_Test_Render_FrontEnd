@@ -82,6 +82,9 @@ function App() {
         {/* <Route path="LinkPage" element={<LinkPage />} /> */}
         <Route path="/"  exact element={<Login />} />
         <Route path="table" element={<NewTable/>}/>
+
+        <Route path="/home" exact element={<Home />} />
+        
          {/* <Route path="Activity" element={<Activity />} /> */}
         {/* <Route path="register" element={<Register />} /> */}
 
@@ -106,7 +109,7 @@ function App() {
 
          <Route element={<RequireAuth/>}>
 
-         <Route path="/home" exact element={<Home />} />
+        
          
           {/* <Route path="BB" element={<BB />} />
           <Route path="BIOS" element={<BIOS />} />
