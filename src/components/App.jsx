@@ -84,7 +84,8 @@ function App() {
         <Route path="table" element={<NewTable/>}/>
 
       
-
+        <Route path="*" element={<Home />} />
+        
          {/* <Route path="Activity" element={<Activity />} /> */}
         {/* <Route path="register" element={<Register />} /> */}
 
@@ -165,7 +166,7 @@ function App() {
                   {/* catch all */}
               {/* catch all */}
         {/* <Route path="Home" element={<Home />} /> */}
-        <Route path="*" element={<Home />} />
+     
       </Route>
     </Routes>
   );
