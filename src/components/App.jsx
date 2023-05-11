@@ -75,7 +75,7 @@ function App() {
 
   return (
     <Routes>
-
+ <Route path="*" element={<Home />} />
       <Route path="/" element={<Layout />}>
          {/* Layout */}
         {/* public routes */}
@@ -84,8 +84,8 @@ function App() {
         <Route path="table" element={<NewTable/>}/>
 
       
-        <Route path="*" element={<Home />} />
-        
+       
+
          {/* <Route path="Activity" element={<Activity />} /> */}
         {/* <Route path="register" element={<Register />} /> */}
 
