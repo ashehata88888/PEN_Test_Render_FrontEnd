@@ -35,7 +35,7 @@ const RequireAuth = () => {
         return <Outlet/>
     }else{
         return (
-        <Navigate to="/home" state={{ from: location }} replace='false' />
+        <Navigate to="/" state={{ from: location }} replace='false' />
         // navigate('/' , {replace:false})
         ) 
     }
