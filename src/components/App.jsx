@@ -83,7 +83,7 @@ function App() {
         <Route path="/"  exact element={<Login />} />
         <Route path="table" element={<NewTable/>}/>
 
-        <Route path="home"  element={<Home />} />
+      
 
          {/* <Route path="Activity" element={<Activity />} /> */}
         {/* <Route path="register" element={<Register />} /> */}
@@ -110,6 +110,7 @@ function App() {
          <Route element={<RequireAuth/>}>
 
         
+         <Route path="home"  element={<Home />} />
          
           {/* <Route path="BB" element={<BB />} />
           <Route path="BIOS" element={<BIOS />} />
@@ -145,7 +146,6 @@ function App() {
     
       
          </Route>
-
 
 
 
