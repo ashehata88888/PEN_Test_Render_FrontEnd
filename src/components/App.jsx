@@ -104,7 +104,7 @@ function App() {
 
          <Route element={<RequireAuth/>}>
 
-         <Route path="Home" element={<Home />} />
+         <Route path="/home" exact element={<Home />} />
          
           {/* <Route path="BB" element={<BB />} />
           <Route path="BIOS" element={<BIOS />} />
