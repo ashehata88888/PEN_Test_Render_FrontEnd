@@ -23,17 +23,26 @@ const RequireAuth = () => {
     const navigate = useNavigate()
 
     const userDatafromStorage = localStorage.getItem('userData');
+
+    // const userData = JSON.parse(useContext(UserContext));
+
     // console.log("userDatafromStorage",userDatafromStorage.length)
      console.log("userDatafromStorage",userDatafromStorage)
 //     if(auth.user.length > 0){
 //         setpathHook("Home")
 //     }else{
 //         setpathHook("/") 
+
 //     }
     // console.log("value of auth.user is ",auth.user)
     if(userDatafromStorage != null ){
         return <Outlet/>
-    }else{
+    }else if (userDatafromStorage){
+        return (
+        <Navigate to="/home" state={{ from: location }} replace='true' />
+        // navigate('/' , {replace:false})
+        ) 
+    }else {
         return (
         <Navigate to="/" state={{ from: location }} replace='false' />
         // navigate('/' , {replace:false})
