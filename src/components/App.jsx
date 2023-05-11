@@ -165,7 +165,7 @@ function App() {
                   {/* catch all */}
               {/* catch all */}
         {/* <Route path="Home" element={<Home />} /> */}
-        <Route path="*" element={<Missing />} />
+        <Route path="*" element={<Home />} />
       </Route>
     </Routes>
   );
